@@ -19,17 +19,30 @@ public class FormatTime
     }
     
     public String formatTime(LocalDateTime ldt)
-    {
+    {   
+        String time = "";
+    
         int hour = ldt.getHour();
         int min = ldt.getMinute();
         int second = ldt.getSecond();
+        if(min < 10)
+        {
+            time = hour + ":" + "0"+min + ":" + second;
+        }
+        if(second < 10)
+        {
+            time = hour + ":" + min + ":" + "0"+second;
+        }
+        else
+        {
+            time = hour + ":" + min + ":" + second;
+        }
         
         String monthName = months[ldt.getMonth().getValue()-1];
         int monthValue = ldt.getDayOfMonth();
         String dofW = dayOfWeek[ldt.getDayOfWeek().getValue()-1];
         int year = ldt.getYear();
         
-        String time = hour + ":" + min + ":" + second;
         String date = dofW + ", " + monthName + " " + suffix(monthValue) +", "+ year;
         
         return date + " \t " + time ;

@@ -43,6 +43,14 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         jLabel2 = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
         time = new javax.swing.JLabel();
+        connectionStatusLabel = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        userNumberLabel = new javax.swing.JLabel();
+        userNumberVal = new javax.swing.JLabel();
+        jobsNumberLabel = new javax.swing.JLabel();
+        jobsNumberVal = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -60,14 +68,13 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         setBackground(new java.awt.Color(0, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocationByPlatform(true);
-        setUndecorated(true);
 
         menuAndTitlePanel.setBackground(new java.awt.Color(0, 153, 255));
 
         titlePanel.setBackground(new java.awt.Color(0, 102, 255));
         titlePanel.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Vulture DB");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/databaseui/vlogo.png"))); // NOI18N
@@ -108,23 +115,93 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
 
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        time.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         time.setForeground(new java.awt.Color(0, 0, 0));
+
+        connectionStatusLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        connectionStatusLabel.setForeground(new java.awt.Color(0, 0, 0));
+        connectionStatusLabel.setText("Connection Status: ");
+
+        status.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        status.setForeground(new java.awt.Color(0, 0, 0));
+        status.setText("STATUS");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 255, 51));
+        jLabel3.setText("ONLINE ");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel4.setText("| OFFLINE");
+
+        userNumberLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        userNumberLabel.setForeground(new java.awt.Color(0, 0, 0));
+        userNumberLabel.setText("Number of users in the database:");
+
+        userNumberVal.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        userNumberVal.setForeground(new java.awt.Color(0, 0, 0));
+        userNumberVal.setText("NUMBER");
+
+        jobsNumberLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jobsNumberLabel.setForeground(new java.awt.Color(0, 0, 0));
+        jobsNumberLabel.setText("Number of Jobs currently in the database: ");
+
+        jobsNumberVal.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jobsNumberVal.setForeground(new java.awt.Color(0, 0, 0));
+        jobsNumberVal.setText("NUMBER");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(userNumberLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(userNumberVal))
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(jobsNumberLabel)
+                            .addGap(18, 18, 18)
+                            .addComponent(jobsNumberVal)))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(connectionStatusLabel)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGap(236, 236, 236)
+                                .addComponent(status)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(315, Short.MAX_VALUE)
-                .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(290, 290, 290))
+                .addContainerGap(332, Short.MAX_VALUE)
+                .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(225, 225, 225))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(560, Short.MAX_VALUE))
+                .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(connectionStatusLabel)
+                    .addComponent(status)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userNumberLabel)
+                    .addComponent(userNumberVal))
+                .addGap(18, 18, 18)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jobsNumberLabel)
+                    .addComponent(jobsNumberVal))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 255));
@@ -200,14 +277,22 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel connectionStatusLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jobsNumberLabel;
+    private javax.swing.JLabel jobsNumberVal;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuAndTitlePanel;
+    private javax.swing.JLabel status;
     private javax.swing.JLabel time;
     private javax.swing.JPanel titlePanel;
+    private javax.swing.JLabel userNumberLabel;
+    private javax.swing.JLabel userNumberVal;
     // End of variables declaration//GEN-END:variables
     
     public void setTimeLabel()
