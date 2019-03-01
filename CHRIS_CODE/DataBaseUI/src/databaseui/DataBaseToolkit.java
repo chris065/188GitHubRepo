@@ -5,6 +5,7 @@
  */
 package databaseui;
 
+import java.sql.*;
 /**
  *
  * @author Chris Bennett
