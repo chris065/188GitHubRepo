@@ -1,0 +1,12 @@
+CREATE DATABASE sepDataBase
+
+CREATE TABLE users
+(
+    USER_ID int AUTO_INCREMENT,
+    USER_FNAME varchar(50),
+    USER_SNAME varchar(50),
+    USER_UNAME varchar(50) PRIMARY KEY,
+    USER_PASSWORD varchar(50)
+);
+
+INSERT INTO users (USER_FNAME, USER_SNAME, USER_UNAME, USER_PASSWORD) VALUES ('Chris', 'Bennett', 'cb_0001', 'password1');
