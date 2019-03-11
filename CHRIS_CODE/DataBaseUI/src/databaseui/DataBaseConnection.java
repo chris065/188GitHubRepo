@@ -23,7 +23,7 @@ public class DataBaseConnection
     public DataBaseConnection()
     {
         driver = "jdbc:sqlite:";
-        dbase = "sepDataBase.db";
+        dbase = "sepDataBase 3.sqlite3";
         url = driver  + dbase;
         
         connect();
@@ -34,6 +34,7 @@ public class DataBaseConnection
         catch(SQLException e)
         {
             System.out.println("Error: " + e.toString());
+            //e.printStackTrace();
         }
     }
     
@@ -42,7 +43,7 @@ public class DataBaseConnection
         try
         {
             conn = DriverManager.getConnection(url);
-            System.err.println("Connection Successful\n");
+            System.out.println("Connection Successful\n");
         }
         catch(SQLException sqlex)
         {
@@ -60,7 +61,7 @@ public class DataBaseConnection
     public void testDisplayUserTable() throws SQLException
     {
         Statement stmt = conn.createStatement();
-        String query = "SELECT U_FNAME, U_SNAME, U_UNAME FROM users";
+        String query = "SELECT * FROM USERS";
         
         ResultSet rs = stmt.executeQuery(query);
         if(!rs.next())
@@ -87,7 +88,7 @@ public class DataBaseConnection
     //helper method
     private void displayRow(ResultSet rs, ResultSetMetaData rsmd) throws SQLException
     {
-        for(int i = 1; i < rsmd.getColumnCount(); i++)
+        for(int i = 1; i <= rsmd.getColumnCount(); i++)
         {
             switch(rsmd.getColumnType(i))
             {

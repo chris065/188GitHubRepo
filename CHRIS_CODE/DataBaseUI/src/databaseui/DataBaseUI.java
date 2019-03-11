@@ -68,6 +68,7 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         setBackground(new java.awt.Color(0, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocationByPlatform(true);
+        setUndecorated(true);
 
         menuAndTitlePanel.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -194,9 +195,9 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userNumberLabel)
-                    .addComponent(userNumberVal))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userNumberVal)
+                    .addComponent(userNumberLabel))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jobsNumberLabel)
