@@ -24,7 +24,9 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
      */
     public DataBaseUI() {
         initComponents();
+        
         setTimeLabel();
+        setStatusLabel();
     }
 
     /**
@@ -45,8 +47,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         time = new javax.swing.JLabel();
         connectionStatusLabel = new javax.swing.JLabel();
         status = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         userNumberLabel = new javax.swing.JLabel();
         userNumberVal = new javax.swing.JLabel();
         jobsNumberLabel = new javax.swing.JLabel();
@@ -68,7 +68,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         setBackground(new java.awt.Color(0, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocationByPlatform(true);
-        setUndecorated(true);
 
         menuAndTitlePanel.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -127,14 +126,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         status.setForeground(new java.awt.Color(0, 0, 0));
         status.setText("STATUS");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 255, 51));
-        jLabel3.setText("ONLINE ");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setText("| OFFLINE");
-
         userNumberLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         userNumberLabel.setForeground(new java.awt.Color(0, 0, 0));
         userNumberLabel.setText("Number of users in the database:");
@@ -157,27 +148,20 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(userNumberLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(userNumberVal))
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(jobsNumberLabel)
-                            .addGap(18, 18, 18)
-                            .addComponent(jobsNumberVal)))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(jobsNumberLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(jobsNumberVal))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(connectionStatusLabel)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(236, 236, 236)
-                                .addComponent(status)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(userNumberLabel)
+                            .addComponent(connectionStatusLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(status)
+                            .addComponent(userNumberVal))))
+                .addContainerGap(562, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap(332, Short.MAX_VALUE)
                 .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,9 +175,7 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
                 .addGap(48, 48, 48)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(connectionStatusLabel)
-                    .addComponent(status)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(status))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(userNumberVal)
@@ -281,8 +263,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
     private javax.swing.JLabel connectionStatusLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel jobsNumberLabel;
@@ -312,6 +292,23 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
     
     public void actionPerformed(ActionEvent ae)
     {
+    }
+    
+    public void setStatusLabel()
+    {
+        DataBaseConnection connection = new DataBaseConnection();
+        
+        if(!connection.connect())
+        {
+            status.setText("Offline");
+            status.setForeground(new Color(255,0,0));
+        }
+        else
+        {
+            status.setText("Online");
+            status.setForeground(new Color(0,255,51));
+        }
+            
     }
 }
 

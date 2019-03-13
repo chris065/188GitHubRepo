@@ -27,6 +27,8 @@ public class DataBaseConnection
         url = driver  + dbase;
         
         connect();
+        
+        /*
         try
         {
             testDisplayUserTable();
@@ -36,6 +38,7 @@ public class DataBaseConnection
             System.out.println("Error: " + e.toString());
             //e.printStackTrace();
         }
+        */
     }
     
     public boolean connect()
@@ -105,8 +108,10 @@ public class DataBaseConnection
         }
     }
     
+    /*
     public static void main(String[] args)
     {
         new DataBaseConnection();
     }
+    */
 }
