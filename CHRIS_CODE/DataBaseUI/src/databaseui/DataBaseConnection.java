@@ -23,7 +23,7 @@ public class DataBaseConnection
     public DataBaseConnection()
     {
         driver = "jdbc:sqlite:";
-        dbase = "sepDataBase.db";
+        dbase = "sepDataBase.sqlite";
         url = driver  + dbase;
         
         connect();
@@ -34,6 +34,7 @@ public class DataBaseConnection
         catch(SQLException e)
         {
             System.out.println("Error: " + e.toString());
+            e.printStackTrace();
         }
     }
     
