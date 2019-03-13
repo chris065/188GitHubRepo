@@ -22,11 +22,17 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
     /**
      * Creates new form DataBaseUI
      */
+    
+    private DataBaseToolkit dbtk;
+    
     public DataBaseUI() {
         initComponents();
         
+        this.dbtk = new DataBaseToolkit();
         setTimeLabel();
-        setStatusLabel();
+        setStatusLabel(); 
+        setUserLabel();
+        
     }
 
     /**
@@ -68,7 +74,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         setBackground(new java.awt.Color(0, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocationByPlatform(true);
-        setUndecorated(true);
 
         menuAndTitlePanel.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -310,6 +315,26 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
             status.setForeground(new Color(0,255,51));
         }
             
+    }
+    
+    public void setUserLabel()
+    {
+        try
+        {
+            if(dbtk.countUsers() == -1)
+            {
+                userNumberVal.setText("ERROR");
+            }
+            else
+            {
+                userNumberVal.setText(""+dbtk.countUsers());
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("There was an error");
+            e.printStackTrace();
+        }
     }
 }
 

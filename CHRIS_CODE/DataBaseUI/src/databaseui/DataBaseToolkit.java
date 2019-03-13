@@ -18,45 +18,101 @@ public class DataBaseToolkit
     
     private final DataBaseConnection connection;
     
-    public DataBaseToolkit(DataBaseConnection connection)
+    public DataBaseToolkit()
     {
-        this.connection = connection;
+        this.connection = new DataBaseConnection();
         
-        connection.connect();
         allJobs = new ArrayList<String>();
         allUsers = new ArrayList<String>();
     }
     
     public boolean checkUser(String userToCheck)
     {
-        return false;
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            Statement stmt = conn.createStatement();
+            String sqlQuery = "SELECT U_UNAME FROM USERS WHERE U_UNAME = '"+userToCheck+"'";
+            
+            ResultSet rs = stmt.executeQuery(sqlQuery);
+            if(!rs.next())
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("There was an error whilst processing your request");
+            e.printStackTrace();
+            return false;
+        }
     }
     
-    public boolean checkPass(String passToCheck)
+    public boolean checkPass(String passToCheck, String userName)
     {
-        return false;
+        if(!checkUser(userName))
+        {
+            return false;
+        }
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            Statement stmt = conn.createStatement();
+            String sqlQuery = "SELECT U_PWORD FROM USERS WHERE U_UNAME = '"+userName+"'";
+            
+            ResultSet rs = stmt.executeQuery(sqlQuery);
+            if(!rs.next())
+            {
+                //couldn't get any data for that user
+                return false;
+            }
+            else
+            {
+              //check the first set, since it is more likely to return only one set of data
+              if(rs.getString(1).equals(passToCheck))
+              {
+                  //password was correct for that user
+                  return true;
+              }
+              //password was incorrect for that user
+              return false;   
+            }
+        }
+        catch(Exception e)
+        {
+            System.err.println("There was an error whilst processing your request");
+            e.printStackTrace();
+            return false;
+        }
     }
     
     public String getUserDetails(String userName)
     {
         if(!checkUser(userName))
         {
-            return "user doesn't exsist";
+            return "NULL";
         }
-        return "user details";
+        else
+        {
+            return "user details";
+        }
     }
     
-    public int countUsers()
+    public int countJobs()
     {
         return 0;
     }
     
-    public int countJobs() throws SQLException
+    public int countUsers() throws SQLException
     {
         int count = 0;
-        Connection conn = null;
-        Statement stmt = conn.createStatement();
         
+        Connection conn = DriverManager.getConnection(connection.getURL());
+        Statement stmt = conn.createStatement();
         String sqlQuery = "SELECT * FROM USERS";
         
         ResultSet rs = stmt.executeQuery(sqlQuery);
@@ -65,13 +121,13 @@ public class DataBaseToolkit
             System.err.println("The result contained no records!");
             return -1;
         }
-        
         do
         {
-            connection.displayRows(rs);
+            count++;
         }
         while(rs.next());
         
+        conn.close();
         return count;
     }
     
@@ -85,5 +141,10 @@ public class DataBaseToolkit
     {
         //Loop through and add each user object to the list
         return allUsers;
+    }
+    
+    public static void main(String[] args)
+    {
+        new DataBaseToolkit();
     }
 }
