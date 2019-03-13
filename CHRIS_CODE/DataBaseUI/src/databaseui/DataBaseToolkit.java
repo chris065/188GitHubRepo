@@ -14,7 +14,7 @@ import java.util.*;
 public class DataBaseToolkit 
 {
     
-    private ArrayList allJobs, allUsers; 
+    private ArrayList<String> allJobs, allUsers, allCustomers; 
     
     private final DataBaseConnection connection;
     
@@ -22,8 +22,9 @@ public class DataBaseToolkit
     {
         this.connection = new DataBaseConnection();
         
-        allJobs = new ArrayList<String>();
-        allUsers = new ArrayList<String>();
+        allJobs = new ArrayList();
+        allUsers = new ArrayList();
+        allCustomers = new ArrayList();
     }
     
     public boolean checkUser(String userToCheck)
@@ -79,6 +80,7 @@ public class DataBaseToolkit
                   return true;
               }
               //password was incorrect for that user
+              conn.close();
               return false;   
             }
         }
@@ -131,6 +133,11 @@ public class DataBaseToolkit
         return count;
     }
     
+    public int countCustomers()
+    {
+        return 0;
+    }
+    
     public ArrayList getAllJobs()
     {
         //loop through and add each job to the job list
@@ -139,8 +146,27 @@ public class DataBaseToolkit
     
     public ArrayList getAllUsers()
     {
-        //Loop through and add each user object to the list
+        //All the users as in Techies
+        //Loop through and add each user object to the list 
         return allUsers;
+    }
+    
+    public ArrayList getAllCustomers()
+    {
+        return allCustomers;
+    }
+    
+    public String getCustomer(String custUName)
+    {
+        return "";
+    }
+    
+    public void addNewCustomer(String custUName, String custFName, String custSName)
+    {
+    }
+    
+    public void addNewTech(String techUName, String techFName, String techSName, String techPassword)
+    {
     }
     
     /*
