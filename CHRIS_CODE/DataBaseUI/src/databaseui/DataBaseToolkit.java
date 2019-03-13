@@ -143,8 +143,10 @@ public class DataBaseToolkit
         return allUsers;
     }
     
+    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
+    */
 }
