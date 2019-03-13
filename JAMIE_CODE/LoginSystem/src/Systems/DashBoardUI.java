@@ -6,6 +6,7 @@
 package Systems;
 
 import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -32,18 +33,14 @@ public class DashBoardUI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        bookingSidePanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        delaySidePanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        trackerSidePanel = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        graphSidePanel = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        adminSidePanel = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        currentJobsButton = new javax.swing.JButton();
+        jobDelayButton = new javax.swing.JButton();
+        newJobButton = new javax.swing.JButton();
+        orderPartsButton = new javax.swing.JButton();
+        adminButton = new javax.swing.JButton();
+        graphButton = new javax.swing.JButton();
+        newCustomerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -53,262 +50,135 @@ public class DashBoardUI extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bookingSidePanel.setBackground(new java.awt.Color(102, 102, 255));
-        bookingSidePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                bookingSidePanelPressed(evt);
-            }
-        });
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Allocator");
-
-        javax.swing.GroupLayout bookingSidePanelLayout = new javax.swing.GroupLayout(bookingSidePanel);
-        bookingSidePanel.setLayout(bookingSidePanelLayout);
-        bookingSidePanelLayout.setHorizontalGroup(
-            bookingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bookingSidePanelLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
-        bookingSidePanelLayout.setVerticalGroup(
-            bookingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bookingSidePanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(bookingSidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 180, 80));
-
         jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 60));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 60));
 
-        delaySidePanel.setBackground(new java.awt.Color(102, 102, 255));
-        delaySidePanel.setForeground(new java.awt.Color(255, 255, 255));
-        delaySidePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                delaySidePanelPressed(evt);
+        currentJobsButton.setText("Current jobs");
+        currentJobsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentJobsButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(currentJobsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 180, 50));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Delay");
-
-        javax.swing.GroupLayout delaySidePanelLayout = new javax.swing.GroupLayout(delaySidePanel);
-        delaySidePanel.setLayout(delaySidePanelLayout);
-        delaySidePanelLayout.setHorizontalGroup(
-            delaySidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(delaySidePanelLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel2)
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-        delaySidePanelLayout.setVerticalGroup(
-            delaySidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(delaySidePanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(delaySidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 180, 80));
-
-        trackerSidePanel.setBackground(new java.awt.Color(102, 102, 255));
-        trackerSidePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                trackerSidePanelPressed(evt);
+        jobDelayButton.setText("Delay a job");
+        jobDelayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobDelayButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(jobDelayButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 180, 50));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("View tasks");
-
-        javax.swing.GroupLayout trackerSidePanelLayout = new javax.swing.GroupLayout(trackerSidePanel);
-        trackerSidePanel.setLayout(trackerSidePanelLayout);
-        trackerSidePanelLayout.setHorizontalGroup(
-            trackerSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(trackerSidePanelLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel4)
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
-        trackerSidePanelLayout.setVerticalGroup(
-            trackerSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, trackerSidePanelLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(31, 31, 31))
-        );
-
-        jPanel2.add(trackerSidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 180, 80));
-
-        graphSidePanel.setBackground(new java.awt.Color(102, 102, 255));
-        graphSidePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                graphSidePanelPressed(evt);
+        newJobButton.setText("Create new job");
+        newJobButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newJobButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(newJobButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 180, 50));
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Graphs");
-
-        javax.swing.GroupLayout graphSidePanelLayout = new javax.swing.GroupLayout(graphSidePanel);
-        graphSidePanel.setLayout(graphSidePanelLayout);
-        graphSidePanelLayout.setHorizontalGroup(
-            graphSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(graphSidePanelLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel5)
-                .addContainerGap(77, Short.MAX_VALUE))
-        );
-        graphSidePanelLayout.setVerticalGroup(
-            graphSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(graphSidePanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel5)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(graphSidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 180, 80));
-
-        adminSidePanel.setBackground(new java.awt.Color(102, 102, 255));
-        adminSidePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                adminSidePanelPressed(evt);
+        orderPartsButton.setText("Order new parts");
+        orderPartsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderPartsButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(orderPartsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, 50));
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Admin");
+        adminButton.setText("Admin");
+        adminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 180, 50));
 
-        javax.swing.GroupLayout adminSidePanelLayout = new javax.swing.GroupLayout(adminSidePanel);
-        adminSidePanel.setLayout(adminSidePanelLayout);
-        adminSidePanelLayout.setHorizontalGroup(
-            adminSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminSidePanelLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel6)
-                .addContainerGap(86, Short.MAX_VALUE))
-        );
-        adminSidePanelLayout.setVerticalGroup(
-            adminSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminSidePanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel6)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
+        graphButton.setText("Statistics graphs");
+        graphButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                graphButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(graphButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 180, 50));
 
-        jPanel2.add(adminSidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 180, 80));
-
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Menu");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        newCustomerButton.setText("Create new customer account");
+        newCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCustomerButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(newCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 180, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bookingSidePanelPressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingSidePanelPressed
+    private void jobDelayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobDelayButtonActionPerformed
         // TODO add your handling code here:
-        setColour(bookingSidePanel);
-        resetColour(delaySidePanel);
-        resetColour(trackerSidePanel);
-        resetColour(graphSidePanel);
-        resetColour(adminSidePanel);
-        disablePanels();
+       new JobDelayUI().setVisible(true);
+    }//GEN-LAST:event_jobDelayButtonActionPerformed
+
+    private void newCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerButtonActionPerformed
+        // TODO add your handling code here:
+        new NewCustomerAccountUI().setVisible(true);
+    }//GEN-LAST:event_newCustomerButtonActionPerformed
+
+    private void newJobButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newJobButtonActionPerformed
+        // TODO add your handling code here:
         new JobAllocatorUI().setVisible(true);
-    }//GEN-LAST:event_bookingSidePanelPressed
+    }//GEN-LAST:event_newJobButtonActionPerformed
 
-    private void delaySidePanelPressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delaySidePanelPressed
+    private void orderPartsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderPartsButtonActionPerformed
         // TODO add your handling code here:
-        resetColour(bookingSidePanel);
-        setColour(delaySidePanel);
-        resetColour(trackerSidePanel);
-        resetColour(graphSidePanel);
-        resetColour(adminSidePanel);
-        disablePanels();
-        new JobDelayUI().setVisible(true);
-    }//GEN-LAST:event_delaySidePanelPressed
+        new OrderPartsUI().setVisible(true);
+    }//GEN-LAST:event_orderPartsButtonActionPerformed
 
-    private void trackerSidePanelPressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trackerSidePanelPressed
+    private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
         // TODO add your handling code here:
-        resetColour(bookingSidePanel);
-        resetColour(delaySidePanel);
-        setColour(trackerSidePanel);
-        resetColour(graphSidePanel);
-        resetColour(adminSidePanel);
-        disablePanels();
-        new TaskViewUI().setVisible(true);
-    }//GEN-LAST:event_trackerSidePanelPressed
+        new CurrentJobsUI().setVisible(true);
+    }//GEN-LAST:event_currentJobsButtonActionPerformed
 
-    private void graphSidePanelPressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_graphSidePanelPressed
+    private void graphButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphButtonActionPerformed
         // TODO add your handling code here:
-        resetColour(bookingSidePanel);
-        resetColour(delaySidePanel);
-        resetColour(trackerSidePanel);
-        setColour(graphSidePanel);
-        resetColour(adminSidePanel);
-        disablePanels();
         new ViewGraphUI().setVisible(true);
-    }//GEN-LAST:event_graphSidePanelPressed
+    }//GEN-LAST:event_graphButtonActionPerformed
 
-    private void adminSidePanelPressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminSidePanelPressed
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
-        resetColour(bookingSidePanel);
-        resetColour(delaySidePanel);
-        resetColour(trackerSidePanel);
-        resetColour(graphSidePanel);
-        setColour(adminSidePanel);
-        disablePanels();
         new AdminUI().setVisible(true);
-    }//GEN-LAST:event_adminSidePanelPressed
+    }//GEN-LAST:event_adminButtonActionPerformed
      
-    private void setColour(JPanel panel)
+    private void setColour(JButton button)
     {
-        panel.setBackground(new Color(153,153,255));
+        button.setBackground(new Color(153,153,255));
     }
     
-    private void resetColour(JPanel panel)
+    private void resetColour(JButton button)
     {
-        panel.setBackground( new Color(102,102,255));
+        button.setBackground( new Color(102,102,255));
     }
     
-    private void disablePanels()
-    {
-        bookingSidePanel.setEnabled(false);
-        delaySidePanel.setEnabled(false);
-        trackerSidePanel.setEnabled(false);
-        graphSidePanel.setEnabled(false);
-        adminSidePanel.setEnabled(false);
-    }
-    
-    private void enablePanels(JPanel panel)
-    {
-        
-    }
     
     /**
      * @param args the command line arguments
@@ -346,19 +216,15 @@ public class DashBoardUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel adminSidePanel;
-    private javax.swing.JPanel bookingSidePanel;
-    private javax.swing.JPanel delaySidePanel;
-    private javax.swing.JPanel graphSidePanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton adminButton;
+    private javax.swing.JButton currentJobsButton;
+    private javax.swing.JButton graphButton;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel trackerSidePanel;
+    private javax.swing.JButton jobDelayButton;
+    private javax.swing.JButton newCustomerButton;
+    private javax.swing.JButton newJobButton;
+    private javax.swing.JButton orderPartsButton;
     // End of variables declaration//GEN-END:variables
 }
