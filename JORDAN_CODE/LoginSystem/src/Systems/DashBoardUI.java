@@ -73,7 +73,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 orderPartsButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(orderPartsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, 50));
+        jPanel2.add(orderPartsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 180, 50));
 
         graphButton.setText("Statistics graphs");
         graphButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +81,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 graphButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(graphButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 180, 50));
+        jPanel2.add(graphButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 180, 50));
 
         newCustomerButton.setText("Create new customer account");
         newCustomerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 newCustomerButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(newCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 180, 50));
+        jPanel2.add(newCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 180, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
