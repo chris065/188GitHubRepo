@@ -67,6 +67,11 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
 
         allocateTaskButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         allocateTaskButton.setText("Allocate Tasks");
+        allocateTaskButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allocateTaskButtonActionPerformed(evt);
+            }
+        });
 
         taskListButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         taskListButton.setText("View task list");
@@ -171,6 +176,11 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new DailyTaskUI().setVisible(true);
     }//GEN-LAST:event_dailyTaskButtonActionPerformed
+
+    private void allocateTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allocateTaskButtonActionPerformed
+        // TODO add your handling code here:
+        new AllocateATaskUI().setVisible(true);
+    }//GEN-LAST:event_allocateTaskButtonActionPerformed
 
     /**
      * @param args the command line arguments
