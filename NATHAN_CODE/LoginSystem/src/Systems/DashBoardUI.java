@@ -39,6 +39,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         orderPartsButton = new javax.swing.JButton();
         graphButton = new javax.swing.JButton();
         newCustomerButton = new javax.swing.JButton();
+        taskAllocatorButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -91,6 +92,14 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(newCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 180, 50));
 
+        taskAllocatorButton.setText("Task Allocator");
+        taskAllocatorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskAllocatorButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(taskAllocatorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 180, 50));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,6 +149,11 @@ public class DashBoardUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ViewGraphUI().setVisible(true);
     }//GEN-LAST:event_graphButtonActionPerformed
+
+    private void taskAllocatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAllocatorButtonActionPerformed
+        // TODO add your handling code here:
+        new TaskAllocatorUI().setVisible(true); 
+    }//GEN-LAST:event_taskAllocatorButtonActionPerformed
      
     private void setColour(JButton button)
     {
@@ -196,5 +210,6 @@ public class DashBoardUI extends javax.swing.JFrame {
     private javax.swing.JButton jobDelayButton;
     private javax.swing.JButton newCustomerButton;
     private javax.swing.JButton orderPartsButton;
+    private javax.swing.JButton taskAllocatorButton;
     // End of variables declaration//GEN-END:variables
 }
