@@ -121,7 +121,7 @@ public class DataBaseToolkit
         if(!rs.next())
         {
             System.err.println("The result contained no records!");
-            return -1;
+            return 0;
         }
         do
         {
@@ -165,7 +165,7 @@ public class DataBaseToolkit
     {
     }
     
-    public void addNewTech(String techUName, String techFName, String techSName, String techPassword)
+    public void addNewTech(String techUName, String techFName, String techSName, String techPassword, String role)
     {
     }
     
