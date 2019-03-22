@@ -144,10 +144,9 @@ public class LoginUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName, password;
         userName = usernameField.getText().toString();
-        password = passwordField.getPassword().toString();
+        password = passwordField.getText().toString();
         
-        System.out.println(password);
-            
+        java.lang.System.out.println(password);
         
         if(!(dbtk.checkPass(password, userName)))
         {
