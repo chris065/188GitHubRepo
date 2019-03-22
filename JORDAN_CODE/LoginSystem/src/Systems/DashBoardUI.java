@@ -122,13 +122,13 @@ public class DashBoardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jobDelayButtonActionPerformed
 
     private void newCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerButtonActionPerformed
-        // TODO add your handling code here:
-        new NewCustomerAccountUI().setVisible(true);
+     // TODO add your handling code here:
+      
     }//GEN-LAST:event_newCustomerButtonActionPerformed
 
     private void orderPartsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderPartsButtonActionPerformed
         // TODO add your handling code here:
-        new OrderPartsUI().setVisible(true);
+        
     }//GEN-LAST:event_orderPartsButtonActionPerformed
 
     private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
@@ -138,7 +138,7 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     private void graphButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphButtonActionPerformed
         // TODO add your handling code here:
-        new ViewGraphUI().setVisible(true);
+      
     }//GEN-LAST:event_graphButtonActionPerformed
      
     private void setColour(JButton button)
