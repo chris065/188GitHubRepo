@@ -25,6 +25,24 @@ public class DataBaseToolkit
         allJobs = new ArrayList();
         allUsers = new ArrayList();
         allCustomers = new ArrayList();
+        
+        /*
+        try
+        {
+            if(!addNewUser("testUser4", "test", "user", "test123", "admin"))
+            {
+                System.err.println("Error");
+            }
+            else
+            {
+                System.out.println("Success");
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        */
     }
     
     public boolean checkUser(String userToCheck)
@@ -165,15 +183,43 @@ public class DataBaseToolkit
     {
     }
     
-    public boolean addNewTech(String techUName, String techFName, String techSName, String techPassword, String role)
-    {
-        return false;
+    public boolean addNewUser(String techUName, String techFName, String techSName, String techPassword, String role)
+    {   
+        try
+        {
+            PreparedStatement sqlInsert = null;
+            
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            conn.setAutoCommit(false);
+            sqlInsert = conn. prepareStatement("INSERT INTO USERS (U_FNAME, U_SNAME, U_UNAME, U_PWORD, U_ROLE) VALUES (?, ?, ?, ?, ?)");
+            
+            sqlInsert.setString(1, techFName);
+            sqlInsert.setString(2, techSName);
+            sqlInsert.setString(3, techUName);
+            sqlInsert.setString(4, techPassword);
+            sqlInsert.setString(5, role);
+            
+            int rslt = sqlInsert.executeUpdate();
+            if(rslt == 0)
+            {
+                conn.rollback();
+                return false;
+            }
+            else
+            {
+                conn.commit();
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
-    
-    /*
+
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
-    */
 }
