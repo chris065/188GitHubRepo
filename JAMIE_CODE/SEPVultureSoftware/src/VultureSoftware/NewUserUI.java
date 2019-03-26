@@ -78,7 +78,7 @@ public class NewUserUI extends javax.swing.JFrame {
         usernameField.setForeground(new java.awt.Color(255, 255, 255));
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
-        permissionsBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        permissionsBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Collection and Delivery", "Customer Support", "Finance", "Resource", "Technician", " " }));
 
         passwordField.setBackground(new java.awt.Color(102, 153, 255));
         passwordField.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,7 +125,7 @@ public class NewUserUI extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(185, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,13 +135,14 @@ public class NewUserUI extends javax.swing.JFrame {
                             .addComponent(roleLabel)
                             .addComponent(passwordLabel))
                         .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(permissionsBox, 0, 98, Short.MAX_VALUE)
-                            .addComponent(surnameField)
-                            .addComponent(forenameField)
-                            .addComponent(usernameField)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(surnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                                .addComponent(forenameField)
+                                .addComponent(usernameField))
+                            .addComponent(permissionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordField))
-                        .addGap(145, 145, 145))
+                        .addGap(87, 87, 87))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34))))

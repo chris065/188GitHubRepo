@@ -9,7 +9,7 @@ package VultureSoftware;
  *
  * @author jamie2
  */
-public class System {
+public class Driver {
     public static void main(String args[]) {
     
         
