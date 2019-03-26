@@ -5,6 +5,8 @@
  */
 package VultureSoftware;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author w17014747
@@ -32,7 +34,7 @@ public class NewUserUI extends javax.swing.JFrame {
         forenameField = new javax.swing.JTextField();
         surnameField = new javax.swing.JTextField();
         usernameField = new javax.swing.JTextField();
-        permissionsBox = new javax.swing.JComboBox<>();
+        roleBox = new javax.swing.JComboBox<>();
         passwordField = new javax.swing.JPasswordField();
         forenameLabel = new javax.swing.JLabel();
         surnameLabel = new javax.swing.JLabel();
@@ -65,7 +67,7 @@ public class NewUserUI extends javax.swing.JFrame {
         usernameField.setForeground(new java.awt.Color(255, 255, 255));
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
-        permissionsBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Collection and Delivery", "Customer Support", "Finance", "Resource", "Technician", " " }));
+        roleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Collection and Delivery", "Customer Support", "Finance", "Resource", "Technician", " " }));
 
         passwordField.setBackground(new java.awt.Color(102, 153, 255));
         passwordField.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,7 +144,7 @@ public class NewUserUI extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(surnameField, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(forenameField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(permissionsBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(roleBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(passwordField)
                                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(109, 109, 109))))
@@ -170,7 +172,7 @@ public class NewUserUI extends javax.swing.JFrame {
                     .addComponent(passwordLabel))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(permissionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roleBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roleLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,8 +203,20 @@ public class NewUserUI extends javax.swing.JFrame {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
+        String forename = forenameField.getText().toString();
+        String surname = surnameField.getText().toString();
+        String username = usernameField.getText().toString();
+        String password = passwordField.getText().toString();
+        String role = roleBox.getSelectedItem().toString();
         
-        
+        if((forename.equals("")) || (surname.equals("")) || (username.equals("")) || (password.equals("")))
+        {
+            JOptionPane.showMessageDialog(this, "One or more fields were left blank","Could not add user", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            
+        }
     }//GEN-LAST:event_createButtonActionPerformed
 
     /**
@@ -249,7 +263,7 @@ public class NewUserUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JComboBox<String> permissionsBox;
+    private javax.swing.JComboBox<String> roleBox;
     private javax.swing.JLabel roleLabel;
     private javax.swing.JTextField surnameField;
     private javax.swing.JLabel surnameLabel;

@@ -70,7 +70,7 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="surnameField" alignment="1" max="32767" attributes="0"/>
                                       <Component id="forenameField" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="permissionsBox" max="32767" attributes="0"/>
+                                      <Component id="roleBox" max="32767" attributes="0"/>
                                       <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
                                       <Component id="usernameField" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
                                   </Group>
@@ -109,7 +109,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="permissionsBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="roleBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="roleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -193,7 +193,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="permissionsBox">
+        <Component class="javax.swing.JComboBox" name="roleBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="7">
