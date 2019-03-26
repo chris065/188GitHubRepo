@@ -56,10 +56,12 @@ public class DataBaseToolkit
             ResultSet rs = stmt.executeQuery(sqlQuery);
             if(!rs.next())
             {
+                conn.close();
                 return false;
             }
             else
             {
+                conn.close();
                 return true;
             }
         }
@@ -95,6 +97,7 @@ public class DataBaseToolkit
               if(rs.getString(1).equals(passToCheck))
               {
                   //password was correct for that user
+                  conn.close();
                   return true;
               }
               //password was incorrect for that user
@@ -139,6 +142,7 @@ public class DataBaseToolkit
         if(!rs.next())
         {
             System.err.println("The result contained no records!");
+            conn.close();
             return 0;
         }
         do
@@ -203,11 +207,13 @@ public class DataBaseToolkit
             if(rslt == 0)
             {
                 conn.rollback();
+                conn.close();
                 return false;
             }
             else
             {
                 conn.commit();
+                conn.close();
                 return true;
             }
         }
@@ -218,8 +224,10 @@ public class DataBaseToolkit
         }
     }
 
+    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
+    */
 }
