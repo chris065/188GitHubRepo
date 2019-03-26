@@ -1,5 +1,4 @@
 package databaseui;
-import VultureSoftware.AdminUI;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -58,7 +57,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         userNumberVal = new javax.swing.JLabel();
         jobsNumberLabel = new javax.swing.JLabel();
         jobsNumberVal = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -80,6 +78,7 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         menuAndTitlePanel.setBackground(new java.awt.Color(0, 153, 255));
 
         titlePanel.setBackground(new java.awt.Color(0, 102, 255));
+        titlePanel.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Vulture DB");
@@ -117,41 +116,37 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
             menuAndTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuAndTitlePanelLayout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 456, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         time.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        time.setForeground(new java.awt.Color(0, 0, 0));
 
         connectionStatusLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        connectionStatusLabel.setForeground(new java.awt.Color(0, 0, 0));
         connectionStatusLabel.setText("Connection Status: ");
 
         status.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        status.setForeground(new java.awt.Color(0, 0, 0));
         status.setText("STATUS");
 
         userNumberLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        userNumberLabel.setForeground(new java.awt.Color(0, 0, 0));
         userNumberLabel.setText("Number of users in the database:");
 
         userNumberVal.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        userNumberVal.setForeground(new java.awt.Color(0, 0, 0));
         userNumberVal.setText("NUMBER");
 
         jobsNumberLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jobsNumberLabel.setForeground(new java.awt.Color(0, 0, 0));
         jobsNumberLabel.setText("Number of Jobs currently in the database: ");
 
         jobsNumberVal.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jobsNumberVal.setForeground(new java.awt.Color(0, 0, 0));
         jobsNumberVal.setText("NUMBER");
-
-        backButton.setBackground(new java.awt.Color(102, 153, 255));
-        backButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        backButton.setForeground(new java.awt.Color(255, 255, 255));
-        backButton.setText("Back");
-        backButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -159,30 +154,24 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(jobsNumberLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(jobsNumberVal))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userNumberLabel)
-                                    .addComponent(connectionStatusLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(status)
-                                    .addComponent(userNumberVal))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(225, 225, 225))))
+                        .addComponent(jobsNumberLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(jobsNumberVal))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userNumberLabel)
+                            .addComponent(connectionStatusLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(status)
+                            .addComponent(userNumberVal))))
+                .addContainerGap(562, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(332, Short.MAX_VALUE)
+                .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(225, 225, 225))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,9 +190,7 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jobsNumberLabel)
                     .addComponent(jobsNumberVal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 255));
@@ -213,7 +200,7 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,8 +215,8 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
                 .addComponent(menuAndTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -242,12 +229,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        new AdminUI().setVisible(true);
-    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,7 +266,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
     private javax.swing.JLabel connectionStatusLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

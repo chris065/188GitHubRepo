@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import javax.swing.JOptionPane;
+import databaseui.*;
 
 /**
  *
@@ -16,8 +17,12 @@ public class NewUserUI extends javax.swing.JFrame {
     /**
      * Creates new form NewUserUI
      */
+    
+    DataBaseToolkit dbtk;
+    
     public NewUserUI() {
         initComponents();
+        dbtk = new DataBaseToolkit();
     }
 
     /**
@@ -215,7 +220,14 @@ public class NewUserUI extends javax.swing.JFrame {
         }
         else
         {
-            
+            if(!dbtk.addNewUser(forename, surname, username,password,role))
+            {
+                JOptionPane.showMessageDialog(this, "There was an error whilst adding the user, please try again","Could not add user", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "User successfully added","User added", JOptionPane.PLAIN_MESSAGE);
+            }
         }
     }//GEN-LAST:event_createButtonActionPerformed
 
