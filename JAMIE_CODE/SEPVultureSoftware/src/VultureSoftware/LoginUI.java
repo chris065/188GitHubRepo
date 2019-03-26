@@ -149,8 +149,6 @@ public class LoginUI extends javax.swing.JFrame {
         userName = usernameField.getText().toString();
         password = passwordField.getText().toString();
         
-        System.out.println(password);
-        
         if(!(dbtk.checkPass(password, userName)))
         {
             JOptionPane.showMessageDialog(this, "Either the username or password were incorrect","Could not log on", JOptionPane.ERROR_MESSAGE);
