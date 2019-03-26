@@ -14,7 +14,8 @@ import java.util.*;
 public class DataBaseToolkit 
 {
     
-    private ArrayList<String> allJobs, allUsers, allCustomers; 
+    private ArrayList<String> allJobs, allCustomers;
+    private ArrayList<UserObject> allUsers;
     
     private final DataBaseConnection connection;
     
@@ -26,9 +27,10 @@ public class DataBaseToolkit
         allUsers = new ArrayList();
         allCustomers = new ArrayList();
         
-        /*
+        
         try
         {
+            /*
             if(!addNewUser("testUser4", "test", "user", "test123", "admin"))
             {
                 System.err.println("Error");
@@ -37,12 +39,18 @@ public class DataBaseToolkit
             {
                 System.out.println("Success");
             }
+            */
+            
+            getAllUsers();
+            for(int i = 0; i < allUsers.size(); i++)
+            {
+                System.out.println(allUsers.toString()+"\n");
+            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        */
     }
     
     public boolean checkUser(String userToCheck)
@@ -170,7 +178,35 @@ public class DataBaseToolkit
     {
         //All the users as in Techies
         //Loop through and add each user object to the list 
-        return allUsers;
+        
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT U_FNAME, U_SNAME, U_UNAME, U_ROLE FROM USERS";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            
+            if(!rs.next())
+            {
+                return null;
+            }
+            else
+            {
+                for(int i = 1; i <= rsmd.getRowCount(); i++)
+                {
+                    allUsers.add(new UserObject(rs.getString(i), rs.getString(i), rs.getString(i), rs.getString(i)));
+                }
+            }
+            conn.close();
+            return allUsers;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
     
     public ArrayList getAllCustomers()
@@ -224,10 +260,8 @@ public class DataBaseToolkit
         }
     }
 
-    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
-    */
 }
