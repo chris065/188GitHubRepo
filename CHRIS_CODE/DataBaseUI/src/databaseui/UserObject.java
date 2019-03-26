@@ -21,8 +21,29 @@ public class UserObject
         this.role = role;
     }
     
+    public String getUserFName()
+    {
+        return userFName;
+    }
+    
+    public String getUserSName()
+    {
+        return userSName;
+    }
+    
+    public String getUserUName()
+    {
+        return userUName;
+    }
+    
+    public String getRole()
+    {
+        return role;
+    }
+    
+    @Override
     public String toString()
     {
-        return userFName + "\n" + userSName + "\n" + userUName + "\n" + role;
+        return getUserFName() + "\n" + getUserSName() + "\n" + getUserUName() + "\n" + getRole();
     }
 }

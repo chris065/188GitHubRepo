@@ -194,10 +194,15 @@ public class DataBaseToolkit
             }
             else
             {
-                for(int i = 1; i <= rsmd.getRowCount(); i++)
+                do
                 {
-                    allUsers.add(new UserObject(rs.getString(i), rs.getString(i), rs.getString(i), rs.getString(i)));
+                    for(int i = 1; i <= rsmd.getColumnCount(); i++)
+                    {
+                      //System.out.println(rs.getString(i));
+                      //allUsers.add(new UserObject("","","","")); 
+                    }
                 }
+                while(rs.next());
             }
             conn.close();
             return allUsers;
