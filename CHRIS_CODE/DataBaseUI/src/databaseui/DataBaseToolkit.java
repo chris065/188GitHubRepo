@@ -165,8 +165,9 @@ public class DataBaseToolkit
     {
     }
     
-    public void addNewTech(String techUName, String techFName, String techSName, String techPassword, String role)
+    public boolean addNewTech(String techUName, String techFName, String techSName, String techPassword, String role)
     {
+        return false;
     }
     
     /*
