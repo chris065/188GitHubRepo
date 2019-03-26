@@ -57,7 +57,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="submitButton" min="-2" pref="68" max="-2" attributes="0"/>
+                              <Component id="createButton" min="-2" pref="68" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="forenameLabel" min="-2" max="-2" attributes="0"/>
@@ -113,7 +113,7 @@
                       <Component id="roleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="submitButton" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="createButton" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Component id="backButton" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -308,7 +308,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="submitButton">
+        <Component class="javax.swing.JButton" name="createButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="66" type="rgb"/>
@@ -329,7 +329,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

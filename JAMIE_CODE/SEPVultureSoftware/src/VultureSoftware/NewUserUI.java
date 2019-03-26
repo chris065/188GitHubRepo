@@ -40,7 +40,7 @@ public class NewUserUI extends javax.swing.JFrame {
         roleLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
-        submitButton = new javax.swing.JButton();
+        createButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,14 +103,14 @@ public class NewUserUI extends javax.swing.JFrame {
             }
         });
 
-        submitButton.setBackground(new java.awt.Color(102, 153, 255));
-        submitButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        submitButton.setForeground(new java.awt.Color(255, 255, 255));
-        submitButton.setText("Create");
-        submitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
+        createButton.setBackground(new java.awt.Color(102, 153, 255));
+        createButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        createButton.setForeground(new java.awt.Color(255, 255, 255));
+        createButton.setText("Create");
+        createButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
+                createButtonActionPerformed(evt);
             }
         });
 
@@ -130,7 +130,7 @@ public class NewUserUI extends javax.swing.JFrame {
                         .addGap(34, 34, 34))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(forenameLabel)
@@ -173,7 +173,7 @@ public class NewUserUI extends javax.swing.JFrame {
                     .addComponent(permissionsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roleLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -199,9 +199,11 @@ public class NewUserUI extends javax.swing.JFrame {
         new AdminUI().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_submitButtonActionPerformed
+        
+        
+    }//GEN-LAST:event_createButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +242,7 @@ public class NewUserUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton createButton;
     private javax.swing.JTextField forenameField;
     private javax.swing.JLabel forenameLabel;
     private javax.swing.JLabel jLabel1;
@@ -248,7 +251,6 @@ public class NewUserUI extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JComboBox<String> permissionsBox;
     private javax.swing.JLabel roleLabel;
-    private javax.swing.JButton submitButton;
     private javax.swing.JTextField surnameField;
     private javax.swing.JLabel surnameLabel;
     private javax.swing.JTextField usernameField;
