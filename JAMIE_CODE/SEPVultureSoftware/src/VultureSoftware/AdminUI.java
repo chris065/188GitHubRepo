@@ -204,6 +204,8 @@ public class AdminUI extends javax.swing.JFrame {
 
     private void deleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserButtonActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        new DeleteUserUI().setVisible(true);
     }//GEN-LAST:event_deleteUserButtonActionPerformed
 
     /**

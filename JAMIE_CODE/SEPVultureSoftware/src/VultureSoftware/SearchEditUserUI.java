@@ -158,7 +158,8 @@ public class SearchEditUserUI extends javax.swing.JFrame {
             }
             else
             {
-                
+                this.dispose();
+                new EditUserUI().setVisible(true);
             }
         }
     }//GEN-LAST:event_searchButtonActionPerformed
