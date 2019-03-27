@@ -199,7 +199,7 @@ public class AdminUI extends javax.swing.JFrame {
     private void editUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUserButtonActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new EditUserUI().setVisible(true);
+        new SearchEditUserUI().setVisible(true);
     }//GEN-LAST:event_editUserButtonActionPerformed
 
     private void deleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserButtonActionPerformed
