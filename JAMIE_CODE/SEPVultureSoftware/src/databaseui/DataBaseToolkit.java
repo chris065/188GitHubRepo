@@ -64,10 +64,13 @@ public class DataBaseToolkit
             try
             {
                 Connection conn = DriverManager.getConnection(connection.getURL());
+                //Statement
+                return true;
             }
             catch(Exception e)
             {
                 e.printStackTrace();
+                return false;
             }
         }
         
