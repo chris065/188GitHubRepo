@@ -53,6 +53,26 @@ public class DataBaseToolkit
         }
     }
     
+    public boolean deleteUser(String userName)
+    {
+        if(!checkUser(userName))
+        {
+            return false;
+        }
+        else
+        {
+            try
+            {
+                Connection conn = DriverManager.getConnection(connection.getURL());
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        
+    }
+    
     public boolean checkUser(String userToCheck)
     {
         try
@@ -198,7 +218,7 @@ public class DataBaseToolkit
                 {
                     for(int i = 1; i <= rsmd.getColumnCount(); i++)
                     {
-                      //System.out.println(rs.getString(i));
+                      System.out.println(rs.getString(i));
                       //allUsers.add(new UserObject("","","","")); 
                     }
                 }
