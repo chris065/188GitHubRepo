@@ -14,11 +14,13 @@ import databaseui.*;
  */
 public class DeleteUserUI extends javax.swing.JFrame {
 
+    DataBaseToolkit dbtk;
     /**
      * Creates new form NewUserUI
      */
     public DeleteUserUI() {
         initComponents();
+        dbtk = new DataBaseToolkit();
     }
 
     /**
