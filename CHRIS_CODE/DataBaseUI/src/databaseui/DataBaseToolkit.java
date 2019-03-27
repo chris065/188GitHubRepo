@@ -61,11 +61,24 @@ public class DataBaseToolkit
         }
         else
         {
+            PreparedStatement sqlDelete = null;
             try
             {
                 Connection conn = DriverManager.getConnection(connection.getURL());
-                //Statement
-                return true;
+                sqlDelete = conn.prepareStatement("DELETE FROM USERS WHERE U_UNAME = ?");
+                sqlDelete.setString(1, userName);
+                int rslt = sqlDelete.executeUpdate();
+                
+                if(rslt == 0)
+                {
+                    conn.close();
+                    return false;
+                }
+                else
+                {
+                    conn.close();
+                    return true;
+                }
             }
             catch(Exception e)
             {
@@ -73,7 +86,6 @@ public class DataBaseToolkit
                 return false;
             }
         }
-        
     }
     
     public boolean checkUser(String userToCheck)
