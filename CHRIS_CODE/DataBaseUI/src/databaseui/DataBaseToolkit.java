@@ -30,8 +30,8 @@ public class DataBaseToolkit
         
         try
         {
-            /*
-            if(!addNewUser("testUser4", "test", "user", "test123", "admin"))
+            
+            if(!deleteUser("barry"))
             {
                 System.err.println("Error");
             }
@@ -39,13 +39,15 @@ public class DataBaseToolkit
             {
                 System.out.println("Success");
             }
-            */
             
+            
+            /*
             getAllUsers();
             for(int i = 0; i < allUsers.size(); i++)
             {
                 System.out.println(allUsers.toString()+"\n");
             }
+            */
         }
         catch(Exception e)
         {
