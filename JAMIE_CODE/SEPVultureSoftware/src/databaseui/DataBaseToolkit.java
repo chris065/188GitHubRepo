@@ -14,7 +14,8 @@ import java.util.*;
 public class DataBaseToolkit 
 {
     
-    private ArrayList<String> allJobs, allUsers, allCustomers; 
+    private ArrayList<String> allJobs, allCustomers;
+    private ArrayList<UserObject> allUsers;
     
     private final DataBaseConnection connection;
     
@@ -26,9 +27,10 @@ public class DataBaseToolkit
         allUsers = new ArrayList();
         allCustomers = new ArrayList();
         
-        /*
+        
         try
         {
+            /*
             if(!addNewUser("testUser4", "test", "user", "test123", "admin"))
             {
                 System.err.println("Error");
@@ -37,12 +39,18 @@ public class DataBaseToolkit
             {
                 System.out.println("Success");
             }
+            */
+            
+            getAllUsers();
+            for(int i = 0; i < allUsers.size(); i++)
+            {
+                System.out.println(allUsers.toString()+"\n");
+            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        */
     }
     
     public boolean checkUser(String userToCheck)
@@ -56,10 +64,12 @@ public class DataBaseToolkit
             ResultSet rs = stmt.executeQuery(sqlQuery);
             if(!rs.next())
             {
+                conn.close();
                 return false;
             }
             else
             {
+                conn.close();
                 return true;
             }
         }
@@ -95,6 +105,7 @@ public class DataBaseToolkit
               if(rs.getString(1).equals(passToCheck))
               {
                   //password was correct for that user
+                  conn.close();
                   return true;
               }
               //password was incorrect for that user
@@ -139,6 +150,7 @@ public class DataBaseToolkit
         if(!rs.next())
         {
             System.err.println("The result contained no records!");
+            conn.close();
             return 0;
         }
         do
@@ -166,7 +178,40 @@ public class DataBaseToolkit
     {
         //All the users as in Techies
         //Loop through and add each user object to the list 
-        return allUsers;
+        
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT U_FNAME, U_SNAME, U_UNAME, U_ROLE FROM USERS";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            
+            if(!rs.next())
+            {
+                return null;
+            }
+            else
+            {
+                do
+                {
+                    for(int i = 1; i <= rsmd.getColumnCount(); i++)
+                    {
+                      //System.out.println(rs.getString(i));
+                      //allUsers.add(new UserObject("","","","")); 
+                    }
+                }
+                while(rs.next());
+            }
+            conn.close();
+            return allUsers;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
     
     public ArrayList getAllCustomers()
@@ -203,11 +248,13 @@ public class DataBaseToolkit
             if(rslt == 0)
             {
                 conn.rollback();
+                conn.close();
                 return false;
             }
             else
             {
                 conn.commit();
+                conn.close();
                 return true;
             }
         }

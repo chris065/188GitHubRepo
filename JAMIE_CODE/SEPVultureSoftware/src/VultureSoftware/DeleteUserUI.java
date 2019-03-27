@@ -5,6 +5,9 @@
  */
 package VultureSoftware;
 
+import javax.swing.JOptionPane;
+import databaseui.*;
+
 /**
  *
  * @author w17014747
@@ -133,8 +136,22 @@ public class DeleteUserUI extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        
-        
+        String username = usernameField.getText().toString();
+        if(username.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Please enter a user to delete","Could not delete user", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            if(!(dbtk.deleteUser(username)))
+            {
+                JOptionPane.showMessageDialog(this, "Failed to delete user","Could not delete user", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Successfully deleted user","Successfully deleted user", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
