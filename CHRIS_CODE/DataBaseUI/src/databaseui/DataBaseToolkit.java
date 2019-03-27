@@ -27,7 +27,7 @@ public class DataBaseToolkit
         allUsers = new ArrayList();
         allCustomers = new ArrayList();
         
-        
+        /*
         try
         {
             
@@ -41,18 +41,19 @@ public class DataBaseToolkit
             }
             
             
-            /*
+            
             getAllUsers();
             for(int i = 0; i < allUsers.size(); i++)
             {
                 System.out.println(allUsers.toString()+"\n");
             }
-            */
+            
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
+*/
     }
     
     public boolean deleteUser(String userName)
