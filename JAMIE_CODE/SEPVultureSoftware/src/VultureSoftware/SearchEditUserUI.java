@@ -40,8 +40,7 @@ public class SearchEditUserUI extends javax.swing.JFrame {
         usernameLabel = new javax.swing.JLabel();
         searchButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(497, 359));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         backgroundPanel.setBackground(new java.awt.Color(102, 153, 255));
         backgroundPanel.setPreferredSize(new java.awt.Dimension(497, 359));
@@ -152,15 +151,9 @@ public class SearchEditUserUI extends javax.swing.JFrame {
         }
         else
         {
-            if(!(dbtk.deleteUser(username)))
-            {
-                JOptionPane.showMessageDialog(this, "Failed to find user","Could not find user", JOptionPane.ERROR_MESSAGE);
-            }
-            else
-            {
                 this.dispose();
                 new EditUserUI().setVisible(true);
-            }
+            
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
