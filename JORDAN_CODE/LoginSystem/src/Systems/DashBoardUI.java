@@ -39,6 +39,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         orderPartsButton = new javax.swing.JButton();
         graphButton = new javax.swing.JButton();
         newCustomerButton = new javax.swing.JButton();
+        currentJobsButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -51,13 +52,13 @@ public class DashBoardUI extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 60));
 
-        currentJobsButton.setText("Job List");
+        currentJobsButton.setText("final inspect UI test");
         currentJobsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                currentJobsButtonActionPerformed(evt);
+                finaIinspectActionPerformed(evt);
             }
         });
-        jPanel2.add(currentJobsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 180, 50));
+        jPanel2.add(currentJobsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 180, 50));
 
         jobDelayButton.setText("Delay a task");
         jobDelayButton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +91,14 @@ public class DashBoardUI extends javax.swing.JFrame {
             }
         });
         jPanel2.add(newCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 180, 50));
+
+        currentJobsButton2.setText("Job List");
+        currentJobsButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentJobsButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(currentJobsButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 180, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,15 +140,18 @@ public class DashBoardUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_orderPartsButtonActionPerformed
 
-    private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
-        // TODO add your handling code here:
-        new CurrentJobsUI().setVisible(true);
-    }//GEN-LAST:event_currentJobsButtonActionPerformed
+    private void finaIinspectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finaIinspectActionPerformed
+        new FinalInspectionUI().setVisible(true);
+    }//GEN-LAST:event_finaIinspectActionPerformed
 
     private void graphButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphButtonActionPerformed
         // TODO add your handling code here:
       
     }//GEN-LAST:event_graphButtonActionPerformed
+
+    private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
+        new CurrentJobsUI().setVisible(true);
+    }//GEN-LAST:event_currentJobsButtonActionPerformed
      
     private void setColour(JButton button)
     {
@@ -189,6 +201,7 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton currentJobsButton;
+    private javax.swing.JButton currentJobsButton2;
     private javax.swing.JButton graphButton;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
