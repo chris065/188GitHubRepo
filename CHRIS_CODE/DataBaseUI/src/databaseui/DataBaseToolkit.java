@@ -29,10 +29,9 @@ public class DataBaseToolkit
         
         
         
-        
+        /*
         try
         {
-            /*
             if(!updateUser("Chris", "Bennett", "cb1", "password1", "admin"))
             {
                 System.err.println("Error");
@@ -48,9 +47,8 @@ public class DataBaseToolkit
             {
                 System.out.println(allUsers.toString()+"\n");
             }
-            */
             ArrayList<String> userDetails = getUserDetails("js2");
-            System.out.println(userDetails.toString());
+            System.out.println(userDetails.get(2).toString());
             
             
             
@@ -59,9 +57,10 @@ public class DataBaseToolkit
         {
             e.printStackTrace();
         }
+        */
         
     }
-    
+    //START OF USER / LOGON ON SYSTEM FUNCTION
     public boolean deleteUser(String userName)
     {
         if(!checkUser(userName))
@@ -108,7 +107,7 @@ public class DataBaseToolkit
         try
         {
             Connection conn = DriverManager.getConnection(connection.getURL());
-            sqlUpdate = conn.prepareStatement("UPDATE USERS SET U_FNAME = ?, U_SNAME = ?, U_UNAME = ?, U_PWORD = ?, U_ROLE = ? WHERE U_UNAME = ?");
+            sqlUpdate = conn.prepareStatement("UPDATE USERS SET U_FNAME = ?, U_SNAME = ?, U_UNAME = ?, U_PWORD = ?, U_ROLE = ? WHERE USER_ID = ?");
             
             sqlUpdate.setString(1, userFName);
             sqlUpdate.setString(2, userSName);
@@ -242,11 +241,6 @@ public class DataBaseToolkit
         }
     }
     
-    public int countJobs()
-    {
-        return 0;
-    }
-    
     public int countUsers() throws SQLException
     {
         int count = 0;
@@ -272,18 +266,44 @@ public class DataBaseToolkit
         return count;
     }
     
-    public int countCustomers()
-    {
-        return 0;
+    public boolean addNewUser(String techUName, String techFName, String techSName, String techPassword, String role)
+    {   
+        try
+        {
+            PreparedStatement sqlInsert = null;
+            
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            conn.setAutoCommit(false);
+            sqlInsert = conn.prepareStatement("INSERT INTO USERS (U_FNAME, U_SNAME, U_UNAME, U_PWORD, U_ROLE) VALUES (?, ?, ?, ?, ?)");
+            
+            sqlInsert.setString(1, techFName);
+            sqlInsert.setString(2, techSName);
+            sqlInsert.setString(3, techUName);
+            sqlInsert.setString(4, techPassword);
+            sqlInsert.setString(5, role);
+            
+            int rslt = sqlInsert.executeUpdate();
+            if(rslt == 0)
+            {
+                conn.rollback();
+                conn.close();
+                return false;
+            }
+            else
+            {
+                conn.commit();
+                conn.close();
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
     
-    public ArrayList getAllJobs()
-    {
-        //loop through and add each job to the job list
-        return allJobs;
-    }
-    
-    public ArrayList getAllUsers()
+     public ArrayList getAllUsers()
     {
         //All the users as in Techies
         //Loop through and add each user object to the list 
@@ -322,6 +342,49 @@ public class DataBaseToolkit
             return null;
         }
     }
+    //END OF USER / LOGON SYSTEM FUNCTIONS
+     
+    //START OF JOB SYSTEM FUNCTIONS
+    
+    public int countJobs()
+    {
+        return 0;
+    }
+    
+    public boolean addNewJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, String jobTaskID)
+    {
+        try
+        {
+            PreparedStatement sqlInsert = null;
+            
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            conn.setAutoCommit(false);
+            
+            return true;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+    
+    //END OF JOB SYSTEM FUNCTIONS
+    
+    
+    
+    public int countCustomers()
+    {
+        return 0;
+    }
+    
+    public ArrayList getAllJobs()
+    {
+        //loop through and add each job to the job list
+        return allJobs;
+    }
+
     
     public ArrayList getAllCustomers()
     {
@@ -336,44 +399,6 @@ public class DataBaseToolkit
     public void addNewCustomer(String custUName, String custFName, String custSName)
     {
     }
-    
-    public boolean addNewUser(String techUName, String techFName, String techSName, String techPassword, String role)
-    {   
-        try
-        {
-            PreparedStatement sqlInsert = null;
-            
-            Connection conn = DriverManager.getConnection(connection.getURL());
-            conn.setAutoCommit(false);
-            sqlInsert = conn. prepareStatement("INSERT INTO USERS (U_FNAME, U_SNAME, U_UNAME, U_PWORD, U_ROLE) VALUES (?, ?, ?, ?, ?)");
-            
-            sqlInsert.setString(1, techFName);
-            sqlInsert.setString(2, techSName);
-            sqlInsert.setString(3, techUName);
-            sqlInsert.setString(4, techPassword);
-            sqlInsert.setString(5, role);
-            
-            int rslt = sqlInsert.executeUpdate();
-            if(rslt == 0)
-            {
-                conn.rollback();
-                conn.close();
-                return false;
-            }
-            else
-            {
-                conn.commit();
-                conn.close();
-                return true;
-            }
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            return false;
-        }
-    }
-    
     
     public static void main(String[] args)
     {
