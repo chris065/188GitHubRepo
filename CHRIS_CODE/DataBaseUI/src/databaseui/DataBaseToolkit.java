@@ -28,10 +28,11 @@ public class DataBaseToolkit
         allCustomers = new ArrayList();
         
         
-        /*
+        
+        
         try
         {
-            
+            /*
             if(!updateUser("Chris", "Bennett", "cb1", "password1", "admin"))
             {
                 System.err.println("Error");
@@ -47,6 +48,10 @@ public class DataBaseToolkit
             {
                 System.out.println(allUsers.toString()+"\n");
             }
+            */
+            ArrayList<String> userDetails = getUserDetails("js2");
+            System.out.println(userDetails.toString());
+            
             
             
         }
@@ -54,7 +59,6 @@ public class DataBaseToolkit
         {
             e.printStackTrace();
         }
-        */
         
     }
     
@@ -93,7 +97,7 @@ public class DataBaseToolkit
         }
     }
     
-    public boolean updateUser(String userFName, String userSName, String userUName, String userPWord, String role)
+    public boolean updateUser(String userID, String userFName, String userSName, String userUName, String userPWord, String role)
     {
         if(!checkUser(userUName))
         {
@@ -112,7 +116,7 @@ public class DataBaseToolkit
             sqlUpdate.setString(4, userPWord);
             sqlUpdate.setString(5, role);
             //value to search on
-            sqlUpdate.setString(6, userUName);
+            sqlUpdate.setString(6, userID);
             
             int rslt = sqlUpdate.executeUpdate();
             if(rslt == 0)
@@ -199,15 +203,42 @@ public class DataBaseToolkit
         }
     }
     
-    public String getUserDetails(String userName)
+    public ArrayList getUserDetails(String userName)
     {
+        ArrayList<String> userDetails = new ArrayList();
         if(!checkUser(userName))
         {
-            return "NULL";
+            return null;
         }
         else
         {
-            return "user details";
+            try
+            {
+                Connection conn = DriverManager.getConnection(connection.getURL());
+                Statement stmt = conn.createStatement();
+                String sql = "SELECT * FROM USERS WHERE U_UNAME = '"+userName+"'";
+                
+                ResultSet rs = stmt.executeQuery(sql);
+                if(!rs.next())
+                {
+                    return null;
+                }
+                ResultSetMetaData rsmd = rs.getMetaData();
+                do
+                {
+                    for(int i = 1; i <= rsmd.getColumnCount(); i ++)
+                    {
+                        userDetails.add(rs.getString(i));
+                    }
+                }
+                while(rs.next());
+                return userDetails;
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
     
@@ -343,10 +374,10 @@ public class DataBaseToolkit
         }
     }
     
-    /*
+    
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
-    */
+    
 }

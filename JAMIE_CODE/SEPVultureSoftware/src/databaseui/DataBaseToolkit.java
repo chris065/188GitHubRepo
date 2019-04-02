@@ -28,10 +28,11 @@ public class DataBaseToolkit
         allCustomers = new ArrayList();
         
         
+        /*
         try
         {
-            /*
-            if(!addNewUser("testUser4", "test", "user", "test123", "admin"))
+            
+            if(!updateUser("Chris", "Bennett", "cb1", "password1", "admin"))
             {
                 System.err.println("Error");
             }
@@ -39,18 +40,22 @@ public class DataBaseToolkit
             {
                 System.out.println("Success");
             }
-            */
+            
             
             getAllUsers();
             for(int i = 0; i < allUsers.size(); i++)
             {
                 System.out.println(allUsers.toString()+"\n");
             }
+            
+            
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
+        */
+        
     }
     
     public boolean deleteUser(String userName)
@@ -61,11 +66,24 @@ public class DataBaseToolkit
         }
         else
         {
+            PreparedStatement sqlDelete = null;
             try
             {
                 Connection conn = DriverManager.getConnection(connection.getURL());
-                //Statement
-                return true;
+                sqlDelete = conn.prepareStatement("DELETE FROM USERS WHERE U_UNAME = ?");
+                sqlDelete.setString(1, userName);
+                int rslt = sqlDelete.executeUpdate();
+                
+                if(rslt == 0)
+                {
+                    conn.close();
+                    return false;
+                }
+                else
+                {
+                    conn.close();
+                    return true;
+                }
             }
             catch(Exception e)
             {
@@ -73,7 +91,44 @@ public class DataBaseToolkit
                 return false;
             }
         }
+    }
+    
+    public boolean updateUser(String userFName, String userSName, String userUName, String userPWord, String role)
+    {
+        if(!checkUser(userUName))
+        {
+            return false;
+        }
         
+        PreparedStatement sqlUpdate = null;
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            sqlUpdate = conn.prepareStatement("UPDATE USERS SET U_FNAME = ?, U_SNAME = ?, U_UNAME = ?, U_PWORD = ?, U_ROLE = ? WHERE U_UNAME = ?");
+            
+            sqlUpdate.setString(1, userFName);
+            sqlUpdate.setString(2, userSName);
+            sqlUpdate.setString(3, userUName);
+            sqlUpdate.setString(4, userPWord);
+            sqlUpdate.setString(5, role);
+            //value to search on
+            sqlUpdate.setString(6, userUName);
+            
+            int rslt = sqlUpdate.executeUpdate();
+            if(rslt == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
     
     public boolean checkUser(String userToCheck)
@@ -287,9 +342,11 @@ public class DataBaseToolkit
             return false;
         }
     }
-
+    
+    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
+    */
 }

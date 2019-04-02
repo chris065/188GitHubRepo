@@ -29,6 +29,7 @@ public class DataBaseConnection
         connect();
         
         
+        /*
         try
         {
             testDisplayUserTable();
@@ -38,6 +39,7 @@ public class DataBaseConnection
             System.out.println("Error: " + e.toString());
             e.printStackTrace();
         }
+        */
         
         
     }
