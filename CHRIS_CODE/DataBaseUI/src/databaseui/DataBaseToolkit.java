@@ -29,7 +29,7 @@ public class DataBaseToolkit
         
         
         
-        
+        /*
         try
         {
             /*
@@ -48,7 +48,6 @@ public class DataBaseToolkit
             {
                 System.out.println(allUsers.toString()+"\n");
             }
-            */
             ArrayList<String> userDetails = getUserDetails("js2");
             System.out.println(userDetails.toString());
             
@@ -59,6 +58,7 @@ public class DataBaseToolkit
         {
             e.printStackTrace();
         }
+        */
         
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
@@ -262,7 +262,7 @@ public class DataBaseToolkit
         return count;
     }
     
-    public boolean addNewUser(String techUName, String techFName, String techSName, String techPassword, String role)
+    public boolean addNewUser(String techFName, String techSName, String techUName, String techPassword, String role)
     {   
         try
         {
