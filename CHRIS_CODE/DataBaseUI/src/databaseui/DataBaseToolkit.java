@@ -266,17 +266,19 @@ public class DataBaseToolkit
     {   
         try
         {
+            int userID = countUsers()+1;
             PreparedStatement sqlInsert = null;
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
-            sqlInsert = conn.prepareStatement("INSERT INTO USERS (U_FNAME, U_SNAME, U_UNAME, U_PWORD, U_ROLE) VALUES (?, ?, ?, ?, ?)");
+            sqlInsert = conn.prepareStatement("INSERT INTO USERS (USER_ID, U_FNAME, U_SNAME, U_UNAME, U_PWORD, U_ROLE) VALUES (?, ?, ?, ?, ?, ?)");
             
-            sqlInsert.setString(1, techFName);
-            sqlInsert.setString(2, techSName);
-            sqlInsert.setString(3, techUName);
-            sqlInsert.setString(4, techPassword);
-            sqlInsert.setString(5, role);
+            sqlInsert.setInt(1, userID);
+            sqlInsert.setString(2, techFName);
+            sqlInsert.setString(3, techSName);
+            sqlInsert.setString(4, techUName);
+            sqlInsert.setString(5, techPassword);
+            sqlInsert.setString(6, role);
             
             int rslt = sqlInsert.executeUpdate();
             if(rslt == 0)
