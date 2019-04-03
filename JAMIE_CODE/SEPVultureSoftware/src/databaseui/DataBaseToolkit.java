@@ -239,7 +239,7 @@ public class DataBaseToolkit
     
     public int countUsers() throws SQLException
     {
-        int count = 0;
+        int count = 1;
         
         Connection conn = DriverManager.getConnection(connection.getURL());
         Statement stmt = conn.createStatement();
