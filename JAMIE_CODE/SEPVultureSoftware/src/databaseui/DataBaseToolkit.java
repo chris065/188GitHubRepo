@@ -98,11 +98,6 @@ public class DataBaseToolkit
     
     public boolean updateUser(String userID, String userFName, String userSName, String userUName, String userPWord, String role)
     {
-        if(!checkUser(userUName))
-        {
-            return false;
-        }
-        
         PreparedStatement sqlUpdate = null;
         try
         {
