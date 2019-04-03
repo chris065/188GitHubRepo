@@ -7,6 +7,7 @@ package VultureSoftware;
 
 import javax.swing.JOptionPane;
 import databaseui.*;
+import java.util.*;
 
 /**
  *
@@ -19,10 +20,14 @@ public class EditUserUI extends javax.swing.JFrame {
      */
     
     DataBaseToolkit dbtk;
+    ArrayList userDetails;
     
-    public EditUserUI() {
+    public EditUserUI(ArrayList userDetails) 
+    {
         initComponents();
         dbtk = new DataBaseToolkit();
+        this.userDetails = userDetails;
+        populateFields();
     }
 
     /**
@@ -47,7 +52,7 @@ public class EditUserUI extends javax.swing.JFrame {
         roleLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
-        createButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -110,14 +115,14 @@ public class EditUserUI extends javax.swing.JFrame {
             }
         });
 
-        createButton.setBackground(new java.awt.Color(102, 153, 255));
-        createButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        createButton.setForeground(new java.awt.Color(255, 255, 255));
-        createButton.setText("Update");
-        createButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        createButton.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setBackground(new java.awt.Color(102, 153, 255));
+        updateButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setText("Update");
+        updateButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createButtonActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
@@ -130,7 +135,7 @@ public class EditUserUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(forenameLabel)
@@ -179,7 +184,7 @@ public class EditUserUI extends javax.swing.JFrame {
                     .addComponent(roleBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roleLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -205,13 +210,16 @@ public class EditUserUI extends javax.swing.JFrame {
         new AdminUI().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
         String forename = forenameField.getText().toString();
         String surname = surnameField.getText().toString();
         String username = usernameField.getText().toString();
         String password = passwordField.getText().toString();
         String role = roleBox.getSelectedItem().toString();
+        String userID = userDetails.get(0).toString();
+        
+        System.out.println(password);
         
         if((forename.equals("")) || (surname.equals("")) || (username.equals("")) || (password.equals("")))
         {
@@ -219,7 +227,7 @@ public class EditUserUI extends javax.swing.JFrame {
         }
         else
         {
-            if(!dbtk.editUser(forename, surname, username,password,role))
+            if(!dbtk.updateUser(userID, forename, surname, username, password, role))
             {
                 JOptionPane.showMessageDialog(this, "There was an error whilst updating the user, please try again","Could not update user", JOptionPane.ERROR_MESSAGE);
             }
@@ -228,7 +236,7 @@ public class EditUserUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "User successfully updated","User updated", JOptionPane.PLAIN_MESSAGE);
             }
         }
-    }//GEN-LAST:event_createButtonActionPerformed
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,10 +272,18 @@ public class EditUserUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void populateFields()
+    {
+        forenameField.setText(userDetails.get(1).toString());
+        surnameField.setText(userDetails.get(2).toString());
+        usernameField.setText(userDetails.get(3).toString());
+        passwordField.setText(userDetails.get(4).toString());
+        roleBox.setSelectedItem(userDetails.get(5).toString());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JButton createButton;
     private javax.swing.JTextField forenameField;
     private javax.swing.JLabel forenameLabel;
     private javax.swing.JLabel jLabel1;
@@ -278,6 +294,7 @@ public class EditUserUI extends javax.swing.JFrame {
     private javax.swing.JLabel roleLabel;
     private javax.swing.JTextField surnameField;
     private javax.swing.JLabel surnameLabel;
+    private javax.swing.JButton updateButton;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables

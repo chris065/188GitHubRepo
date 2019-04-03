@@ -7,6 +7,7 @@ package VultureSoftware;
 
 import databaseui.*;
 import javax.swing.JOptionPane;
+import java.util.*;
 
 /**
  *
@@ -152,7 +153,10 @@ public class SearchEditUserUI extends javax.swing.JFrame {
         else
         {
                 this.dispose();
-                new EditUserUI().setVisible(true);
+                ArrayList<String> userDetails = dbtk.getUserDetails(username);
+                
+                new EditUserUI(userDetails).setVisible(true);
+                
             
         }
     }//GEN-LAST:event_searchButtonActionPerformed
