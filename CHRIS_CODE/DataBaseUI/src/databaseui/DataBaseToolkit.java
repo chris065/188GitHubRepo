@@ -29,9 +29,10 @@ public class DataBaseToolkit
         
         
         
-        /*
+        
         try
         {
+            /*
             if(!updateUser("Chris", "Bennett", "cb1", "password1", "admin"))
             {
                 System.err.println("Error");
@@ -47,8 +48,9 @@ public class DataBaseToolkit
             {
                 System.out.println(allUsers.toString()+"\n");
             }
+            */
             ArrayList<String> userDetails = getUserDetails("js2");
-            System.out.println(userDetails.get(2).toString());
+            System.out.println(userDetails.toString());
             
             
             
@@ -57,7 +59,6 @@ public class DataBaseToolkit
         {
             e.printStackTrace();
         }
-        */
         
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
