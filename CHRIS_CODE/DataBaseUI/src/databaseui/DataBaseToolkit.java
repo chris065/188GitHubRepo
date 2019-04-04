@@ -32,25 +32,6 @@ public class DataBaseToolkit
         /*
         try
         {
-            /*
-            if(!updateUser("Chris", "Bennett", "cb1", "password1", "admin"))
-            {
-                System.err.println("Error");
-            }
-            else
-            {
-                System.out.println("Success");
-            }
-            
-            
-            getAllUsers();
-            for(int i = 0; i < allUsers.size(); i++)
-            {
-                System.out.println(allUsers.toString()+"\n");
-            }
-            ArrayList<String> userDetails = getUserDetails("js2");
-            System.out.println(userDetails.toString());
-            
             
             
         }
@@ -59,6 +40,7 @@ public class DataBaseToolkit
             e.printStackTrace();
         }
         */
+        
         
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
@@ -237,13 +219,13 @@ public class DataBaseToolkit
         }
     }
     
-    public int countUsers() throws SQLException
+    public int countRows(String tableName) throws SQLException
     {
         int count = 1;
         
         Connection conn = DriverManager.getConnection(connection.getURL());
         Statement stmt = conn.createStatement();
-        String sqlQuery = "SELECT * FROM USERS";
+        String sqlQuery = "SELECT * FROM "+tableName;
         
         ResultSet rs = stmt.executeQuery(sqlQuery);
         if(!rs.next())
@@ -266,7 +248,7 @@ public class DataBaseToolkit
     {   
         try
         {
-            int userID = countUsers()+1;
+            int userID = countRows("USERS")+1;
             PreparedStatement sqlInsert = null;
             
             Connection conn = DriverManager.getConnection(connection.getURL());
@@ -349,16 +331,43 @@ public class DataBaseToolkit
         return 0;
     }
     
-    public boolean addNewJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, String jobTaskID)
+    public boolean addNewJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, int jobTaskID)
     {
         try
         {
+            //int jobId = countRows("JOBS");
             PreparedStatement sqlInsert = null;
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
+            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?)");
             
-            return true;
+            sqlInsert.setInt(1, jobNumber);
+            sqlInsert.setString(2, jobMotorName);
+            sqlInsert.setString(3, jobDateCollected);
+            sqlInsert.setString(4, jobParts);
+            sqlInsert.setString(5, jobClient);
+            sqlInsert.setString(6, jobMan);
+            sqlInsert.setString(7, jobReturnDate);
+            sqlInsert.setString(8, jobDate);
+            sqlInsert.setString(9, jobCheck);
+            sqlInsert.setInt(10, jobTaskID);
+            
+            
+            //System.out.printf("Number of jobs: %s", jobId);
+            int rslt = sqlInsert.executeUpdate();
+            if(rslt == 0)
+            {
+                conn.rollback();
+                conn.close();
+                return false;
+            }
+            else
+            {
+                conn.commit();
+                conn.close();
+                return true;
+            }
         }
         catch(Exception e)
         {
@@ -398,9 +407,11 @@ public class DataBaseToolkit
     {
     }
     
+    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
+    */
     
 }
