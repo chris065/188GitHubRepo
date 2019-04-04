@@ -26,9 +26,7 @@ public class DataBaseToolkit
         allJobs = new ArrayList();
         allUsers = new ArrayList();
         allCustomers = new ArrayList();
-        
-        
-        
+
         /*
         try
         {
@@ -40,8 +38,7 @@ public class DataBaseToolkit
             e.printStackTrace();
         }
         */
-        
-        
+
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
     public boolean deleteUser(String userName)
