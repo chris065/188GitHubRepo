@@ -32,6 +32,7 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         setTimeLabel();
         setStatusLabel(); 
         setUserLabel();
+        setJobsLabel();
         
     }
 
@@ -321,18 +322,39 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
     {
         try
         {
-            if(dbtk.countUsers() == -1)
+            if(dbtk.countRows("USERS") == -1)
             {
                 userNumberVal.setText("ERROR");
             }
             else
             {
-                userNumberVal.setText(""+dbtk.countUsers());
+                userNumberVal.setText(""+dbtk.countRows("USERS"));
             }
         }
         catch(Exception e)
         {
             System.out.println("There was an error");
+            e.printStackTrace();
+        }
+    }
+    
+    public void setJobsLabel()
+    {
+        try
+        {
+            if(dbtk.countRows("JOBS") == -1)
+            {
+                jobsNumberVal.setText("ERROR");
+            }
+            else
+            {
+                //have to -1 from the value, since we are not setting the next id, we are just counting the rows
+                jobsNumberVal.setText(""+(dbtk.countRows("JOBS")-1));
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("There was an error:\n");
             e.printStackTrace();
         }
     }

@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import databaseui.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -155,8 +156,11 @@ public class LoginUI extends javax.swing.JFrame {
         }
         else
         {
+            ArrayList userDetails = dbtk.getUserDetails(userName);
+            String role = userDetails.get(5).toString();
             this.dispose();
-            new DashBoardUI().setVisible(true);
+            new DashBoardUI(role).setVisible(true);
+            
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 

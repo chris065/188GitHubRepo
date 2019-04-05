@@ -73,6 +73,11 @@ public class NewUserUI extends javax.swing.JFrame {
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
         roleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Collection and Delivery", "Customer Support", "Finance", "Resource", "Technician", " " }));
+        roleBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roleBoxActionPerformed(evt);
+            }
+        });
 
         passwordField.setBackground(new java.awt.Color(102, 153, 255));
         passwordField.setForeground(new java.awt.Color(255, 255, 255));
@@ -230,6 +235,10 @@ public class NewUserUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_createButtonActionPerformed
+
+    private void roleBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roleBoxActionPerformed
 
     /**
      * @param args the command line arguments

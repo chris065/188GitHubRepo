@@ -17,9 +17,15 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     /**
      * Creates new form DashBoardUI
+     * @param role
      */
-    public DashBoardUI() {
+    
+    private static String role;
+    public DashBoardUI(String role) {
         initComponents();
+        this.role = role;
+        System.out.println(role);
+        setButtons(role);
     }
 
     /**
@@ -179,6 +185,59 @@ public class DashBoardUI extends javax.swing.JFrame {
         button.setBackground( new Color(102,102,255));
     }
     
+    private void setButtons(String role)
+    {
+        if(role.toLowerCase().equals("tech"))
+        {
+            adminButton.setEnabled(false);
+            newCustomerButton.setEnabled(false);
+            jobDelayButton.setEnabled(false);
+            newJobButton.setEnabled(false);
+            orderPartsButton.setEnabled(false);
+            graphButton.setEnabled(false);
+            //needs current jobs
+            
+        }
+        if(role.toLowerCase().equals("collection and delivery"))
+        {
+            adminButton.setEnabled(false);
+            jobDelayButton.setEnabled(false);
+            newCustomerButton.setEnabled(false);
+            newJobButton.setEnabled(false);
+            orderPartsButton.setEnabled(false);
+            graphButton.setEnabled(false);
+            //needs current jobs
+        }
+        if(role.toLowerCase().equals("finance"))
+        {
+            adminButton.setEnabled(false);
+            jobDelayButton.setEnabled(false);
+            newCustomerButton.setEnabled(false);
+            newJobButton.setEnabled(false);
+            orderPartsButton.setEnabled(false);
+            currentJobsButton.setEnabled(false);
+            //needs stats graphs
+        }
+        if(role.toLowerCase().equals("customer support"))
+        {
+            adminButton.setEnabled(false);
+            jobDelayButton.setEnabled(false);		
+            orderPartsButton.setEnabled(false);
+            currentJobsButton.setEnabled(false);
+            graphButton.setEnabled(false);
+            //needs create new customer account + new job
+        }
+        if(role.toLowerCase().equals("resource"))
+        {
+            adminButton.setEnabled(false);
+            currentJobsButton.setEnabled(false);
+            graphButton.setEnabled(false);
+            newCustomerButton.setEnabled(false);
+            newJobButton.setEnabled(false);
+            //needs order new parts + delay job
+        }
+    }
+    
     
     /**
      * @param args the command line arguments
@@ -210,7 +269,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashBoardUI().setVisible(true);
+                new DashBoardUI(role).setVisible(true);
             }
         });
     }
