@@ -71,7 +71,7 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 204));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocationByPlatform(true);
@@ -79,7 +79,6 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         menuAndTitlePanel.setBackground(new java.awt.Color(0, 153, 255));
 
         titlePanel.setBackground(new java.awt.Color(0, 102, 255));
-        titlePanel.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Vulture DB");
@@ -104,7 +103,7 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout menuAndTitlePanelLayout = new javax.swing.GroupLayout(menuAndTitlePanel);
@@ -123,30 +122,23 @@ public class DataBaseUI extends javax.swing.JFrame implements ActionListener
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         time.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        time.setForeground(new java.awt.Color(0, 0, 0));
 
         connectionStatusLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        connectionStatusLabel.setForeground(new java.awt.Color(0, 0, 0));
         connectionStatusLabel.setText("Connection Status: ");
 
         status.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        status.setForeground(new java.awt.Color(0, 0, 0));
         status.setText("STATUS");
 
         userNumberLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        userNumberLabel.setForeground(new java.awt.Color(0, 0, 0));
         userNumberLabel.setText("Number of users in the database:");
 
         userNumberVal.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        userNumberVal.setForeground(new java.awt.Color(0, 0, 0));
         userNumberVal.setText("NUMBER");
 
         jobsNumberLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jobsNumberLabel.setForeground(new java.awt.Color(0, 0, 0));
         jobsNumberLabel.setText("Number of Jobs currently in the database: ");
 
         jobsNumberVal.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jobsNumberVal.setForeground(new java.awt.Color(0, 0, 0));
         jobsNumberVal.setText("NUMBER");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
