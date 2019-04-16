@@ -5,7 +5,7 @@
  */
 package VultureSoftware;
 import databaseui.*;
-
+import java.util.*;
 /**
  *
  * @author jamie
@@ -15,8 +15,12 @@ public class AdminUI extends javax.swing.JFrame {
     /**
      * Creates new form AdminUI
      */
+    DataBaseToolkit dbtk;
+   
     public AdminUI() {
-        initComponents();
+        initComponents();        
+        dbtk = new DataBaseToolkit();        
+        populateTextArea();
     }
 
     /**
@@ -207,7 +211,18 @@ public class AdminUI extends javax.swing.JFrame {
         this.dispose();
         new DeleteUserUI().setVisible(true);
     }//GEN-LAST:event_deleteUserButtonActionPerformed
-
+    
+    private void populateTextArea()
+    {
+        ArrayList<UserObject> users = dbtk.getAllUsers();
+        String text = "";
+        for(int i = 0; i < users.size(); i++)
+        {
+            text = text + users.get(i).toString()+"\n\n";
+        }
+        usersTextArea.setText(text);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -238,7 +253,7 @@ public class AdminUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminUI().setVisible(true);
+                new AdminUI().setVisible(true);             
             }
         });
     }
