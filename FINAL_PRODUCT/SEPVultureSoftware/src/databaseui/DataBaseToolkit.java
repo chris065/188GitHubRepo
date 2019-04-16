@@ -29,18 +29,15 @@ public class DataBaseToolkit
         allTechs = new ArrayList();
         allTasks = new ArrayList();
 
-        
+        /*
         try
         {
-            if(getAllTasks() == null)
-            {
-                System.out.println("Error");
-            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
+        */
         
 
     }
@@ -284,7 +281,7 @@ public class DataBaseToolkit
         }
     }
     
-     public ArrayList getAllUsers()
+    public ArrayList getAllUsers()
     {
         //All the users as in Techies
         //Loop through and add each user object to the list 
@@ -306,11 +303,8 @@ public class DataBaseToolkit
             {
                 do
                 {
-                    for(int i = 1; i <= rsmd.getColumnCount(); i++)
-                    {
-                      System.out.println(rs.getString(i));
-                      //allUsers.add(new UserObject("","","","")); 
-                    }
+                    //System.out.printf("First Name: %s\nSurname: %s\nUsername: %s\nRole: %s\n", rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                    allUsers.add(new UserObject(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
                 }
                 while(rs.next());
             }
@@ -621,10 +615,12 @@ public class DataBaseToolkit
     }
     
     
+    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
+    */
     
     
 }
