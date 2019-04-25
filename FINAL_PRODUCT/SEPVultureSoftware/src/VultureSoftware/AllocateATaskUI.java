@@ -114,8 +114,6 @@ public class AllocateATaskUI extends javax.swing.JFrame {
 
         jButton1.setText("Allocate");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -280,40 +278,19 @@ public class AllocateATaskUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
-    /*
-    public void populateList()
-{
-    ArrayList tasks = dbtk.getAllTasks();
-    if(tasks == null)
-    {
-        model.addElement("No Task currently in the database");
-    }
-    else
-    {
-        for(int i = 0; i < tasks.size(); i++)
-        {
-            model.addElement(tasks.get(i).toString());
-        }
-    }
-}
-*/
     
 public void populateList()
 {
+    DefaultListModel taskListModel = new DefaultListModel();
+    jList1.setModel(taskListModel);
     ArrayList tasks = dbtk.getAllTasks();
-    if (tasks == null)
-    {
-        jComboBox3.addItem("no tasks");
-    }
-    else
-    {
-        for(int i = 0; i < tasks.size(); i++)
+    
+    for (Object o : tasks)
         {
-            jComboBox3.addItem(tasks.get(i).toString());
+            taskListModel.addElement(o);
         }
-    }
 }
-
+    
 public void populateTechnicianList()
 {
     ArrayList techs = dbtk.getAllTechs();
