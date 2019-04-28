@@ -409,6 +409,27 @@ public class DataBaseToolkit
     
     //START OF TASK FUNCTIONS
     
+    public ArrayList getTasks(String taskName)
+    {
+        ArrayList<String> tasks = new ArrayList();
+        if(!checkTask(taskName))
+        {
+            return null;
+        }
+        else
+        {
+            try
+            {
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+                return null; 
+            }
+        }
+        return null;
+    }
+    
     public boolean addTask(boolean delayed, String name, String type, String assigned, int expectedTime, String prefrences, String talents, String priority)
     {
         int taskID;
@@ -486,7 +507,7 @@ public class DataBaseToolkit
         }
     }
     
-    /*
+    
     private boolean checkTask(String taskName)
     {
         try
@@ -513,7 +534,7 @@ public class DataBaseToolkit
             return false;
         }
     }
-    */
+    
     
     public boolean updateTasks(int taskID, boolean delayed, String name, String type, String assigned, int expectedTime, String prefrences, String talents, String priority)
     {
@@ -563,7 +584,7 @@ public class DataBaseToolkit
         {
             Connection conn = DriverManager.getConnection(connection.getURL());
             Statement stmt = conn.createStatement();
-            String sql = "SELECT TASK_ID, TASK_NAME, TASK_ASSIGNED FROM TASKS";
+            String sql = "SELECT TASK_NAME FROM TASKS";
             
             ResultSet rs = stmt.executeQuery(sql);
             if(!rs.next())
@@ -574,7 +595,7 @@ public class DataBaseToolkit
             do
             {
                 //System.out.println(rs.getString(1) +" "+rs.getString(2));
-                allTasks.add("Task ID: "+rs.getString(1)+"\n"+"Name: "+rs.getString(2)+"\n"+"Assigned to: "+rs.getString(3)+"\n");
+                allTasks.add(rs.getString(1));
             }
             while(rs.next());
             
