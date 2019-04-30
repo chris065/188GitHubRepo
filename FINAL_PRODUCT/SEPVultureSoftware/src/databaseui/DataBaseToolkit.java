@@ -39,6 +39,7 @@ public class DataBaseToolkit
         }
         */
         
+        
 
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
@@ -207,6 +208,7 @@ public class DataBaseToolkit
                     }
                 }
                 while(rs.next());
+                System.out.println(userDetails.toString());
                 return userDetails;
             }
             catch(Exception e)
@@ -409,9 +411,9 @@ public class DataBaseToolkit
     
     //START OF TASK FUNCTIONS
     
-    public ArrayList getTasks(String taskName)
+    public ArrayList getTask(String taskName)
     {
-        ArrayList<String> tasks = new ArrayList();
+        ArrayList<TaskObject> tasks = new ArrayList();
         if(!checkTask(taskName))
         {
             return null;
@@ -420,6 +422,26 @@ public class DataBaseToolkit
         {
             try
             {
+                Connection conn = DriverManager.getConnection(connection.getURL());
+                Statement stmt = conn.createStatement();
+                String sql = "SELECT * FROM TASKS WHERE TASK_NAME = '"+taskName+"'";
+                
+                ResultSet rs = stmt.executeQuery(sql);
+                if(!rs.next())
+                {
+                    conn.close();
+                    return null;
+                }
+                else
+                {
+                    //TaskObject Params: ID, DELAY, NAME, TYPE, ASSIENGED TO, EXPECTED TIME, PREFS, TALENTS, PRIORITY
+                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4),rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                    //System.out.println(tasks.toString());
+                    
+                    conn.close();
+                    System.out.println(tasks.toString());
+                    return tasks;
+                }
             }
             catch(Exception e)
             {
@@ -427,7 +449,6 @@ public class DataBaseToolkit
                 return null; 
             }
         }
-        return null;
     }
     
     public boolean addTask(boolean delayed, String name, String type, String assigned, int expectedTime, String prefrences, String talents, String priority)
@@ -642,6 +663,7 @@ public class DataBaseToolkit
         new DataBaseToolkit();
     }
     */
+    
     
     
 }
