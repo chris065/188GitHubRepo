@@ -439,7 +439,6 @@ public class DataBaseToolkit
                     //System.out.println(tasks.toString());
                     
                     conn.close();
-                    System.out.println(tasks.toString());
                     return tasks;
                 }
             }
