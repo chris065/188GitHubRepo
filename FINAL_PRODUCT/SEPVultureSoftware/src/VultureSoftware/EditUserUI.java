@@ -77,7 +77,11 @@ public class EditUserUI extends javax.swing.JFrame {
         usernameField.setForeground(new java.awt.Color(255, 255, 255));
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
+        roleBox.setBackground(new java.awt.Color(102, 153, 255));
+        roleBox.setForeground(new java.awt.Color(255, 255, 255));
         roleBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Collection and Delivery", "Customer Support", "Finance", "Resource", "Technician", " " }));
+        roleBox.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        roleBox.setFocusable(false);
 
         passwordField.setBackground(new java.awt.Color(102, 153, 255));
         passwordField.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,6 +113,7 @@ public class EditUserUI extends javax.swing.JFrame {
         backButton.setForeground(new java.awt.Color(255, 255, 255));
         backButton.setText("Back");
         backButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        backButton.setFocusable(false);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -120,6 +125,7 @@ public class EditUserUI extends javax.swing.JFrame {
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
         updateButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        updateButton.setFocusable(false);
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);

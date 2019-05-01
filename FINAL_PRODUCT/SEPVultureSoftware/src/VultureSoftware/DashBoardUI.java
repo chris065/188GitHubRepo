@@ -47,8 +47,8 @@ public class DashBoardUI extends javax.swing.JFrame {
         orderPartsButton = new javax.swing.JButton();
         adminButton = new javax.swing.JButton();
         graphButton = new javax.swing.JButton();
-        newCustomerButton = new javax.swing.JButton();
         taskAllocatorButton = new javax.swing.JButton();
+        newCustomerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -61,7 +61,12 @@ public class DashBoardUI extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 60));
 
+        finalInspectionButton.setBackground(new java.awt.Color(102, 153, 255));
+        finalInspectionButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        finalInspectionButton.setForeground(new java.awt.Color(255, 255, 255));
         finalInspectionButton.setText("Final Inspection");
+        finalInspectionButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        finalInspectionButton.setFocusable(false);
         finalInspectionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finalInspectionButtonfinaIinspectActionPerformed(evt);
@@ -69,7 +74,12 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(finalInspectionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 180, 50));
 
+        currentJobsButton.setBackground(new java.awt.Color(102, 153, 255));
+        currentJobsButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        currentJobsButton.setForeground(new java.awt.Color(255, 255, 255));
         currentJobsButton.setText("Current jobs");
+        currentJobsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        currentJobsButton.setFocusable(false);
         currentJobsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currentJobsButtonActionPerformed(evt);
@@ -77,7 +87,12 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(currentJobsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 180, 50));
 
+        jobDelayButton.setBackground(new java.awt.Color(102, 153, 255));
+        jobDelayButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jobDelayButton.setForeground(new java.awt.Color(255, 255, 255));
         jobDelayButton.setText("Delay a job");
+        jobDelayButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        jobDelayButton.setFocusable(false);
         jobDelayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jobDelayButtonActionPerformed(evt);
@@ -85,7 +100,12 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(jobDelayButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 180, 50));
 
+        orderPartsButton.setBackground(new java.awt.Color(102, 153, 255));
+        orderPartsButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        orderPartsButton.setForeground(new java.awt.Color(255, 255, 255));
         orderPartsButton.setText("Order new parts");
+        orderPartsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        orderPartsButton.setFocusable(false);
         orderPartsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderPartsButtonActionPerformed(evt);
@@ -93,7 +113,12 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(orderPartsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, 50));
 
+        adminButton.setBackground(new java.awt.Color(102, 153, 255));
+        adminButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        adminButton.setForeground(new java.awt.Color(255, 255, 255));
         adminButton.setText("Admin");
+        adminButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        adminButton.setFocusable(false);
         adminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminButtonActionPerformed(evt);
@@ -101,7 +126,12 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 180, 50));
 
+        graphButton.setBackground(new java.awt.Color(102, 153, 255));
+        graphButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        graphButton.setForeground(new java.awt.Color(255, 255, 255));
         graphButton.setText("Statistics graphs");
+        graphButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        graphButton.setFocusable(false);
         graphButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 graphButtonActionPerformed(evt);
@@ -109,21 +139,37 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(graphButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 180, 50));
 
-        newCustomerButton.setText("Create new customer account");
-        newCustomerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newCustomerButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(newCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 180, 50));
-
+        taskAllocatorButton.setBackground(new java.awt.Color(102, 153, 255));
+        taskAllocatorButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taskAllocatorButton.setForeground(new java.awt.Color(255, 255, 255));
         taskAllocatorButton.setText("Task Allocator");
+        taskAllocatorButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        taskAllocatorButton.setFocusable(false);
         taskAllocatorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskAllocatorButtonActionPerformed(evt);
             }
         });
         jPanel2.add(taskAllocatorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 180, 50));
+
+        newCustomerButton.setBackground(new java.awt.Color(102, 153, 255));
+        newCustomerButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        newCustomerButton.setForeground(new java.awt.Color(255, 255, 255));
+        newCustomerButton.setText("New Customer Account");
+        newCustomerButton.setActionCommand("New customer account");
+        newCustomerButton.setAlignmentX(0.5F);
+        newCustomerButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        newCustomerButton.setFocusable(false);
+        newCustomerButton.setMaximumSize(new java.awt.Dimension(165, 27));
+        newCustomerButton.setMinimumSize(new java.awt.Dimension(165, 27));
+        newCustomerButton.setOpaque(false);
+        newCustomerButton.setPreferredSize(new java.awt.Dimension(165, 27));
+        newCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCustomerButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(newCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 180, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,11 +201,6 @@ public class DashBoardUI extends javax.swing.JFrame {
        new JobDelayUI().setVisible(true);
     }//GEN-LAST:event_jobDelayButtonActionPerformed
 
-    private void newCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerButtonActionPerformed
-        // TODO add your handling code here:
-        new NewCustomerAccountUI().setVisible(true);
-    }//GEN-LAST:event_newCustomerButtonActionPerformed
-
     private void orderPartsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderPartsButtonActionPerformed
         // TODO add your handling code here:
         new OrderPartsUI().setVisible(true);
@@ -188,16 +229,12 @@ public class DashBoardUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new TaskAllocatorUI().setVisible(true);
     }//GEN-LAST:event_taskAllocatorButtonActionPerformed
+
+    private void newCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerButtonActionPerformed
+        // TODO add your handling code here:
+        new NewCustomerAccountUI().setVisible(true);
+    }//GEN-LAST:event_newCustomerButtonActionPerformed
      
-    private void setColour(JButton button)
-    {
-        button.setBackground(new Color(153,153,255));
-    }
-    
-    private void resetColour(JButton button)
-    {
-        button.setBackground( new Color(102,102,255));
-    }
     
     private void setButtons(String role)
     {
