@@ -66,6 +66,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         finalInspectionButton.setForeground(new java.awt.Color(255, 255, 255));
         finalInspectionButton.setText("Final Inspection");
         finalInspectionButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        finalInspectionButton.setFocusable(false);
         finalInspectionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finalInspectionButtonfinaIinspectActionPerformed(evt);
@@ -78,6 +79,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         currentJobsButton.setForeground(new java.awt.Color(255, 255, 255));
         currentJobsButton.setText("Current jobs");
         currentJobsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        currentJobsButton.setFocusable(false);
         currentJobsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currentJobsButtonActionPerformed(evt);
@@ -90,6 +92,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         jobDelayButton.setForeground(new java.awt.Color(255, 255, 255));
         jobDelayButton.setText("Delay a job");
         jobDelayButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        jobDelayButton.setFocusable(false);
         jobDelayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jobDelayButtonActionPerformed(evt);
@@ -102,6 +105,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         orderPartsButton.setForeground(new java.awt.Color(255, 255, 255));
         orderPartsButton.setText("Order new parts");
         orderPartsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        orderPartsButton.setFocusable(false);
         orderPartsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderPartsButtonActionPerformed(evt);
@@ -114,6 +118,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         adminButton.setForeground(new java.awt.Color(255, 255, 255));
         adminButton.setText("Admin");
         adminButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        adminButton.setFocusable(false);
         adminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminButtonActionPerformed(evt);
@@ -126,6 +131,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         graphButton.setForeground(new java.awt.Color(255, 255, 255));
         graphButton.setText("Statistics graphs");
         graphButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        graphButton.setFocusable(false);
         graphButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 graphButtonActionPerformed(evt);
@@ -138,6 +144,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         taskAllocatorButton.setForeground(new java.awt.Color(255, 255, 255));
         taskAllocatorButton.setText("Task Allocator");
         taskAllocatorButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        taskAllocatorButton.setFocusable(false);
         taskAllocatorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskAllocatorButtonActionPerformed(evt);
@@ -152,6 +159,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         newCustomerButton.setActionCommand("New customer account");
         newCustomerButton.setAlignmentX(0.5F);
         newCustomerButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        newCustomerButton.setFocusable(false);
         newCustomerButton.setMaximumSize(new java.awt.Dimension(165, 27));
         newCustomerButton.setMinimumSize(new java.awt.Dimension(165, 27));
         newCustomerButton.setOpaque(false);

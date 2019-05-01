@@ -53,6 +53,7 @@ public class AdminUI extends javax.swing.JFrame {
         backButton.setForeground(new java.awt.Color(255, 255, 255));
         backButton.setText("Back");
         backButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        backButton.setFocusable(false);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -69,6 +70,7 @@ public class AdminUI extends javax.swing.JFrame {
         newUserButton.setText("Create new user");
         newUserButton.setAlignmentX(0.5F);
         newUserButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        newUserButton.setFocusable(false);
         newUserButton.setOpaque(false);
         newUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +84,7 @@ public class AdminUI extends javax.swing.JFrame {
         databaseButton.setText("Database Info");
         databaseButton.setAlignmentX(0.5F);
         databaseButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        databaseButton.setFocusable(false);
         databaseButton.setOpaque(false);
         databaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +98,7 @@ public class AdminUI extends javax.swing.JFrame {
         editUserButton.setText("Edit a user");
         editUserButton.setAlignmentX(0.5F);
         editUserButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        editUserButton.setFocusable(false);
         editUserButton.setOpaque(false);
         editUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +112,7 @@ public class AdminUI extends javax.swing.JFrame {
         deleteUserButton.setText("Delete a user");
         deleteUserButton.setAlignmentX(0.5F);
         deleteUserButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        deleteUserButton.setFocusable(false);
         deleteUserButton.setOpaque(false);
         deleteUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
