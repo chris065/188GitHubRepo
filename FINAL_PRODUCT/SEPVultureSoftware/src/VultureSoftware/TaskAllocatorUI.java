@@ -43,7 +43,7 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         setLocation(new java.awt.Point(175, 0));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Task Allocator");
@@ -54,8 +54,11 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
+        dailyTaskButton.setBackground(new java.awt.Color(102, 153, 255));
         dailyTaskButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        dailyTaskButton.setText("View my daily tasks");
+        dailyTaskButton.setForeground(new java.awt.Color(255, 255, 255));
+        dailyTaskButton.setText("My daily tasks");
+        dailyTaskButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         dailyTaskButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dailyTaskButtonActionPerformed(evt);
@@ -65,8 +68,11 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("View a list of all your tasks for today");
 
+        allocateTaskButton.setBackground(new java.awt.Color(102, 153, 255));
         allocateTaskButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        allocateTaskButton.setForeground(new java.awt.Color(255, 255, 255));
         allocateTaskButton.setText("Allocate Tasks");
+        allocateTaskButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         allocateTaskButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 allocateTaskButtonActionPerformed(evt);
@@ -101,12 +107,14 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dailyTaskButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1))))
+                .addGap(155, 155, 155))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3)
@@ -118,12 +126,8 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(0, 32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dailyTaskButton)
-                .addGap(155, 155, 155))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(allocateTaskButton)
+                .addComponent(allocateTaskButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(taskListButton)
                 .addGap(63, 63, 63))

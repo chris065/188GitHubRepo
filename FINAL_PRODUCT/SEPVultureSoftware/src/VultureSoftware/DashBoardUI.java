@@ -61,7 +61,11 @@ public class DashBoardUI extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 60));
 
+        finalInspectionButton.setBackground(new java.awt.Color(102, 153, 255));
+        finalInspectionButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        finalInspectionButton.setForeground(new java.awt.Color(255, 255, 255));
         finalInspectionButton.setText("Final Inspection");
+        finalInspectionButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         finalInspectionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finalInspectionButtonfinaIinspectActionPerformed(evt);
@@ -69,7 +73,11 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(finalInspectionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 180, 50));
 
+        currentJobsButton.setBackground(new java.awt.Color(102, 153, 255));
+        currentJobsButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        currentJobsButton.setForeground(new java.awt.Color(255, 255, 255));
         currentJobsButton.setText("Current jobs");
+        currentJobsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         currentJobsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 currentJobsButtonActionPerformed(evt);
@@ -77,7 +85,11 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(currentJobsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 180, 50));
 
+        jobDelayButton.setBackground(new java.awt.Color(102, 153, 255));
+        jobDelayButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jobDelayButton.setForeground(new java.awt.Color(255, 255, 255));
         jobDelayButton.setText("Delay a job");
+        jobDelayButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         jobDelayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jobDelayButtonActionPerformed(evt);
@@ -97,7 +109,11 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(orderPartsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, 50));
 
+        adminButton.setBackground(new java.awt.Color(102, 153, 255));
+        adminButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        adminButton.setForeground(new java.awt.Color(255, 255, 255));
         adminButton.setText("Admin");
+        adminButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         adminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminButtonActionPerformed(evt);
@@ -105,7 +121,11 @@ public class DashBoardUI extends javax.swing.JFrame {
         });
         jPanel2.add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 180, 50));
 
+        graphButton.setBackground(new java.awt.Color(102, 153, 255));
+        graphButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        graphButton.setForeground(new java.awt.Color(255, 255, 255));
         graphButton.setText("Statistics graphs");
+        graphButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         graphButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 graphButtonActionPerformed(evt);
