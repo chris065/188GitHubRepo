@@ -13,12 +13,19 @@ import java.util.*;
  */
 public class DataBaseToolkit 
 {
-    
+    //ArrayLists to store all of the jobs, customers, technitions and tasks that are in the db
     private ArrayList<String> allJobs, allCustomers, allTechs, allTasks;
+    //ArrayList to store all of the users that are in the db (as a UserObject)
     private ArrayList<UserObject> allUsers;
-    
+    //DBConnection, create the object that establishes the  connection to the db
     private final DataBaseConnection connection;
     
+    /**
+     * DataBaseToolkit constructor
+     * 
+     * Creates the connection object(reference), which then connects to the db
+     * Creates the arraylist objects
+     */
     public DataBaseToolkit()
     {
         this.connection = new DataBaseConnection();
@@ -43,6 +50,14 @@ public class DataBaseToolkit
 
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
+    
+    /**
+     * This allows the admin pannel to delete a user by simply searching for the username
+     * as the username is a unique identifier of the user (so is the ID which is used to update on)
+     * 
+     * @param userName
+     * @return true / false depending if the query was successful or not 
+     */
     public boolean deleteUser(String userName)
     {
         if(!checkUser(userName))
@@ -78,6 +93,17 @@ public class DataBaseToolkit
         }
     }
     
+    /**
+     * This allow the admin panel to update the users details. On the admin
+     * 
+     * @param userID
+     * @param userFName
+     * @param userSName
+     * @param userUName
+     * @param userPWord
+     * @param role
+     * @return 
+     */
     public boolean updateUser(String userID, String userFName, String userSName, String userUName, String userPWord, String role)
     {   
         PreparedStatement sqlUpdate = null;
@@ -97,10 +123,12 @@ public class DataBaseToolkit
             int rslt = sqlUpdate.executeUpdate();
             if(rslt == 0)
             {
+                conn.close();
                 return false;
             }
             else
             {
+                conn.close();
                 return true;
             }
         }
@@ -629,6 +657,11 @@ public class DataBaseToolkit
             e.printStackTrace();
             return null;
         }
+    }
+    
+    public ArrayList getTasksForTech(String techName)
+    {
+        return null;
     }
     
     //END OF TASK FUNCTIONS
