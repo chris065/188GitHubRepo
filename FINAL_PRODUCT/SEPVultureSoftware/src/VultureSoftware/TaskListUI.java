@@ -4,18 +4,23 @@
  * and open the template in the editor.
  */
 package VultureSoftware;
-
+import databaseui.*;
+import java.util.*;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author Nathan
  */
 public class TaskListUI extends javax.swing.JFrame {
 
+    DataBaseToolkit dbtk;
     /**
      * Creates new form TaskList
      */
     public TaskListUI() {
+        dbtk = new DataBaseToolkit();
         initComponents();
+        populateList();
     }
 
     /**
@@ -35,6 +40,8 @@ public class TaskListUI extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -53,6 +60,11 @@ public class TaskListUI extends javax.swing.JFrame {
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jList1.setFocusable(false);
         jList1.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -79,12 +91,23 @@ public class TaskListUI extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Sort by:");
 
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -99,10 +122,7 @@ public class TaskListUI extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)))
-                        .addGap(0, 32, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addGap(0, 32, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -117,7 +137,9 @@ public class TaskListUI extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -136,6 +158,24 @@ public class TaskListUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        String taskName = jList1.getSelectedValue();
+        ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
+        
+        String tech = taskData.get(0).getAssignedTo();
+        int expectedTime = taskData.get(0).getExpectedTime();
+        String prefs = taskData.get(0).getPrefs();
+        String talents = taskData.get(0).getTalents();
+        String priority = taskData.get(0).getPriority();
+        
+        jTextArea1.setText(null);
+        jTextArea1.setText("Technitian assigned to this task: " + tech + "\n\n");
+        jTextArea1.append("This task is expected to be completed in " + Integer.toString(expectedTime) + " days.\n\n");
+        jTextArea1.append("Task Preferences:\n" + prefs + "\n\n");
+        jTextArea1.append("Requiered Talents:\n" + talents + "\n\n");
+        jTextArea1.append("This tasks priority is " + priority + ".");
+    }//GEN-LAST:event_jList1ValueChanged
 
     /**
      * @param args the command line arguments
@@ -184,5 +224,19 @@ public class TaskListUI extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    public void populateList()
+    {
+        DefaultListModel taskListModel = new DefaultListModel();
+        jList1.setModel(taskListModel);
+        ArrayList tasks = dbtk.getAllTasks();
+        
+        for(int i = 0; i < tasks.size(); i++)
+        {
+            taskListModel.addElement(tasks.get(i).toString());
+        }
+    }
 }
