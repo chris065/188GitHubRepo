@@ -7,8 +7,6 @@ package VultureSoftware;
 import databaseui.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.ListModel;
 
 /**
  *
@@ -278,7 +276,7 @@ public class AllocateATaskUI extends javax.swing.JFrame {
         if(priority == null)
         {
             System.err.println("Error");
-            //priority = "";
+            priority = "";
         }
 
         ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
@@ -374,9 +372,9 @@ public void populateList()
     ArrayList tasks = dbtk.getAllTasks();
     
     for(int i = 0; i < tasks.size(); i++)
-        {
-            taskListModel.addElement(tasks.get(i).toString());
-        }
+    {
+        taskListModel.addElement(tasks.get(i).toString());
+    }
 }
     
 public void populateTechnicianList()
