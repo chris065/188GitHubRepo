@@ -5,17 +5,22 @@
  */
 package VultureSoftware;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jamie
  */
 public class TaskAllocatorUI extends javax.swing.JFrame {
 
+    private static ArrayList<String> user;
     /**
      * Creates new form JobAllocator
      */
-    public TaskAllocatorUI() {
+    public TaskAllocatorUI(ArrayList user) 
+    {
         initComponents();
+        this.user = user;
     }
 
     /**
@@ -156,7 +161,7 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
 
     private void dailyTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyTaskButtonActionPerformed
         // TODO add your handling code here:
-        new DailyTaskUI().setVisible(true);
+        new DailyTaskUI(user).setVisible(true);
     }//GEN-LAST:event_dailyTaskButtonActionPerformed
 
     private void allocateTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allocateTaskButtonActionPerformed
@@ -201,7 +206,7 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TaskAllocatorUI().setVisible(true);
+                new TaskAllocatorUI(user).setVisible(true);
             }
         });
     }

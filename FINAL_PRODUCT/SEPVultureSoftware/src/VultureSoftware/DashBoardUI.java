@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -22,9 +23,14 @@ public class DashBoardUI extends javax.swing.JFrame {
      */
     
     private static String role;
-    public DashBoardUI(String role) {
+    private static ArrayList user;
+    
+    public DashBoardUI(ArrayList user) 
+    {
         initComponents();
-        this.role = role;
+        this.user = user;
+        
+        this.role = this.user.get(5).toString();
         System.out.println(role);
         setButtons(role);
     }
@@ -227,7 +233,7 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     private void taskAllocatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAllocatorButtonActionPerformed
         // TODO add your handling code here:
-        new TaskAllocatorUI().setVisible(true);
+        new TaskAllocatorUI(user).setVisible(true);
     }//GEN-LAST:event_taskAllocatorButtonActionPerformed
 
     private void newCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerButtonActionPerformed
@@ -320,7 +326,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashBoardUI(role).setVisible(true);
+                new DashBoardUI(user).setVisible(true);
             }
         });
     }
