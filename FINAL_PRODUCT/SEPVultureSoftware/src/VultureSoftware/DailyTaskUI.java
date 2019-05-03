@@ -6,6 +6,8 @@
 package VultureSoftware;
 
 import java.util.ArrayList;
+import databaseui.*;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -13,6 +15,8 @@ import java.util.ArrayList;
  */
 public class DailyTaskUI extends javax.swing.JFrame {
 
+    DefaultListModel taskListModel = new DefaultListModel();
+    DataBaseToolkit dbtk;
     private static ArrayList user;
     private String techName;
     /**
@@ -21,8 +25,11 @@ public class DailyTaskUI extends javax.swing.JFrame {
     public DailyTaskUI(ArrayList user) {
         initComponents();
         
+        dbtk = new DataBaseToolkit();
+        
         this.user = user;
         this.techName = user.get(1).toString()+" "+user.get(2).toString();
+        populateList();
     }
 
     /**
@@ -145,4 +152,15 @@ public class DailyTaskUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    public void populateList()
+    {
+        jList1.setModel(taskListModel);
+        ArrayList<TaskObject> tasks = new ArrayList();
+        for(int i = 0; i < tasks.size(); i++)
+        {
+            taskListModel.addElement(tasks.get(i).getID());
+        }
+    }
 }
+
