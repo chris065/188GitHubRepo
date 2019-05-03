@@ -5,17 +5,24 @@
  */
 package VultureSoftware;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Nathan
  */
 public class DailyTaskUI extends javax.swing.JFrame {
 
+    private static ArrayList user;
+    private String techName;
     /**
      * Creates new form DailyTaskUI
      */
-    public DailyTaskUI() {
+    public DailyTaskUI(ArrayList user) {
         initComponents();
+        
+        this.user = user;
+        this.techName = user.get(1).toString()+" "+user.get(2).toString();
     }
 
     /**
@@ -127,7 +134,7 @@ public class DailyTaskUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DailyTaskUI().setVisible(true);
+                new DailyTaskUI(user).setVisible(true);
             }
         });
     }

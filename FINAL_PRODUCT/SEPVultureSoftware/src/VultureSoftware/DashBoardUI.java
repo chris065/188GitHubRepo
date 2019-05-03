@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -22,9 +23,14 @@ public class DashBoardUI extends javax.swing.JFrame {
      */
     
     private static String role;
-    public DashBoardUI(String role) {
+    private static ArrayList user;
+    
+    public DashBoardUI(ArrayList user) 
+    {
         initComponents();
-        this.role = role;
+        this.user = user;
+        
+        this.role = this.user.get(5).toString();
         System.out.println(role);
         setButtons(role);
     }
@@ -44,11 +50,9 @@ public class DashBoardUI extends javax.swing.JFrame {
         finalInspectionButton = new javax.swing.JButton();
         currentJobsButton = new javax.swing.JButton();
         jobDelayButton = new javax.swing.JButton();
-        orderPartsButton = new javax.swing.JButton();
         adminButton = new javax.swing.JButton();
         graphButton = new javax.swing.JButton();
         taskAllocatorButton = new javax.swing.JButton();
-        newCustomerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -72,7 +76,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 finalInspectionButtonfinaIinspectActionPerformed(evt);
             }
         });
-        jPanel2.add(finalInspectionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 180, 50));
+        jPanel2.add(finalInspectionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 180, 50));
 
         currentJobsButton.setBackground(new java.awt.Color(102, 153, 255));
         currentJobsButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -85,7 +89,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 currentJobsButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(currentJobsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 180, 50));
+        jPanel2.add(currentJobsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 180, 50));
 
         jobDelayButton.setBackground(new java.awt.Color(102, 153, 255));
         jobDelayButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -98,20 +102,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 jobDelayButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(jobDelayButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 180, 50));
-
-        orderPartsButton.setBackground(new java.awt.Color(102, 153, 255));
-        orderPartsButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        orderPartsButton.setForeground(new java.awt.Color(255, 255, 255));
-        orderPartsButton.setText("Order new parts");
-        orderPartsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        orderPartsButton.setFocusable(false);
-        orderPartsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderPartsButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(orderPartsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 180, 50));
+        jPanel2.add(jobDelayButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 180, 50));
 
         adminButton.setBackground(new java.awt.Color(102, 153, 255));
         adminButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -124,7 +115,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 adminButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 180, 50));
+        jPanel2.add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 180, 50));
 
         graphButton.setBackground(new java.awt.Color(102, 153, 255));
         graphButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -137,7 +128,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 graphButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(graphButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 180, 50));
+        jPanel2.add(graphButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 180, 50));
 
         taskAllocatorButton.setBackground(new java.awt.Color(102, 153, 255));
         taskAllocatorButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -150,26 +141,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                 taskAllocatorButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(taskAllocatorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 180, 50));
-
-        newCustomerButton.setBackground(new java.awt.Color(102, 153, 255));
-        newCustomerButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        newCustomerButton.setForeground(new java.awt.Color(255, 255, 255));
-        newCustomerButton.setText("New Customer Account");
-        newCustomerButton.setActionCommand("New customer account");
-        newCustomerButton.setAlignmentX(0.5F);
-        newCustomerButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        newCustomerButton.setFocusable(false);
-        newCustomerButton.setMaximumSize(new java.awt.Dimension(165, 27));
-        newCustomerButton.setMinimumSize(new java.awt.Dimension(165, 27));
-        newCustomerButton.setOpaque(false);
-        newCustomerButton.setPreferredSize(new java.awt.Dimension(165, 27));
-        newCustomerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newCustomerButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(newCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 180, 50));
+        jPanel2.add(taskAllocatorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 180, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -201,11 +173,6 @@ public class DashBoardUI extends javax.swing.JFrame {
        new JobDelayUI().setVisible(true);
     }//GEN-LAST:event_jobDelayButtonActionPerformed
 
-    private void orderPartsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderPartsButtonActionPerformed
-        // TODO add your handling code here:
-        new OrderPartsUI().setVisible(true);
-    }//GEN-LAST:event_orderPartsButtonActionPerformed
-
     private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
         // TODO add your handling code here:
         new CurrentJobsUI().setVisible(true);
@@ -227,13 +194,8 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     private void taskAllocatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAllocatorButtonActionPerformed
         // TODO add your handling code here:
-        new TaskAllocatorUI().setVisible(true);
+        new TaskAllocatorUI(user).setVisible(true);
     }//GEN-LAST:event_taskAllocatorButtonActionPerformed
-
-    private void newCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerButtonActionPerformed
-        // TODO add your handling code here:
-        new NewCustomerAccountUI().setVisible(true);
-    }//GEN-LAST:event_newCustomerButtonActionPerformed
      
     
     private void setButtons(String role)
@@ -241,11 +203,11 @@ public class DashBoardUI extends javax.swing.JFrame {
         if(role.toLowerCase().equals("tech"))
         {
             adminButton.setEnabled(false);
-            newCustomerButton.setEnabled(false);
             jobDelayButton.setEnabled(false);
+            taskAllocatorButton.setEnabled(true);
+            //orderPartsButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
-            orderPartsButton.setEnabled(false);
-            graphButton.setEnabled(false);
+
             //needs current jobs
             
         }
@@ -253,9 +215,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         {
             adminButton.setEnabled(false);
             jobDelayButton.setEnabled(false);
-            newCustomerButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
-            orderPartsButton.setEnabled(false);
             graphButton.setEnabled(false);
             //needs current jobs
         }
@@ -263,9 +223,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         {
             adminButton.setEnabled(false);
             jobDelayButton.setEnabled(false);
-            newCustomerButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
-            orderPartsButton.setEnabled(false);
             currentJobsButton.setEnabled(false);
             //needs stats graphs
         }
@@ -273,7 +231,6 @@ public class DashBoardUI extends javax.swing.JFrame {
         {
             adminButton.setEnabled(false);
             jobDelayButton.setEnabled(false);		
-            orderPartsButton.setEnabled(false);
             currentJobsButton.setEnabled(false);
             graphButton.setEnabled(false);
             //needs create new customer account + new job
@@ -283,7 +240,6 @@ public class DashBoardUI extends javax.swing.JFrame {
             adminButton.setEnabled(false);
             currentJobsButton.setEnabled(false);
             graphButton.setEnabled(false);
-            newCustomerButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
             //needs order new parts + delay job
         }
@@ -320,7 +276,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashBoardUI(role).setVisible(true);
+                new DashBoardUI(user).setVisible(true);
             }
         });
     }
@@ -334,8 +290,6 @@ public class DashBoardUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jobDelayButton;
-    private javax.swing.JButton newCustomerButton;
-    private javax.swing.JButton orderPartsButton;
     private javax.swing.JButton taskAllocatorButton;
     // End of variables declaration//GEN-END:variables
 }
