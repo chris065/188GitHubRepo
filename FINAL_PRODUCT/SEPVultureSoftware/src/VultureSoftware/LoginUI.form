@@ -121,7 +121,7 @@
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameFieldActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="usernameFieldKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="passwordField">
@@ -145,6 +145,9 @@
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="passwordFieldKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="loginButton">
           <Properties>

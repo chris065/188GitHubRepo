@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import databaseui.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -50,7 +51,6 @@ public class LoginUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
-        setPreferredSize(new java.awt.Dimension(641, 465));
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(641, 465));
@@ -66,9 +66,9 @@ public class LoginUI extends javax.swing.JFrame {
         usernameField.setToolTipText("Enter your username");
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         usernameField.setOpaque(false);
-        usernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameFieldActionPerformed(evt);
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyPressed(evt);
             }
         });
 
@@ -78,13 +78,17 @@ public class LoginUI extends javax.swing.JFrame {
         passwordField.setText("password");
         passwordField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         passwordField.setOpaque(false);
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
 
         loginButton.setBackground(new java.awt.Color(102, 153, 255));
         loginButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("Login");
         loginButton.setAlignmentX(0.5F);
-        loginButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         loginButton.setOpaque(false);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,10 +144,6 @@ public class LoginUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameFieldActionPerformed
-
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         String userName, password;
@@ -163,6 +163,52 @@ public class LoginUI extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+        String userName, password;
+        userName = usernameField.getText().toString();
+        password = passwordField.getText().toString();
+        
+        if(!(dbtk.checkPass(password, userName)))
+        {
+            JOptionPane.showMessageDialog(this, "Either the username or password were incorrect","Could not log on", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            ArrayList userDetails = dbtk.getUserDetails(userName);
+            String role = userDetails.get(5).toString();
+            this.dispose();
+            new DashBoardUI(role).setVisible(true);
+            
+        }
+        }
+    }//GEN-LAST:event_usernameFieldKeyPressed
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+        String userName, password;
+        userName = usernameField.getText().toString();
+        password = passwordField.getText().toString();
+        
+        if(!(dbtk.checkPass(password, userName)))
+        {
+            JOptionPane.showMessageDialog(this, "Either the username or password were incorrect","Could not log on", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            ArrayList userDetails = dbtk.getUserDetails(userName);
+            String role = userDetails.get(5).toString();
+            this.dispose();
+            new DashBoardUI(role).setVisible(true);
+            
+        }
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
 
     
 
