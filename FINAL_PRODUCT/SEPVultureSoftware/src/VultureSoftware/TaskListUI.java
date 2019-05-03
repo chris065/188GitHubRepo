@@ -250,16 +250,12 @@ public class TaskListUI extends javax.swing.JFrame {
     }
     
     public void searchFilter(String searchTerm)
-    {
-        
-        
+    {   
         ArrayList tasks = dbtk.getAllTasks();
-        
-        filteredItems.removeAllElements();
-        taskListModel.removeAllElements();
         
         for(int i = 0; i < tasks.size(); i++)
         {
+            filteredItems.removeAllElements();
             String taskName = tasks.get(i).toString();
             if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
                 {
