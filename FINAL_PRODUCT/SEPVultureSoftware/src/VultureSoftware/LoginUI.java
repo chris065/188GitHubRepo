@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import databaseui.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -50,7 +51,6 @@ public class LoginUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
-        setPreferredSize(new java.awt.Dimension(641, 465));
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(641, 465));
@@ -84,11 +84,15 @@ public class LoginUI extends javax.swing.JFrame {
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("Login");
         loginButton.setAlignmentX(0.5F);
-        loginButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         loginButton.setOpaque(false);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
+            }
+        });
+        loginButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginButtonKeyPressed(evt);
             }
         });
 
@@ -163,6 +167,29 @@ public class LoginUI extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+        String userName, password;
+        userName = usernameField.getText().toString();
+        password = passwordField.getText().toString();
+        
+        if(!(dbtk.checkPass(password, userName)))
+        {
+            JOptionPane.showMessageDialog(this, "Either the username or password were incorrect","Could not log on", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            ArrayList userDetails = dbtk.getUserDetails(userName);
+            String role = userDetails.get(5).toString();
+            this.dispose();
+            new DashBoardUI(role).setVisible(true);
+            
+        }
+        }
+    }//GEN-LAST:event_loginButtonKeyPressed
 
     
 

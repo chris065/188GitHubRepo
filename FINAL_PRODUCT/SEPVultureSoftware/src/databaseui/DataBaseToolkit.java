@@ -661,7 +661,34 @@ public class DataBaseToolkit
     
     public ArrayList getTasksForTech(String techName)
     {
-        return null;
+        ArrayList<TaskObject> tasks = new ArrayList();
+        //check if the techs exsist
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM TASKS WHERE TASK_ASSIGNED = '"+techName+"'";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            if(!rs.next())
+            {
+                return null;
+            }
+            else
+            {
+                do
+                {
+                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                    return tasks;
+                }
+                while(rs.next());
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
     
     //END OF TASK FUNCTIONS
