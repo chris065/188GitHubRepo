@@ -204,13 +204,10 @@ public class DashBoardUI extends javax.swing.JFrame {
         {
             adminButton.setEnabled(false);
             jobDelayButton.setEnabled(false);
-<<<<<<< HEAD
             taskAllocatorButton.setEnabled(true);
-            orderPartsButton.setEnabled(false);
-=======
+            //orderPartsButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
->>>>>>> 3df5d7ff136252aa613e1c16d86d587d3e2a319e
-            graphButton.setEnabled(false);
+
             //needs current jobs
             
         }
