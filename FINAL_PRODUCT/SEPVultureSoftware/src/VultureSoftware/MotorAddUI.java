@@ -12,14 +12,14 @@ import javax.swing.JOptionPane;
  *
  * @author 17012215 Jordan
  */
-public class AddMotorUI extends javax.swing.JFrame {
+public class MotorAddUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewGraphUI
+     * Creates new form MotorAddUI
      */
     DataBaseToolkit dbtk;
     
-    public AddMotorUI() 
+    public MotorAddUI() 
     {
         initComponents();
         dbtk = new DataBaseToolkit();
@@ -279,9 +279,6 @@ public class AddMotorUI extends javax.swing.JFrame {
         if(JTFMotorName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter the name of the motor");
         }
-        else if(JTFDateCollected.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the collection date");
-        }
         else if(JTFEstimated.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter estimated working hours required");
         }
@@ -291,17 +288,10 @@ public class AddMotorUI extends javax.swing.JFrame {
         else if(JTFChecked.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter the name of who checked this motor");
         }
-        else if(JTFClient.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the name of the client");
-        }
-        else if(JTFReturnDate.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the return date of the motor");
-        }
         else if(JTFDate.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter todays date");
         }
-        else{
-        
+        else{      
         
         int jobNumber = Integer.parseInt(JTFJobNumber.getText().toString());
         String motorName = JTFMotorName.getText();
@@ -344,14 +334,22 @@ public class AddMotorUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddMotorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MotorAddUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddMotorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MotorAddUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddMotorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MotorAddUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddMotorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MotorAddUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -364,7 +362,7 @@ public class AddMotorUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMotorUI().setVisible(true);
+                new MotorAddUI().setVisible(true);
             }
         });
     }
