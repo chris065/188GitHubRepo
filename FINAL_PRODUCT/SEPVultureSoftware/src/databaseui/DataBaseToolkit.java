@@ -38,16 +38,13 @@ public class DataBaseToolkit
 
         /*
         try
-        {
+        {   
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
         */
-        
-        
-
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
     
@@ -356,7 +353,14 @@ public class DataBaseToolkit
         return 0;
     }
     
-    public boolean addNewJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, int jobTaskID)
+    //Need a function to get the specific job
+    
+    public boolean deleteJob(int jobNumber)
+    {
+        return false;
+    }
+    
+    public boolean addNewJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, int jobTaskID, String expectedTime)
     {
         try
         {
@@ -377,6 +381,7 @@ public class DataBaseToolkit
             sqlInsert.setString(8, jobDate);
             sqlInsert.setString(9, jobCheck);
             sqlInsert.setInt(10, jobTaskID);
+            sqlInsert.setString(11, expectedTime);
             
             
             //System.out.printf("Number of jobs: %s", jobId);
@@ -438,7 +443,7 @@ public class DataBaseToolkit
     //END OF JOB SYSTEM FUNCTIONS
     
     //START OF TASK FUNCTIONS
-    
+
     public ArrayList getTask(String taskName)
     {
         ArrayList<TaskObject> tasks = new ArrayList();
@@ -659,35 +664,76 @@ public class DataBaseToolkit
         }
     }
     
-    public ArrayList getTasksForTech(String techName)
+    public boolean checkTechExsistsForTask(String techName)
     {
-        ArrayList<TaskObject> tasks = new ArrayList();
-        //check if the techs exsist
+        String techNameStr = techName;
+        String[] splitStringName = techNameStr.split("\\s+");
+        String firstName = splitStringName[0];
+        String secondName = splitStringName[1];
+        
+        //System.out.println(firstName +" "+secondName);
+        
         try
         {
             Connection conn = DriverManager.getConnection(connection.getURL());
             Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM TASKS WHERE TASK_ASSIGNED = '"+techName+"'";
+            String sql = "SELECT * FROM USERS WHERE U_FNAME = '"+firstName+"' AND U_SNAME = '"+secondName+"' AND U_ROLE = 'tech'";
             
             ResultSet rs = stmt.executeQuery(sql);
             if(!rs.next())
             {
-                return null;
+                conn.close();
+                return false;
             }
             else
             {
-                do
-                {
-                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)));
-                    return tasks;
-                }
-                while(rs.next());
+                conn.close();
+                return true;
             }
         }
         catch(Exception e)
         {
             e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public ArrayList getTasksForTech(String techName)
+    {
+        ArrayList<TaskObject> tasks = new ArrayList();
+        
+        if(!checkTechExsistsForTask(techName))
+        {
             return null;
+        }
+        else
+        {
+            try
+            {
+                Connection conn = DriverManager.getConnection(connection.getURL());
+                Statement stmt = conn.createStatement();
+                String sql = "SELECT * FROM TASKS WHERE TASK_ASSIGNED = '"+techName+"'";
+            
+                ResultSet rs = stmt.executeQuery(sql);
+                if(!rs.next())
+                {
+                    return null;
+                }
+                else
+                {
+                    do
+                    {
+                        tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                        return tasks;
+                    }
+                    while(rs.next());
+                }
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
     
@@ -722,6 +768,7 @@ public class DataBaseToolkit
         new DataBaseToolkit();
     }
     */
+    
     
     
     
