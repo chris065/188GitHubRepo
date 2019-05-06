@@ -274,12 +274,31 @@ public class MotorAddUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //only certain fields need to be filled in. job number and date boxes wont be there as they should be automatically assigned.
         
+        //trimming text fields
+        String textMN = JTFMotorName.getText().trim();
+        JTFMotorName.setText(textMN);
+        String textE = JTFEstimated.getText().trim();
+        JTFEstimated.setText(textE);
+        String textP = TAParts.getText().trim();
+        TAParts.setText(textP);
+        String textCh = JTFChecked.getText().trim();
+        JTFChecked.setText(textCh);
+        String textD = JTFDate.getText().trim(); //remove date after done automatically
+        JTFDate.setText(textD);
+        String textCl = JTFClient.getText().trim();
+        JTFClient.setText(textCl);
+        String textDC = JTFDateCollected.getText().trim();
+        JTFDateCollected.setText(textDC);
+        String textRD = JTFReturnDate.getText().trim();
+        JTFReturnDate.setText(textRD);
+        
+        //checking not empty
         if(JTFMotorName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter the name of the motor");
         }
         else if(JCBMan.getSelectedItem().equals("Select a manufacturer")){
             JOptionPane.showMessageDialog(null, "Please select a manufacturer from the drop down menu");
-        }
+        }       
         else if(JTFEstimated.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter estimated working hours required");
         }
@@ -292,12 +311,11 @@ public class MotorAddUI extends javax.swing.JFrame {
         else if(JTFDate.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter todays date");
         }
-        else{      
-        
+        else{   
         int jobNumber = Integer.parseInt(JTFJobNumber.getText().toString());
         String motorName = JTFMotorName.getText();
         String dateCollected = JTFDateCollected.getText();
-        String estimatedHours = JTFEstimated.getText(); //not in method yet so failed to add dialogue happens even when it works
+        String estimatedHours = JTFEstimated.getText();
         String partsNeeded = TAParts.getText();
         String checkedBy = JTFChecked.getText();
         String client = JTFClient.getText();
@@ -315,7 +333,6 @@ public class MotorAddUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Failed to add to database");
             this.dispose();
         }
-        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
