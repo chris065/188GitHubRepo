@@ -117,7 +117,7 @@ public class MotorAddUI extends javax.swing.JFrame {
         jLabel11.setText("Parts Needed");
 
         JCBMan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        JCBMan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Actiro", "Buhler", "PG", "Other" }));
+        JCBMan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a manufacturer", "Actiro", "Buhler", "PG", "Other" }));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setText("Customer Service");
@@ -270,14 +270,15 @@ public class MotorAddUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //ensuring all technician attributes are entered before adding to databse
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //old - if all fields are not null and nob number is int, save to database.
-        //new - only certain fields need to be filled in. job number box wont be there as its automatically done. 
-        //adding job says successful but doesnt show up in job list after refresh?
-        //make data automatic too so no date field needed
+        //only certain fields need to be filled in. job number and date boxes wont be there as they should be automatically assigned.
         
         if(JTFMotorName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter the name of the motor");
+        }
+        else if(JCBMan.getSelectedItem().equals("Select a manufacturer")){
+            JOptionPane.showMessageDialog(null, "Please select a manufacturer from the drop down menu");
         }
         else if(JTFEstimated.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter estimated working hours required");
@@ -304,6 +305,7 @@ public class MotorAddUI extends javax.swing.JFrame {
         String returnDate = JTFReturnDate.getText();
         String date = JTFDate.getText();
         
+        //(table JOBS has 11 columns but 10 values were supplied). If you swap it, it doesnt work because int and string mis-match
         if(!dbtk.addNewJob(jobNumber, motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, date, checkedBy, 1, estimatedHours))
         {
             JOptionPane.showMessageDialog(null, "Successfully added to database");

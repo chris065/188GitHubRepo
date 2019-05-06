@@ -61,7 +61,7 @@
                                   <Component id="jBtnDelete" min="-2" pref="128" max="-2" attributes="0"/>
                                   <Component id="jBtnAddJob" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jBtnJobList" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
+                              <Component id="jBtnRefresh" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
@@ -102,7 +102,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jBtnAddJob" min="-2" pref="45" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jBtnJobList" min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Component id="jBtnRefresh" min="-2" pref="45" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -184,12 +184,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jBtnJobList">
+        <Component class="javax.swing.JButton" name="jBtnRefresh">
           <Properties>
             <Property name="text" type="java.lang.String" value="Refresh Job List"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnJobListActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnRefreshActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
