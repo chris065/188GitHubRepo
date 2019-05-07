@@ -13,8 +13,11 @@ import javax.swing.DefaultListModel;
  */
 public class TaskListUI extends javax.swing.JFrame {
 
+    //Connect to database and utilize database tools.
     DataBaseToolkit dbtk;
+    //Create a new list model for the task list.
     DefaultListModel taskListModel = new DefaultListModel();
+    //Create a new list model for the task list for filtering items.
     DefaultListModel filteredItems = new DefaultListModel();
     /**
      * Creates new form TaskList
@@ -35,112 +38,88 @@ public class TaskListUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        taskListScrollPane = new javax.swing.JScrollPane();
+        taskList = new javax.swing.JList<>();
+        titleLabel = new javax.swing.JLabel();
+        detailsScrollPane = new javax.swing.JScrollPane();
+        detailsTextArea = new javax.swing.JTextArea();
+        searchTextField = new javax.swing.JTextField();
+        searchLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jScrollPane1.setBorder(null);
+        taskListScrollPane.setBorder(null);
 
-        jList1.setBackground(new java.awt.Color(102, 153, 255));
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setFocusable(false);
-        jList1.setSelectionBackground(new java.awt.Color(102, 153, 255));
-        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        taskList.setBackground(new java.awt.Color(102, 153, 255));
+        taskList.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taskList.setForeground(new java.awt.Color(255, 255, 255));
+        taskList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        taskList.setFocusable(false);
+        taskList.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        taskList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jList1ValueChanged(evt);
+                taskListValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(jList1);
+        taskListScrollPane.setViewportView(taskList);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Task List");
+        titleLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleLabel.setText("Task List");
 
-        jComboBox1.setBackground(new java.awt.Color(102, 153, 255));
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        jComboBox1.setFocusable(false);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        detailsTextArea.setEditable(false);
+        detailsTextArea.setColumns(20);
+        detailsTextArea.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        detailsTextArea.setRows(5);
+        detailsScrollPane.setViewportView(detailsTextArea);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Sort by:");
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+                searchTextFieldKeyReleased(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Search/Filter:");
+        searchLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchLabel.setForeground(new java.awt.Color(255, 255, 255));
+        searchLabel.setText("Search/Filter:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(titleLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(taskListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(searchLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titleLabel)
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchLabel))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                    .addComponent(detailsScrollPane)
+                    .addComponent(taskListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -159,9 +138,19 @@ public class TaskListUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        String taskName = jList1.getSelectedValue();
+    /*
+    When a task is selected, displays information about said task in the text area.
+    */
+    private void taskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_taskListValueChanged
+        String taskName = taskList.getSelectedValue();
+        //Used to prevent errors with the filter function.
+        if(taskName == null)
+        {
+            taskName = null;
+        }
+        //Get task details and assign them to the text area.
+        else 
+        {
         ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
         
         String tech = taskData.get(0).getAssignedTo();
@@ -170,21 +159,20 @@ public class TaskListUI extends javax.swing.JFrame {
         String talents = taskData.get(0).getTalents();
         String priority = taskData.get(0).getPriority();
         
-        jTextArea1.setText(null);
-        jTextArea1.setText("Technitian assigned to this task: " + tech + "\n\n");
-        jTextArea1.append("This task is expected to be completed in " + Integer.toString(expectedTime) + " days.\n\n");
-        jTextArea1.append("Task Preferences:\n" + prefs + "\n\n");
-        jTextArea1.append("Requiered Talents:\n" + talents + "\n\n");
-        jTextArea1.append("This tasks priority is " + priority + ".");
-    }//GEN-LAST:event_jList1ValueChanged
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        searchFilter(jTextField1.getText());
-    }//GEN-LAST:event_jTextField1KeyReleased
+        detailsTextArea.setText(null);
+        detailsTextArea.setText("Technitian assigned to this task: " + tech + "\n\n");
+        detailsTextArea.append("This task is expected to be completed in " + Integer.toString(expectedTime) + " days.\n\n");
+        detailsTextArea.append("Task Preferences:\n" + prefs + "\n\n");
+        detailsTextArea.append("Requiered Talents:\n" + talents + "\n\n");
+        detailsTextArea.append("This tasks priority is " + priority + ".");
+        }
+    }//GEN-LAST:event_taskListValueChanged
+    /*
+    When a key is released in the search field, call searchFilter().
+    */
+    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
+        searchFilter(searchTextField.getText());
+    }//GEN-LAST:event_searchTextFieldKeyReleased
 
     /**
      * @param args the command line arguments
@@ -225,43 +213,80 @@ public class TaskListUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane detailsScrollPane;
+    private javax.swing.JTextArea detailsTextArea;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel searchLabel;
+    private javax.swing.JTextField searchTextField;
+    private javax.swing.JList<String> taskList;
+    private javax.swing.JScrollPane taskListScrollPane;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
+    /*
+    Populates the task list with allocated tasks.
+    */
     public void populateList()
     {
         
-        jList1.setModel(taskListModel);
+        taskList.setModel(taskListModel);
         ArrayList tasks = dbtk.getAllTasks();
         
         for(int i = 0; i < tasks.size(); i++)
         {
-            taskListModel.addElement(tasks.get(i).toString());
+            ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
+            
+            //If a task is not assigned then it is not added to the list.
+            if (taskData.get(0).getAssignedTo() == null)
+            {
+                taskData = null;
+            }
+            else
+            {
+                taskListModel.addElement(tasks.get(i).toString());
+            }
         }
     }
     
+    /*
+    Allows the user to search and filter through tasks.
+    */
     public void searchFilter(String searchTerm)
     {   
+        detailsTextArea.setText(null);
+        
         ArrayList tasks = dbtk.getAllTasks();
         
-        for(int i = 0; i < tasks.size(); i++)
+        //If the search field is not empty, find allocated tasks to match the search term.
+        if(!searchTextField.getText().equals(""))
         {
-            filteredItems.removeAllElements();
-            String taskName = tasks.get(i).toString();
-            if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
+            for(int i = 0; i < tasks.size(); i++)
+            {
+                ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
+                
+                //If task is not assigned then exclude from search. Else add taks to filteredItems ans set filteredItems as the list model.
+                if (taskData.get(0).getAssignedTo() == null)
                 {
-                        filteredItems.addElement(taskName);
+                    taskData = null;
                 }
+                else
+                {
+                filteredItems.removeAllElements();
+                String taskName = tasks.get(i).toString();
+                if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
+                    {
+                            filteredItems.addElement(taskName);
+                    }
+                }
+                
+            }
+            taskList.setModel(filteredItems);
         }
-        jList1.setModel(filteredItems);
+        //Set the task list model to taskListModel.
+        else
+        {
+            taskList.setModel(taskListModel);
+        }
+            
     }
 }
