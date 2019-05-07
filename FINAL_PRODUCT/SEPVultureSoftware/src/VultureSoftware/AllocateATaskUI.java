@@ -7,6 +7,7 @@ package VultureSoftware;
 import databaseui.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,7 +15,10 @@ import javax.swing.DefaultListModel;
  */
 public class AllocateATaskUI extends javax.swing.JFrame {
 
+    //Connect to database and utilize database tools.
     DataBaseToolkit dbtk;
+    //Create a new list model for the task list.
+    DefaultListModel taskListModel = new DefaultListModel();
     
     /**
      * Creates new form AllocateATaskUI
@@ -37,129 +41,129 @@ public class AllocateATaskUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        priorityButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        TitleLabel = new javax.swing.JLabel();
+        taskListScrollPane = new javax.swing.JScrollPane();
+        taskList = new javax.swing.JList<>();
+        taskLabel = new javax.swing.JLabel();
+        TechLabel = new javax.swing.JLabel();
+        techComboBox = new javax.swing.JComboBox<>();
+        timeLabel = new javax.swing.JLabel();
+        timeComboBox = new javax.swing.JComboBox<>();
+        prefsLabel = new javax.swing.JLabel();
+        prefsScrollPane = new javax.swing.JScrollPane();
+        prefsTextArea = new javax.swing.JTextArea();
+        talentsLabel = new javax.swing.JLabel();
+        talentsScrollPane = new javax.swing.JScrollPane();
+        talentsTextArea = new javax.swing.JTextArea();
+        priorityLabel = new javax.swing.JLabel();
+        lowRadioButton = new javax.swing.JRadioButton();
+        mediumRadioButton = new javax.swing.JRadioButton();
+        highRadioButton = new javax.swing.JRadioButton();
+        allocateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Allocate a Task");
+        TitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TitleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        TitleLabel.setText("Allocate a Task");
 
-        jList1.setBackground(new java.awt.Color(102, 153, 255));
-        jList1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setSelectionBackground(new java.awt.Color(102, 153, 255));
-        jScrollPane1.setViewportView(jList1);
+        taskList.setBackground(new java.awt.Color(102, 153, 255));
+        taskList.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        taskList.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taskList.setForeground(new java.awt.Color(255, 255, 255));
+        taskList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        taskList.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        taskListScrollPane.setViewportView(taskList);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Select a task:");
+        taskLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taskLabel.setForeground(new java.awt.Color(255, 255, 255));
+        taskLabel.setText("Select a task:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Technician:");
+        TechLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TechLabel.setForeground(new java.awt.Color(255, 255, 255));
+        TechLabel.setText("Technician:");
 
-        jComboBox1.setBackground(new java.awt.Color(102, 153, 255));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        jComboBox1.setFocusable(false);
-        jComboBox1.setMaximumSize(new java.awt.Dimension(198, 26));
-        jComboBox1.setMinimumSize(new java.awt.Dimension(198, 26));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(198, 26));
+        techComboBox.setBackground(new java.awt.Color(102, 153, 255));
+        techComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        techComboBox.setForeground(new java.awt.Color(255, 255, 255));
+        techComboBox.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        techComboBox.setFocusable(false);
+        techComboBox.setMaximumSize(new java.awt.Dimension(198, 26));
+        techComboBox.setMinimumSize(new java.awt.Dimension(198, 26));
+        techComboBox.setPreferredSize(new java.awt.Dimension(198, 26));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Expected Days");
+        timeLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        timeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        timeLabel.setText("Expected Days");
 
-        jComboBox2.setBackground(new java.awt.Color(102, 153, 255));
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        jComboBox2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        jComboBox2.setFocusable(false);
-        jComboBox2.setMaximumSize(new java.awt.Dimension(176, 26));
-        jComboBox2.setMinimumSize(new java.awt.Dimension(176, 26));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(176, 26));
+        timeComboBox.setBackground(new java.awt.Color(102, 153, 255));
+        timeComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        timeComboBox.setForeground(new java.awt.Color(255, 255, 255));
+        timeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        timeComboBox.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        timeComboBox.setFocusable(false);
+        timeComboBox.setMaximumSize(new java.awt.Dimension(176, 26));
+        timeComboBox.setMinimumSize(new java.awt.Dimension(176, 26));
+        timeComboBox.setPreferredSize(new java.awt.Dimension(176, 26));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Preferences:");
+        prefsLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        prefsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        prefsLabel.setText("Preferences:");
 
-        jTextArea1.setBackground(new java.awt.Color(102, 153, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        jScrollPane2.setViewportView(jTextArea1);
+        prefsTextArea.setBackground(new java.awt.Color(102, 153, 255));
+        prefsTextArea.setColumns(20);
+        prefsTextArea.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        prefsTextArea.setForeground(new java.awt.Color(255, 255, 255));
+        prefsTextArea.setRows(5);
+        prefsTextArea.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        prefsScrollPane.setViewportView(prefsTextArea);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Required talents:");
+        talentsLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        talentsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        talentsLabel.setText("Required talents:");
 
-        jTextArea2.setBackground(new java.awt.Color(102, 153, 255));
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea2.setRows(5);
-        jTextArea2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        jScrollPane3.setViewportView(jTextArea2);
+        talentsTextArea.setBackground(new java.awt.Color(102, 153, 255));
+        talentsTextArea.setColumns(20);
+        talentsTextArea.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        talentsTextArea.setForeground(new java.awt.Color(255, 255, 255));
+        talentsTextArea.setRows(5);
+        talentsTextArea.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        talentsScrollPane.setViewportView(talentsTextArea);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Priority:");
+        priorityLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        priorityLabel.setForeground(new java.awt.Color(255, 255, 255));
+        priorityLabel.setText("Priority:");
 
-        jRadioButton1.setBackground(new java.awt.Color(102, 153, 255));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Low");
+        lowRadioButton.setBackground(new java.awt.Color(102, 153, 255));
+        priorityButtonGroup.add(lowRadioButton);
+        lowRadioButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lowRadioButton.setForeground(new java.awt.Color(255, 255, 255));
+        lowRadioButton.setText("Low");
 
-        jRadioButton2.setBackground(new java.awt.Color(102, 153, 255));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Medium");
+        mediumRadioButton.setBackground(new java.awt.Color(102, 153, 255));
+        priorityButtonGroup.add(mediumRadioButton);
+        mediumRadioButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        mediumRadioButton.setForeground(new java.awt.Color(255, 255, 255));
+        mediumRadioButton.setText("Medium");
 
-        jRadioButton3.setBackground(new java.awt.Color(102, 153, 255));
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("High");
+        highRadioButton.setBackground(new java.awt.Color(102, 153, 255));
+        priorityButtonGroup.add(highRadioButton);
+        highRadioButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        highRadioButton.setForeground(new java.awt.Color(255, 255, 255));
+        highRadioButton.setText("High");
 
-        jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Allocate");
-        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        allocateButton.setBackground(new java.awt.Color(102, 153, 255));
+        allocateButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        allocateButton.setForeground(new java.awt.Color(255, 255, 255));
+        allocateButton.setText("Allocate");
+        allocateButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        allocateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                allocateButtonActionPerformed(evt);
             }
         });
 
@@ -172,80 +176,80 @@ public class AllocateATaskUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(jLabel7)
+                        .addComponent(priorityLabel)
                         .addGap(31, 31, 31)
-                        .addComponent(jRadioButton1)
+                        .addComponent(lowRadioButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
+                        .addComponent(mediumRadioButton)
                         .addGap(13, 13, 13)
-                        .addComponent(jRadioButton3)
+                        .addComponent(highRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(allocateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
+                            .addComponent(taskLabel)
+                            .addComponent(prefsLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
+                        .addComponent(talentsLabel)
                         .addGap(164, 164, 164))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TitleLabel)
+                            .addComponent(prefsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(talentsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(TechLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(techComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(timeLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(TitleLabel)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TechLabel)
+                            .addComponent(techComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(timeLabel)
+                            .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(jLabel2)
+                        .addComponent(taskLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(prefsLabel)
+                    .addComponent(talentsLabel))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(talentsScrollPane)
+                    .addComponent(prefsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)
-                        .addComponent(jRadioButton3)
-                        .addComponent(jLabel7))
+                        .addComponent(lowRadioButton)
+                        .addComponent(mediumRadioButton)
+                        .addComponent(highRadioButton)
+                        .addComponent(priorityLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(allocateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(85, 85, 85))
         );
 
@@ -262,48 +266,52 @@ public class AllocateATaskUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        //get all of the values that are entered
-        String taskName = jList1.getSelectedValue();
-
-        String techName = jComboBox1.getSelectedItem().toString();
-        int expectedTime = Integer.parseInt(jComboBox2.getSelectedItem().toString());
-        String prefs = jTextArea1.getText().toString();
-        String talents = jTextArea2.getText().toString();
+    /*
+    Allocates task to a technician when the allocate button is clicked. 
+    */
+    private void allocateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allocateButtonActionPerformed
+         //get all of the values that are entered.
+        String taskName = taskList.getSelectedValue();
+        String techName = techComboBox.getSelectedItem().toString();
+        int expectedTime = Integer.parseInt(timeComboBox.getSelectedItem().toString());
+        String prefs = prefsTextArea.getText();
+        String talents = talentsTextArea.getText();
         String priority = selectedRadioValue();
-        if(priority == null)
+        
+        //if any field is empty prompts the user to fill them. Else continue.
+        if(priority == null || prefs.equals("") || talents.equals("") || taskName == null)
         {
-            System.err.println("Error");
-            priority = "";
-        }
-
-        ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
-        if(taskData == null)
-        {
-            System.err.println("Error");
+            JOptionPane.showMessageDialog(null, "A task must be selected and all fields must be filled.", "Important", JOptionPane.INFORMATION_MESSAGE);
         }
         else
         {
-            //all the vars below are already in the db
-            int taskID = taskData.get(0).getID();
-            boolean delay = taskData.get(0).getDelay();
-            String type = taskData.get(0).getType();
-
-            if(!dbtk.updateTasks(taskID, delay, taskName, type, techName, expectedTime, prefs, talents, priority))
+            ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
+            
+            //if the selected task does not match with a task in the database then alert the user. Else continue.
+            if(taskData == null)
             {
-                System.err.println("Error");
+                JOptionPane.showMessageDialog(null, "The selected task could not be found in the database.", "Error", JOptionPane.WARNING_MESSAGE);
             }
             else
             {
-                System.out.println("The big Succ");
+                //all the vars below are already in the db
+                int taskID = taskData.get(0).getID();
+                boolean delay = taskData.get(0).getDelay();
+                String type = taskData.get(0).getType();
+
+                //Update te database to allocate the task. If there is an error, inform the user. Else inform the user that the task was allocated correctly.
+                if(!dbtk.updateTasks(taskID, delay, taskName, type, techName, expectedTime, prefs, talents, priority))
+                {
+                    JOptionPane.showMessageDialog(null, "There was a problem updating the database.", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "The task was allocated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    taskListModel.remove(taskList.getSelectedIndex());
+                }
             }
-
-            //System.out.println(taskID+","+delay+", "+type+", "+taskName+", "+techName+", "+expectedTime+", "+prefs+", "+talents+", "+priority);
-
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_allocateButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,74 +350,95 @@ public class AllocateATaskUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JLabel TechLabel;
+    private javax.swing.JLabel TitleLabel;
+    private javax.swing.JButton allocateButton;
+    private javax.swing.JRadioButton highRadioButton;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JRadioButton lowRadioButton;
+    private javax.swing.JRadioButton mediumRadioButton;
+    private javax.swing.JLabel prefsLabel;
+    private javax.swing.JScrollPane prefsScrollPane;
+    private javax.swing.JTextArea prefsTextArea;
+    private javax.swing.ButtonGroup priorityButtonGroup;
+    private javax.swing.JLabel priorityLabel;
+    private javax.swing.JLabel talentsLabel;
+    private javax.swing.JScrollPane talentsScrollPane;
+    private javax.swing.JTextArea talentsTextArea;
+    private javax.swing.JLabel taskLabel;
+    private javax.swing.JList<String> taskList;
+    private javax.swing.JScrollPane taskListScrollPane;
+    private javax.swing.JComboBox<String> techComboBox;
+    private javax.swing.JComboBox<String> timeComboBox;
+    private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables
     
-public void populateList()
-{
-    DefaultListModel taskListModel = new DefaultListModel();
-    jList1.setModel(taskListModel);
-    ArrayList tasks = dbtk.getAllTasks();
-    
-    for(int i = 0; i < tasks.size(); i++)
+    /*
+    Populates the task list with tasks that are unallocated.
+    */
+    public void populateList()
     {
-        taskListModel.addElement(tasks.get(i).toString());
-    }
-}
-    
-public void populateTechnicianList()
-{
-    ArrayList techs = dbtk.getAllTechs();
-    if (techs == null)
-    {
-        jComboBox1.addItem("No Techs");
-    }
-    else
-    {
-        for(int i = 0; i < techs.size(); i++)
+        taskList.setModel(taskListModel);
+
+        ArrayList tasks = dbtk.getAllTasks();
+
+        for(int i = 0; i < tasks.size(); i++)
         {
-            jComboBox1.addItem(techs.get(i).toString());
+            ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
+
+            if (taskData.get(0).getAssignedTo() == null)
+            {
+                taskListModel.addElement(tasks.get(i).toString());
+            }
+            else
+            {
+                taskData = null;
+            }
         }
     }
-}
+    
+    /*
+    Populates the drop down box with technician's names.
+    If technicians can't be found then inform the user and disable the drop down.
+    Else, populate the drop down.
+    */
+    public void populateTechnicianList()
+    {
+        ArrayList techs = dbtk.getAllTechs();
+        if (techs == null)
+        {
+            JOptionPane.showMessageDialog(null, "No technicians could be found. Please close and re-open the task allocator or contact an administrator if this problem persists.", "Error", JOptionPane.WARNING_MESSAGE);
+            techComboBox.setEnabled(false);
+        }
+        else
+        {
+            for(int i = 0; i < techs.size(); i++)
+            {
+                techComboBox.addItem(techs.get(i).toString());
+            }
+        }
+    }
 
-public String selectedRadioValue()
-{
-    if(jRadioButton1.isSelected())
+    /*
+    Returns the selected value for the priority radios. Return null if none are selected.
+    */
+    public String selectedRadioValue()
     {
-        return "Low";
+        if(lowRadioButton.isSelected())
+        {
+            return "Low";
+        }
+        if(mediumRadioButton.isSelected())
+        {
+            return "Medium";
+        }
+        if(highRadioButton.isSelected())
+        {
+            return "High";
+        }
+        else
+        {
+            return null;
+        }
     }
-    if(jRadioButton2.isSelected())
-    {
-        return "Medium";
-    }
-    if(jRadioButton3.isSelected())
-    {
-        return "High";
-    }
-    else
-    {
-        return null;
-    }
-}
 }
