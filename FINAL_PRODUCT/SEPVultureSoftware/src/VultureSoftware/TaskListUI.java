@@ -7,6 +7,7 @@ package VultureSoftware;
 import databaseui.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Nathan
@@ -26,6 +27,7 @@ public class TaskListUI extends javax.swing.JFrame {
         dbtk = new DataBaseToolkit();
         initComponents();
         populateList();
+        test();
     }
 
     /**
@@ -255,38 +257,61 @@ public class TaskListUI extends javax.swing.JFrame {
     {   
         detailsTextArea.setText(null);
         
+        taskList.setModel(filteredItems);
+        
         ArrayList tasks = dbtk.getAllTasks();
         
-        //If the search field is not empty, find allocated tasks to match the search term.
-        if(!searchTextField.getText().equals(""))
+        if(tasks == null)
         {
-            for(int i = 0; i < tasks.size(); i++)
-            {
-                ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
-                
-                //If task is not assigned then exclude from search. Else add taks to filteredItems ans set filteredItems as the list model.
-                if (taskData.get(0).getAssignedTo() == null)
-                {
-                    taskData = null;
-                }
-                else
-                {
-                filteredItems.removeAllElements();
-                String taskName = tasks.get(i).toString();
-                if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
-                    {
-                            filteredItems.addElement(taskName);
-                    }
-                }
-                
-            }
-            taskList.setModel(filteredItems);
+            JOptionPane.showMessageDialog(null, "No tasks could be found in the database. Please contact an administrator if this problem persists.", "Error", JOptionPane.WARNING_MESSAGE);
+            taskList.setEnabled(false);
+            searchTextField.setEnabled(false);
+            detailsTextArea.setEnabled(false);
         }
-        //Set the task list model to taskListModel.
         else
         {
-            taskList.setModel(taskListModel);
+            //If the search field is not empty, find allocated tasks to match the search term.
+            if(!searchTextField.getText().equals(""))
+            {
+                filteredItems.removeAllElements();
+                
+                for(int i = 0; i < tasks.size(); i++)
+                {
+                    ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
+
+                    //If task is not assigned then exclude from search. Else add taks to filteredItems ans set filteredItems as the list model.
+                    if (taskData.get(0).getAssignedTo() == null)
+                    {
+                        taskData = null;
+                    }
+                    else
+                    {
+
+                    String taskName = tasks.get(i).toString();
+                    if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
+                        {
+                                filteredItems.addElement(taskName);
+                        }
+                    }
+                }
+                tasks.clear();
+            }
+            //Set the task list model to taskListModel.
+            else
+            {
+                taskList.setModel(taskListModel);
+            }  
         }
-            
     }
+        public String test()
+        {
+             ArrayList tasks = dbtk.getAllTasks();
+             
+            for(int i = 0; i < tasks.size(); i++)
+            {
+                String taskName = tasks.get(i).toString();
+                System.out.println(taskName);
+            }
+            return null;
+        }
 }
