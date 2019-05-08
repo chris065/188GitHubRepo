@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class TaskAllocatorUI extends javax.swing.JFrame {
 
-    private static ArrayList<String> user;
+    private static ArrayList user;
     private static String role;
     /**
      * Creates new form JobAllocator
