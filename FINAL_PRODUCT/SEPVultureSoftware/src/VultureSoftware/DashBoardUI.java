@@ -25,6 +25,10 @@ public class DashBoardUI extends javax.swing.JFrame {
     private static String role;
     private static ArrayList user;
     
+    /**
+     *
+     * @param user
+     */
     public DashBoardUI(ArrayList user) 
     {
         initComponents();
@@ -235,7 +239,7 @@ public class DashBoardUI extends javax.swing.JFrame {
             graphButton.setEnabled(false);
             finalInspectionButton.setEnabled(false);
             
-            //needs create new customer account + new job
+            //needs task allocator
         }
         if(role.toLowerCase().equals("resource"))
         {
@@ -244,6 +248,7 @@ public class DashBoardUI extends javax.swing.JFrame {
             graphButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
             finalInspectionButton.setEnabled(false);
+            
             //needs order new parts + delay job
         }
     }

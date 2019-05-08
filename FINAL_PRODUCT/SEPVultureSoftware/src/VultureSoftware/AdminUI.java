@@ -17,6 +17,9 @@ public class AdminUI extends javax.swing.JFrame {
      */
     DataBaseToolkit dbtk;
    
+    /**
+     *
+     */
     public AdminUI() {
         initComponents();        
         dbtk = new DataBaseToolkit();        
