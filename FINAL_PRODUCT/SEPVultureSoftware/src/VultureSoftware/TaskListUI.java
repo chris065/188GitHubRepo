@@ -7,6 +7,7 @@ package VultureSoftware;
 import databaseui.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Nathan
@@ -26,6 +27,7 @@ public class TaskListUI extends javax.swing.JFrame {
         dbtk = new DataBaseToolkit();
         initComponents();
         populateList();
+        test();
     }
 
     /**
@@ -37,7 +39,7 @@ public class TaskListUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        taskListPanel = new javax.swing.JPanel();
         taskListScrollPane = new javax.swing.JScrollPane();
         taskList = new javax.swing.JList<>();
         titleLabel = new javax.swing.JLabel();
@@ -48,7 +50,7 @@ public class TaskListUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        taskListPanel.setBackground(new java.awt.Color(102, 153, 255));
 
         taskListScrollPane.setBorder(null);
 
@@ -85,39 +87,39 @@ public class TaskListUI extends javax.swing.JFrame {
         searchLabel.setForeground(new java.awt.Color(255, 255, 255));
         searchLabel.setText("Search/Filter:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout taskListPanelLayout = new javax.swing.GroupLayout(taskListPanel);
+        taskListPanel.setLayout(taskListPanelLayout);
+        taskListPanelLayout.setHorizontalGroup(
+            taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(taskListPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(taskListPanelLayout.createSequentialGroup()
                         .addComponent(titleLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, taskListPanelLayout.createSequentialGroup()
+                        .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(taskListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, taskListPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(searchLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        taskListPanelLayout.setVerticalGroup(
+            taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, taskListPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titleLabel)
                 .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchLabel))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(detailsScrollPane)
                     .addComponent(taskListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -128,12 +130,12 @@ public class TaskListUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(taskListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(taskListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -215,10 +217,10 @@ public class TaskListUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane detailsScrollPane;
     private javax.swing.JTextArea detailsTextArea;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel searchLabel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JList<String> taskList;
+    private javax.swing.JPanel taskListPanel;
     private javax.swing.JScrollPane taskListScrollPane;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
@@ -255,38 +257,61 @@ public class TaskListUI extends javax.swing.JFrame {
     {   
         detailsTextArea.setText(null);
         
+        taskList.setModel(filteredItems);
+        
         ArrayList tasks = dbtk.getAllTasks();
         
-        //If the search field is not empty, find allocated tasks to match the search term.
-        if(!searchTextField.getText().equals(""))
+        if(tasks == null)
         {
-            for(int i = 0; i < tasks.size(); i++)
-            {
-                ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
-                
-                //If task is not assigned then exclude from search. Else add taks to filteredItems ans set filteredItems as the list model.
-                if (taskData.get(0).getAssignedTo() == null)
-                {
-                    taskData = null;
-                }
-                else
-                {
-                filteredItems.removeAllElements();
-                String taskName = tasks.get(i).toString();
-                if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
-                    {
-                            filteredItems.addElement(taskName);
-                    }
-                }
-                
-            }
-            taskList.setModel(filteredItems);
+            JOptionPane.showMessageDialog(null, "No tasks could be found in the database. Please contact an administrator if this problem persists.", "Error", JOptionPane.WARNING_MESSAGE);
+            taskList.setEnabled(false);
+            searchTextField.setEnabled(false);
+            detailsTextArea.setEnabled(false);
         }
-        //Set the task list model to taskListModel.
         else
         {
-            taskList.setModel(taskListModel);
+            //If the search field is not empty, find allocated tasks to match the search term.
+            if(!searchTextField.getText().equals(""))
+            {
+                filteredItems.removeAllElements();
+                
+                for(int i = 0; i < tasks.size(); i++)
+                {
+                    ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
+
+                    //If task is not assigned then exclude from search. Else add taks to filteredItems ans set filteredItems as the list model.
+                    if (taskData.get(0).getAssignedTo() == null)
+                    {
+                        taskData = null;
+                    }
+                    else
+                    {
+
+                    String taskName = tasks.get(i).toString();
+                    if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
+                        {
+                                filteredItems.addElement(taskName);
+                        }
+                    }
+                }
+                tasks.clear();
+            }
+            //Set the task list model to taskListModel.
+            else
+            {
+                taskList.setModel(taskListModel);
+            }  
         }
-            
     }
+        public String test()
+        {
+             ArrayList tasks = dbtk.getAllTasks();
+             
+            for(int i = 0; i < tasks.size(); i++)
+            {
+                String taskName = tasks.get(i).toString();
+                System.out.println(taskName);
+            }
+            return null;
+        }
 }
