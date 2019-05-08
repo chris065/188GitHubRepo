@@ -215,8 +215,19 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
     //delete button
     private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
-        String selectedItem = jList1.getSelectedValue();
-        System.out.println(selectedItem + "delete button");
+        //String selectedItem = jList1.getSelectedValue();
+        //System.out.println(selectedItem + "delete button");
+        String number = JOptionPane.showInputDialog(this, "enter job number");
+        if(!dbtk.deleteJob(Integer.parseInt(number)))
+        {
+            System.err.println("Error: job number " + number + " doesn't exist");
+        }
+        else
+        {
+            System.out.println("Succussfully deleted job " + number);
+        }
+        setJobList();  
+        
     }//GEN-LAST:event_jBtnDeleteActionPerformed
 
     /**

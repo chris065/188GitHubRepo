@@ -7,6 +7,9 @@ package VultureSoftware;
 
 import databaseui.*;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
+import java.text.ParseException;
 
 /**
  *
@@ -34,6 +37,7 @@ public class MotorAddUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         JTFMotorName = new javax.swing.JTextField();
@@ -60,11 +64,18 @@ public class MotorAddUI extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
+        jFormattedTextField1.setText("jFormattedTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(175, 0));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Motor Name");
@@ -80,7 +91,13 @@ public class MotorAddUI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Job Number");
 
+        JTFDateCollected.setText("DD/MM/YYYY");
         JTFDateCollected.setNextFocusableComponent(JTFEstimated);
+        JTFDateCollected.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFDateCollectedMousePressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Date Collected");
@@ -109,6 +126,13 @@ public class MotorAddUI extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Return Date");
+
+        JTFReturnDate.setText("DD/MM/YYYY");
+        JTFReturnDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFReturnDateMousePressed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setText("Date");
@@ -204,7 +228,7 @@ public class MotorAddUI extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
+                .addGap(32, 87, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,7 +294,20 @@ public class MotorAddUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //ensuring all technician attributes are entered before adding to databse
+    private boolean checkDate(String date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            dateFormat.parse(date.trim());
+            
+        } catch (ParseException pe){
+            return false;
+        }
+        return true;
+    }
+    
+    /*
+    ensuring all technician attributes are entered before adding to databse
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //only certain fields need to be filled in. job number and date boxes wont be there as they should be automatically assigned.
         
@@ -292,7 +329,24 @@ public class MotorAddUI extends javax.swing.JFrame {
         String textRD = JTFReturnDate.getText().trim();
         JTFReturnDate.setText(textRD);
         
-        //checking not empty
+        //parse string to date - if it works then submit the string to db
+        //method to check date - call here       
+       
+        //https://compiler.javatpoint.com/opr/test.jsp?filename=StringToDateExample1
+
+        
+
+//checking not empty
+        if(JTFDateCollected.getText().equals("")){
+            JTFDateCollected.setText(null);
+        }        
+        if(JTFReturnDate.getText().equals("")){
+            JTFReturnDate.setText(null);
+        }
+        if(JTFClient.getText().equals("")){
+            JTFClient.setText(null);
+        }
+
         if(JTFMotorName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter the name of the motor");
         }
@@ -309,12 +363,22 @@ public class MotorAddUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter the name of who checked this motor");
         }
         else if(JTFDate.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter todays date");
+            JOptionPane.showMessageDialog(null, "Please enter todays date"); //date automatic -> chris
+        }
+        else if(!JTFDateCollected.getText().equals("") || JTFDateCollected.getText().equals("DD/MM/YYYY")){ //not working properly
+            if(!checkDate(JTFDateCollected.getText())){
+             JOptionPane.showMessageDialog(null, "Format is incorrect for date collected");
+        }
+        }
+        else if(JTFDateCollected.getText().equals("") || JTFDateCollected.getText().equals("DD/MM/YYYY")){
+            if(!checkDate(JTFReturnDate.getText())){
+             JOptionPane.showMessageDialog(null, "Format is incorrect for date returned");
+        }
         }
         else{   
         int jobNumber = Integer.parseInt(JTFJobNumber.getText().toString());
         String motorName = JTFMotorName.getText();
-        String dateCollected = JTFDateCollected.getText();
+        String dateCollected = JTFDateCollected.getText();//make date then parse as string
         String estimatedHours = JTFEstimated.getText();
         String partsNeeded = TAParts.getText();
         String checkedBy = JTFChecked.getText();
@@ -324,9 +388,11 @@ public class MotorAddUI extends javax.swing.JFrame {
         String date = JTFDate.getText();
         
         //(table JOBS has 11 columns but 10 values were supplied). If you swap it, it doesnt work because int and string mis-match
-        if(!dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, date, checkedBy, 1, estimatedHours))
+        if(dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, date, checkedBy, 1, estimatedHours))
         {
             JOptionPane.showMessageDialog(null, "Successfully added to database");
+            this.dispose();   
+            //call refresh ??
         }
         else
         {
@@ -335,6 +401,23 @@ public class MotorAddUI extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    //not good enough, resets what you wrote. needs changed
+    private void JTFDateCollectedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDateCollectedMousePressed
+        JTFDateCollected.setText("");
+        JTFReturnDate.setText("DD/MM/YYYY"); 
+    }//GEN-LAST:event_JTFDateCollectedMousePressed
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        JTFDateCollected.setText("DD/MM/YYYY");
+        JTFReturnDate.setText("DD/MM/YYYY");        
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void JTFReturnDateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFReturnDateMousePressed
+        JTFReturnDate.setText("");
+        JTFDateCollected.setText("DD/MM/YYYY");
+    }//GEN-LAST:event_JTFReturnDateMousePressed
 
     /**
      * @param args the command line arguments
@@ -398,6 +481,7 @@ public class MotorAddUI extends javax.swing.JFrame {
     private javax.swing.JTextField JTFReturnDate;
     private java.awt.TextArea TAParts;
     private javax.swing.JButton jButton1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
