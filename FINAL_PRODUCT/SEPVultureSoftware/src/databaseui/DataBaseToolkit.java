@@ -353,7 +353,7 @@ public class DataBaseToolkit
         return 0;
     }
     
-    //Need a function to get the specific job
+    //Need a function to get the specific job 
     
     public boolean deleteJob(int jobNumber)
     {
