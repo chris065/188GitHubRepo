@@ -19,6 +19,7 @@ public class DailyTaskUI extends javax.swing.JFrame {
     DataBaseToolkit dbtk;
     private static ArrayList user;
     private String techName;
+    
     /**
      * Creates new form DailyTaskUI
      */
@@ -155,11 +156,16 @@ public class DailyTaskUI extends javax.swing.JFrame {
 
     public void populateList()
     {
-        jList1.setModel(taskListModel);
-        ArrayList<TaskObject> tasks = new ArrayList();
+        ArrayList tasks = dbtk.getAllTasks();
         for(int i = 0; i < tasks.size(); i++)
         {
-            taskListModel.addElement(tasks.get(i).getID());
+            ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
+            
+            if(taskData.get(i).getAssignedTo().equals(techName))
+            {
+                taskListModel.addElement(tasks.get(i).toString());
+            }
+            
         }
     }
 }
