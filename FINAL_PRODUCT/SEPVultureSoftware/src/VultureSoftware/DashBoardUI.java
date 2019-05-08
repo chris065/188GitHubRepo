@@ -195,26 +195,32 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     private void finalInspectionButtonfinaIinspectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalInspectionButtonfinaIinspectActionPerformed
         // TODO add your handling code here:
+        new FinalInspectionUI().setVisible(true);
     }//GEN-LAST:event_finalInspectionButtonfinaIinspectActionPerformed
 
     private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
         // TODO add your handling code here:
+        new CurrentJobsUI().setVisible(true);
     }//GEN-LAST:event_currentJobsButtonActionPerformed
 
     private void jobDelayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobDelayButtonActionPerformed
         // TODO add your handling code here:
+        new JobDelayUI().setVisible(true);
     }//GEN-LAST:event_jobDelayButtonActionPerformed
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
+        new AdminUI().setVisible(true);
     }//GEN-LAST:event_adminButtonActionPerformed
 
     private void graphButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphButtonActionPerformed
         // TODO add your handling code here:
+        new ViewGraphUI().setVisible(true);
     }//GEN-LAST:event_graphButtonActionPerformed
 
     private void taskAllocatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAllocatorButtonActionPerformed
         // TODO add your handling code here:
+        new TaskAllocatorUI(user).setVisible(true);
     }//GEN-LAST:event_taskAllocatorButtonActionPerformed
      
     
