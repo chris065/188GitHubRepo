@@ -205,8 +205,8 @@ public class DashBoardUI extends javax.swing.JFrame {
             adminButton.setEnabled(false);
             jobDelayButton.setEnabled(false);
             graphButton.setEnabled(false);
-            //needs current jobs
             
+            //needs current jobs
         }
         if(role.toLowerCase().equals("collection and delivery"))
         {
@@ -214,7 +214,9 @@ public class DashBoardUI extends javax.swing.JFrame {
             jobDelayButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
             graphButton.setEnabled(false);
-            //needs current jobs
+            finalInspectionButton.setEnabled(false);
+            
+            //needs finished jobs
         }
         if(role.toLowerCase().equals("finance"))
         {
@@ -222,6 +224,7 @@ public class DashBoardUI extends javax.swing.JFrame {
             jobDelayButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
             currentJobsButton.setEnabled(false);
+            finalInspectionButton.setEnabled(false);
             //needs stats graphs
         }
         if(role.toLowerCase().equals("customer support"))
@@ -230,6 +233,8 @@ public class DashBoardUI extends javax.swing.JFrame {
             jobDelayButton.setEnabled(false);		
             currentJobsButton.setEnabled(false);
             graphButton.setEnabled(false);
+            finalInspectionButton.setEnabled(false);
+            
             //needs create new customer account + new job
         }
         if(role.toLowerCase().equals("resource"))
@@ -238,6 +243,7 @@ public class DashBoardUI extends javax.swing.JFrame {
             currentJobsButton.setEnabled(false);
             graphButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
+            finalInspectionButton.setEnabled(false);
             //needs order new parts + delay job
         }
     }
