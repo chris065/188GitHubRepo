@@ -54,6 +54,11 @@ public class LoginUI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(641, 465));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         loginHeader.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         loginHeader.setForeground(new java.awt.Color(255, 255, 255));
@@ -66,6 +71,11 @@ public class LoginUI extends javax.swing.JFrame {
         usernameField.setToolTipText("Enter your username");
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         usernameField.setOpaque(false);
+        usernameField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                usernameFieldMousePressed(evt);
+            }
+        });
         usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 usernameFieldKeyPressed(evt);
@@ -209,6 +219,16 @@ public class LoginUI extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
+
+    private void usernameFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameFieldMousePressed
+        // TODO add your handling code here:
+        usernameField.setText("");
+    }//GEN-LAST:event_usernameFieldMousePressed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        usernameField.setText("username");
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     
 
