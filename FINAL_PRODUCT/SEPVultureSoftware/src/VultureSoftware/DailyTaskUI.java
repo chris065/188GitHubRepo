@@ -41,56 +41,54 @@ public class DailyTaskUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
+        dailyTaskPanel = new javax.swing.JPanel();
+        dailyTaskScrollPane = new javax.swing.JScrollPane();
+        dailyTaskLIist = new javax.swing.JList<>();
+        titleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        dailyTaskPanel.setBackground(new java.awt.Color(102, 153, 255));
 
-        jScrollPane1.setBorder(null);
+        dailyTaskScrollPane.setBorder(null);
 
-        jList1.setBackground(new java.awt.Color(102, 153, 255));
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        dailyTaskLIist.setBackground(new java.awt.Color(102, 153, 255));
+        dailyTaskLIist.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dailyTaskLIist.setForeground(new java.awt.Color(255, 255, 255));
+        dailyTaskLIist.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setFocusable(false);
-        jList1.setSelectionBackground(new java.awt.Color(102, 153, 255));
-        jScrollPane1.setViewportView(jList1);
+        dailyTaskLIist.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        dailyTaskLIist.setFocusable(false);
+        dailyTaskLIist.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        dailyTaskScrollPane.setViewportView(dailyTaskLIist);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Task List");
+        titleLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleLabel.setText("Task List");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
+        javax.swing.GroupLayout dailyTaskPanelLayout = new javax.swing.GroupLayout(dailyTaskPanel);
+        dailyTaskPanel.setLayout(dailyTaskPanelLayout);
+        dailyTaskPanelLayout.setHorizontalGroup(
+            dailyTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dailyTaskPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dailyTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dailyTaskPanelLayout.createSequentialGroup()
+                        .addComponent(titleLabel)
                         .addGap(0, 386, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                    .addComponent(dailyTaskScrollPane))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        dailyTaskPanelLayout.setVerticalGroup(
+            dailyTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dailyTaskPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titleLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dailyTaskScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -99,12 +97,12 @@ public class DailyTaskUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dailyTaskPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(dailyTaskPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -147,15 +145,15 @@ public class DailyTaskUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> dailyTaskLIist;
+    private javax.swing.JPanel dailyTaskPanel;
+    private javax.swing.JScrollPane dailyTaskScrollPane;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
     public void populateList()
     {
-        jList1.setModel(taskListModel);
+        dailyTaskLIist.setModel(taskListModel);
         ArrayList<TaskObject> tasks = new ArrayList();
         for(int i = 0; i < tasks.size(); i++)
         {

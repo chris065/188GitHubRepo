@@ -48,9 +48,8 @@ public class DashBoardUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        dashboardPanel = new javax.swing.JPanel();
+        underlineLabel = new javax.swing.JLabel();
         finalInspectionButton = new javax.swing.JButton();
         currentJobsButton = new javax.swing.JButton();
         jobDelayButton = new javax.swing.JButton();
@@ -61,13 +60,9 @@ public class DashBoardUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        dashboardPanel.setBackground(new java.awt.Color(102, 153, 255));
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 60));
+        underlineLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
         finalInspectionButton.setBackground(new java.awt.Color(102, 153, 255));
         finalInspectionButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -80,7 +75,6 @@ public class DashBoardUI extends javax.swing.JFrame {
                 finalInspectionButtonfinaIinspectActionPerformed(evt);
             }
         });
-        jPanel2.add(finalInspectionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 180, 50));
 
         currentJobsButton.setBackground(new java.awt.Color(102, 153, 255));
         currentJobsButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -93,7 +87,6 @@ public class DashBoardUI extends javax.swing.JFrame {
                 currentJobsButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(currentJobsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 180, 50));
 
         jobDelayButton.setBackground(new java.awt.Color(102, 153, 255));
         jobDelayButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -106,7 +99,6 @@ public class DashBoardUI extends javax.swing.JFrame {
                 jobDelayButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(jobDelayButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 180, 50));
 
         adminButton.setBackground(new java.awt.Color(102, 153, 255));
         adminButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -119,7 +111,6 @@ public class DashBoardUI extends javax.swing.JFrame {
                 adminButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 180, 50));
 
         graphButton.setBackground(new java.awt.Color(102, 153, 255));
         graphButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -132,7 +123,6 @@ public class DashBoardUI extends javax.swing.JFrame {
                 graphButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(graphButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 180, 50));
 
         taskAllocatorButton.setBackground(new java.awt.Color(102, 153, 255));
         taskAllocatorButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -145,60 +135,86 @@ public class DashBoardUI extends javax.swing.JFrame {
                 taskAllocatorButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(taskAllocatorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 180, 50));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout dashboardPanelLayout = new javax.swing.GroupLayout(dashboardPanel);
+        dashboardPanel.setLayout(dashboardPanelLayout);
+        dashboardPanelLayout.setHorizontalGroup(
+            dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                .addGap(0, 10, Short.MAX_VALUE)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(underlineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                                .addComponent(taskAllocatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(jobDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                                .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(finalInspectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+        dashboardPanelLayout.setVerticalGroup(
+            dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                .addGap(0, 49, Short.MAX_VALUE)
+                .addComponent(underlineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(taskAllocatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jobDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(finalInspectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(dashboardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(dashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jobDelayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobDelayButtonActionPerformed
+    private void finalInspectionButtonfinaIinspectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalInspectionButtonfinaIinspectActionPerformed
         // TODO add your handling code here:
-       new JobDelayUI().setVisible(true);
-    }//GEN-LAST:event_jobDelayButtonActionPerformed
+    }//GEN-LAST:event_finalInspectionButtonfinaIinspectActionPerformed
 
     private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
         // TODO add your handling code here:
-        new CurrentJobsUI().setVisible(true);
     }//GEN-LAST:event_currentJobsButtonActionPerformed
 
-    private void graphButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphButtonActionPerformed
+    private void jobDelayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobDelayButtonActionPerformed
         // TODO add your handling code here:
-        new ViewGraphUI().setVisible(true);
-    }//GEN-LAST:event_graphButtonActionPerformed
+    }//GEN-LAST:event_jobDelayButtonActionPerformed
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
-        new AdminUI().setVisible(true);
     }//GEN-LAST:event_adminButtonActionPerformed
 
-    private void finalInspectionButtonfinaIinspectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalInspectionButtonfinaIinspectActionPerformed
-        new FinalInspectionUI().setVisible(true);
-    }//GEN-LAST:event_finalInspectionButtonfinaIinspectActionPerformed
+    private void graphButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_graphButtonActionPerformed
 
     private void taskAllocatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAllocatorButtonActionPerformed
         // TODO add your handling code here:
-        new TaskAllocatorUI(user).setVisible(true);
     }//GEN-LAST:event_taskAllocatorButtonActionPerformed
      
     
@@ -292,12 +308,11 @@ public class DashBoardUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminButton;
     private javax.swing.JButton currentJobsButton;
+    private javax.swing.JPanel dashboardPanel;
     private javax.swing.JButton finalInspectionButton;
     private javax.swing.JButton graphButton;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jobDelayButton;
     private javax.swing.JButton taskAllocatorButton;
+    private javax.swing.JLabel underlineLabel;
     // End of variables declaration//GEN-END:variables
 }
