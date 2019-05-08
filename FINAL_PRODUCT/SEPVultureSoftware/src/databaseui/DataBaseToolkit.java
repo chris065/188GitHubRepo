@@ -384,18 +384,18 @@ public class DataBaseToolkit
         }
     }
     
-    public boolean addNewJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, int jobTaskID, String expectedTime)
+    public boolean addNewJob(String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, int jobTaskID, String expectedTime)
     {
         try
         {
-            //int jobId = countRows("JOBS");
+            int jobId = countRows("JOBS")+1;
             PreparedStatement sqlInsert = null;
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
             sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?)");
             
-            sqlInsert.setInt(1, jobNumber);
+            sqlInsert.setInt(1, jobId);
             sqlInsert.setString(2, jobMotorName);
             sqlInsert.setString(3, jobDateCollected);
             sqlInsert.setString(4, jobParts);

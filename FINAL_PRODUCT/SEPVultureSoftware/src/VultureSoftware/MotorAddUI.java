@@ -324,7 +324,7 @@ public class MotorAddUI extends javax.swing.JFrame {
         String date = JTFDate.getText();
         
         //(table JOBS has 11 columns but 10 values were supplied). If you swap it, it doesnt work because int and string mis-match
-        if(!dbtk.addNewJob(jobNumber, motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, date, checkedBy, 1, estimatedHours))
+        if(!dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, date, checkedBy, 1, estimatedHours))
         {
             JOptionPane.showMessageDialog(null, "Successfully added to database");
         }
