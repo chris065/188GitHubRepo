@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class TaskAllocatorUI extends javax.swing.JFrame {
 
     private static ArrayList<String> user;
+    private static String role;
     /**
      * Creates new form JobAllocator
      */
@@ -21,6 +22,8 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
     {
         initComponents();
         this.user = user;
+        this.role = this.user.get(5).toString();
+        setButtons(role);
     }
 
     /**
@@ -166,6 +169,15 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         new AllocateATaskUI().setVisible(true);
     }//GEN-LAST:event_allocateTaskButtonActionPerformed
 
+    private void setButtons(String role)
+    {
+        if(role.toLowerCase().equals("tech"))
+        {
+            allocateTaskButton.setEnabled(false);
+            taskListButton.setEnabled(false);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

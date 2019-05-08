@@ -357,7 +357,31 @@ public class DataBaseToolkit
     
     public boolean deleteJob(int jobNumber)
     {
-        return false;
+        PreparedStatement sqlDelete = null ;
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            sqlDelete = conn.prepareStatement("DELETE FROM JOBS WHERE JOB_NUMBER = ?");
+            sqlDelete.setInt(1, jobNumber);
+            
+            int rslt = sqlDelete.executeUpdate();
+            if(rslt == 0)
+            {
+                //conn.rollback();
+                conn.close();
+                return false;
+            }
+            else
+            {
+                conn.close();
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
     
     public boolean addNewJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, int jobTaskID, String expectedTime)
