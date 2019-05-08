@@ -10,6 +10,8 @@ import java.util.*;
 /**
  *
  * @author Chris Bennett
+ * @version 1.0 
+ * 
  */
 public class DataBaseToolkit 
 {
@@ -393,7 +395,7 @@ public class DataBaseToolkit
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
-            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?)");
+            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             
             sqlInsert.setInt(1, jobId);
             sqlInsert.setString(2, jobMotorName);
