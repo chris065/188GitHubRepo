@@ -71,11 +71,6 @@ public class MotorAddUI extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel1MousePressed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Motor Name");
@@ -348,31 +343,32 @@ public class MotorAddUI extends javax.swing.JFrame {
         }
 
         if(JTFMotorName.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the name of the motor");
+            JOptionPane.showMessageDialog(null, "Please enter the name of the motor", "", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(JCBMan.getSelectedItem().equals("Select a manufacturer")){
-            JOptionPane.showMessageDialog(null, "Please select a manufacturer from the drop down menu");
+            JOptionPane.showMessageDialog(null, "Please select a manufacturer from the drop down menu", "", JOptionPane.INFORMATION_MESSAGE);
         }       
         else if(JTFEstimated.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter estimated working hours required");
+            JOptionPane.showMessageDialog(null, "Please enter estimated working hours required", "", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(TAParts.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the parts required");
+            JOptionPane.showMessageDialog(null, "Please enter the parts required", "", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(JTFChecked.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the name of who checked this motor");
+            JOptionPane.showMessageDialog(null, "Please enter the name of who checked this motor", "", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(JTFDate.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter todays date"); //date automatic -> chris
+            JOptionPane.showMessageDialog(null, "Please enter todays date", "", JOptionPane.INFORMATION_MESSAGE); //date automatic -> chris
         }
-        else if(!JTFDateCollected.getText().equals("") || JTFDateCollected.getText().equals("DD/MM/YYYY")){ //not working properly
+        else if(/*!JTFDateCollected.getText().equals("") ||*/ !JTFDateCollected.getText().equals("DD/MM/YYYY")){ //not working properly. with both checks one is good
+            //means other is bad so still goes through. With 1 still boned as it tries to upload to db empty string idk
             if(!checkDate(JTFDateCollected.getText())){
-             JOptionPane.showMessageDialog(null, "Format is incorrect for date collected");
+             JOptionPane.showMessageDialog(null, "Format is incorrect for date collected", "", JOptionPane.INFORMATION_MESSAGE);
         }
         }
-        else if(JTFDateCollected.getText().equals("") || JTFDateCollected.getText().equals("DD/MM/YYYY")){
+        else if(/*!JTFReturnDate.getText().equals("") ||*/ !JTFReturnDate.getText().equals("DD/MM/YYYY")){
             if(!checkDate(JTFReturnDate.getText())){
-             JOptionPane.showMessageDialog(null, "Format is incorrect for date returned");
+             JOptionPane.showMessageDialog(null, "Format is incorrect for return date", "", JOptionPane.INFORMATION_MESSAGE);
         }
         }
         else{   
@@ -390,13 +386,13 @@ public class MotorAddUI extends javax.swing.JFrame {
         //(table JOBS has 11 columns but 10 values were supplied). If you swap it, it doesnt work because int and string mis-match
         if(dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, date, checkedBy, 1, estimatedHours))
         {
-            JOptionPane.showMessageDialog(null, "Successfully added to database");
+            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();   
             //call refresh ??
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Failed to add to database");
+            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
             this.dispose();
         }
         }
@@ -407,11 +403,6 @@ public class MotorAddUI extends javax.swing.JFrame {
         JTFDateCollected.setText("");
         //JTFReturnDate.setText("DD/MM/YYYY"); 
     }//GEN-LAST:event_JTFDateCollectedMousePressed
-
-    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-        //JTFDateCollected.setText("DD/MM/YYYY");
-        //JTFReturnDate.setText("DD/MM/YYYY");        
-    }//GEN-LAST:event_jPanel1MousePressed
 
     private void JTFReturnDateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFReturnDateMousePressed
         JTFReturnDate.setText("");
