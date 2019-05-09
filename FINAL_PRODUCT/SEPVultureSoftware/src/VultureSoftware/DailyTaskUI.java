@@ -142,11 +142,21 @@ public class DailyTaskUI extends javax.swing.JFrame {
     
     public void populateList()
     {
-        jList1.setModel(taskListModel);
-        ArrayList<TaskObject> tasks = new ArrayList();
-        for(int i = 0; i < tasks.size(); i++)
+        System.out.println("Hello world");
+        if(dbtk.getTasksForTech(techName) == null)
         {
-            taskListModel.addElement(tasks.get(i).getID());
+            System.out.println("null");
+        }
+        else
+        {
+            ArrayList<TaskObject> taskData = dbtk.getTasksForTech(techName);
+
+            System.out.println(taskData.size());
+
+            for(TaskObject t : taskData)
+            {
+                System.out.println(t.getTaskName());
+            }
         }
     }
 
