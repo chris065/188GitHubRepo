@@ -52,7 +52,7 @@ public class MotorAddUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         JTFChecked = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         JTFReturnDate = new javax.swing.JTextField();
@@ -108,11 +108,11 @@ public class MotorAddUI extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Checked By");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Save Job");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        saveButton.setText("Save Job");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
 
@@ -188,7 +188,7 @@ public class MotorAddUI extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel10)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                                         .addComponent(jLabel3)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -268,7 +268,7 @@ public class MotorAddUI extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(JTFJobNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel11))
                 .addGap(9, 9, 9))
         );
@@ -297,15 +297,20 @@ public class MotorAddUI extends javax.swing.JFrame {
         } catch (ParseException pe){
             return false;
         }
+        /*catch (NumberFormatException ne){
+            return false;
+        }
+        */ 
+        //put all these ifs and elses in methods to make it easier to sort this
         return true;
     }
     
     /*
     ensuring all technician attributes are entered before adding to databse
     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         //only certain fields need to be filled in. job number and date boxes wont be there as they should be automatically assigned.
-        
+                
         //trimming text fields
         String textMN = JTFMotorName.getText().trim();
         JTFMotorName.setText(textMN);
@@ -322,16 +327,17 @@ public class MotorAddUI extends javax.swing.JFrame {
         String textDC = JTFDateCollected.getText().trim();
         JTFDateCollected.setText(textDC);
         String textRD = JTFReturnDate.getText().trim();
-        JTFReturnDate.setText(textRD);
+        JTFReturnDate.setText(textRD);  
         
-        //parse string to date - if it works then submit the string to db
-        //method to check date - call here       
-       
-        //https://compiler.javatpoint.com/opr/test.jsp?filename=StringToDateExample1
+        //set text field to default if left blank
+        if(JTFDateCollected.getText().equals("")){
+            JTFDateCollected.setText("DD/MM/YYYY");
+        }        
+        if(JTFReturnDate.getText().equals("")){
+            JTFReturnDate.setText("DD/MM/YYYY");
+        }
 
-        
-
-//checking not empty
+        //checking requried fields are not empty and correct types before adding to db
         if(JTFDateCollected.getText().equals("")){
             JTFDateCollected.setText(null);
         }        
@@ -396,7 +402,7 @@ public class MotorAddUI extends javax.swing.JFrame {
             this.dispose();
         }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     
     private void JTFDateCollectedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDateCollectedMousePressed
@@ -470,7 +476,6 @@ public class MotorAddUI extends javax.swing.JFrame {
     private javax.swing.JTextField JTFMotorName;
     private javax.swing.JTextField JTFReturnDate;
     private java.awt.TextArea TAParts;
-    private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -486,6 +491,7 @@ public class MotorAddUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 
 

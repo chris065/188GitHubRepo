@@ -124,7 +124,8 @@ public class TaskAddUI extends javax.swing.JFrame {
 
     
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        
+    //public boolean addTask(boolean delayed, String name, String type, String assigned, int expectedTime, String prefrences, String talents, String priority)
+    //delayed always be 0 
     }//GEN-LAST:event_saveButtonActionPerformed
 
     

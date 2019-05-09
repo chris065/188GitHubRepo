@@ -84,6 +84,11 @@ public class TaskListUI extends javax.swing.JFrame {
         detailsTextArea.setRows(5);
         detailsScrollPane.setViewportView(detailsTextArea);
 
+        searchTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTextFieldActionPerformed(evt);
+            }
+        });
         searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchTextFieldKeyReleased(evt);
@@ -222,6 +227,10 @@ public class TaskListUI extends javax.swing.JFrame {
     private void taskAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAddButtonActionPerformed
         new TaskAddUI().setVisible(true);
     }//GEN-LAST:event_taskAddButtonActionPerformed
+
+    private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
