@@ -403,20 +403,19 @@ public class MotorAddUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
-    //not good enough, resets what you wrote. needs changed
     private void JTFDateCollectedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDateCollectedMousePressed
         JTFDateCollected.setText("");
-        JTFReturnDate.setText("DD/MM/YYYY"); 
+        //JTFReturnDate.setText("DD/MM/YYYY"); 
     }//GEN-LAST:event_JTFDateCollectedMousePressed
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-        JTFDateCollected.setText("DD/MM/YYYY");
-        JTFReturnDate.setText("DD/MM/YYYY");        
+        //JTFDateCollected.setText("DD/MM/YYYY");
+        //JTFReturnDate.setText("DD/MM/YYYY");        
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void JTFReturnDateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFReturnDateMousePressed
         JTFReturnDate.setText("");
-        JTFDateCollected.setText("DD/MM/YYYY");
+        //JTFDateCollected.setText("DD/MM/YYYY");
     }//GEN-LAST:event_JTFReturnDateMousePressed
 
     /**
