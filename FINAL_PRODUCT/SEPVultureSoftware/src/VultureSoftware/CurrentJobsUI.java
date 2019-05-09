@@ -185,7 +185,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(currentJobsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 431, Short.MAX_VALUE)
+            .addComponent(currentJobsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
         );
 
         pack();
@@ -214,29 +214,28 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_editButtonActionPerformed
 
     //delete button
-<<<<<<< HEAD
-    private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
-        //String selectedItem = jList1.getSelectedValue();
-        //System.out.println(selectedItem + "delete button");
-        String number = JOptionPane.showInputDialog(this, "enter job number");
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
+        String number = JOptionPane.showInputDialog(this, "Enter the job number of the motor to delete");
+        try{
         if(!dbtk.deleteJob(Integer.parseInt(number)))
         {
+            JOptionPane.showMessageDialog(null, "Error: job number " + number + " doesn't exist"); //use both dialog and print?
             System.err.println("Error: job number " + number + " doesn't exist");
         }
         else
         {
             System.out.println("Succussfully deleted job " + number);
+            setJobList();
         }
-        setJobList();  
-        
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Error: job number " + number + " doesn't exist");
+            System.err.println("Error: must enter a number");
+                }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
-=======
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        String selectedItem = jList1.getSelectedValue();
-        System.out.println(selectedItem + "delete button");
-    }//GEN-LAST:event_deleteButtonActionPerformed
->>>>>>> f6bdda407c001d8177c3c509533f024e775c1287
+    private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
 
+    }//GEN-LAST:event_deleteButtonActionPerformed
     /**
      * @param args the command line arguments
      */
