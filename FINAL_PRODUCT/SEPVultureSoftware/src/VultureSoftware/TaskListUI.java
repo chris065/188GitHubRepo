@@ -157,7 +157,7 @@ public class TaskListUI extends javax.swing.JFrame {
         ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
         
         String tech = taskData.get(0).getAssignedTo();
-        int expectedTime = taskData.get(0).getExpectedTime();
+        String expectedTime = taskData.get(0).getExpectedTime();
         String prefs = taskData.get(0).getPrefs();
         String talents = taskData.get(0).getTalents();
         String priority = taskData.get(0).getPriority();
@@ -165,7 +165,7 @@ public class TaskListUI extends javax.swing.JFrame {
         
         detailsTextArea.setText(null);
         detailsTextArea.setText("Technician assigned to this task: " + tech + "\n\n");
-        detailsTextArea.append("This task is expected to be completed in " + Integer.toString(expectedTime) + " days.\n\n");
+        detailsTextArea.append("This task is expected to be completed on " + expectedTime + " \n\n");
         detailsTextArea.append("Task Preferences:\n" + prefs + "\n\n");
         detailsTextArea.append("Requiered Talents:\n" + talents + "\n\n");
         detailsTextArea.append("This tasks priority is " + priority + ".\n\n");
