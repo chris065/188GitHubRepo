@@ -28,7 +28,6 @@ public class TaskListUI extends javax.swing.JFrame {
         dbtk = new DataBaseToolkit();
         initComponents();
         populateList();
-        test();
     }
 
     /**
@@ -48,12 +47,6 @@ public class TaskListUI extends javax.swing.JFrame {
         detailsTextArea = new javax.swing.JTextArea();
         searchTextField = new javax.swing.JTextField();
         searchLabel = new javax.swing.JLabel();
-        taskResumeButton = new javax.swing.JButton();
-        taskEditButton = new javax.swing.JButton();
-        taskDeleteButton = new javax.swing.JButton();
-        taskAddButton = new javax.swing.JButton();
-        taskRefreshButton = new javax.swing.JButton();
-        taskDelayButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,23 +92,6 @@ public class TaskListUI extends javax.swing.JFrame {
         searchLabel.setForeground(new java.awt.Color(255, 255, 255));
         searchLabel.setText("Search/Filter:");
 
-        taskResumeButton.setText("Resume Task");
-
-        taskEditButton.setText("Edit Task");
-
-        taskDeleteButton.setText("Delete Task");
-
-        taskAddButton.setText("Add Task");
-        taskAddButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                taskAddButtonActionPerformed(evt);
-            }
-        });
-
-        taskRefreshButton.setText("Refresh List");
-
-        taskDelayButton.setText("Delay Task");
-
         javax.swing.GroupLayout taskListPanelLayout = new javax.swing.GroupLayout(taskListPanel);
         taskListPanel.setLayout(taskListPanelLayout);
         taskListPanelLayout.setHorizontalGroup(
@@ -134,42 +110,21 @@ public class TaskListUI extends javax.swing.JFrame {
                 .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(taskDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskResumeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         taskListPanelLayout.setVerticalGroup(
             taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, taskListPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(taskListPanelLayout.createSequentialGroup()
-                        .addComponent(titleLabel)
-                        .addGap(7, 7, 7)
-                        .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchLabel)))
-                    .addComponent(taskDelayButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(titleLabel)
+                .addGap(7, 7, 7)
+                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchLabel))
                 .addGap(18, 18, 18)
                 .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(detailsScrollPane)
-                    .addComponent(taskListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                    .addGroup(taskListPanelLayout.createSequentialGroup()
-                        .addComponent(taskResumeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(taskEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(taskDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(taskAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(taskListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -177,9 +132,7 @@ public class TaskListUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(taskListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(taskListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,12 +162,18 @@ public class TaskListUI extends javax.swing.JFrame {
         String talents = taskData.get(0).getTalents();
         String priority = taskData.get(0).getPriority();
         
+        
         detailsTextArea.setText(null);
         detailsTextArea.setText("Technician assigned to this task: " + tech + "\n\n");
         detailsTextArea.append("This task is expected to be completed in " + Integer.toString(expectedTime) + " days.\n\n");
         detailsTextArea.append("Task Preferences:\n" + prefs + "\n\n");
         detailsTextArea.append("Requiered Talents:\n" + talents + "\n\n");
-        detailsTextArea.append("This tasks priority is " + priority + ".");
+        detailsTextArea.append("This tasks priority is " + priority + ".\n\n");
+        
+        if(taskData.get(0).getDelay())
+        {
+            detailsTextArea.append("This task is delayed.");
+        }
         }
     }//GEN-LAST:event_taskListValueChanged
     /*
@@ -223,10 +182,6 @@ public class TaskListUI extends javax.swing.JFrame {
     private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
         searchFilter(searchTextField.getText());
     }//GEN-LAST:event_searchTextFieldKeyReleased
-
-    private void taskAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAddButtonActionPerformed
-        new TaskAddUI().setVisible(true);
-    }//GEN-LAST:event_taskAddButtonActionPerformed
 
     private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
         // TODO add your handling code here:
@@ -275,15 +230,9 @@ public class TaskListUI extends javax.swing.JFrame {
     private javax.swing.JTextArea detailsTextArea;
     private javax.swing.JLabel searchLabel;
     private javax.swing.JTextField searchTextField;
-    private javax.swing.JButton taskAddButton;
-    private javax.swing.JButton taskDelayButton;
-    private javax.swing.JButton taskDeleteButton;
-    private javax.swing.JButton taskEditButton;
     private javax.swing.JList<String> taskList;
     private javax.swing.JPanel taskListPanel;
     private javax.swing.JScrollPane taskListScrollPane;
-    private javax.swing.JButton taskRefreshButton;
-    private javax.swing.JButton taskResumeButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -365,15 +314,4 @@ public class TaskListUI extends javax.swing.JFrame {
             }  
         }
     }
-        public String test()
-        {
-             ArrayList tasks = dbtk.getAllTasks();
-             
-            for(int i = 0; i < tasks.size(); i++)
-            {
-                String taskName = tasks.get(i).toString();
-                System.out.println(taskName);
-            }
-            return null;
-        }
 }
