@@ -617,8 +617,8 @@ public class DataBaseToolkit
         }
     }
     
-    
-    public boolean updateTasks(int taskID, boolean delayed, String name, String type, String assigned, int expectedTime, String prefrences, String talents, String priority)
+    /*
+    public boolean updateTasks(int taskID, boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority)
     {
         try
         {
@@ -632,7 +632,7 @@ public class DataBaseToolkit
             sqlUpdate.setString(2, name);
             sqlUpdate.setString(3, type);
             sqlUpdate.setString(4, assigned);
-            sqlUpdate.setInt(5, expectedTime);
+            sqlUpdate.setString(5, expectedTime);
             sqlUpdate.setString(6, prefrences);
             sqlUpdate.setString(7, talents);
             sqlUpdate.setString(8, priority);
@@ -659,6 +659,7 @@ public class DataBaseToolkit
             return false;
         }
     }
+    */
     
     public ArrayList getAllTasks()
     {
