@@ -511,7 +511,7 @@ public class DataBaseToolkit
         }
     }
     
-    public boolean addTask(boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority)
+    public boolean addTask(boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority) 
     {
         int taskID;
         try
