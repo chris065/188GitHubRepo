@@ -23,10 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="taskListPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="taskListPanel" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -65,16 +62,7 @@
                       <Component id="detailsScrollPane" alignment="0" min="-2" pref="330" max="-2" attributes="0"/>
                       <Component id="searchTextField" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="taskDelayButton" min="-2" pref="128" max="-2" attributes="0"/>
-                      <Component id="taskResumeButton" min="-2" pref="128" max="-2" attributes="0"/>
-                      <Component id="taskEditButton" min="-2" pref="128" max="-2" attributes="0"/>
-                      <Component id="taskDeleteButton" min="-2" pref="128" max="-2" attributes="0"/>
-                      <Component id="taskAddButton" min="-2" pref="128" max="-2" attributes="0"/>
-                      <Component id="taskRefreshButton" min="-2" pref="128" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -82,32 +70,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="searchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="searchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="taskDelayButton" alignment="1" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="searchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="detailsScrollPane" max="32767" attributes="0"/>
                       <Component id="taskListScrollPane" pref="294" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="taskResumeButton" min="-2" pref="45" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="taskEditButton" min="-2" pref="45" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="taskDeleteButton" min="-2" pref="45" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="taskAddButton" min="-2" pref="45" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="taskRefreshButton" min="-2" pref="45" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -201,39 +173,6 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Search/Filter:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="taskResumeButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Resume Task"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="taskEditButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit Task"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="taskDeleteButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Delete Task"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="taskAddButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Add Task"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taskAddButtonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="taskRefreshButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Refresh List"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="taskDelayButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Delay Task"/>
           </Properties>
         </Component>
       </SubComponents>
