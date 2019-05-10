@@ -496,7 +496,7 @@ public class DataBaseToolkit
                 else
                 {
                     //TaskObject Params: ID, DELAY, NAME, TYPE, ASSIENGED TO, EXPECTED TIME, PREFS, TALENTS, PRIORITY
-                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4),rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4),rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
                     //System.out.println(tasks.toString());
                     
                     conn.close();
@@ -536,6 +536,7 @@ public class DataBaseToolkit
             int rslt = sqlInsert.executeUpdate();
             if(rslt == 0)
             {
+                
                 conn.rollback();
                 conn.close();
                 return false;
@@ -751,7 +752,7 @@ public class DataBaseToolkit
                 {
                     do
                     {
-                        tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                        tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
                         return tasks;
                     }
                     while(rs.next());
