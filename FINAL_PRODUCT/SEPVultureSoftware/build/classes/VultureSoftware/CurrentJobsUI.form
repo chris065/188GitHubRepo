@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="currentJobsPanel" alignment="0" pref="347" max="32767" attributes="0"/>
+          <Component id="currentJobsPanel" alignment="0" pref="332" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -85,11 +85,8 @@
                       <Component id="infoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="infoScrollpane" max="32767" attributes="0"/>
-                          <Component id="jobsScrollpane" pref="279" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="infoScrollpane" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="viewButton" min="-2" pref="45" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -101,8 +98,9 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="refreshButton" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jobsScrollpane" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
