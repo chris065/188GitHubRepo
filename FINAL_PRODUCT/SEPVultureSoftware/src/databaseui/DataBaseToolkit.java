@@ -511,7 +511,7 @@ public class DataBaseToolkit
         }
     }
     
-    public boolean addTask(boolean delayed, String name, String type, String assigned, int expectedTime, String prefrences, String talents, String priority)
+    public boolean addTask(boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority)
     {
         int taskID;
         try
@@ -528,7 +528,7 @@ public class DataBaseToolkit
             sqlInsert.setString(3, name);
             sqlInsert.setString(4, type);
             sqlInsert.setString(5, assigned);
-            sqlInsert.setInt(6, expectedTime);
+            sqlInsert.setString(6, expectedTime);
             sqlInsert.setString(7, prefrences);
             sqlInsert.setString(8, talents);
             sqlInsert.setString(9, priority);
