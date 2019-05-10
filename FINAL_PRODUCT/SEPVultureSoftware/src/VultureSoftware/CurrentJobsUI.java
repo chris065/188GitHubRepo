@@ -46,7 +46,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         viewButton = new javax.swing.JButton();
         addJobButton = new javax.swing.JButton();
         jobsScrollpane = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jobList = new javax.swing.JList<>();
         refreshButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         editButton = new javax.swing.JButton();
@@ -79,18 +79,18 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
         jobsScrollpane.setBorder(null);
 
-        jList1.setBackground(new java.awt.Color(102, 153, 255));
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jobList.setBackground(new java.awt.Color(102, 153, 255));
+        jobList.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jobList.setForeground(new java.awt.Color(255, 255, 255));
+        jobList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Job list" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setFocusable(false);
-        jList1.setSelectionBackground(new java.awt.Color(102, 153, 255));
-        jobsScrollpane.setViewportView(jList1);
+        jobList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jobList.setFocusable(false);
+        jobList.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        jobsScrollpane.setViewportView(jobList);
 
         refreshButton.setText("Refresh Job List");
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +206,9 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
     //edit job button
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        new MotorEditUI().setVisible(true);
+        //make them type in job number
+        //jobList.getSelectedValue();
+        //new MotorEditUI().setVisible(true);
     }//GEN-LAST:event_editButtonActionPerformed
 
     //delete button
@@ -279,8 +281,8 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     private javax.swing.JButton editButton;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JScrollPane infoScrollpane;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JList<String> jobList;
     private javax.swing.JScrollPane jobsScrollpane;
     private javax.swing.JButton refreshButton;
     private javax.swing.JLabel titleLabel;
@@ -292,14 +294,14 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     public void setJobList()
     {  
         ArrayList<JobObject> allJobs = dbtk.getAllJobs();
-        jList1.setModel(jobListModel);
+        jobList.setModel(jobListModel);
                     
         //to test no jobs in db:
         //allJobs = null; 
     
         if(allJobs == null)
         {
-            jobListModel.addElement( "No jobs currently in database");
+            jobListModel.addElement( null);
         }
         else
         {
