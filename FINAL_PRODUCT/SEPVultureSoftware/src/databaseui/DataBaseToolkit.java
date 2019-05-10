@@ -16,9 +16,11 @@ import java.util.*;
 public class DataBaseToolkit 
 {
     //ArrayLists to store all of the jobs, customers, technitions and tasks that are in the db
-    private ArrayList<String> allJobs, allCustomers, allTechs, allTasks;
+    private ArrayList<String> allCustomers, allTechs, allTasks;
     //ArrayList to store all of the users that are in the db (as a UserObject)
     private ArrayList<UserObject> allUsers;
+    
+    private ArrayList<JobObject> allJobs; 
     //DBConnection, create the object that establishes the  connection to the db
     private final DataBaseConnection connection;
     
@@ -40,7 +42,7 @@ public class DataBaseToolkit
 
         /*
         try
-        {   
+        {
         }
         catch(Exception e)
         {
@@ -439,7 +441,7 @@ public class DataBaseToolkit
         {
             Connection conn = DriverManager.getConnection(connection.getURL());
             Statement stmt = conn.createStatement();
-            String sql = "SELECT JOB_NUMBER, JOB_DATE, JOB_CLIENT FROM JOBS";
+            String sql = "SELECT * FROM JOBS";
             
             ResultSet rs = stmt.executeQuery(sql);
             if(!rs.next())
@@ -449,13 +451,13 @@ public class DataBaseToolkit
             }
             do
             {
-                //System.out.println(rs.getString(1) +" "+rs.getString(2));
-                allJobs.add("Job Number: "+rs.getString(1)+"\n"+"Date: "+rs.getString(2)+"\n"+"Client: "+rs.getString(3)+"\n");
+                
+                allJobs.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11)));
             }
             while(rs.next());
             
             conn.close();
-            //System.out.println(allJobs.get(1));
+            //System.out.println(allJobs.get(1).toString());
             return allJobs;
             
         }
@@ -794,8 +796,4 @@ public class DataBaseToolkit
         new DataBaseToolkit();
     }
     */
-    
-    
-    
-    
 }
