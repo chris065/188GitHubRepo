@@ -393,7 +393,6 @@ public class DataBaseToolkit
     {
         String jobDate = getDate();
         
-        
         try
         {
             int jobId = countRows("JOBS")+1;
@@ -621,7 +620,7 @@ public class DataBaseToolkit
         }
     }
     
-    /*
+    
     public boolean updateTasks(int taskID, boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority)
     {
         try
@@ -663,7 +662,7 @@ public class DataBaseToolkit
             return false;
         }
     }
-    */
+    
     
     public ArrayList getAllTasks()
     {
