@@ -6,6 +6,7 @@
 package databaseui;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.*;
 /**
  *
@@ -388,8 +389,11 @@ public class DataBaseToolkit
         }
     }
     
-    public boolean addNewJob(String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, int jobTaskID, String expectedTime)
+    public boolean addNewJob(String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobCheck, int jobTaskID, String expectedTime)
     {
+        String jobDate = getDate();
+        
+        
         try
         {
             int jobId = countRows("JOBS")+1;
@@ -799,4 +803,16 @@ public class DataBaseToolkit
     }
     */
     
+    
+    public String getDate()
+    {
+        String jobDate = "";
+        LocalDateTime now = LocalDateTime.now();
+        
+        int day = now.getDayOfMonth();
+        int month = now.getMonthValue();
+        int year = now.getYear();
+        
+        return jobDate = day+"/"+month+"/"+year;
+    }
 }
