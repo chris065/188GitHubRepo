@@ -249,6 +249,13 @@ public class MotorEditUI extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         
+         //public boolean updateJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, 
+        //String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
+        
+        //TO DO : IMPLEMENT UPDATE METHOD
+        
+        trim();
+        
         if(JTFMotorName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Motor name must not be empty");
         }
@@ -260,8 +267,9 @@ public class MotorEditUI extends javax.swing.JFrame {
         }
         else if(JTFChecked.getText().equals("")){
             JOptionPane.showMessageDialog(null, "The name of the technician who inspected the motor must not be empty");
-        }       
+        }               
         
+       
 
         
     }//GEN-LAST:event_saveButtonActionPerformed
@@ -372,6 +380,23 @@ public void setFields()
     JTFChecked.setText(job.get(0).getJobCheckBy());   
     
             
+}
+
+private void trim(){
+        String textMN = JTFMotorName.getText().trim();
+        JTFMotorName.setText(textMN);
+        String textE = JTFEstimated.getText().trim();
+        JTFEstimated.setText(textE);
+        String textP = TAParts.getText().trim();
+        TAParts.setText(textP);
+        String textCh = JTFChecked.getText().trim();
+        JTFChecked.setText(textCh);
+        String textCl = JTFClient.getText().trim();
+        JTFClient.setText(textCl);
+        String textDC = JTFDateCollected.getText().trim();
+        JTFDateCollected.setText(textDC);
+        String textRD = JTFReturnDate.getText().trim();
+        JTFReturnDate.setText(textRD); 
 }
 
 }

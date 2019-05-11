@@ -282,19 +282,44 @@ public class MotorAddUI extends javax.swing.JFrame {
     */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
              
-        //possibly if checks and the 2 date checks pass, upload to db. else error - although wouldnt say if its for date or for failing to connect to db
         trim();
         if(checks()){
             if(!JTFDateCollected.getText().equals("DD/MM/YYYY")){
-            if(!checkDate(JTFDateCollected.getText())){
-             JOptionPane.showMessageDialog(null, "Format is incorrect for date collected", "", JOptionPane.INFORMATION_MESSAGE);
-        }}
-        else if(!JTFReturnDate.getText().equals("DD/MM/YYYY")){
-            if(!checkDate(JTFReturnDate.getText())){
-             JOptionPane.showMessageDialog(null, "Format is incorrect for return date", "", JOptionPane.INFORMATION_MESSAGE);
+                if(!checkDate(JTFDateCollected.getText())){
+                JOptionPane.showMessageDialog(null, "Format is incorrect for date collected", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            else if(!JTFReturnDate.getText().equals("DD/MM/YYYY")){
+                if(!checkDate(JTFReturnDate.getText())){
+                JOptionPane.showMessageDialog(null, "Format is incorrect for return date", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+                //IN PROGRESS
+                else{ 
+                     String motorName = JTFMotorName.getText();
+        String dateCollected = JTFDateCollected.getText();
+        String estimatedHours = JTFEstimated.getText();
+        String partsNeeded = TAParts.getText();
+        String checkedBy = JTFChecked.getText();
+        String client = JTFClient.getText();
+        String manufacturer = (String)JCBMan.getSelectedItem();
+        String returnDate = JTFReturnDate.getText();
+
+        if(dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, 1, estimatedHours))
+        {
+            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();   
+            //CurrentJobsUI.setJobList(); non static whatever
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
+            this.dispose();
         }
-        else{   
+                }
+                
+            }
+        /*else{   
         String motorName = JTFMotorName.getText();
         String dateCollected = JTFDateCollected.getText();
         String estimatedHours = JTFEstimated.getText();
@@ -316,7 +341,7 @@ public class MotorAddUI extends javax.swing.JFrame {
             this.dispose();
         }
         }
-            
+            */
         }
         
        

@@ -38,11 +38,11 @@ public class TaskAddUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         JTFTaskName = new javax.swing.JTextField();
-        JTFType = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         infoLabel = new javax.swing.JLabel();
+        JCBType = new javax.swing.JComboBox<>();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -74,6 +74,9 @@ public class TaskAddUI extends javax.swing.JFrame {
         infoLabel.setForeground(new java.awt.Color(255, 255, 255));
         infoLabel.setText("Tasks will not be active until allocated");
 
+        JCBType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        JCBType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a task type", "Cleaning", "Replacement", "Insulating", "Other" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,8 +89,8 @@ public class TaskAddUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JTFTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTFType, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JCBType, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,8 +116,8 @@ public class TaskAddUI extends javax.swing.JFrame {
                         .addComponent(JTFTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTFType, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
+                            .addComponent(jLabel6)
+                            .addComponent(JCBType, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -142,18 +145,16 @@ public class TaskAddUI extends javax.swing.JFrame {
     //trim fields
         String textTN = JTFTaskName.getText().trim();
         JTFTaskName.setText(textTN);
-        String textT = JTFType.getText().trim();
-        JTFType.setText(textT);
         
         if(JTFTaskName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please enter the name of the task", "", JOptionPane.INFORMATION_MESSAGE);
         }
-        else if(JTFType.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the type of task", "", JOptionPane.INFORMATION_MESSAGE);
+        else if(JCBType.getSelectedItem().equals("Select the type of task")){
+            JOptionPane.showMessageDialog(null, "Please select the type of task from the drop down menu", "", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
             String name = JTFTaskName.getText();
-            String type = JTFType.getText();
+            String type = (String)JCBType.getSelectedItem();
             
             if(dbtk.addTask(false, name, type, null, null, null, null, null))
         {
@@ -269,8 +270,8 @@ public class TaskAddUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> JCBType;
     private javax.swing.JTextField JTFTaskName;
-    private javax.swing.JTextField JTFType;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;

@@ -70,7 +70,7 @@
                       <Component id="taskDeleteButton" min="-2" pref="128" max="-2" attributes="0"/>
                       <Component id="taskAddButton" min="-2" pref="128" max="-2" attributes="0"/>
                       <Component id="taskRefreshButton" min="-2" pref="128" max="-2" attributes="0"/>
-                      <Component id="finalInspectButton" min="-2" pref="128" max="-2" attributes="0"/>
+                      <Component id="completeButton" min="-2" pref="128" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
@@ -99,7 +99,7 @@
                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                   <Component id="taskRefreshButton" min="-2" pref="45" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="finalInspectButton" min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Component id="completeButton" min="-2" pref="45" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -246,15 +246,15 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Select a task here before clicking a button"/>
+            <Property name="text" type="java.lang.String" value="Click on a task to view information about it"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="finalInspectButton">
+        <Component class="javax.swing.JButton" name="completeButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Final Inspection"/>
+            <Property name="text" type="java.lang.String" value="Complete Task"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="finalInspectButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="completeButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

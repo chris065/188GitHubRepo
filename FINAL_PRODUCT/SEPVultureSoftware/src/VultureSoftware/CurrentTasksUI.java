@@ -54,7 +54,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         taskRefreshButton = new javax.swing.JButton();
         taskDelayButton = new javax.swing.JButton();
         infoLabel = new javax.swing.JLabel();
-        finalInspectButton = new javax.swing.JButton();
+        completeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -122,12 +122,12 @@ public class CurrentTasksUI extends javax.swing.JFrame {
 
         infoLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         infoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        infoLabel.setText("Select a task here before clicking a button");
+        infoLabel.setText("Click on a task to view information about it");
 
-        finalInspectButton.setText("Final Inspection");
-        finalInspectButton.addActionListener(new java.awt.event.ActionListener() {
+        completeButton.setText("Complete Task");
+        completeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finalInspectButtonActionPerformed(evt);
+                completeButtonActionPerformed(evt);
             }
         });
 
@@ -157,7 +157,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                     .addComponent(taskDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(finalInspectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(completeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         taskListPanelLayout.setVerticalGroup(
@@ -182,7 +182,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(finalInspectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(completeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(taskListPanelLayout.createSequentialGroup()
                         .addComponent(titleLabel)
                         .addGap(13, 13, 13)
@@ -253,9 +253,10 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchTextFieldActionPerformed
 
-    private void finalInspectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalInspectButtonActionPerformed
-        new FinalInspectionUI().setVisible(true);
-    }//GEN-LAST:event_finalInspectButtonActionPerformed
+    private void completeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeButtonActionPerformed
+        //new FinalInspectionUI().setVisible(true);
+        String numberComp = JOptionPane.showInputDialog(this, "Enter the job number of the completed task");
+    }//GEN-LAST:event_completeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,9 +309,9 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton completeButton;
     private javax.swing.JScrollPane detailsScrollPane;
     private javax.swing.JTextArea detailsTextArea;
-    private javax.swing.JButton finalInspectButton;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel searchLabel;
     private javax.swing.JTextField searchTextField;
