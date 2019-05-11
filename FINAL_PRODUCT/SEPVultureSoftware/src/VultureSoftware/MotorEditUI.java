@@ -25,8 +25,9 @@ public class MotorEditUI extends javax.swing.JFrame {
     {
         initComponents();
         dbtk = new DataBaseToolkit();
-        
         this.job = job;
+        
+        setFields();
     }
 
     /**
@@ -50,7 +51,7 @@ public class MotorEditUI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         JTFChecked = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         JTFReturnDate = new javax.swing.JTextField();
@@ -90,11 +91,11 @@ public class MotorEditUI extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Checked By");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Save Job");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        saveButton.setText("Save Job");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
 
@@ -157,7 +158,7 @@ public class MotorEditUI extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(432, 432, 432))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(377, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
@@ -225,7 +226,7 @@ public class MotorEditUI extends javax.swing.JFrame {
                     .addComponent(TAParts, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel11))
                 .addGap(9, 9, 9))
         );
@@ -246,7 +247,7 @@ public class MotorEditUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         
         if(JTFMotorName.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Motor name must not be empty");
@@ -263,7 +264,7 @@ public class MotorEditUI extends javax.swing.JFrame {
         
 
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,7 +341,6 @@ public class MotorEditUI extends javax.swing.JFrame {
     private javax.swing.JTextField JTFMotorName;
     private javax.swing.JTextField JTFReturnDate;
     private java.awt.TextArea TAParts;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -353,6 +353,7 @@ public class MotorEditUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 
 
@@ -361,6 +362,7 @@ public class MotorEditUI extends javax.swing.JFrame {
 public void setFields()
 {
     JTFMotorName.setText(job.get(0).getJobMotorName());
+    
     JTFChecked.setText(job.get(0).getJobCheckBy());
     JTFEstimated.setText(""+job.get(0).getJobExpectedTime());
     JTFDateCollected.setText(job.get(0).getJobDateCollected());
@@ -370,8 +372,8 @@ public void setFields()
     JTFChecked.setText(job.get(0).getJobCheckBy());   
     
             
-    
 }
+
 }
 
 // array of manufacturers -> method to populate drop down box

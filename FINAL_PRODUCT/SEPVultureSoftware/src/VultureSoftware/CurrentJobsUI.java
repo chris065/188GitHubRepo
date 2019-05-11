@@ -206,30 +206,29 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
     //edit job button
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        //make them type in job number
-        //jobList.getSelectedValue();
-        //new MotorEditUI().setVisible(true);
+        int numberEdit = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to edit"));    
+        new MotorEditUI(dbtk.getJob(numberEdit)).setVisible(true);
     }//GEN-LAST:event_editButtonActionPerformed
 
     //delete button
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
         // cust support only 
         
-        String number = JOptionPane.showInputDialog(this, "Enter the job number of the motor to delete");
+        String numberDel = JOptionPane.showInputDialog(this, "Enter the job number of the motor to delete");
         try{
-        if(!dbtk.deleteJob(Integer.parseInt(number)))
+        if(!dbtk.deleteJob(Integer.parseInt(numberDel)))
         {
-            JOptionPane.showMessageDialog(null, "Error: job number " + number + " doesn't exist"); //use both dialog and print?
-            System.err.println("Error: job number " + number + " doesn't exist");
+            JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist"); //use both dialog and print?
+            System.err.println("Error: job number " + numberDel + " doesn't exist");
         }
         else
         {
-            System.out.println("Succussfully deleted job " + number);
+            System.out.println("Succussfully deleted job " + numberDel);
             setJobList();
         }
         }
         catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Error: job number " + number + " doesn't exist");
+            JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist");
             System.err.println("Error: must enter a number");
                 }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
