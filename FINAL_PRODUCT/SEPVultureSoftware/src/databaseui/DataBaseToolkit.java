@@ -41,26 +41,15 @@ public class DataBaseToolkit
         allTechs = new ArrayList();
         allTasks = new ArrayList();
 
-        
+        /*
         try
         {
-            ArrayList<TaskObject> test = getTasksForTech("Kiera Church");
-            if(test == null)
-            {
-                System.out.println("Error");
-            }
-            else
-            {
-                for(int i = 0; i < test.size(); i++)
-                {
-                    System.out.println(test.get(i).toString());
-                }
-            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
+        */
         
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
@@ -913,11 +902,12 @@ public class DataBaseToolkit
     }
     
     
-    
+    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
+    */
     
     
     
