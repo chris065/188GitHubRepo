@@ -13,7 +13,8 @@ import java.util.ArrayList;
  */
 public class TaskAllocatorUI extends javax.swing.JFrame {
 
-    private static ArrayList<String> user;
+    private static ArrayList user;
+    private static String role;
     /**
      * Creates new form JobAllocator
      */
@@ -21,6 +22,8 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
     {
         initComponents();
         this.user = user;
+        this.role = this.user.get(5).toString();
+        setButtons(role);
     }
 
     /**
@@ -32,7 +35,7 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        taskAllocatorPanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         techLabel = new javax.swing.JLabel();
         Separator = new javax.swing.JSeparator();
@@ -45,7 +48,7 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         setLocation(new java.awt.Point(175, 0));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        taskAllocatorPanel.setBackground(new java.awt.Color(102, 153, 255));
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,33 +97,33 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         adminLabel.setForeground(new java.awt.Color(255, 255, 255));
         adminLabel.setText("Customer support");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout taskAllocatorPanelLayout = new javax.swing.GroupLayout(taskAllocatorPanel);
+        taskAllocatorPanel.setLayout(taskAllocatorPanelLayout);
+        taskAllocatorPanelLayout.setHorizontalGroup(
+            taskAllocatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Separator)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, taskAllocatorPanelLayout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(allocateTaskButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(taskListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(taskAllocatorPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(taskAllocatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(techLabel)
                     .addComponent(adminLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, taskAllocatorPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(taskAllocatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titleLabel)
                     .addComponent(dailyTaskButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(165, 165, 165))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        taskAllocatorPanelLayout.setVerticalGroup(
+            taskAllocatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(taskAllocatorPanelLayout.createSequentialGroup()
                 .addComponent(titleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(techLabel)
@@ -131,7 +134,7 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adminLabel)
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(taskAllocatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(allocateTaskButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(taskListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(70, Short.MAX_VALUE))
@@ -141,11 +144,11 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(taskAllocatorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(taskAllocatorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -166,6 +169,15 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
         new AllocateATaskUI().setVisible(true);
     }//GEN-LAST:event_allocateTaskButtonActionPerformed
 
+    private void setButtons(String role)
+    {
+        if(role.toLowerCase().equals("tech"))
+        {
+            allocateTaskButton.setEnabled(false);
+            taskListButton.setEnabled(false);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -213,7 +225,7 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
     private javax.swing.JLabel adminLabel;
     private javax.swing.JButton allocateTaskButton;
     private javax.swing.JButton dailyTaskButton;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel taskAllocatorPanel;
     private javax.swing.JButton taskListButton;
     private javax.swing.JLabel techLabel;
     private javax.swing.JLabel titleLabel;

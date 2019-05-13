@@ -6,17 +6,22 @@
 package databaseui;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.*;
 /**
  *
  * @author Chris Bennett
+ * @version 1.0 
+ * 
  */
 public class DataBaseToolkit 
 {
     //ArrayLists to store all of the jobs, customers, technitions and tasks that are in the db
-    private ArrayList<String> allJobs, allCustomers, allTechs, allTasks;
+    private ArrayList<String> allCustomers, allTechs, allTasks;
     //ArrayList to store all of the users that are in the db (as a UserObject)
     private ArrayList<UserObject> allUsers;
+    
+    private ArrayList<JobObject> allJobs; 
     //DBConnection, create the object that establishes the  connection to the db
     private final DataBaseConnection connection;
     
@@ -38,7 +43,7 @@ public class DataBaseToolkit
 
         /*
         try
-        {   
+        {
         }
         catch(Exception e)
         {
@@ -353,25 +358,91 @@ public class DataBaseToolkit
         return 0;
     }
     
-    //Need a function to get the specific job
+    //Need a function to get the specific job 
     
     public boolean deleteJob(int jobNumber)
     {
-        return false;
+        PreparedStatement sqlDelete = null ;
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            sqlDelete = conn.prepareStatement("DELETE FROM JOBS WHERE JOB_NUMBER = ?");
+            sqlDelete.setInt(1, jobNumber);
+            
+            int rslt = sqlDelete.executeUpdate();
+            if(rslt == 0)
+            {
+                //conn.rollback();
+                conn.close();
+                return false;
+            }
+            else
+            {
+                conn.close();
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
     
-    public boolean addNewJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobDate, String jobCheck, int jobTaskID, String expectedTime)
+    public boolean updateJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
     {
         try
         {
-            //int jobId = countRows("JOBS");
+            PreparedStatement sqlUpdate = null;
+            
+            Connection conn = DriverManager.getConnection(connection.getURL()); 
+            sqlUpdate = conn.prepareStatement("UPDATE JOBS SET JOB_MOTORNAME = ?, JOB_DATECOLLECTED = ?, JOB_PARTS = ?, JOB_CLIENT = ?, ﻿JOB_MANUFACTURER = ?, JOB_RETURNDATE = ?, JOB_CHECKBY = ?, JOB_EXPECTED_TIME = ? WHERE JOB_NUMBER = ?");
+            
+            sqlUpdate.setString(1, jobMotorName);
+            sqlUpdate.setString(2, jobDateCollected);
+            sqlUpdate.setString(3, jobParts);
+            sqlUpdate.setString(4, jobClient);
+            sqlUpdate.setString(5, jobMan);
+            sqlUpdate.setString(6, jobReturnDate);
+            sqlUpdate.setString(7, jobCheck);
+            sqlUpdate.setString(8, expectedTime);
+            
+            //value to update on
+            sqlUpdate.setInt(9, jobNumber);
+            int rslt = sqlUpdate.executeUpdate(); 
+            if(rslt == 0)
+            {
+                conn.rollback();
+                conn.close();
+                return false;
+            }
+            else
+            {
+                conn.commit();
+                conn.close();
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            return false;
+        }
+    }
+    
+    public boolean addNewJob(String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobCheck, int jobTaskID, String expectedTime)
+    {
+        String jobDate = getDate();
+        
+        try
+        {
+            int jobId = countRows("JOBS")+1;
             PreparedStatement sqlInsert = null;
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
-            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?)");
+            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             
-            sqlInsert.setInt(1, jobNumber);
+            sqlInsert.setInt(1, jobId);
             sqlInsert.setString(2, jobMotorName);
             sqlInsert.setString(3, jobDateCollected);
             sqlInsert.setString(4, jobParts);
@@ -407,13 +478,75 @@ public class DataBaseToolkit
         
     }
     
+    public boolean checkJobExsists(int jobNumber)
+    {
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM JOBS WHERE JOB_NUMBER = "+jobNumber+"";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            if(!rs.next())
+            {
+                conn.close();
+                return false;
+            }
+            else
+            {
+                conn.close();
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public ArrayList getJob(int jobNumber)
+    {
+        if(!checkJobExsists(jobNumber))
+        {
+            return null;
+        }
+        else
+        {
+            ArrayList<JobObject> job = new ArrayList();
+            try
+            {
+                Connection conn = DriverManager.getConnection(connection.getURL());
+                Statement stmt = conn.createStatement();
+                String sql = "SELECT * FROM JOBS WHERE JOB_NUMBER = "+jobNumber+"";
+                
+                ResultSet rs = stmt.executeQuery(sql);
+                if(!rs.next())
+                {
+                    return null;
+                }
+                else
+                {
+                    job.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11)));
+                }
+                
+                return job;
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
+    
     public ArrayList getAllJobs()
     {
         try
         {
             Connection conn = DriverManager.getConnection(connection.getURL());
             Statement stmt = conn.createStatement();
-            String sql = "SELECT JOB_NUMBER, JOB_DATE, JOB_CLIENT FROM JOBS";
+            String sql = "SELECT * FROM JOBS";
             
             ResultSet rs = stmt.executeQuery(sql);
             if(!rs.next())
@@ -423,13 +556,13 @@ public class DataBaseToolkit
             }
             do
             {
-                //System.out.println(rs.getString(1) +" "+rs.getString(2));
-                allJobs.add("Job Number: "+rs.getString(1)+"\n"+"Date: "+rs.getString(2)+"\n"+"Client: "+rs.getString(3)+"\n");
+                
+                allJobs.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11)));
             }
             while(rs.next());
             
             conn.close();
-            //System.out.println(allJobs.get(1));
+            //System.out.println(allJobs.get(1).toString());
             return allJobs;
             
         }
@@ -468,7 +601,7 @@ public class DataBaseToolkit
                 else
                 {
                     //TaskObject Params: ID, DELAY, NAME, TYPE, ASSIENGED TO, EXPECTED TIME, PREFS, TALENTS, PRIORITY
-                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4),rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4),rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
                     //System.out.println(tasks.toString());
                     
                     conn.close();
@@ -483,7 +616,7 @@ public class DataBaseToolkit
         }
     }
     
-    public boolean addTask(boolean delayed, String name, String type, String assigned, int expectedTime, String prefrences, String talents, String priority)
+    public boolean addTask(boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority) 
     {
         int taskID;
         try
@@ -500,7 +633,7 @@ public class DataBaseToolkit
             sqlInsert.setString(3, name);
             sqlInsert.setString(4, type);
             sqlInsert.setString(5, assigned);
-            sqlInsert.setInt(6, expectedTime);
+            sqlInsert.setString(6, expectedTime);
             sqlInsert.setString(7, prefrences);
             sqlInsert.setString(8, talents);
             sqlInsert.setString(9, priority);
@@ -508,6 +641,7 @@ public class DataBaseToolkit
             int rslt = sqlInsert.executeUpdate();
             if(rslt == 0)
             {
+                
                 conn.rollback();
                 conn.close();
                 return false;
@@ -589,7 +723,7 @@ public class DataBaseToolkit
     }
     
     
-    public boolean updateTasks(int taskID, boolean delayed, String name, String type, String assigned, int expectedTime, String prefrences, String talents, String priority)
+    public boolean updateTasks(int taskID, boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority)
     {
         try
         {
@@ -603,7 +737,7 @@ public class DataBaseToolkit
             sqlUpdate.setString(2, name);
             sqlUpdate.setString(3, type);
             sqlUpdate.setString(4, assigned);
-            sqlUpdate.setInt(5, expectedTime);
+            sqlUpdate.setString(5, expectedTime);
             sqlUpdate.setString(6, prefrences);
             sqlUpdate.setString(7, talents);
             sqlUpdate.setString(8, priority);
@@ -630,6 +764,7 @@ public class DataBaseToolkit
             return false;
         }
     }
+    
     
     public ArrayList getAllTasks()
     {
@@ -723,7 +858,7 @@ public class DataBaseToolkit
                 {
                     do
                     {
-                        tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                        tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
                         return tasks;
                     }
                     while(rs.next());
@@ -770,6 +905,15 @@ public class DataBaseToolkit
     */
     
     
-    
-    
+    public String getDate()
+    {
+        String jobDate = "";
+        LocalDateTime now = LocalDateTime.now();
+        
+        int day = now.getDayOfMonth();
+        int month = now.getMonthValue();
+        int year = now.getYear();
+        
+        return jobDate = day+"/"+month+"/"+year;
+    }
 }

@@ -11,11 +11,11 @@ package databaseui;
  */
 public class TaskObject 
 {
-    private int id, expectedTime;
+    private int id;
     private boolean delay;
-    private String taskName, type, assigned, prefs, talents, priority;
+    private String taskName, type, assigned, prefs, talents, priority, expectedTime;
     
-    public TaskObject(int id, boolean delay, String taskName, String type, String assigned, int expectedTime, String prefs, String talents, String priority)
+    public TaskObject(int id, boolean delay, String taskName, String type, String assigned, String expectedTime, String prefs, String talents, String priority)
     {
         this.id = id;
         this.delay = delay;
@@ -33,7 +33,7 @@ public class TaskObject
         return id;
     }
     
-    public int getExpectedTime()
+    public String getExpectedTime()
     {
         return expectedTime;
     }
