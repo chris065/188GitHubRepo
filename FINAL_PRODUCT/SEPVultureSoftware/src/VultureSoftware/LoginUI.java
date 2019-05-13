@@ -199,7 +199,7 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+        if (evt.getKeyCode()== KeyEvent.VK_ENTER)
         {
         String userName, password;
         userName = usernameField.getText().toString();
@@ -222,12 +222,19 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void usernameFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameFieldMousePressed
         // TODO add your handling code here:
-        usernameField.setText("");
+        
+        if(usernameField.getText().equals("Username"))
+        {
+            usernameField.setText("");
+        }
     }//GEN-LAST:event_usernameFieldMousePressed
 
     private void loginPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginPanelMouseClicked
         // TODO add your handling code here:
-        usernameField.setText("username");
+        if(usernameField.getText().equals(""))
+        {
+            usernameField.setText("Username");
+        }
     }//GEN-LAST:event_loginPanelMouseClicked
 
     
