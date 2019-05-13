@@ -21,7 +21,7 @@ public class DashBoardUI extends javax.swing.JFrame {
      * Creates new form DashBoardUI
      * @param role
      */
-    
+    private static String username;
     private static String role;
     private static ArrayList user;
     
@@ -35,8 +35,10 @@ public class DashBoardUI extends javax.swing.JFrame {
         this.user = user;
         
         this.role = this.user.get(5).toString();
+        this.username = this.user.get(3).toString();
         System.out.println(role);
         setButtons(role);
+        setUsername(username);
     }
 
     /**
@@ -56,6 +58,10 @@ public class DashBoardUI extends javax.swing.JFrame {
         adminButton = new javax.swing.JButton();
         graphButton = new javax.swing.JButton();
         taskAllocatorButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
+        usernameField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -136,47 +142,106 @@ public class DashBoardUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VultureSoftware/vlogo.png"))); // NOI18N
+
+        titleLabel.setBackground(new java.awt.Color(255, 255, 255));
+        titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleLabel.setText("Vulture Service ");
+
+        logoutButton.setBackground(new java.awt.Color(102, 153, 255));
+        logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        logoutButton.setText("Logout");
+        logoutButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
+        logoutButton.setBorderPainted(false);
+        logoutButton.setFocusable(false);
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutButtonMouseExited(evt);
+            }
+        });
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
+        usernameField.setEditable(false);
+        usernameField.setBackground(new java.awt.Color(102, 153, 255));
+        usernameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usernameField.setForeground(new java.awt.Color(255, 255, 255));
+        usernameField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usernameField.setText("Username");
+        usernameField.setBorder(null);
+
         javax.swing.GroupLayout dashboardPanelLayout = new javax.swing.GroupLayout(dashboardPanel);
         dashboardPanel.setLayout(dashboardPanelLayout);
         dashboardPanelLayout.setHorizontalGroup(
             dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardPanelLayout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(underlineLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
                 .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(underlineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(dashboardPanelLayout.createSequentialGroup()
+                        .addComponent(taskAllocatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jobDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dashboardPanelLayout.createSequentialGroup()
-                                .addComponent(taskAllocatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(jobDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dashboardPanelLayout.createSequentialGroup()
-                                .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(finalInspectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 10, Short.MAX_VALUE))
+                        .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                        .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(finalInspectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(354, 354, 354))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardPanelLayout.createSequentialGroup()
+                        .addComponent(titleLabel)
+                        .addGap(60, 60, 60)
+                        .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70))))
         );
         dashboardPanelLayout.setVerticalGroup(
             dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dashboardPanelLayout.createSequentialGroup()
-                .addGap(0, 49, Short.MAX_VALUE)
-                .addComponent(underlineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addContainerGap()
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                        .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(titleLabel)
+                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1))
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(underlineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(taskAllocatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jobDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jobDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(60, 60, 60)
                 .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(finalInspectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 50, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,7 +252,7 @@ public class DashBoardUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(dashboardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -222,7 +287,31 @@ public class DashBoardUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new TaskAllocatorUI(user).setVisible(true);
     }//GEN-LAST:event_taskAllocatorButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        //clear the user details
+        user.clear();
+        //close this window
+        this.dispose();
+        //return to login page
+        new LoginUI().setVisible(true);
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void logoutButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseEntered
+        // TODO add your handling code here:
+        logoutButton.setForeground(Color.GRAY);
+    }//GEN-LAST:event_logoutButtonMouseEntered
+
+    private void logoutButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseExited
+        // TODO add your handling code here:
+        logoutButton.setForeground(Color.WHITE);
+    }//GEN-LAST:event_logoutButtonMouseExited
      
+    private void setUsername(String username)
+    {
+        usernameField.setText("Welcome, " + username);
+    }
     
     private void setButtons(String role)
     {
@@ -317,8 +406,12 @@ public class DashBoardUI extends javax.swing.JFrame {
     private javax.swing.JPanel dashboardPanel;
     private javax.swing.JButton finalInspectionButton;
     private javax.swing.JButton graphButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jobDelayButton;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton taskAllocatorButton;
+    private javax.swing.JLabel titleLabel;
     private javax.swing.JLabel underlineLabel;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }
