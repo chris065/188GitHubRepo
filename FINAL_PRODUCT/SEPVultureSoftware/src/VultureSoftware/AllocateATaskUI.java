@@ -5,6 +5,7 @@
  */
 package VultureSoftware;
 import databaseui.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ public class AllocateATaskUI extends javax.swing.JFrame {
     DataBaseToolkit dbtk;
     //Create a new list model for the task list.
     DefaultListModel taskListModel = new DefaultListModel();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     
     /**
      * Creates new form AllocateATaskUI
@@ -278,6 +280,10 @@ public class AllocateATaskUI extends javax.swing.JFrame {
         String talents = talentsTextArea.getText();
         String priority = selectedRadioValue();
         
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.add(Calendar.DAY_OF_MONTH, expectedTime);
+        String expectedDate = dateFormat.format(currentDate.getTime());
+        
         //if any field is empty prompts the user to fill them. Else continue.
         if(priority == null || prefs.equals("") || talents.equals("") || taskName == null)
         {
@@ -300,7 +306,7 @@ public class AllocateATaskUI extends javax.swing.JFrame {
                 String type = taskData.get(0).getType();
 
                 //Update te database to allocate the task. If there is an error, inform the user. Else inform the user that the task was allocated correctly.
-                if(!dbtk.updateTasks(taskID, delay, taskName, type, techName, expectedTime, prefs, talents, priority))
+                if(!dbtk.updateTasks(taskID, delay, taskName, type, techName, expectedDate, prefs, talents, priority))
                 {
                     JOptionPane.showMessageDialog(null, "There was a problem updating the database.", "Error", JOptionPane.WARNING_MESSAGE);
                 }

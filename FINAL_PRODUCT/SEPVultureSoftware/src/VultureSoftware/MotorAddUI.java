@@ -13,7 +13,7 @@ import java.text.ParseException;
 
 /**
  *
- * @author 17012215 Jordan
+ * @author Jordan 17012215
  */
 public class MotorAddUI extends javax.swing.JFrame {
 
@@ -42,8 +42,6 @@ public class MotorAddUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         JTFMotorName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        JTFJobNumber = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         JTFDateCollected = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         JTFClient = new javax.swing.JTextField();
@@ -56,8 +54,6 @@ public class MotorAddUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         JTFReturnDate = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        JTFDate = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         TAParts = new java.awt.TextArea();
         JCBMan = new javax.swing.JComboBox<>();
@@ -73,18 +69,12 @@ public class MotorAddUI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Motor Name");
+        jLabel1.setText("Motor Name*");
 
         JTFMotorName.setNextFocusableComponent(JTFDateCollected);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Add Job");
-
-        JTFJobNumber.setFocusCycleRoot(true);
-        JTFJobNumber.setNextFocusableComponent(JTFMotorName);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Job Number");
 
         JTFDateCollected.setText("DD/MM/YYYY");
         JTFDateCollected.setNextFocusableComponent(JTFEstimated);
@@ -103,10 +93,10 @@ public class MotorAddUI extends javax.swing.JFrame {
         JTFEstimated.setNextFocusableComponent(TAParts);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Estimated Hours");
+        jLabel6.setText("Estimated Hours*");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("Checked By");
+        jLabel7.setText("Checked By*");
 
         saveButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         saveButton.setText("Save Job");
@@ -117,7 +107,7 @@ public class MotorAddUI extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setText("Manufacturer");
+        jLabel8.setText("Manufacturer*");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Return Date");
@@ -129,11 +119,8 @@ public class MotorAddUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("Date");
-
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setText("Parts Needed");
+        jLabel11.setText("Parts Needed*");
 
         JCBMan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JCBMan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a manufacturer", "Actiro", "Buhler", "PG", "Other" }));
@@ -185,17 +172,8 @@ public class MotorAddUI extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(432, 432, 432))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel10)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                                        .addComponent(jLabel3)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(JTFJobNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26))
+                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(149, 149, 149))))
@@ -223,7 +201,7 @@ public class MotorAddUI extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(32, 87, Short.MAX_VALUE)
+                .addGap(32, 94, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -261,14 +239,8 @@ public class MotorAddUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TAParts, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(JTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(JTFJobNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31)
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel11))
                 .addGap(9, 9, 9))
         );
@@ -279,7 +251,7 @@ public class MotorAddUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,92 +281,59 @@ public class MotorAddUI extends javax.swing.JFrame {
     ensuring all technician attributes are entered before adding to databse
     */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        //only certain fields need to be filled in. job number and date boxes wont be there as they should be automatically assigned.
+             
+        trim();
+        if(checks()){
+            if(!JTFDateCollected.getText().equals("DD/MM/YYYY")){
+                if(!checkDate(JTFDateCollected.getText())){
+                JOptionPane.showMessageDialog(null, "Format is incorrect for date collected", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            else if(!JTFReturnDate.getText().equals("DD/MM/YYYY")){
+                if(!checkDate(JTFReturnDate.getText())){
+                JOptionPane.showMessageDialog(null, "Format is incorrect for return date", "", JOptionPane.INFORMATION_MESSAGE);
+                }
                 
-        //trimming text fields
-        String textMN = JTFMotorName.getText().trim();
-        JTFMotorName.setText(textMN);
-        String textE = JTFEstimated.getText().trim();
-        JTFEstimated.setText(textE);
-        String textP = TAParts.getText().trim();
-        TAParts.setText(textP);
-        String textCh = JTFChecked.getText().trim();
-        JTFChecked.setText(textCh);
-        String textD = JTFDate.getText().trim(); //remove date after done automatically
-        JTFDate.setText(textD);
-        String textCl = JTFClient.getText().trim();
-        JTFClient.setText(textCl);
-        String textDC = JTFDateCollected.getText().trim();
-        JTFDateCollected.setText(textDC);
-        String textRD = JTFReturnDate.getText().trim();
-        JTFReturnDate.setText(textRD);  
-        
-        //set text field to default if left blank
-        if(JTFDateCollected.getText().equals("")){
-            JTFDateCollected.setText("DD/MM/YYYY");
-        }        
-        if(JTFReturnDate.getText().equals("")){
-            JTFReturnDate.setText("DD/MM/YYYY");
-        }
-
-        //checking requried fields are not empty and correct types before adding to db
-        if(JTFDateCollected.getText().equals("")){
-            JTFDateCollected.setText(null);
-        }        
-        if(JTFReturnDate.getText().equals("")){
-            JTFReturnDate.setText(null);
-        }
-        if(JTFClient.getText().equals("")){
-            JTFClient.setText(null);
-        }
-
-        if(JTFMotorName.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the name of the motor", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(JCBMan.getSelectedItem().equals("Select a manufacturer")){
-            JOptionPane.showMessageDialog(null, "Please select a manufacturer from the drop down menu", "", JOptionPane.INFORMATION_MESSAGE);
-        }       
-        else if(JTFEstimated.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter estimated working hours required", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(TAParts.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the parts required", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(JTFChecked.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the name of who checked this motor", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(JTFDate.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter todays date", "", JOptionPane.INFORMATION_MESSAGE); //date automatic -> chris
-        }
-        else if(/*!JTFDateCollected.getText().equals("") ||*/ !JTFDateCollected.getText().equals("DD/MM/YYYY")){ //not working properly. with both checks one is good
-            //means other is bad so still goes through. With 1 still boned as it tries to upload to db empty string idk
-            if(!checkDate(JTFDateCollected.getText())){
-             JOptionPane.showMessageDialog(null, "Format is incorrect for date collected", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        }
-        else if(/*!JTFReturnDate.getText().equals("") ||*/ !JTFReturnDate.getText().equals("DD/MM/YYYY")){
-            if(!checkDate(JTFReturnDate.getText())){
-             JOptionPane.showMessageDialog(null, "Format is incorrect for return date", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        }
-        else{   
-        int jobNumber = Integer.parseInt(JTFJobNumber.getText().toString());
-        String motorName = JTFMotorName.getText();
-        String dateCollected = JTFDateCollected.getText();//make date then parse as string
+                //IN PROGRESS
+                else{ 
+                     String motorName = JTFMotorName.getText();
+        String dateCollected = JTFDateCollected.getText();
         String estimatedHours = JTFEstimated.getText();
         String partsNeeded = TAParts.getText();
         String checkedBy = JTFChecked.getText();
         String client = JTFClient.getText();
         String manufacturer = (String)JCBMan.getSelectedItem();
         String returnDate = JTFReturnDate.getText();
-        String date = JTFDate.getText();
-        
-        //(table JOBS has 11 columns but 10 values were supplied). If you swap it, it doesnt work because int and string mis-match
-        if(dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, date, checkedBy, 1, estimatedHours))
+
+        if(dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, 1, estimatedHours))
         {
             JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();   
-            //call refresh ??
+            //CurrentJobsUI.setJobList(); non static whatever
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
+            this.dispose();
+        }
+                }
+                
+            }
+        /*else{   
+        String motorName = JTFMotorName.getText();
+        String dateCollected = JTFDateCollected.getText();
+        String estimatedHours = JTFEstimated.getText();
+        String partsNeeded = TAParts.getText();
+        String checkedBy = JTFChecked.getText();
+        String client = JTFClient.getText();
+        String manufacturer = (String)JCBMan.getSelectedItem();
+        String returnDate = JTFReturnDate.getText();
+
+        if(dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, 1, estimatedHours))
+        {
+            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();   
+            //CurrentJobsUI.setJobList(); non static whatever
         }
         else
         {
@@ -402,6 +341,10 @@ public class MotorAddUI extends javax.swing.JFrame {
             this.dispose();
         }
         }
+            */
+        }
+        
+       
     }//GEN-LAST:event_saveButtonActionPerformed
 
     
@@ -464,26 +407,84 @@ public class MotorAddUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    /*
+    Trims text fields and sets optional fields to default values
+    */
+    private void trim(){
+        String textMN = JTFMotorName.getText().trim();
+        JTFMotorName.setText(textMN);
+        String textE = JTFEstimated.getText().trim();
+        JTFEstimated.setText(textE);
+        String textP = TAParts.getText().trim();
+        TAParts.setText(textP);
+        String textCh = JTFChecked.getText().trim();
+        JTFChecked.setText(textCh);
+        String textCl = JTFClient.getText().trim();
+        JTFClient.setText(textCl);
+        String textDC = JTFDateCollected.getText().trim();
+        JTFDateCollected.setText(textDC);
+        String textRD = JTFReturnDate.getText().trim();
+        JTFReturnDate.setText(textRD);  
+        
+        //set text field to default if left blank
+        if(JTFDateCollected.getText().equals("")){
+            JTFDateCollected.setText("DD/MM/YYYY");
+        }        
+        if(JTFReturnDate.getText().equals("")){
+            JTFReturnDate.setText("DD/MM/YYYY");
+        }
+        if(JTFClient.getText().equals("")){
+            JTFClient.setText(null);
+        }        
+    }
+    
+    /*
+    Checks required fields are not empty 
+    */
+    private boolean checks(){        
+        if(JTFMotorName.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter the name of the motor", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        else if(JCBMan.getSelectedItem().equals("Select a manufacturer")){
+            JOptionPane.showMessageDialog(null, "Please select a manufacturer from the drop down menu", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }       
+        else if(JTFEstimated.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter estimated working hours required", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        else if(JTFChecked.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter the name of who checked this motor", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        else if(TAParts.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter the parts required", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }        
+        else{
+            return true;
+        }
+        
+                
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JCBMan;
     private javax.swing.JTextField JTFChecked;
     private javax.swing.JTextField JTFClient;
-    private javax.swing.JTextField JTFDate;
     private javax.swing.JTextField JTFDateCollected;
     private javax.swing.JTextField JTFEstimated;
-    private javax.swing.JTextField JTFJobNumber;
     private javax.swing.JTextField JTFMotorName;
     private javax.swing.JTextField JTFReturnDate;
     private java.awt.TextArea TAParts;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
