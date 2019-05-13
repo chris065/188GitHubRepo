@@ -6,12 +6,14 @@
 package VultureSoftware;
 
 import databaseui.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author 17012215 Jordan
+ * @author Jordan 17012215
  */
 public class MotorEditUI extends javax.swing.JFrame {
 
@@ -76,6 +78,11 @@ public class MotorEditUI extends javax.swing.JFrame {
         jLabel2.setText("Edit Job");
 
         JTFDateCollected.setNextFocusableComponent(JTFEstimated);
+        JTFDateCollected.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFDateCollectedMousePressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Date Collected");
@@ -104,6 +111,12 @@ public class MotorEditUI extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Return Date");
+
+        JTFReturnDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTFReturnDateMousePressed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setText("Parts Needed");
@@ -248,31 +261,60 @@ public class MotorEditUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        
-         //public boolean updateJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, 
-        //String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
-        
-        //TO DO : IMPLEMENT UPDATE METHOD
-        
+               
         trim();
-        
-        if(JTFMotorName.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Motor name must not be empty");
-        }
-        else if(JTFEstimated.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Estimated working hours must not be empty");
-        }
-        else if(TAParts.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Parts required must not be empty");
-        }
-        else if(JTFChecked.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "The name of the technician who inspected the motor must not be empty");
-        }               
+        if (checks()) {
+            //if both fields are edited
+            if (!JTFDateCollected.getText().equals("DD/MM/YYYY") && !JTFReturnDate.getText().equals("DD/MM/YYYY")) 
+            {
+                if (!checkDate(JTFDateCollected.getText() ) && !checkDate(JTFReturnDate.getText() ) )
+                {
+                  JOptionPane.showMessageDialog(null, "Format for date fields must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else
+                    {
+                        update();
+                    }                
+            }
+            //only date collected is edited
+            else if(!JTFDateCollected.getText().equals("DD/MM/YYYY") && JTFReturnDate.getText().equals("DD/MM/YYYY"))
+            {
+                if (!checkDate(JTFDateCollected.getText() )){
+                    JOptionPane.showMessageDialog(null, "Format is incorrect for date collected. Must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    update();
+                }
+            }
+            //only return date edited
+            else if(JTFDateCollected.getText().equals("DD/MM/YYYY") && !JTFReturnDate.getText().equals("DD/MM/YYYY"))
+            {
+                if (!checkDate(JTFReturnDate.getText() )){
+                    JOptionPane.showMessageDialog(null, "Format is incorrect for return date. Must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    update();
+                }
+            }
+            //neither edited
+            else
+            {
+                update();
+            }
+        }              
         
        
 
         
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void JTFDateCollectedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDateCollectedMousePressed
+        JTFDateCollected.setText("");
+    }//GEN-LAST:event_JTFDateCollectedMousePressed
+
+    private void JTFReturnDateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFReturnDateMousePressed
+        JTFReturnDate.setText("");
+    }//GEN-LAST:event_JTFReturnDateMousePressed
 
     /**
      * @param args the command line arguments
@@ -369,8 +411,7 @@ public class MotorEditUI extends javax.swing.JFrame {
 //textArea1.setWrapStyleWord(true);
 public void setFields()
 {
-    JTFMotorName.setText(job.get(0).getJobMotorName());
-    
+    JTFMotorName.setText(job.get(0).getJobMotorName());    
     JTFChecked.setText(job.get(0).getJobCheckBy());
     JTFEstimated.setText(""+job.get(0).getJobExpectedTime());
     JTFDateCollected.setText(job.get(0).getJobDateCollected());
@@ -378,8 +419,7 @@ public void setFields()
     JTFClient.setText(job.get(0).getJobClient());
     JTFReturnDate.setText(job.get(0).getJobReturnDate());
     JTFChecked.setText(job.get(0).getJobCheckBy());   
-    
-            
+                
 }
 
 private void trim(){
@@ -396,9 +436,75 @@ private void trim(){
         String textDC = JTFDateCollected.getText().trim();
         JTFDateCollected.setText(textDC);
         String textRD = JTFReturnDate.getText().trim();
-        JTFReturnDate.setText(textRD); 
+        JTFReturnDate.setText(textRD);
+
+        //set text field to default if left blank
+        if (JTFDateCollected.getText().equals("")) {
+            JTFDateCollected.setText("DD/MM/YYYY");
+        }
+        if (JTFReturnDate.getText().equals("")) {
+            JTFReturnDate.setText("DD/MM/YYYY");
+        }
+        if (JTFClient.getText().equals("")) {
+            JTFClient.setText(null);
+        }
 }
 
-}
+private boolean checks() {
+        if (JTFMotorName.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter the name of the motor", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        } else if (JCBMan.getSelectedItem().equals("Select a manufacturer")) {
+            JOptionPane.showMessageDialog(null, "Please select a manufacturer from the drop down menu", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        } else if (JTFEstimated.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter estimated working hours required", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        } else if (JTFChecked.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter the name of who checked this motor", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        } else if (TAParts.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter the parts required", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-// array of manufacturers -> method to populate drop down box
+private boolean update() {
+        //public boolean updateJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, 
+        //String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
+        int jobNo = job.get(0).getJobNumber();
+        String motorName = JTFMotorName.getText();
+        String dateCollected = JTFDateCollected.getText();
+        String estimatedHours = JTFEstimated.getText();
+        String partsNeeded = TAParts.getText();
+        String checkedBy = JTFChecked.getText();
+        String client = JTFClient.getText();
+        String manufacturer = (String)JCBMan.getSelectedItem();
+        String returnDate = JTFReturnDate.getText();
+        
+        if (dbtk.updateJob(jobNo, motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, estimatedHours)) {
+            JOptionPane.showMessageDialog(null, "Successfully updated job: " + motorName, "Success", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            return true;
+            //CurrentJobsUI.setJobList(); to refresh on add. static context error
+        } else {
+            System.out.println(jobNo); //job no is working fine
+            JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); //get this error when editing jobs
+            this.dispose();
+            return false;
+        }
+    }
+
+private boolean checkDate(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            dateFormat.parse(date.trim());
+
+        } catch (ParseException pe) {
+            return false;
+        }
+        return true;
+    }
+}

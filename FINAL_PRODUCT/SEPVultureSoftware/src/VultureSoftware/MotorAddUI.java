@@ -261,90 +261,54 @@ public class MotorAddUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private boolean checkDate(String date){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        try{
-            dateFormat.parse(date.trim());
-            
-        } catch (ParseException pe){
-            return false;
-        }
-        /*catch (NumberFormatException ne){
-            return false;
-        }
-        */ 
-        //put all these ifs and elses in methods to make it easier to sort this
-        return true;
-    }
+   
     
     /*
     ensuring all technician attributes are entered before adding to databse
     */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
              
-        trim();
-        if(checks()){
-            if(!JTFDateCollected.getText().equals("DD/MM/YYYY")){
-                if(!checkDate(JTFDateCollected.getText())){
-                JOptionPane.showMessageDialog(null, "Format is incorrect for date collected", "", JOptionPane.INFORMATION_MESSAGE);
+       trim();
+        if (checks()) {
+            //if both fields are edited
+            if (!JTFDateCollected.getText().equals("DD/MM/YYYY") && !JTFReturnDate.getText().equals("DD/MM/YYYY")) 
+            {
+                if (!checkDate(JTFDateCollected.getText() ) && !checkDate(JTFReturnDate.getText() ) )
+                {
+                  JOptionPane.showMessageDialog(null, "Format for date fields must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else
+                    {
+                        add();
+                    }                
+            }
+            //only date collected is edited
+            else if(!JTFDateCollected.getText().equals("DD/MM/YYYY") && JTFReturnDate.getText().equals("DD/MM/YYYY"))
+            {
+                if (!checkDate(JTFDateCollected.getText() )){
+                    JOptionPane.showMessageDialog(null, "Format is incorrect for date collected. Must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    add();
                 }
             }
-            else if(!JTFReturnDate.getText().equals("DD/MM/YYYY")){
-                if(!checkDate(JTFReturnDate.getText())){
-                JOptionPane.showMessageDialog(null, "Format is incorrect for return date", "", JOptionPane.INFORMATION_MESSAGE);
+            //only return date edited
+            else if(JTFDateCollected.getText().equals("DD/MM/YYYY") && !JTFReturnDate.getText().equals("DD/MM/YYYY"))
+            {
+                if (!checkDate(JTFReturnDate.getText() )){
+                    JOptionPane.showMessageDialog(null, "Format is incorrect for return date. Must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
                 }
-                
-                //IN PROGRESS
-                else{ 
-                     String motorName = JTFMotorName.getText();
-        String dateCollected = JTFDateCollected.getText();
-        String estimatedHours = JTFEstimated.getText();
-        String partsNeeded = TAParts.getText();
-        String checkedBy = JTFChecked.getText();
-        String client = JTFClient.getText();
-        String manufacturer = (String)JCBMan.getSelectedItem();
-        String returnDate = JTFReturnDate.getText();
-
-        if(dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, 1, estimatedHours))
-        {
-            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();   
-            //CurrentJobsUI.setJobList(); non static whatever
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
-            this.dispose();
-        }
+                else{
+                    add();
                 }
-                
             }
-        /*else{   
-        String motorName = JTFMotorName.getText();
-        String dateCollected = JTFDateCollected.getText();
-        String estimatedHours = JTFEstimated.getText();
-        String partsNeeded = TAParts.getText();
-        String checkedBy = JTFChecked.getText();
-        String client = JTFClient.getText();
-        String manufacturer = (String)JCBMan.getSelectedItem();
-        String returnDate = JTFReturnDate.getText();
-
-        if(dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, 1, estimatedHours))
-        {
-            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();   
-            //CurrentJobsUI.setJobList(); non static whatever
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
-            this.dispose();
-        }
-        }
-            */
-        }
-        
-       
+            //neither edited
+            else
+            {
+                add();
+            }
+        }      
+               
     }//GEN-LAST:event_saveButtonActionPerformed
 
     
@@ -465,9 +429,45 @@ public class MotorAddUI extends javax.swing.JFrame {
         }        
         else{
             return true;
+        }           
+    }
+    
+    private boolean add() {
+        String motorName = JTFMotorName.getText();
+        String dateCollected = JTFDateCollected.getText();
+        String estimatedHours = JTFEstimated.getText();
+        String partsNeeded = TAParts.getText();
+        String checkedBy = JTFChecked.getText();
+        String client = JTFClient.getText();
+        String manufacturer = (String) JCBMan.getSelectedItem();
+        String returnDate = JTFReturnDate.getText();
+
+        if (dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, 1, estimatedHours)) {
+            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            return true;
+            //CurrentJobsUI.setJobList(); to refresh on add. static context error
+        } else {
+            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
+            this.dispose();
+            return false;
         }
-        
-                
+    }
+    
+     private boolean checkDate(String date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            dateFormat.parse(date.trim());
+            
+        } catch (ParseException pe){
+            return false;
+        }
+        /*catch (NumberFormatException ne){
+            return false;
+        }
+        */ 
+        //put all these ifs and elses in methods to make it easier to sort this
+        return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

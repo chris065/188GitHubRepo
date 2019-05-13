@@ -12,7 +12,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
- * @author w17012215 Jordan
+ * @author Jordan 17012215
  */
 public class CurrentJobsUI extends javax.swing.JFrame {
     
@@ -232,24 +232,25 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
     //delete button
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
-        // cust support only - jamie
+       // cust support only - jamie
         
         String numberDel = JOptionPane.showInputDialog(this, "Enter the job number of the motor to delete");
         try{
         if(!dbtk.deleteJob(Integer.parseInt(numberDel)))
         {
-            JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist"); //use both dialog and print?
-            System.err.println("Error: job number " + numberDel + " doesn't exist");
+            JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist", "Error", JOptionPane.ERROR_MESSAGE);
+            //System.err.println("Error: job number " + numberDel + " doesn't exist");
         }
         else
         {
-            System.out.println("Succussfully deleted job " + numberDel);
+            JOptionPane.showMessageDialog(null, "Succussfully deleted job " + numberDel);
+            //System.out.println("Succussfully deleted job " + numberDel);
             setJobList();
         }
         }
         catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist");
-            System.err.println("Error: must enter a number");
+            JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist", "Error", JOptionPane.ERROR_MESSAGE);
+            //System.err.println("Error: must enter a number");
                 }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
     private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -318,6 +319,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //initialises and refreshes job list
     public void setJobList()
     {  
+        try{
         ArrayList<JobObject> allJobs = dbtk.getAllJobs();
         jobList.setModel(jobListModel);
                     
@@ -337,7 +339,10 @@ public class CurrentJobsUI extends javax.swing.JFrame {
                 jobListModel.addElement(allJobs.get(i).getJobNumber()+" "+allJobs.get(i).getJobMotorName());  
             }
         }
-        allJobs.clear();
+        allJobs.clear();}
+        catch(NullPointerException e){
+            System.out.println("Error loading jobs");
+        }
 }
 
 }
