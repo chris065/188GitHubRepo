@@ -613,8 +613,8 @@ public class DataBaseToolkit
                 {
                     tasksForJob.add(new TaskObject(rs.getInt(2), rs.getBoolean(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(9)));
                     
-                    System.out.println(tasksForJob.get(count).toString());
-                    count++;
+                    //System.out.println(tasksForJob.get(count).toString());
+                    //count++;
                     
                 }
                 while(rs.next());
