@@ -8,6 +8,7 @@ import databaseui.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nathan
@@ -21,14 +22,15 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     DefaultListModel taskListModel = new DefaultListModel();
     //Create a new list model for the task list for filtering items.
     DefaultListModel filteredItems = new DefaultListModel();
+    static ArrayList<JobObject> job;
     /**
      * Creates new form TaskList
      */
-    public CurrentTasksUI() {
+    public CurrentTasksUI(ArrayList job) {
         dbtk = new DataBaseToolkit();
         initComponents();
-        populateList();
-        test();
+        this.job = job;
+        setTaskList();
     }
 
     /**
@@ -303,7 +305,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CurrentTasksUI().setVisible(true);
+                new CurrentTasksUI(job).setVisible(true);
             }
         });
     }
@@ -404,7 +406,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
             }  
         }
     }
-        public String test()
+        /*public String test()
         {
              ArrayList tasks = dbtk.getAllTasks();
              
@@ -414,5 +416,48 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                 System.out.println(taskName);
             }
             return null;
+        }
+        */
+        private void setTaskList(){
+            /*
+            try{
+        ArrayList<JobObject> allJobs = dbtk.getAllJobs();
+        jobList.setModel(jobListModel);
+                    
+        //to test no jobs in db:
+        //allJobs = null; 
+    
+        if(allJobs == null)
+        {
+            jobListModel.addElement( null);
+        }
+        else
+        {
+            jobListModel.removeAllElements();
+            
+            for(int i = 0; i < allJobs.size(); i++)
+            {               
+                jobListModel.addElement(allJobs.get(i).getJobNumber()+" "+allJobs.get(i).getJobMotorName());  
+            }
+        }
+        allJobs.clear();}
+        catch(NullPointerException e){
+            System.out.println("Error loading jobs");
+        }            */            
+            
+            ArrayList<TaskObject> tasks = dbtk.getTasksForJob(job.get(0).getJobNumber());
+            taskList.setModel (taskListModel);
+            
+            if(tasks == null){
+                taskListModel.addElement(null);
+            }
+            else{
+                for(int i = 0; i < tasks.size(); i++)
+                {
+                    taskListModel.addElement(tasks.get(i).getTaskName());
+                }
+            }
+            
+            
         }
 }

@@ -203,9 +203,8 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
     //view tasks button
     private void viewTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTasksButtonActionPerformed
-        //String selectedItem = jList1.getSelectedValue();
-        //System.out.println(selectedItem + "view button");
-        new CurrentTasksUI().setVisible(true);
+        int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for taskss"));
+        new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
     }//GEN-LAST:event_viewTasksButtonActionPerformed
 
     //add job button

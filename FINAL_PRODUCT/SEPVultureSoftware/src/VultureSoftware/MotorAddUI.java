@@ -442,7 +442,7 @@ public class MotorAddUI extends javax.swing.JFrame {
         String manufacturer = (String) JCBMan.getSelectedItem();
         String returnDate = JTFReturnDate.getText();
 
-        if (dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, 1, estimatedHours)) {
+        if (dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, estimatedHours)) {
             JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
             return true;
