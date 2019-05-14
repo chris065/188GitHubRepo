@@ -453,7 +453,7 @@ public class DataBaseToolkit
         }
     }
     
-    public boolean addNewJob(String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobCheck, int jobTaskID, String expectedTime)
+    public boolean addNewJob(String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
     {
         String jobDate = getDate();
         
@@ -464,7 +464,7 @@ public class DataBaseToolkit
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
-            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?)");
             
             sqlInsert.setInt(1, jobId);
             sqlInsert.setString(2, jobMotorName);
@@ -475,8 +475,7 @@ public class DataBaseToolkit
             sqlInsert.setString(7, jobReturnDate);
             sqlInsert.setString(8, jobDate);
             sqlInsert.setString(9, jobCheck);
-            sqlInsert.setInt(10, jobTaskID);
-            sqlInsert.setString(11, expectedTime);
+            sqlInsert.setString(10, expectedTime);
             
             
             //System.out.printf("Number of jobs: %s", jobId);
@@ -681,7 +680,7 @@ public class DataBaseToolkit
         }
     }
     
-    public boolean addTask(boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority) 
+    public boolean addTask(boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority, int taskJob) 
     {
         int taskID;
         try
@@ -691,7 +690,7 @@ public class DataBaseToolkit
             taskID = countRows("Tasks") + 1;
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
-            sqlInsert = conn.prepareStatement("INSERT INTO TASKS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            sqlInsert = conn.prepareStatement("INSERT INTO TASKS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             
             sqlInsert.setInt(1, taskID);
             sqlInsert.setBoolean(2, delayed);
@@ -702,6 +701,7 @@ public class DataBaseToolkit
             sqlInsert.setString(7, prefrences);
             sqlInsert.setString(8, talents);
             sqlInsert.setString(9, priority);
+            sqlInsert.setInt(10, taskJob);
             
             int rslt = sqlInsert.executeUpdate();
             if(rslt == 0)
