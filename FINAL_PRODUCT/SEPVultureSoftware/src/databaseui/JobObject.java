@@ -13,11 +13,11 @@ import java.time.LocalDateTime;
  */
 public class JobObject 
 {
-    private final int jobNumber, jobTaskId, jobExpectedTime ;
+    private final int jobNumber, jobExpectedTime ;
     private final String jobMotorName, jobDateCollected, jobParts, jobClient, jobManufactrer, jobReturnDate, jobCheckBy, jobDate;
     //private final LocalDateTime ;
     
-    public JobObject(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobManufactrer, String jobReturnDate, String jobDate, String jobCheckBy, int jobTaskId, int jobExpectedTime)
+    public JobObject(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobManufactrer, String jobReturnDate, String jobDate, String jobCheckBy, int jobExpectedTime)
     {
         this.jobNumber = jobNumber;
         this.jobMotorName = jobMotorName;
@@ -28,21 +28,14 @@ public class JobObject
         this.jobReturnDate = jobReturnDate;
         this.jobDate = jobDate;
         this.jobCheckBy = jobCheckBy;
-        this.jobTaskId = jobTaskId;
         this.jobExpectedTime = jobExpectedTime;
-        
     }
 
     public int getJobNumber() 
     {
         return jobNumber;
     }
-
-    public int getJobTaskId() 
-    {
-        return jobTaskId;
-    }
-
+    
     public int getJobExpectedTime() 
     {
         return jobExpectedTime;
@@ -91,7 +84,7 @@ public class JobObject
     @Override
     public String toString() 
     {
-        return "JobObject{" + "jobNumber=" + jobNumber + ", jobTaskId=" + jobTaskId + ", jobExpectedTime=" + jobExpectedTime + ", jobMotorName=" + jobMotorName + ", jobDateCollected=" + jobDateCollected + ", jobParts=" + jobParts + ", jobClient=" + jobClient + ", jobManufactrer=" + jobManufactrer + ", jobReturnDate=" + jobReturnDate + ", jobCheckBy=" + jobCheckBy + ", jobDate=" + jobDate + '}';
+        return "JobObject{" + "jobNumber=" + jobNumber + ", jobExpectedTime=" + jobExpectedTime + ", jobMotorName=" + jobMotorName + ", jobDateCollected=" + jobDateCollected + ", jobParts=" + jobParts + ", jobClient=" + jobClient + ", jobManufactrer=" + jobManufactrer + ", jobReturnDate=" + jobReturnDate + ", jobCheckBy=" + jobCheckBy + ", jobDate=" + jobDate + '}';
     }
 
     

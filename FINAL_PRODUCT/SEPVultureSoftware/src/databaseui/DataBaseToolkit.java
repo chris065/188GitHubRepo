@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package databaseui;
 
 import java.sql.*;
@@ -11,7 +6,7 @@ import java.util.*;
 /**
  *
  * @author Chris Bennett
- * @version 1.0 
+ * @version 3.0 (14/05/2019) 
  * 
  */
 public class DataBaseToolkit 
@@ -226,6 +221,12 @@ public class DataBaseToolkit
         }
     }
     
+    /**
+     * This method returns an arraylist of all the details for the single user that was requested by the paramenters
+     * it is formated in a UserObject so it is easier for the client side to user/handle
+     * @param userName
+     * @return ArrayList with the user details or NULL if anything goes wrong or the user does not exist
+     */
     public ArrayList getUserDetails(String userName)
     {
         ArrayList<String> userDetails = new ArrayList();
@@ -266,6 +267,12 @@ public class DataBaseToolkit
         }
     }
     
+    /**
+     * Used 
+     * @param tableName
+     * @return
+     * @throws SQLException 
+     */
     public int countRows(String tableName) throws SQLException
     {
         int count = 1;
@@ -544,7 +551,7 @@ public class DataBaseToolkit
                 }
                 else
                 {
-                    job.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11)));
+                    job.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
                 }
                 
                 return job;
@@ -574,7 +581,7 @@ public class DataBaseToolkit
             do
             {
                 
-                allJobs.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11)));
+                allJobs.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
             }
             while(rs.next());
             
@@ -611,7 +618,7 @@ public class DataBaseToolkit
             {
                 do
                 {
-                    tasksForJob.add(new TaskObject(rs.getInt(2), rs.getBoolean(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(9)));
+                    tasksForJob.add(new TaskObject(rs.getInt(2), rs.getBoolean(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11)));
                     
                     //System.out.println(tasksForJob.get(count).toString());
                     //count++;
@@ -659,7 +666,7 @@ public class DataBaseToolkit
                 else
                 {
                     //TaskObject Params: ID, DELAY, NAME, TYPE, ASSIENGED TO, EXPECTED TIME, PREFS, TALENTS, PRIORITY
-                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4),rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                    tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4),rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
                     //System.out.println(tasks.toString());
                     
                     conn.close();
@@ -917,7 +924,7 @@ public class DataBaseToolkit
                 {
                     do
                     {
-                        tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                        tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
                         
                     }
                     while(rs.next());
