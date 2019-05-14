@@ -314,13 +314,15 @@ public class MotorAddUI extends javax.swing.JFrame {
 
     
     private void JTFDateCollectedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDateCollectedMousePressed
-        JTFDateCollected.setText("");
-        //JTFReturnDate.setText("DD/MM/YYYY"); 
+        if(JTFDateCollected.getText().equals("DD/MM/YYYY")){
+            JTFDateCollected.setText("");
+        }
     }//GEN-LAST:event_JTFDateCollectedMousePressed
 
     private void JTFReturnDateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFReturnDateMousePressed
-        JTFReturnDate.setText("");
-        //JTFDateCollected.setText("DD/MM/YYYY");
+        if(JTFReturnDate.getText().equals("DD/MM/YYYY")){
+            JTFReturnDate.setText("");
+        }
     }//GEN-LAST:event_JTFReturnDateMousePressed
 
     /**
