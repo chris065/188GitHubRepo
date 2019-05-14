@@ -5,7 +5,11 @@
         <group>
             <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/LoginUI.java</file>
             <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/TaskAllocatorUI.java</file>
+            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/databaseui/DataBaseToolkit.java</file>
+            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/AllocateATaskUI.java</file>
             <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/DailyTaskUI.java</file>
+            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/test/databaseui/DataBaseToolkitTest.java</file>
+            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/test/databaseui/TaskObjectTest.java</file>
             <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/DashBoardUI.java</file>
         </group>
     </open-files>
