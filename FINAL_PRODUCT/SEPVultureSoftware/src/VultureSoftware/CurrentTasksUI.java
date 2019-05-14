@@ -248,7 +248,9 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     }//GEN-LAST:event_searchTextFieldKeyReleased
 
     private void taskAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAddButtonActionPerformed
-        new TaskAddUI().setVisible(true);
+        int test2 = job.get(0).getJobNumber();
+        
+        new TaskAddUI(dbtk.getJob(test2)).setVisible(true);
     }//GEN-LAST:event_taskAddButtonActionPerformed
 
     private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed

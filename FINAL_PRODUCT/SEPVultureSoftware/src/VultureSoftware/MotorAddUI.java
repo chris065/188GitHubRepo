@@ -16,6 +16,7 @@ import java.text.ParseException;
  * @author Jordan 17012215
  */
 public class MotorAddUI extends javax.swing.JFrame {
+    //TODO MAKE DATE WIPE ONLY ON FIRST CLICK IF TEXTBOX = DEFAULT TEXT
 
     /**
      * Creates new form MotorAddUI
