@@ -11,11 +11,11 @@ package databaseui;
  */
 public class TaskObject 
 {
-    private int id;
+    private int id, taskJob;
     private boolean delay;
     private String taskName, type, assigned, prefs, talents, priority, expectedTime;
     
-    public TaskObject(int id, boolean delay, String taskName, String type, String assigned, String expectedTime, String prefs, String talents, String priority)
+    public TaskObject(int id, boolean delay, String taskName, String type, String assigned, String expectedTime, String prefs, String talents, String priority, int taskJob)
     {
         this.id = id;
         this.delay = delay;
@@ -26,6 +26,12 @@ public class TaskObject
         this.prefs = prefs;
         this.talents = talents;
         this.priority = priority;
+        this.taskJob = taskJob;
+    }
+
+    public int getTaskJob() 
+    {
+        return taskJob;
     }
     
     public int getID()
@@ -76,6 +82,6 @@ public class TaskObject
     @Override 
     public String toString()
     {
-        return getID()+", "+getExpectedTime()+", "+getDelay()+", "+getTaskName()+", "+getType()+", "+getAssignedTo()+", "+getPrefs()+", "+getTalents()+", "+getPriority();
+        return getID()+", "+getTaskJob()+", "+getExpectedTime()+", "+getDelay()+", "+getTaskName()+", "+getType()+", "+getAssignedTo()+", "+getPrefs()+", "+getTalents()+", "+getPriority();
     }
 }

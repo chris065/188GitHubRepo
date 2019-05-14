@@ -47,8 +47,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     private void initComponents() {
 
         currentJobsPanel = new javax.swing.JPanel();
-        infoLabel = new javax.swing.JLabel();
-        viewButton = new javax.swing.JButton();
+        viewTasksButton = new javax.swing.JButton();
         addJobButton = new javax.swing.JButton();
         jobsScrollpane = new javax.swing.JScrollPane();
         jobList = new javax.swing.JList<>();
@@ -56,23 +55,18 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        infoScrollpane = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         finalButton = new javax.swing.JButton();
+        viewInfoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         currentJobsPanel.setBackground(new java.awt.Color(102, 153, 255));
         currentJobsPanel.setPreferredSize(new java.awt.Dimension(480, 389));
 
-        infoLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        infoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        infoLabel.setText("Click on a job to view information about it");
-
-        viewButton.setText("View Task List");
-        viewButton.addActionListener(new java.awt.event.ActionListener() {
+        viewTasksButton.setText("View Task List");
+        viewTasksButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewButtonActionPerformed(evt);
+                viewTasksButtonActionPerformed(evt);
             }
         });
 
@@ -123,16 +117,17 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Job info");
-        infoScrollpane.setViewportView(jTextArea1);
-
         finalButton.setText("Final Inpsection");
         finalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finalButtonActionPerformed(evt);
+            }
+        });
+
+        viewInfoButton.setText("View Job Info");
+        viewInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewInfoButtonActionPerformed(evt);
             }
         });
 
@@ -141,51 +136,54 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         currentJobsPanelLayout.setHorizontalGroup(
             currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(currentJobsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jobsScrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(infoLabel)
-                    .addComponent(infoScrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleLabel)
+                    .addGroup(currentJobsPanelLayout.createSequentialGroup()
+                        .addComponent(jobsScrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addJobButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(finalButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                            .addGroup(currentJobsPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(currentJobsPanelLayout.createSequentialGroup()
+                                        .addComponent(viewTasksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(currentJobsPanelLayout.createSequentialGroup()
+                                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(addJobButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(currentJobsPanelLayout.createSequentialGroup()
+                                        .addComponent(viewInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(currentJobsPanelLayout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(finalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         currentJobsPanelLayout.setVerticalGroup(
             currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(currentJobsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(currentJobsPanelLayout.createSequentialGroup()
-                        .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addJobButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(finalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(titleLabel)
+                .addGap(18, 18, 18)
+                .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(currentJobsPanelLayout.createSequentialGroup()
                         .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(titleLabel)
-                            .addComponent(infoLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(infoScrollpane)
-                            .addComponent(jobsScrollpane))))
+                            .addComponent(viewInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(viewTasksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(currentJobsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addJobButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(finalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jobsScrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -193,22 +191,21 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(currentJobsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
+            .addComponent(currentJobsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(currentJobsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+            .addComponent(currentJobsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     //view tasks button
-    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
-        //String selectedItem = jList1.getSelectedValue();
-        //System.out.println(selectedItem + "view button");
-        new CurrentTasksUI().setVisible(true);
-    }//GEN-LAST:event_viewButtonActionPerformed
+    private void viewTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTasksButtonActionPerformed
+        int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for taskss"));
+        new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
+    }//GEN-LAST:event_viewTasksButtonActionPerformed
 
     //add job button
     private void addJobButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJobButtonActionPerformed
@@ -261,6 +258,15 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         int numberFin = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number that has been inspected"));
         new FinalInspectionUI().setVisible(true); //in brackets will be job no when finished
     }//GEN-LAST:event_finalButtonActionPerformed
+
+    private void viewInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInfoButtonActionPerformed
+        try{
+        int numberView = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to view"));
+        new MotorViewUI(dbtk.getJob(numberView)).setVisible(true);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Error: must enter a number");
+        }
+    }//GEN-LAST:event_viewInfoButtonActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -305,14 +311,12 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JButton finalButton;
-    private javax.swing.JLabel infoLabel;
-    private javax.swing.JScrollPane infoScrollpane;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JList<String> jobList;
     private javax.swing.JScrollPane jobsScrollpane;
     private javax.swing.JButton refreshButton;
     private javax.swing.JLabel titleLabel;
-    private javax.swing.JButton viewButton;
+    private javax.swing.JButton viewInfoButton;
+    private javax.swing.JButton viewTasksButton;
     // End of variables declaration//GEN-END:variables
 
 
