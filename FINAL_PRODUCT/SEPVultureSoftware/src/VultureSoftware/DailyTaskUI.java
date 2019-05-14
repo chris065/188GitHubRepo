@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 import databaseui.*;
 import javax.swing.DefaultListModel;
 
@@ -46,44 +47,39 @@ public class DailyTaskUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
+        taskListScrollPane = new javax.swing.JScrollPane();
+        taskList = new javax.swing.JList<>();
+        detailsScrollPane = new javax.swing.JScrollPane();
+        detailsTextArea = new javax.swing.JTextArea();
+        welcomeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("My Daily Tasks");
+        titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleLabel.setText("My Daily Tasks");
 
-        jScrollPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taskListScrollPane.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        taskList.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taskList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        taskList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jList1ValueChanged(evt);
+                taskListValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(jList1);
+        taskListScrollPane.setViewportView(taskList);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        detailsTextArea.setColumns(20);
+        detailsTextArea.setRows(5);
+        detailsScrollPane.setViewportView(detailsTextArea);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Placeholder");
+        welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        welcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        welcomeLabel.setText("Placeholder");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,13 +89,13 @@ public class DailyTaskUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+                        .addComponent(detailsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(titleLabel)
+                            .addComponent(welcomeLabel))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -107,13 +103,13 @@ public class DailyTaskUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(welcomeLabel)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
+                    .addComponent(detailsScrollPane)
+                    .addComponent(taskListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -131,8 +127,8 @@ public class DailyTaskUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        String taskName = jList1.getSelectedValue();
+    private void taskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_taskListValueChanged
+        String taskName = taskList.getSelectedValue();
        
         if(taskName == null)
         {
@@ -149,18 +145,18 @@ public class DailyTaskUI extends javax.swing.JFrame {
             String priority = taskData.get(0).getPriority();
 
 
-            jTextArea1.setText(null);
-            jTextArea1.setText("This task is expected to be completed on " + expectedTime + " \n\n");
-            jTextArea1.append("Task Preferences:\n" + prefs + "\n\n");
-            jTextArea1.append("Requiered Talents:\n" + talents + "\n\n");
-            jTextArea1.append("This tasks priority is " + priority + ".\n\n");
+            detailsTextArea.setText(null);
+            detailsTextArea.setText("This task is expected to be completed on " + expectedTime + " \n\n");
+            detailsTextArea.append("Task Preferences:\n" + prefs + "\n\n");
+            detailsTextArea.append("Requiered Talents:\n" + talents + "\n\n");
+            detailsTextArea.append("This tasks priority is " + priority + ".\n\n");
 
             if(taskData.get(0).getDelay())
             {
-                jTextArea1.append("This task is delayed.");
+                detailsTextArea.append("This task is delayed.");
             }
         }
-    }//GEN-LAST:event_jList1ValueChanged
+    }//GEN-LAST:event_taskListValueChanged
 
     /**
      * @param args the command line arguments
@@ -198,20 +194,22 @@ public class DailyTaskUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane detailsScrollPane;
+    private javax.swing.JTextArea detailsTextArea;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JList<String> taskList;
+    private javax.swing.JScrollPane taskListScrollPane;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
     
     public void populateList()
     {
         if(dbtk.getTasksForTech(techName) == null)
         {
-            System.out.println("null");
+            JOptionPane.showMessageDialog(null, "There was an error when trying to locate tasks. Please contact an administrator if this problem persists.", "Error", JOptionPane.WARNING_MESSAGE);
+            taskList.setEnabled(false);
+            detailsTextArea.setEnabled(false);
         }
         else
         {
@@ -221,13 +219,13 @@ public class DailyTaskUI extends javax.swing.JFrame {
             {
                 taskListModel.addElement(t.getTaskName());
             }
-            jList1.setModel(taskListModel);
+            taskList.setModel(taskListModel);
         }
     }
     
     public void displayName()
     {
-        jLabel2.setText("Hi " + techFName + ", these are your tasks for today!");
+        welcomeLabel.setText("Hi " + techFName + ", these are your tasks for today!");
     }
 
 }
