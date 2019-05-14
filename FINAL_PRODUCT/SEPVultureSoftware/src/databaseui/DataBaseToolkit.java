@@ -51,6 +51,7 @@ public class DataBaseToolkit
         }
         */
         
+        
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
     
@@ -142,6 +143,13 @@ public class DataBaseToolkit
         }
     }
     
+    /**
+     * This method checks the user exists in the database, it will return true if it exists and false if
+     * it does not
+     * 
+     * @param userToCheck
+     * @return false if the user does not exists, and true if it does
+     */
     public boolean checkUser(String userToCheck)
     {
         try
@@ -170,6 +178,14 @@ public class DataBaseToolkit
         }
     }
     
+    /**
+     * This method will both check the username and check that the password for that user name is correct.
+     * it cannnot check the password if no username is supplied, and the username must return true
+     * 
+     * @param passToCheck
+     * @param userName
+     * @return flase is the password or username is incorrect, and true if everything checks out
+     */
     public boolean checkPass(String passToCheck, String userName)
     {
         if(!checkUser(userName))
@@ -565,6 +581,47 @@ public class DataBaseToolkit
             conn.close();
             //System.out.println(allJobs.get(1).toString());
             return allJobs;
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ArrayList getTasksForJob(int jobNumber)
+    {
+        ArrayList<TaskObject> tasksForJob = new ArrayList();
+        int count = 0;
+        
+        try
+        {
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT JOB_NUMBER, TASK_ID, TASK_DELAY, TASK_NAME, TASK_TYPE, TASK_ASSIGNED, TASK_EXPECTED_TIME, TASK_PREFERENCES, TASK_REQUIRED_TALENTS, TASK_PRIORITY, TASK_JOB FROM JOBS JOIN TASKS ON JOB_NUMBER = TASK_JOB WHERE JOB_NUMBER = "+jobNumber;
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            if(!rs.next())
+            {
+                conn.close();
+                return null;
+            }
+            else
+            {
+                do
+                {
+                    tasksForJob.add(new TaskObject(rs.getInt(2), rs.getBoolean(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(9)));
+                    
+                    System.out.println(tasksForJob.get(count).toString());
+                    count++;
+                    
+                }
+                while(rs.next());
+                
+                conn.close();
+                return tasksForJob;
+            }
             
         }
         catch(Exception e)
