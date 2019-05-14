@@ -49,7 +49,7 @@ public class TaskObjectTest {
         System.out.println("getExpectedTime");
         TaskObject instance = null;
         int expResult = 0;
-        int result = instance.getExpectedTime();
+        String result = instance.getExpectedTime();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

@@ -50,6 +50,7 @@ public class DataBaseToolkit
             e.printStackTrace();
         }
         */
+        
     }
     //START OF USER / LOGON ON SYSTEM FUNCTION
     
@@ -852,6 +853,7 @@ public class DataBaseToolkit
                 ResultSet rs = stmt.executeQuery(sql);
                 if(!rs.next())
                 {
+                    conn.close();
                     return null;
                 }
                 else
@@ -859,9 +861,12 @@ public class DataBaseToolkit
                     do
                     {
                         tasks.add(new TaskObject(rs.getInt(1) ,rs.getBoolean(2), rs.getString(3), rs.getString(4), rs.getString(5) ,rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
-                        return tasks;
+                        
                     }
                     while(rs.next());
+                    
+                    conn.close();
+                    return tasks;
                 }
             }
             catch(Exception e)
@@ -903,6 +908,7 @@ public class DataBaseToolkit
         new DataBaseToolkit();
     }
     */
+    
     
     
     public String getDate()

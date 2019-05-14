@@ -204,7 +204,7 @@ public class DataBaseToolkitTest {
         String expectedTime = "";
         DataBaseToolkit instance = new DataBaseToolkit();
         boolean expResult = false;
-        boolean result = instance.addNewJob(jobMotorName, jobDateCollected, jobParts, jobClient, jobMan, jobReturnDate, jobDate, jobCheck, jobTaskID, expectedTime);
+        boolean result = instance.addNewJob(jobMotorName, jobDateCollected, jobParts, jobClient, jobMan, jobReturnDate, jobCheck, jobTaskID, expectedTime);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -249,7 +249,7 @@ public class DataBaseToolkitTest {
         String name = "";
         String type = "";
         String assigned = "";
-        int expectedTime = 0;
+        String expectedTime = "";
         String prefrences = "";
         String talents = "";
         String priority = "";
@@ -286,7 +286,7 @@ public class DataBaseToolkitTest {
         String name = "";
         String type = "";
         String assigned = "";
-        int expectedTime = 0;
+        String expectedTime = "";
         String prefrences = "";
         String talents = "";
         String priority = "";
