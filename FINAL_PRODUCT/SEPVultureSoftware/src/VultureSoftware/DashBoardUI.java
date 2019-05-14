@@ -265,7 +265,7 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
         // TODO add your handling code here:
-        new CurrentJobsUI().setVisible(true);
+        new CurrentJobsUI(user).setVisible(true);
     }//GEN-LAST:event_currentJobsButtonActionPerformed
 
     private void jobDelayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobDelayButtonActionPerformed
