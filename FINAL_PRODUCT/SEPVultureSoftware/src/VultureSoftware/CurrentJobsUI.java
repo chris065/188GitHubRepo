@@ -18,18 +18,25 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     
     DataBaseToolkit dbtk;
     DefaultListModel jobListModel;
+    
+    private static String role;
+    private static ArrayList user;
 
     /**
      * Creates new form CurrentJobsUI
      */
-    public CurrentJobsUI() {
+    public CurrentJobsUI(ArrayList user) {
         initComponents();
-        
+                
         jobListModel = new DefaultListModel();
         
         dbtk = new DataBaseToolkit();
         
         setJobList();
+        
+        this.user = user;
+        this.role = this.user.get(5).toString();
+        setButtons(role);
         
         //presumably a method to grey out buttons depending on whos logged in?
         /*
@@ -205,12 +212,12 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     private void viewTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTasksButtonActionPerformed
         int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for taskss"));
         new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_viewTasksButtonActionPerformed
 
     //add job button
     private void addJobButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJobButtonActionPerformed
-        new MotorAddUI().setVisible(true); //only cust support can click  - jamie
+        new MotorAddUI().setVisible(true);
     }//GEN-LAST:event_addJobButtonActionPerformed
 
     //refresh button
@@ -230,8 +237,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
     //delete button
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
-       // cust support only - jamie
-        
+               
         String numberDel = JOptionPane.showInputDialog(this, "Enter the job number of the motor to delete");
         try{
         if(!dbtk.deleteJob(Integer.parseInt(numberDel)))
@@ -301,7 +307,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CurrentJobsUI().setVisible(true);
+                new CurrentJobsUI(user).setVisible(true);
             }
         });
     }
@@ -324,6 +330,13 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //initialises and refreshes job list
     public void setJobList()
     {  
+        
+        //TODO ONLY GET JOBS NOT COMPLETED - COMPLETED ADDED TO JOB IN DB?
+        
+        
+        
+        
+        
         try{
         ArrayList<JobObject> allJobs = dbtk.getAllJobs();
         jobList.setModel(jobListModel);
@@ -349,5 +362,19 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             System.out.println("Error loading jobs");
         }
 }
+    private void setButtons(String role){
+        if(role.toLowerCase().equals("tech")){
+            deleteButton.setEnabled(false);
+            addJobButton.setEnabled(false);
+            
+        }
+        if(role.toLowerCase().equals("collection and delivery")){
+            deleteButton.setEnabled(false);
+            addJobButton.setEnabled(false);
+            finalButton.setEnabled(false);
+            editButton.setEnabled(false);
+            finalButton.setEnabled(false);
+        }
+    }
 
 }

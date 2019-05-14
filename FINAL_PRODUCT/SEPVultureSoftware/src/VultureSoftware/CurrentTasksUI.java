@@ -237,7 +237,12 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         //detailsTextArea.append("This task is expected to be completed in " + Integer.toString(expectedTime) + " days.\n\n");
         detailsTextArea.append("Task Preferences:\n" + prefs + "\n\n");
         detailsTextArea.append("Requiered Talents:\n" + talents + "\n\n");
-        detailsTextArea.append("This tasks priority is " + priority + ".");
+        detailsTextArea.append("This tasks priority is " + priority + ".\n\n");
+        
+        if(taskData.get(0).getDelay())
+        {
+            detailsTextArea.append("This task is delayed.");
+        }
         }
     }//GEN-LAST:event_taskListValueChanged
     /*
@@ -336,14 +341,25 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     public void populateList()
     {
         
+        
+        
+        
+        //TODO: only get tasks that are not completed and not delayed. add completed column to db
+        
+        
+        
+        
+        
+        
         taskList.setModel(taskListModel);
         ArrayList tasks = dbtk.getAllTasks();
         
         for(int i = 0; i < tasks.size(); i++)
         {
-            ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
-            
-            //If a task is not assigned then it is not added to the list.
+            //ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
+            taskListModel.addElement(tasks.get(i).toString());}
+            /*
+//If a task is not assigned then it is not added to the list.
             if (taskData.get(0).getAssignedTo() == null)
             {
                 taskData = null;
@@ -352,7 +368,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
             {
                 taskListModel.addElement(tasks.get(i).toString());
             }
-        }
+        }*/
     }
     
     /*
