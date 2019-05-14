@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import databaseui.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,11 +19,13 @@ public class TaskAddUI extends javax.swing.JFrame {
      * Creates new form MotorAddUI
      */
     DataBaseToolkit dbtk;
+    static ArrayList<JobObject> job;
     
-    public TaskAddUI() 
+    public TaskAddUI(ArrayList job) 
     {
         initComponents();
         dbtk = new DataBaseToolkit();
+        this.job = job;
     }
 
     /**
@@ -142,6 +145,8 @@ public class TaskAddUI extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
     //delayed always starts as false 
     
+    int jobNo = job.get(0).getJobNumber();
+    
     //trim fields
         String textTN = JTFTaskName.getText().trim();
         JTFTaskName.setText(textTN);
@@ -156,7 +161,7 @@ public class TaskAddUI extends javax.swing.JFrame {
             String name = JTFTaskName.getText();
             String type = (String)JCBType.getSelectedItem();
             
-            if(dbtk.addTask(false, name, type, null, null, null, null, null))
+            if(dbtk.addTask(false, name, type, null, null, null, null, null, jobNo))
         {
             JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();   
@@ -264,7 +269,7 @@ public class TaskAddUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TaskAddUI().setVisible(true);
+                new TaskAddUI(job).setVisible(true);
             }
         });
     }
