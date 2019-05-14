@@ -176,6 +176,10 @@ public class TaskAllocatorUI extends javax.swing.JFrame {
             allocateTaskButton.setEnabled(false);
             taskListButton.setEnabled(false);
         }
+        if(role.toLowerCase().equals("customer support"))
+        {
+            dailyTaskButton.setEnabled(false);
+        }
     }
     
     /**

@@ -346,7 +346,6 @@ public class DashBoardUI extends javax.swing.JFrame {
         {
             adminButton.setEnabled(false);
             jobDelayButton.setEnabled(false);		
-            currentJobsButton.setEnabled(false);
             graphButton.setEnabled(false);
             finalInspectionButton.setEnabled(false);
             
