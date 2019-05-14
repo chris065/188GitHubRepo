@@ -123,8 +123,10 @@ public class AdminUI extends javax.swing.JFrame {
             }
         });
 
+        usersTextArea.setEditable(false);
         usersTextArea.setColumns(20);
         usersTextArea.setRows(5);
+        usersTextArea.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         usersScrollpane.setViewportView(usersTextArea);
 
         javax.swing.GroupLayout adminPanelLayout = new javax.swing.GroupLayout(adminPanel);
