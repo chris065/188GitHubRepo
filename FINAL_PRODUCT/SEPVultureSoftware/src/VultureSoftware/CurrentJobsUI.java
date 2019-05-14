@@ -366,6 +366,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         if(role.toLowerCase().equals("tech")){
             deleteButton.setEnabled(false);
             addJobButton.setEnabled(false);
+            editButton.setEnabled(false);
             
         }
         if(role.toLowerCase().equals("collection and delivery")){
