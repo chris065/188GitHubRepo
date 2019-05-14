@@ -192,7 +192,7 @@ public class MotorViewUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 //textArea1.setLineWrap(true);
-//textArea1.setWrapStyleWord(true);
+//textArea1.setWrapStyleWord(true); //"U:\newestcod - Copy\FINAL_PRODUCT\SEPVultureSoftware\src\VultureSoftware\MotorViewUI.java"
     public void setText() {
         infoTextArea.setText(null);
         
