@@ -20,13 +20,13 @@ public class MotorEditUI extends javax.swing.JFrame {
     /**
      * Creates new form MotorEditUI
      */
-    DataBaseToolkit dbtk;
+    static DataBaseToolkit dbtk;
     static ArrayList<JobObject> job;
     
-    public MotorEditUI(ArrayList job) 
+    public MotorEditUI(ArrayList job, DataBaseToolkit dbtk) 
     {
         initComponents();
-        dbtk = new DataBaseToolkit();
+        this.dbtk = dbtk;
         this.job = job;
         
         setFields();
@@ -263,7 +263,8 @@ public class MotorEditUI extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
                
         trim();
-        if (checks()) {
+        if (checks()) { 
+            
             //if both fields are edited
             if (!JTFDateCollected.getText().equals("DD/MM/YYYY") && !JTFReturnDate.getText().equals("DD/MM/YYYY")) 
             {
@@ -273,9 +274,12 @@ public class MotorEditUI extends javax.swing.JFrame {
                 }
                 else
                     {
+                        System.out.println("update 1");
                         update();
+                        this.dispose();
                     }                
             }
+            
             //only date collected is edited
             else if(!JTFDateCollected.getText().equals("DD/MM/YYYY") && JTFReturnDate.getText().equals("DD/MM/YYYY"))
             {
@@ -283,7 +287,9 @@ public class MotorEditUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Format is incorrect for date collected. Must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
-                    update();
+                    System.out.println("update 2");
+                        update();
+                        this.dispose();
                 }
             }
             //only return date edited
@@ -293,15 +299,20 @@ public class MotorEditUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Format is incorrect for return date. Must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
-                    update();
+                    System.out.println("update 3");
+                        update();
+                        this.dispose();
                 }
             }
             //neither edited
             else
             {
-                update();
+                System.out.println("update 4");
+                        update();
+                        this.dispose();
             }
         }              
+    
         
        
 
@@ -381,7 +392,7 @@ public class MotorEditUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MotorEditUI(job).setVisible(true);
+                new MotorEditUI(job, dbtk).setVisible(true);
             }
         });
     }
@@ -477,7 +488,7 @@ private boolean checks() {
         }
     }
 
-private boolean update() {
+private void update() {
         //public boolean updateJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, 
         //String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
         int jobNo = job.get(0).getJobNumber();
@@ -493,12 +504,10 @@ private boolean update() {
         if (dbtk.updateJob(jobNo, motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, estimatedHours)) {
             JOptionPane.showMessageDialog(null, "Successfully updated job: " + motorName, "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-            return true;
             //CurrentJobsUI.setJobList(); to refresh on add. static context error
         } else {
-            JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); //get this error when editing jobs
+            JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); 
             this.dispose();
-            return false;
         }
     }
 
