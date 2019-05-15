@@ -207,10 +207,11 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //view tasks button
     private void viewTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTasksButtonActionPerformed
         try{
-        int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for tasks"));
-        new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
+        int numberTask = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number to view the tasks of"));
+        ArrayList<JobObject> jobArray = dbtk.getJob(numberTask);
+        new CurrentTasksUI(jobArray).setVisible(true);
         this.dispose();
-        }catch(NumberFormatException e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_viewTasksButtonActionPerformed
@@ -231,7 +232,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         int numberEdit = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to edit"));
         ArrayList<JobObject> jobArray = dbtk.getJob(numberEdit);
         new MotorEditUI(jobArray, dbtk).setVisible(true);
-        }catch(NumberFormatException e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -240,7 +241,6 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //delete button
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
           
-        //try catch
         String numberDel = JOptionPane.showInputDialog(this, "Enter the job number of the motor to delete");
         try{
         if(!dbtk.deleteJob(Integer.parseInt(numberDel)))
@@ -272,6 +272,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This job has already been inspected and saved", "", JOptionPane.WARNING_MESSAGE);
             
         }
+        //else open UI to add inspection
         else{
             new FinalInspectionUI(jobArray).setVisible(true); 
         }
@@ -342,12 +343,27 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 
-    //initialises and refreshes job list
+    /*
+    * initialises and refreshes job list
+    */
+    
     public void setJobList()
     {  
         try{
         ArrayList<JobObject> allJobs = dbtk.getAllJobs();
+        
+        
+        
+        
+        
+        
+        
         //for each if completed = true to put all completed jobs in array, non comp in another array to then use in for instead of allJobs variable
+        
+        
+        
+        
+        
         
         jobList.setModel(jobListModel);
                     
@@ -367,13 +383,16 @@ public class CurrentJobsUI extends javax.swing.JFrame {
                 jobListModel.addElement(allJobs.get(i).getJobNumber()+" "+allJobs.get(i).getJobMotorName());  
             }
             
-            //
         }
-        allJobs.clear();}
+        allJobs.clear();
+        }
         catch(NullPointerException e){
             System.out.println("Error loading jobs");
         }
 }
+    /*
+    * Makes only specific users able to click certain buttons
+    */
     private void setButtons(String role){
         if(role.toLowerCase().equals("tech")){
             deleteButton.setEnabled(false);

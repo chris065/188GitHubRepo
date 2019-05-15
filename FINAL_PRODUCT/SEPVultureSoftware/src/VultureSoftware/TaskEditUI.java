@@ -13,19 +13,21 @@ import javax.swing.JOptionPane;
  *
  * @author 17012215 Jordan
  */
-public class TaskAddUI extends javax.swing.JFrame {
+public class TaskEditUI extends javax.swing.JFrame {
 
     /**
      * Creates new form MotorAddUI
      */
     DataBaseToolkit dbtk;
-    static ArrayList<JobObject> job;
+    static ArrayList<TaskObject> task;
     
-    public TaskAddUI(ArrayList job) 
+    public TaskEditUI(ArrayList job) 
     {
         initComponents();
         dbtk = new DataBaseToolkit();
-        this.job = job;
+        this.task = task;
+                
+        setFields();
     }
 
     /**
@@ -143,27 +145,7 @@ public class TaskAddUI extends javax.swing.JFrame {
 
     
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-    //delayed always starts as false 
-    
-    
-        trim();
-        if(checks()){
-            int jobNo = job.get(0).getJobNumber();
-            String name = JTFTaskName.getText();
-            String type = (String)JCBType.getSelectedItem();
-            
-            if(dbtk.addTask(false, name, type, null, null, null, null, null, jobNo))
-        {
-            JOptionPane.showMessageDialog(null, "Successfully added new task to database", "Success", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();   
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
-            this.dispose();
-        }
-        
-        }                
+                
     }//GEN-LAST:event_saveButtonActionPerformed
 
     
@@ -184,14 +166,78 @@ public class TaskAddUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaskAddUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskEditUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaskAddUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskEditUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaskAddUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskEditUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaskAddUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskEditUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -260,7 +306,7 @@ public class TaskAddUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TaskAddUI(job).setVisible(true);
+                new TaskEditUI(task).setVisible(true);
             }
         });
     }
@@ -283,6 +329,28 @@ public class TaskAddUI extends javax.swing.JFrame {
             return true;
         }
     }
+    
+    public void setFields()
+{
+    
+    JTFTaskName.setText(task.get(0).getTaskName() );
+    
+    
+    /*
+    JTFMotorName.setText(job.get(0).getJobMotorName());    
+    JTFChecked.setText(job.get(0).getJobCheckBy());
+    JTFEstimated.setText(""+job.get(0).getJobExpectedTime());
+    JTFDateCollected.setText(job.get(0).getJobDateCollected());
+    TAParts.setText(job.get(0).getJobParts());
+    JTFClient.setText(job.get(0).getJobClient());
+    JTFReturnDate.setText(job.get(0).getJobReturnDate());
+    JTFChecked.setText(job.get(0).getJobCheckBy());  
+    
+    dbtk.closeConnectionToDB();
+*/
+    
+                    
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JCBType;
