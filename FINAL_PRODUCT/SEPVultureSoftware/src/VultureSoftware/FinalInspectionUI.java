@@ -178,6 +178,10 @@ public class FinalInspectionUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
+        else {
+            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.ERROR_MESSAGE);
+            this.dispose();
+        }
         
         /*
         if (dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, estimatedHours)) {

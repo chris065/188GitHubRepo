@@ -451,7 +451,7 @@ public class MotorAddUI extends javax.swing.JFrame {
             return true;
             //CurrentJobsUI.setJobList(); to refresh on add. static context error
         } else {
-            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.ERROR_MESSAGE);
             this.dispose();
             return false;
         }
