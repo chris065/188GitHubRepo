@@ -229,7 +229,8 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         try{
         int numberEdit = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to edit"));
-        new MotorEditUI(dbtk.getJob(numberEdit)).setVisible(true);
+        ArrayList<JobObject> jobArray = dbtk.getJob(numberEdit);
+        new MotorEditUI(jobArray, dbtk).setVisible(true);
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number");
         }
@@ -332,15 +333,10 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //initialises and refreshes job list
     public void setJobList()
     {  
-        
-        //TODO ONLY GET JOBS NOT COMPLETED - COMPLETED ADDED TO JOB IN DB?
-        
-        
-        
-        
-        
         try{
         ArrayList<JobObject> allJobs = dbtk.getAllJobs();
+        //for each if completed = true to put all completed jobs in array, non comp in another array to then use in for instead of allJobs variable
+        
         jobList.setModel(jobListModel);
                     
         //to test no jobs in db:
