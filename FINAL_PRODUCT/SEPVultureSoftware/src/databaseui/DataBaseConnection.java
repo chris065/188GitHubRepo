@@ -122,4 +122,16 @@ public class DataBaseConnection
     {
         return url;
     }
+    
+    public void closeConnection()
+    {
+        try
+        {
+            conn.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

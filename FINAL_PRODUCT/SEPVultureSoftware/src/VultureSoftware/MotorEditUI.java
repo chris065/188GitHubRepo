@@ -99,7 +99,7 @@ public class MotorEditUI extends javax.swing.JFrame {
         jLabel7.setText("Checked By");
 
         saveButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        saveButton.setText("Save Job");
+        saveButton.setText("Update Job");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -309,11 +309,15 @@ public class MotorEditUI extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void JTFDateCollectedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDateCollectedMousePressed
-        JTFDateCollected.setText("");
+        if(JTFDateCollected.getText().equals("DD/MM/YYYY")){
+            JTFDateCollected.setText("");
+        };
     }//GEN-LAST:event_JTFDateCollectedMousePressed
 
     private void JTFReturnDateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFReturnDateMousePressed
-        JTFReturnDate.setText("");
+        if(JTFReturnDate.getText().equals("DD/MM/YYYY")){
+            JTFReturnDate.setText("");
+        }
     }//GEN-LAST:event_JTFReturnDateMousePressed
 
     /**
@@ -419,6 +423,8 @@ public void setFields()
     JTFClient.setText(job.get(0).getJobClient());
     JTFReturnDate.setText(job.get(0).getJobReturnDate());
     JTFChecked.setText(job.get(0).getJobCheckBy());   
+    
+    //dbtk.closeConnectionToDB();
                 
 }
 
@@ -490,7 +496,6 @@ private boolean update() {
             return true;
             //CurrentJobsUI.setJobList(); to refresh on add. static context error
         } else {
-            System.out.println(jobNo); //job no is working fine
             JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); //get this error when editing jobs
             this.dispose();
             return false;
