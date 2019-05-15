@@ -993,4 +993,45 @@ public class DataBaseToolkit
     {
         connection.closeConnection();
     }
+    
+    /**
+     * Final Inspection method
+     */
+    
+    public boolean addNewFinalInspection(int jobNumber, String date, String checkBy)
+    {
+        PreparedStatement sqlAdd = null;
+        try
+        {
+            int fiID = countRows("FINAL_INSPECITON") + 1;
+            
+            Connection conn = DriverManager.getConnection(connection.getURL());
+            conn.setAutoCommit(false);
+            sqlAdd = conn.prepareStatement("INSERT INTO FINAL_INSPECTION (FI_ID, FI_DATE, FI_CHECKBY, FI_JOB) VALUES (?, ?, ?, ?)");
+            
+            sqlAdd.setInt(1, fiID);
+            sqlAdd.setString(2, date);
+            sqlAdd.setString(3, checkBy);
+            sqlAdd.setInt(4, jobNumber);
+            
+            int rslt = sqlAdd.executeUpdate();
+            if(rslt == 0)
+            {
+                conn.rollback(); 
+                conn.close();
+                return false;
+            }
+            else
+            {
+                conn.commit();
+                conn.close();
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
