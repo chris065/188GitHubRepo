@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author w17012215
+ * @author Jordan Thompson 17012215
  */
 public class FinalInspectionUI extends javax.swing.JFrame {
 
