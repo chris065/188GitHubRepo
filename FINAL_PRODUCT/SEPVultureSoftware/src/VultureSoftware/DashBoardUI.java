@@ -280,7 +280,7 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     private void graphButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphButtonActionPerformed
         // TODO add your handling code here:
-        new ViewGraphUI().setVisible(true);
+        new ViewChartUI().setVisible(true);
     }//GEN-LAST:event_graphButtonActionPerformed
 
     private void taskAllocatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAllocatorButtonActionPerformed
