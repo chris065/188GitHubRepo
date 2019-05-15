@@ -262,15 +262,19 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
-        //if final insp exists, view it. if not, make one
-        
-    
-        
         
         try{
         int numberFin = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number that has been inspected"));
         ArrayList<JobObject> jobArray = dbtk.getJob(numberFin);
-        new FinalInspectionUI(jobArray).setVisible(true); 
+        
+        //final inspection already confirmed
+        if( jobArray.get(0).isJobCompleted() ){
+            JOptionPane.showMessageDialog(null, "This job has already been inspected and saved", "", JOptionPane.WARNING_MESSAGE);
+            
+        }
+        else{
+            new FinalInspectionUI(jobArray).setVisible(true); 
+        }
         
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: job not found", "Error", JOptionPane.ERROR_MESSAGE);

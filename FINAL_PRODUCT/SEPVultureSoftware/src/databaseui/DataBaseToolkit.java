@@ -6,7 +6,7 @@ import java.util.*;
 /**
  *
  * @author Chris Bennett
- * @version 3.0 (14/05/2019) 
+ * @version 3.1 (14/05/2019) 
  * 
  */
 public class DataBaseToolkit 
@@ -968,15 +968,12 @@ public class DataBaseToolkit
     {
     }
     
-    
     /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
     */
-    
-    
     
     public String getDate()
     {
@@ -1008,7 +1005,7 @@ public class DataBaseToolkit
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             
-            if(!setCompletedFlagOnJob(conn, jobNumber))
+            if(!setCompletedFlagOnJob(jobNumber))
             {
                 conn.close();
                 return false;
@@ -1046,12 +1043,13 @@ public class DataBaseToolkit
         }
     }
     
-    private boolean setCompletedFlagOnJob(Connection conn, int jobNumber)
+    private boolean setCompletedFlagOnJob(int jobNumber)
     {
         PreparedStatement sqlUpdate = null;
         
         try
         {
+            Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
             sqlUpdate = conn.prepareStatement("UPDATE JOBS SET JOB_COMPLETED = ? WHERE JOB_NUMBER = ?");
             
@@ -1061,11 +1059,13 @@ public class DataBaseToolkit
             int rslt = sqlUpdate.executeUpdate();
             if(rslt == 0)
             {
+                conn.rollback();
                 conn.close();
                 return false;
             }
             else
             {
+                conn.commit();
                 conn.close();
                 return true;
             }
