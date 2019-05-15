@@ -36,15 +36,19 @@ public class DataBaseToolkit
         allTechs = new ArrayList();
         allTasks = new ArrayList();
 
-        /*
+        
         try
         {
+            if(!updateJob(2, "chris2", "Actiro", "12", "c", "p", "", "DD/MM/YY", "DD/MM/YY"))
+            {
+                System.out.println("ERROR");
+            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        */
+        
         
         
     }
@@ -437,13 +441,12 @@ public class DataBaseToolkit
             int rslt = sqlUpdate.executeUpdate(); 
             if(rslt == 0)
             {
-                //conn.rollback();
                 conn.close();
                 return false;
             }
             else
             {
-                //conn.commit();
+                conn.commit();
                 conn.close();
                 return true;
             }
@@ -968,12 +971,12 @@ public class DataBaseToolkit
     }
     
     
-    /*
+    
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
-    */
+    
     
     
     
