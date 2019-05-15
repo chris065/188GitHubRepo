@@ -99,7 +99,7 @@ public class MotorEditUI extends javax.swing.JFrame {
         jLabel7.setText("Checked By");
 
         saveButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        saveButton.setText("Save Job");
+        saveButton.setText("Update Job");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -419,6 +419,8 @@ public void setFields()
     JTFClient.setText(job.get(0).getJobClient());
     JTFReturnDate.setText(job.get(0).getJobReturnDate());
     JTFChecked.setText(job.get(0).getJobCheckBy());   
+    
+    //dbtk.closeConnectionToDB();
                 
 }
 
@@ -490,7 +492,6 @@ private boolean update() {
             return true;
             //CurrentJobsUI.setJobList(); to refresh on add. static context error
         } else {
-            System.out.println(jobNo); //job no is working fine
             JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); //get this error when editing jobs
             this.dispose();
             return false;

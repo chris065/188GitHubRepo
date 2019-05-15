@@ -346,8 +346,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         
         //TODO: only get tasks that are not completed and not delayed. add completed column to db
         
-        
-        
+                
         
         
         

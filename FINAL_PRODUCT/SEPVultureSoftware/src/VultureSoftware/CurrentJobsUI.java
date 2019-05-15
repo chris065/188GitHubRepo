@@ -21,6 +21,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     
     private static String role;
     private static ArrayList user;
+    
 
     /**
      * Creates new form CurrentJobsUI
@@ -37,6 +38,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         this.user = user;
         this.role = this.user.get(5).toString();
         setButtons(role);
+        //dbtk.closeConnectionToDB();
         
         //presumably a method to grey out buttons depending on whos logged in?
         /*
@@ -210,7 +212,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
     //view tasks button
     private void viewTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTasksButtonActionPerformed
-        int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for taskss"));
+        int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for tasks"));
         new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
         //this.dispose();
     }//GEN-LAST:event_viewTasksButtonActionPerformed
@@ -230,9 +232,11 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         try{
         int numberEdit = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to edit"));
         new MotorEditUI(dbtk.getJob(numberEdit)).setVisible(true);
+        //this.dispose();
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Error: must enter a number");
         }
+        
     }//GEN-LAST:event_editButtonActionPerformed
 
     //delete button
