@@ -988,4 +988,9 @@ public class DataBaseToolkit
         
         return jobDate = day+"/"+month+"/"+year;
     }
+    
+    public void closeConnectionToDB()
+    {
+        connection.closeConnection();
+    }
 }
