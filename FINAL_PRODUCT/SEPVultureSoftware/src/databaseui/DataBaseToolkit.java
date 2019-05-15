@@ -6,7 +6,7 @@ import java.util.*;
 /**
  *
  * @author Chris Bennett
- * @version 3.0 (14/05/2019) 
+ * @version 3.1 (14/05/2019) 
  * 
  */
 public class DataBaseToolkit 
@@ -36,19 +36,15 @@ public class DataBaseToolkit
         allTechs = new ArrayList();
         allTasks = new ArrayList();
 
-        
+        /*
         try
         {
-            if(!addNewFinalInspection(4, "DD/MM/YY", "Test Check"))
-            {
-                System.out.println("ERROR");
-            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        
+        */
         
         
         
@@ -972,15 +968,12 @@ public class DataBaseToolkit
     {
     }
     
-    
-    
+    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
-    
-    
-    
+    */
     
     public String getDate()
     {
