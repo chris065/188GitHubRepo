@@ -211,7 +211,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
         this.dispose();
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Error: must enter a valid number");
+            JOptionPane.showMessageDialog(null, "Error: must enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_viewTasksButtonActionPerformed
 
@@ -232,7 +232,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         ArrayList<JobObject> jobArray = dbtk.getJob(numberEdit);
         new MotorEditUI(jobArray, dbtk).setVisible(true);
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Error: must enter a valid number");
+            JOptionPane.showMessageDialog(null, "Error: must enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_editButtonActionPerformed
@@ -246,18 +246,15 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         if(!dbtk.deleteJob(Integer.parseInt(numberDel)))
         {
             JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist", "Error", JOptionPane.ERROR_MESSAGE);
-            //System.err.println("Error: job number " + numberDel + " doesn't exist");
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Succussfully deleted job " + numberDel);
-            //System.out.println("Succussfully deleted job " + numberDel);
             setJobList();
         }
         }
         catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist", "Error", JOptionPane.ERROR_MESSAGE);
-            //System.err.println("Error: must enter a number");
                 }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
     private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -265,8 +262,19 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
+        //if final insp exists, view it. if not, make one
+        
+    
+        
+        
+        try{
         int numberFin = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number that has been inspected"));
-        new FinalInspectionUI().setVisible(true); //in brackets will be job no when finished
+        ArrayList<JobObject> jobArray = dbtk.getJob(numberFin);
+        new FinalInspectionUI(jobArray).setVisible(true); 
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: job not found", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_finalButtonActionPerformed
 
     private void viewInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInfoButtonActionPerformed
@@ -274,7 +282,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         int numberView = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to view"));
         new MotorViewUI(dbtk.getJob(numberView)).setVisible(true);
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Error: must enter a number");
+            JOptionPane.showMessageDialog(null, "Error: must enter a number", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_viewInfoButtonActionPerformed
     /**
@@ -354,6 +362,8 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             {               
                 jobListModel.addElement(allJobs.get(i).getJobNumber()+" "+allJobs.get(i).getJobMotorName());  
             }
+            
+            //
         }
         allJobs.clear();}
         catch(NullPointerException e){

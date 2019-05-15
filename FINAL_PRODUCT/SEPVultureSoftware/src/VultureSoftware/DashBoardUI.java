@@ -260,7 +260,7 @@ public class DashBoardUI extends javax.swing.JFrame {
 
     private void finalInspectionButtonfinaIinspectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalInspectionButtonfinaIinspectActionPerformed
         // TODO add your handling code here:
-        new SearchFinalInspectionUI().setVisible(true);
+        //new SearchFinalInspectionUI().setVisible(true);
     }//GEN-LAST:event_finalInspectionButtonfinaIinspectActionPerformed
 
     private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
