@@ -437,13 +437,13 @@ public class DataBaseToolkit
             int rslt = sqlUpdate.executeUpdate(); 
             if(rslt == 0)
             {
-                conn.rollback();
+                //conn.rollback();
                 conn.close();
                 return false;
             }
             else
             {
-                conn.commit();
+                //conn.commit();
                 conn.close();
                 return true;
             }
