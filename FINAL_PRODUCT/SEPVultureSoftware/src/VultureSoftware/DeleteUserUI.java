@@ -7,6 +7,7 @@ package VultureSoftware;
 
 import javax.swing.JOptionPane;
 import databaseui.*;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -51,6 +52,11 @@ public class DeleteUserUI extends javax.swing.JFrame {
         usernameField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         usernameField.setForeground(new java.awt.Color(255, 255, 255));
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyPressed(evt);
+            }
+        });
 
         usernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,6 +161,29 @@ public class DeleteUserUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            String username = usernameField.getText().toString();
+        if(username.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Please enter a user to delete","Could not delete user", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            if(!(dbtk.deleteUser(username)))
+            {
+                JOptionPane.showMessageDialog(this, "Failed to delete user","Could not delete user", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Successfully deleted user","Successfully deleted user", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
+        }
+    }//GEN-LAST:event_usernameFieldKeyPressed
 
     /**
      * @param args the command line arguments

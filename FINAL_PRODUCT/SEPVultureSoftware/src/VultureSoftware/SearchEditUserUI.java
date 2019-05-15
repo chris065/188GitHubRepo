@@ -6,6 +6,7 @@
 package VultureSoftware;
 
 import databaseui.*;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.util.*;
 
@@ -65,6 +66,11 @@ public class SearchEditUserUI extends javax.swing.JFrame {
         usernameField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         usernameField.setForeground(new java.awt.Color(255, 255, 255));
         usernameField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyPressed(evt);
+            }
+        });
 
         usernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,8 +151,9 @@ public class SearchEditUserUI extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
+        try{
         String username = usernameField.getText().toString();
-        if(username.equals(""))
+        if(username.equals("") || username.equals(" "))
         {
             JOptionPane.showMessageDialog(this, "Please enter a user to search","Could not search user", JOptionPane.ERROR_MESSAGE);
         }
@@ -159,7 +166,41 @@ public class SearchEditUserUI extends javax.swing.JFrame {
                 
             
         }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Could not find user. Please search again","Please search again", JOptionPane.ERROR_MESSAGE);
+            new SearchEditUserUI().setVisible(true);
+        }
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            try{
+        String username = usernameField.getText().toString();
+        if(username.equals("") || username.equals(" "))
+        {
+            JOptionPane.showMessageDialog(this, "Please enter a user to search","Could not search user", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+                this.dispose();
+                ArrayList<String> userDetails = dbtk.getUserDetails(username);
+                
+                new EditUserUI(userDetails).setVisible(true);
+                
+            
+        }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Could not find user. Please search again","Please search again", JOptionPane.ERROR_MESSAGE);
+            new SearchEditUserUI().setVisible(true);
+        }
+        }
+    }//GEN-LAST:event_usernameFieldKeyPressed
 
     /**
      * @param args the command line arguments
