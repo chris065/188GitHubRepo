@@ -48,8 +48,6 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         detailsScrollPane = new javax.swing.JScrollPane();
         detailsTextArea = new javax.swing.JTextArea();
-        searchTextField = new javax.swing.JTextField();
-        searchLabel = new javax.swing.JLabel();
         taskEditButton = new javax.swing.JButton();
         taskDeleteButton = new javax.swing.JButton();
         taskAddButton = new javax.swing.JButton();
@@ -92,24 +90,19 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         detailsTextArea.setRows(5);
         detailsScrollPane.setViewportView(detailsTextArea);
 
-        searchTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchTextFieldActionPerformed(evt);
-            }
-        });
-        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchTextFieldKeyReleased(evt);
-            }
-        });
-
-        searchLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        searchLabel.setForeground(new java.awt.Color(255, 255, 255));
-        searchLabel.setText("Search/Filter:");
-
         taskEditButton.setText("Edit Task");
+        taskEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskEditButtonActionPerformed(evt);
+            }
+        });
 
         taskDeleteButton.setText("Delete Task");
+        taskDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskDeleteButtonActionPerformed(evt);
+            }
+        });
 
         taskAddButton.setText("Add Task");
         taskAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +112,11 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         });
 
         taskRefreshButton.setText("Refresh List");
+        taskRefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskRefreshButtonActionPerformed(evt);
+            }
+        });
 
         taskDelayButton.setText("Delay Task");
 
@@ -142,12 +140,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                 .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titleLabel)
                     .addGroup(taskListPanelLayout.createSequentialGroup()
-                        .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(taskListPanelLayout.createSequentialGroup()
-                                .addComponent(searchLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(infoLabel)
@@ -165,16 +158,18 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         taskListPanelLayout.setVerticalGroup(
             taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(taskListPanelLayout.createSequentialGroup()
-                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(taskListPanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(8, 8, 8)
                         .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(taskListPanelLayout.createSequentialGroup()
                                 .addComponent(infoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(taskListPanelLayout.createSequentialGroup()
-                                .addComponent(taskDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(taskDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(titleLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(taskEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -185,15 +180,10 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                                 .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(completeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(taskListPanelLayout.createSequentialGroup()
-                        .addComponent(titleLabel)
-                        .addGap(13, 13, 13)
-                        .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, taskListPanelLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,56 +206,83 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     */
     private void taskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_taskListValueChanged
         String taskName = taskList.getSelectedValue();
-        //Used to prevent errors with the filter function.
-        if(taskName == null)
-        {
-            taskName = null;
-        }
+
         //Get task details and assign them to the text area.
-        else 
-        {
+        
         ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
         
         String tech = taskData.get(0).getAssignedTo();
-        //int expectedTime = taskData.get(0).getExpectedTime();
+        String expectedTime = taskData.get(0).getExpectedTime();
         String prefs = taskData.get(0).getPrefs();
         String talents = taskData.get(0).getTalents();
         String priority = taskData.get(0).getPriority();
+        String type = taskData.get(0).getType();
         
         detailsTextArea.setText(null);
+        detailsTextArea.setText("\n\n");
+        detailsTextArea.setText("hey bert \n\n");
+        detailsTextArea.setText("hey ern \n\n");
         detailsTextArea.setText("Technician assigned to this task: " + tech + "\n\n");
-        //detailsTextArea.append("This task is expected to be completed in " + Integer.toString(expectedTime) + " days.\n\n");
+        detailsTextArea.setText("The type of task is: " + type + "\n\n");        
+        detailsTextArea.append("This task is expected to be completed on " + expectedTime + " \n\n");
         detailsTextArea.append("Task Preferences:\n" + prefs + "\n\n");
         detailsTextArea.append("Requiered Talents:\n" + talents + "\n\n");
-        detailsTextArea.append("This tasks priority is " + priority + ".\n\n");
+        detailsTextArea.append("This task's priority is " + priority + ".\n\n");
         
         if(taskData.get(0).getDelay())
         {
             detailsTextArea.append("This task is delayed.");
         }
-        }
+        
     }//GEN-LAST:event_taskListValueChanged
-    /*
-    When a key is released in the search field, call searchFilter().
-    */
-    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
-        searchFilter(searchTextField.getText());
-    }//GEN-LAST:event_searchTextFieldKeyReleased
 
     private void taskAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAddButtonActionPerformed
-        int test2 = job.get(0).getJobNumber();
+
+        int taskNo = job.get(0).getJobNumber();
+        new TaskAddUI(dbtk.getJob(taskNo)).setVisible(true);
         
-        new TaskAddUI(dbtk.getJob(test2)).setVisible(true);
     }//GEN-LAST:event_taskAddButtonActionPerformed
 
-    private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldActionPerformed
-
     private void completeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeButtonActionPerformed
-        //new FinalInspectionUI().setVisible(true);
+        
+
+
+
+
+
+//TO DO - TASK COMPLETED. LIKE FINAL INSPECT BUT NO UI, JUST SET COMPLETED TO 1. TASK NEED NEW COLUMN      
+        
+        
+        
         String numberComp = JOptionPane.showInputDialog(this, "Enter the job number of the completed task");
     }//GEN-LAST:event_completeButtonActionPerformed
+
+    private void taskEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskEditButtonActionPerformed
+
+        //goes off task name not number o o f
+        
+        try{
+        String stringEdit = (JOptionPane.showInputDialog(this, "Enter the name of the task to edit"));
+        ArrayList<TaskObject> taskArray = dbtk.getTask(stringEdit);
+        new TaskEditUI(taskArray).setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: incorrect task name", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_taskEditButtonActionPerformed
+
+    private void taskRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskRefreshButtonActionPerformed
+        setTaskList();
+    }//GEN-LAST:event_taskRefreshButtonActionPerformed
+
+    private void taskDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskDeleteButtonActionPerformed
+        String numberDel = JOptionPane.showInputDialog(this, "Enter the task number of the motor to delete");
+        
+        //NO DELETE TASK METHOD
+        
+        
+    }//GEN-LAST:event_taskDeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,8 +339,6 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane detailsScrollPane;
     private javax.swing.JTextArea detailsTextArea;
     private javax.swing.JLabel infoLabel;
-    private javax.swing.JLabel searchLabel;
-    private javax.swing.JTextField searchTextField;
     private javax.swing.JButton taskAddButton;
     private javax.swing.JButton taskDelayButton;
     private javax.swing.JButton taskDeleteButton;
@@ -355,112 +370,12 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         
         for(int i = 0; i < tasks.size(); i++)
         {
-            //ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
             taskListModel.addElement(tasks.get(i).toString());}
-            /*
-//If a task is not assigned then it is not added to the list.
-            if (taskData.get(0).getAssignedTo() == null)
-            {
-                taskData = null;
-            }
-            else
-            {
-                taskListModel.addElement(tasks.get(i).toString());
-            }
-        }*/
-    }
-    
-    /*
-    Allows the user to search and filter through tasks.
-    */
-    public void searchFilter(String searchTerm)
-    {   
-        detailsTextArea.setText(null);
-        
-        taskList.setModel(filteredItems);
-        
-        ArrayList tasks = dbtk.getAllTasks();
-        
-        if(tasks == null)
-        {
-            JOptionPane.showMessageDialog(null, "No tasks could be found in the database. Please contact an administrator if this problem persists.", "Error", JOptionPane.WARNING_MESSAGE);
-            taskList.setEnabled(false);
-            searchTextField.setEnabled(false);
-            detailsTextArea.setEnabled(false);
-        }
-        else
-        {
-            //If the search field is not empty, find allocated tasks to match the search term.
-            if(!searchTextField.getText().equals(""))
-            {
-                filteredItems.removeAllElements();
-                
-                for(int i = 0; i < tasks.size(); i++)
-                {
-                    ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
-
-                    //If task is not assigned then exclude from search. Else add taks to filteredItems ans set filteredItems as the list model.
-                    if (taskData.get(0).getAssignedTo() == null)
-                    {
-                        taskData = null;
-                    }
-                    else
-                    {
-
-                    String taskName = tasks.get(i).toString();
-                    if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
-                        {
-                                filteredItems.addElement(taskName);
-                        }
-                    }
-                }
-                tasks.clear();
-            }
-            //Set the task list model to taskListModel.
-            else
-            {
-                taskList.setModel(taskListModel);
-            }  
-        }
-    }
-        /*public String test()
-        {
-             ArrayList tasks = dbtk.getAllTasks();
-             
-            for(int i = 0; i < tasks.size(); i++)
-            {
-                String taskName = tasks.get(i).toString();
-                System.out.println(taskName);
-            }
-            return null;
-        }
-        */
-        private void setTaskList(){
-            /*
-            try{
-        ArrayList<JobObject> allJobs = dbtk.getAllJobs();
-        jobList.setModel(jobListModel);
-                    
-        //to test no jobs in db:
-        //allJobs = null; 
-    
-        if(allJobs == null)
-        {
-            jobListModel.addElement( null);
-        }
-        else
-        {
-            jobListModel.removeAllElements();
             
-            for(int i = 0; i < allJobs.size(); i++)
-            {               
-                jobListModel.addElement(allJobs.get(i).getJobNumber()+" "+allJobs.get(i).getJobMotorName());  
-            }
-        }
-        allJobs.clear();}
-        catch(NullPointerException e){
-            System.out.println("Error loading jobs");
-        }            */            
+    }
+    
+        private void setTaskList(){
+         
             
             ArrayList<TaskObject> tasks = dbtk.getTasksForJob(job.get(0).getJobNumber());
             taskList.setModel (taskListModel);
@@ -469,12 +384,14 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                 taskListModel.addElement(null);
             }
             else{
+                taskListModel.removeAllElements();
+                
                 for(int i = 0; i < tasks.size(); i++)
                 {
                     taskListModel.addElement(tasks.get(i).getTaskName());
                 }
             }
-            
+            tasks.clear();
             
         }
 }
