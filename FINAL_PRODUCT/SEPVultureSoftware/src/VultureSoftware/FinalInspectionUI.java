@@ -5,6 +5,12 @@
  */
 package VultureSoftware;
 
+import databaseui.DataBaseToolkit;
+import databaseui.JobObject;
+import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author w17012215
@@ -14,8 +20,17 @@ public class FinalInspectionUI extends javax.swing.JFrame {
     /**
      * Creates new form FinalInspectionUI
      */
-    public FinalInspectionUI() {
+    
+    static DataBaseToolkit dbtk;
+    static ArrayList<JobObject> job;
+    
+    public FinalInspectionUI(ArrayList job) {
         initComponents();
+        
+        this.dbtk = new DataBaseToolkit();
+        this.job = job;
+        
+        setField();
     }
 
     /**
@@ -35,15 +50,19 @@ public class FinalInspectionUI extends javax.swing.JFrame {
         dateLabel = new javax.swing.JLabel();
         dateField = new javax.swing.JTextField();
         infoLabel = new javax.swing.JLabel();
+        numberLabel = new javax.swing.JLabel();
+        jobNumberField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         finalInspectionPanel.setBackground(new java.awt.Color(102, 153, 255));
 
-        titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
         titleLabel.setText("Final Inspection");
 
         checkedLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        checkedLabel.setForeground(new java.awt.Color(255, 255, 255));
         checkedLabel.setText("Checked By");
 
         endJobButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -55,47 +74,60 @@ public class FinalInspectionUI extends javax.swing.JFrame {
         });
 
         dateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        dateLabel.setForeground(new java.awt.Color(255, 255, 255));
         dateLabel.setText("Date");
 
-        dateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateFieldActionPerformed(evt);
-            }
-        });
-
         infoLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        infoLabel.setText("By clicking 'End Job', you are approving this motor is ready to be delivered back to the client");
+        infoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        infoLabel.setText("By clicking 'End Job', you are approving this motor passed the inpection and is ready to be delivered back to the client");
+
+        numberLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        numberLabel.setForeground(new java.awt.Color(255, 255, 255));
+        numberLabel.setText("Job Number");
+
+        jobNumberField.setEditable(false);
 
         javax.swing.GroupLayout finalInspectionPanelLayout = new javax.swing.GroupLayout(finalInspectionPanel);
         finalInspectionPanel.setLayout(finalInspectionPanelLayout);
         finalInspectionPanelLayout.setHorizontalGroup(
             finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(finalInspectionPanelLayout.createSequentialGroup()
-                .addGap(116, 116, 116)
                 .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, finalInspectionPanelLayout.createSequentialGroup()
-                        .addComponent(endJobButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(182, 182, 182))
-                    .addComponent(infoLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, finalInspectionPanelLayout.createSequentialGroup()
-                        .addComponent(titleLabel)
-                        .addGap(217, 217, 217))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, finalInspectionPanelLayout.createSequentialGroup()
+                    .addGroup(finalInspectionPanelLayout.createSequentialGroup()
+                        .addGap(196, 196, 196)
                         .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dateLabel)
-                            .addComponent(checkedLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkedField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(169, 169, 169)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                            .addGroup(finalInspectionPanelLayout.createSequentialGroup()
+                                .addComponent(numberLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(jobNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(finalInspectionPanelLayout.createSequentialGroup()
+                                .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dateLabel)
+                                    .addComponent(checkedLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkedField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(finalInspectionPanelLayout.createSequentialGroup()
+                        .addGap(333, 333, 333)
+                        .addComponent(titleLabel))
+                    .addGroup(finalInspectionPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(infoLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, finalInspectionPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(endJobButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(280, 280, 280))
         );
         finalInspectionPanelLayout.setVerticalGroup(
             finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(finalInspectionPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numberLabel)
+                    .addComponent(jobNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateLabel)
@@ -104,18 +136,18 @@ public class FinalInspectionUI extends javax.swing.JFrame {
                 .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkedLabel)
                     .addComponent(checkedField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addComponent(infoLabel)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addComponent(endJobButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 796, Short.MAX_VALUE)
+            .addGap(0, 740, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -136,17 +168,35 @@ public class FinalInspectionUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void endJobButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endJobButtonActionPerformed
-
+        //addNewFinalInspection(int jobNumber, String date, String checkBy)
+        
+        int jobNo = parseInt(jobNumberField.getText());
+        String date = dateField.getText();
+        String checkedBy = checkedField.getText();
+        
+        if(dbtk.addNewFinalInspection(jobNo, date, checkedBy)){
+        JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }
+        
+        /*
+        if (dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, estimatedHours)) {
+            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            return true;
+            //CurrentJobsUI.setJobList(); to refresh on add. static context error
+        } else {
+            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
+            this.dispose();
+            return false;
+        }
+        */
     }//GEN-LAST:event_endJobButtonActionPerformed
-
-    private void dateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateFieldActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) { 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -173,10 +223,14 @@ public class FinalInspectionUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FinalInspectionUI().setVisible(true);
+            public void run() { 
+                new FinalInspectionUI(job).setVisible(true);
             }
-        });
+        }); 
+    } 
+    
+    private void setField(){
+        jobNumberField.setText(""+job.get(0).getJobNumber() ); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -187,6 +241,8 @@ public class FinalInspectionUI extends javax.swing.JFrame {
     private javax.swing.JButton endJobButton;
     private javax.swing.JPanel finalInspectionPanel;
     private javax.swing.JLabel infoLabel;
+    private javax.swing.JTextField jobNumberField;
+    private javax.swing.JLabel numberLabel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
