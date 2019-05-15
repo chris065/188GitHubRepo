@@ -275,7 +275,7 @@ public class TaskAddUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter the name of the task", "", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
-        else if(JCBType.getSelectedItem().equals("Select the type of task")){
+        else if(JCBType.getSelectedItem().equals("Select a task type")){
             JOptionPane.showMessageDialog(null, "Please select the type of task from the drop down menu", "", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }

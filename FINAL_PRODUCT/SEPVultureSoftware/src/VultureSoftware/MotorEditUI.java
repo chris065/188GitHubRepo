@@ -490,8 +490,7 @@ private boolean checks() {
     }
 
 private void update() {
-        //public boolean updateJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, 
-        //String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
+
         int jobNo = job.get(0).getJobNumber();
         String motorName = JTFMotorName.getText();
         String dateCollected = JTFDateCollected.getText();

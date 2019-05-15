@@ -119,6 +119,11 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         });
 
         taskDelayButton.setText("Delay Task");
+        taskDelayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskDelayButtonActionPerformed(evt);
+            }
+        });
 
         infoLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         infoLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,9 +210,15 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     old nathan method - does not get tasks for the job its linked to
     */
     private void taskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_taskListValueChanged
+        
+        try{
         String taskName = taskList.getSelectedValue();
 
-        //Get task details and assign them to the text area.
+        if(taskName == null)
+        {
+            taskName = null;
+        }
+        else{
         
         ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
         
@@ -219,9 +230,6 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         String type = taskData.get(0).getType();
         
         detailsTextArea.setText(null);
-        detailsTextArea.setText("\n\n");
-        detailsTextArea.setText("hey bert \n\n");
-        detailsTextArea.setText("hey ern \n\n");
         detailsTextArea.setText("Technician assigned to this task: " + tech + "\n\n");
         detailsTextArea.setText("The type of task is: " + type + "\n\n");        
         detailsTextArea.append("This task is expected to be completed on " + expectedTime + " \n\n");
@@ -233,6 +241,12 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         {
             detailsTextArea.append("This task is delayed.");
         }
+        }
+        }
+        catch(Exception e){
+            //clicking in the box but not any text so null
+        }
+
         
     }//GEN-LAST:event_taskListValueChanged
 
@@ -246,29 +260,37 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     private void completeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeButtonActionPerformed
         
 
-
+/*
+        try{
+        String taskName = taskList.getSelectedValue();
+        System.out.println(taskName);
+    
+        ArrayList<TaskObject> taskArray = dbtk.getTask(taskName);
+        new TaskEditUI(taskArray).setVisible(true);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: task not found", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        */
 
 
 
 //TO DO - TASK COMPLETED. LIKE FINAL INSPECT BUT NO UI, JUST SET COMPLETED TO 1. TASK NEED NEW COLUMN      
         
-        
-        
-        String numberComp = JOptionPane.showInputDialog(this, "Enter the job number of the completed task");
+    
     }//GEN-LAST:event_completeButtonActionPerformed
 
     private void taskEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskEditButtonActionPerformed
 
-        //goes off task name not number o o f
-        
         try{
-        String stringEdit = (JOptionPane.showInputDialog(this, "Enter the name of the task to edit"));
-        ArrayList<TaskObject> taskArray = dbtk.getTask(stringEdit);
+        String taskName = taskList.getSelectedValue();    
+        ArrayList<TaskObject> taskArray = dbtk.getTask(taskName);
         new TaskEditUI(taskArray).setVisible(true);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error: incorrect task name", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: task not found", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+                
         
     }//GEN-LAST:event_taskEditButtonActionPerformed
 
@@ -277,12 +299,58 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     }//GEN-LAST:event_taskRefreshButtonActionPerformed
 
     private void taskDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskDeleteButtonActionPerformed
-        String numberDel = JOptionPane.showInputDialog(this, "Enter the task number of the motor to delete");
+
+
+
+
         
-        //NO DELETE TASK METHOD
+        //NO DELETE TASK METHOD - probably just delete this button instead 
+        
+        
+        
         
         
     }//GEN-LAST:event_taskDeleteButtonActionPerformed
+
+    private void taskDelayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskDelayButtonActionPerformed
+
+        String selectedName = taskList.getSelectedValue();
+    
+        ArrayList<TaskObject> task = dbtk.getTask(selectedName);
+      
+        
+            int taskID = task.get(0).getID();
+
+            String taskType = task.get(0).getType();
+            String taskPri = task.get(0).getPriority();
+            String taskName = task.get(0).getTaskName();
+            String taskTech = task.get(0).getAssignedTo();
+            String taskTime = task.get(0).getExpectedTime();
+            String taskPref = task.get(0).getPrefs();
+            String taskTals = task.get(0).getTalents();
+
+            
+          if(task.get(0).getDelay()){
+              if(dbtk.updateTasks(taskID, false, taskName, taskType, taskTech, taskTime, taskPref, taskTals, taskPri)){
+    JOptionPane.showMessageDialog(null, "Successfully resumed task: " + taskName, "Success", JOptionPane.INFORMATION_MESSAGE);
+    setTaskList();
+}            
+else{
+    JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); 
+}
+          }
+          else{
+                            if(dbtk.updateTasks(taskID, true, taskName, taskType, taskTech, taskTime, taskPref, taskTals, taskPri)){
+    JOptionPane.showMessageDialog(null, "Successfully delayed task: " + taskName, "Success", JOptionPane.INFORMATION_MESSAGE);
+    setTaskList();
+}            
+else{
+    JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); 
+}
+          }
+
+        
+    }//GEN-LAST:event_taskDelayButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,11 +426,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
          
             
             ArrayList<TaskObject> tasks = dbtk.getTasksForJob(job.get(0).getJobNumber());
-            taskList.setModel (taskListModel);
-            
-            
-            
-            
+            taskList.setModel (taskListModel);         
             
         ArrayList<TaskObject> delTasks = new ArrayList<TaskObject>();
         ArrayList<TaskObject> nonDelTasks = new ArrayList<TaskObject>();
@@ -376,8 +440,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                     nonDelTasks.add(tasks.get(i));
                 }              
             }    
-       
-            
+
             if(tasks == null){
                 taskListModel.addElement(null);
             }
@@ -386,7 +449,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                 
                 for(int i = 0; i < nonDelTasks.size(); i++)
                 {
-                    taskListModel.addElement(nonDelTasks.get(i).getID() + " " + nonDelTasks.get(i).getTaskName()); 
+                    taskListModel.addElement(nonDelTasks.get(i).getTaskName()); 
                 }
 
             taskListModel.addElement(" ");
@@ -394,11 +457,14 @@ public class CurrentTasksUI extends javax.swing.JFrame {
             
             for(int i = 0; i < delTasks.size(); i++)
             {               
-                taskListModel.addElement(delTasks.get(i).getID() + " " + delTasks.get(i).getTaskName());   
+                taskListModel.addElement(delTasks.get(i).getTaskName());   
             }
             tasks.clear();
             }
-            
-            
         }
+    
+    private void checkDelayed(){
+        
+    }
+
 }
