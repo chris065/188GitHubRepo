@@ -1003,11 +1003,11 @@ public class DataBaseToolkit
         PreparedStatement sqlAdd = null;
         try
         {
-            int fiID = countRows("FINAL_INSPECITON") + 1;
+            int fiID = countRows("Final_Inspection") + 1;
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
-            sqlAdd = conn.prepareStatement("INSERT INTO FINAL_INSPECTION (FI_ID, FI_DATE, FI_CHECKBY, FI_JOB) VALUES (?, ?, ?, ?)");
+            sqlAdd = conn.prepareStatement("INSERT INTO Final_Inspection (FI_ID, FI_DATE, FI_CHECKBY, FI_JOB) VALUES (?, ?, ?, ?)");
             
             sqlAdd.setInt(1, fiID);
             
