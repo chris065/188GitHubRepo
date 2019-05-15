@@ -3,21 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/AdminUI.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/LoginUI.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/TaskAllocatorUI.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/AllocateATaskUI.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/DeleteUserUI.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/SearchEditUserUI.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/databaseui/DataBaseUI.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/DailyTaskUI.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/test/databaseui/TaskObjectTest.java</file>
-            <file>file:/C:/Users/jamie/OneDrive/Documents/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/DashBoardUI.java</file>
-=======
-            <file>file:/Users/chrisbennett/Desktop/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/databaseui/DataBaseConnection.java</file>
-            <file>file:/Users/chrisbennett/Desktop/188GitHubRepo/FINAL_PRODUCT/SEPVultureSoftware/src/databaseui/DataBaseToolkit.java</file>
->>>>>>> 2dab779ca27d9b02e47ff0ac4ffdb0bc98e00550
+            <file>file:/U:/chris/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/CurrentJobsUI.java</file>
+            <file>file:/U:/chris/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/MotorAddUI.java</file>
+            <file>file:/U:/chris/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/CurrentTasksUI.java</file>
+            <file>file:/U:/chris/FINAL_PRODUCT/SEPVultureSoftware/src/databaseui/DataBaseToolkit.java</file>
+            <file>file:/U:/chris/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/MotorEditUI.java</file>
         </group>
     </open-files>
 </project-private>

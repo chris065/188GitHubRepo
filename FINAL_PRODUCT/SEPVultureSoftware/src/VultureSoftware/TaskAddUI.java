@@ -145,7 +145,8 @@ public class TaskAddUI extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
     //delayed always starts as false 
     
-    int jobNo = job.get(0).getJobNumber();
+    //int jobNo = job.get(0).getJobNumber();
+    //System.out.println(jobNo); issue is job no is wrong - swap the 2 to jobNo. then db is locked
     
     //trim fields
         String textTN = JTFTaskName.getText().trim();
@@ -161,7 +162,7 @@ public class TaskAddUI extends javax.swing.JFrame {
             String name = JTFTaskName.getText();
             String type = (String)JCBType.getSelectedItem();
             
-            if(dbtk.addTask(false, name, type, null, null, null, null, null, jobNo))
+            if(dbtk.addTask(false, name, type, null, null, null, null, null, 2))
         {
             JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();   

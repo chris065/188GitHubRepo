@@ -38,11 +38,6 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         this.user = user;
         this.role = this.user.get(5).toString();
         setButtons(role);
-        
-        //presumably a method to grey out buttons depending on whos logged in?
-        /*
-        technician adds motor and addds tasks
-        */
     }
 
     /**
@@ -214,7 +209,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         try{
         int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for tasks"));
         new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
-        //this.dispose();
+        this.dispose();
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number");
         }
@@ -228,16 +223,13 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //refresh button
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         setJobList();    
-        dbtk.closeConnectionToDB();
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     //edit job button
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         try{
         int numberEdit = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to edit"));
-        new MotorEditUI(dbtk.getJob(numberEdit), dbtk).setVisible(true);
-        dbtk.closeConnectionToDB();
-        this.dispose();
+        new MotorEditUI(dbtk.getJob(numberEdit)).setVisible(true);
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number");
         }

@@ -23,10 +23,10 @@ public class MotorEditUI extends javax.swing.JFrame {
     static DataBaseToolkit dbtk;
     static ArrayList<JobObject> job;
     
-    public MotorEditUI(ArrayList job, DataBaseToolkit dbtk) 
+    public MotorEditUI(ArrayList job) 
     {
         initComponents();
-        this.dbtk = dbtk;
+        this.dbtk = new DataBaseToolkit();
         this.job = job;
         
         setFields();
@@ -392,7 +392,7 @@ public class MotorEditUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MotorEditUI(job, dbtk).setVisible(true);
+                new MotorEditUI(job).setVisible(true);
             }
         });
     }
@@ -434,9 +434,7 @@ public void setFields()
     JTFClient.setText(job.get(0).getJobClient());
     JTFReturnDate.setText(job.get(0).getJobReturnDate());
     JTFChecked.setText(job.get(0).getJobCheckBy());   
-    
-    //dbtk.closeConnectionToDB();
-                
+                    
 }
 
 private void trim(){
