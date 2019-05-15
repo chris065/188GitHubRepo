@@ -36,15 +36,19 @@ public class DataBaseToolkit
         allTechs = new ArrayList();
         allTasks = new ArrayList();
 
-        /*
+        
         try
         {
+            if(!updateJob(9, "chris2", "Actiro", "12", "c", "p", "", "DD/MM/YY", "DD/MM/YY"))
+            {
+                System.out.println("ERROR");
+            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        */
+        
         
         
     }
@@ -968,12 +972,12 @@ public class DataBaseToolkit
     }
     
     
-    /*
+    
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
-    */
+    
     
     
     
