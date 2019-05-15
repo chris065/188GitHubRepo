@@ -465,7 +465,7 @@ public class DataBaseToolkit
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
-            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?)");
+            sqlInsert = conn.prepareStatement("INSERT INTO JOBS VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             
             sqlInsert.setInt(1, jobId);
             sqlInsert.setString(2, jobMotorName);
@@ -477,6 +477,7 @@ public class DataBaseToolkit
             sqlInsert.setString(8, jobDate);
             sqlInsert.setString(9, jobCheck);
             sqlInsert.setString(10, expectedTime);
+            sqlInsert.setBoolean(11, false);
             
             
             //System.out.printf("Number of jobs: %s", jobId);
@@ -552,7 +553,7 @@ public class DataBaseToolkit
                 }
                 else
                 {
-                    job.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
+                    job.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getBoolean(11)));
                 }
                 conn.close();
                 return job;
@@ -582,7 +583,7 @@ public class DataBaseToolkit
             do
             {
                 
-                allJobs.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
+                allJobs.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getBoolean(11)));
             }
             while(rs.next());
             
@@ -1006,27 +1007,37 @@ public class DataBaseToolkit
             int fiID = countRows("Final_Inspection") + 1;
             
             Connection conn = DriverManager.getConnection(connection.getURL());
-            conn.setAutoCommit(false);
-            sqlAdd = conn.prepareStatement("INSERT INTO Final_Inspection (FI_ID, FI_DATE, FI_CHECKBY, FI_JOB) VALUES (?, ?, ?, ?)");
             
-            sqlAdd.setInt(1, fiID); 
-            sqlAdd.setString(2, date);
-            sqlAdd.setString(3, checkBy);
-            sqlAdd.setInt(4, jobNumber);
-            
-            int rslt = sqlAdd.executeUpdate();
-            if(rslt == 0)
+            if(!setCompletedFlagOnJob(conn, jobNumber))
             {
-                conn.rollback(); 
                 conn.close();
                 return false;
             }
             else
             {
-                conn.commit();
-                conn.close();
-                return true;
+                conn.setAutoCommit(false);
+                sqlAdd = conn.prepareStatement("INSERT INTO Final_Inspection (FI_ID, FI_DATE, FI_CHECKBY, FI_JOB) VALUES (?, ?, ?, ?)");
+            
+                sqlAdd.setInt(1, fiID); 
+                sqlAdd.setString(2, date);
+                sqlAdd.setString(3, checkBy);
+                sqlAdd.setInt(4, jobNumber);
+            
+                int rslt = sqlAdd.executeUpdate();
+                if(rslt == 0)
+                {
+                    conn.rollback(); 
+                    conn.close();
+                    return false;
+                }
+                else
+                {
+                    conn.commit();
+                    conn.close();
+                    return true;
+                }
             }
+            
         }
         catch(Exception e)
         {
@@ -1034,4 +1045,37 @@ public class DataBaseToolkit
             return false;
         }
     }
+    
+    private boolean setCompletedFlagOnJob(Connection conn, int jobNumber)
+    {
+        PreparedStatement sqlUpdate = null;
+        
+        try
+        {
+            conn.setAutoCommit(false);
+            sqlUpdate = conn.prepareStatement("UPDATE JOBS SET JOB_COMPLETED = ? WHERE JOB_NUMBER = ?");
+            
+            sqlUpdate.setBoolean(1, true);
+            sqlUpdate.setInt(2, jobNumber);
+            
+            int rslt = sqlUpdate.executeUpdate();
+            if(rslt == 0)
+            {
+                conn.close();
+                return false;
+            }
+            else
+            {
+                conn.close();
+                return true;
+            }
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
 }

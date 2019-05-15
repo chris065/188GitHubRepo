@@ -15,9 +15,10 @@ public class JobObject
 {
     private final int jobNumber, jobExpectedTime ;
     private final String jobMotorName, jobDateCollected, jobParts, jobClient, jobManufactrer, jobReturnDate, jobCheckBy, jobDate;
+    private boolean jobCompleted;
     //private final LocalDateTime ;
     
-    public JobObject(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobManufactrer, String jobReturnDate, String jobDate, String jobCheckBy, int jobExpectedTime)
+    public JobObject(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobManufactrer, String jobReturnDate, String jobDate, String jobCheckBy, int jobExpectedTime, boolean jobCompleted)
     {
         this.jobNumber = jobNumber;
         this.jobMotorName = jobMotorName;
@@ -29,6 +30,7 @@ public class JobObject
         this.jobDate = jobDate;
         this.jobCheckBy = jobCheckBy;
         this.jobExpectedTime = jobExpectedTime;
+        this.jobCompleted = jobCompleted;
     }
 
     public int getJobNumber() 
@@ -81,10 +83,15 @@ public class JobObject
         return jobDate;
     }
 
+    public boolean isJobCompleted()
+    {
+        return jobCompleted;
+    }
+
     @Override
     public String toString() 
     {
-        return "JobObject{" + "jobNumber=" + jobNumber + ", jobExpectedTime=" + jobExpectedTime + ", jobMotorName=" + jobMotorName + ", jobDateCollected=" + jobDateCollected + ", jobParts=" + jobParts + ", jobClient=" + jobClient + ", jobManufactrer=" + jobManufactrer + ", jobReturnDate=" + jobReturnDate + ", jobCheckBy=" + jobCheckBy + ", jobDate=" + jobDate + '}';
+        return "JobObject{" + "jobNumber=" + jobNumber + ", jobExpectedTime=" + jobExpectedTime + ", jobMotorName=" + jobMotorName + ", jobDateCollected=" + jobDateCollected + ", jobParts=" + jobParts + ", jobClient=" + jobClient + ", jobManufactrer=" + jobManufactrer + ", jobReturnDate=" + jobReturnDate + ", jobCheckBy=" + jobCheckBy + ", jobDate=" + jobDate + ", jobCompleted="+ jobCompleted+'}';
     }
 
     
