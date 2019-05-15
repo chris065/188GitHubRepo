@@ -23,10 +23,10 @@ public class MotorEditUI extends javax.swing.JFrame {
     static DataBaseToolkit dbtk;
     static ArrayList<JobObject> job;
     
-    public MotorEditUI(ArrayList job) 
+    public MotorEditUI(ArrayList job, DataBaseToolkit dbtk) 
     {
         initComponents();
-        this.dbtk = new DataBaseToolkit();
+        this.dbtk = dbtk;
         this.job = job;
         
         setFields();
@@ -261,7 +261,7 @@ public class MotorEditUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-               
+               //dbtk.closeConnectionToDB();
         trim();
         if (checks()) { 
             
@@ -392,7 +392,7 @@ public class MotorEditUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MotorEditUI(job).setVisible(true);
+                new MotorEditUI(job, dbtk).setVisible(true);
             }
         });
     }
@@ -433,7 +433,10 @@ public void setFields()
     TAParts.setText(job.get(0).getJobParts());
     JTFClient.setText(job.get(0).getJobClient());
     JTFReturnDate.setText(job.get(0).getJobReturnDate());
-    JTFChecked.setText(job.get(0).getJobCheckBy());   
+    JTFChecked.setText(job.get(0).getJobCheckBy());  
+    
+    dbtk.closeConnectionToDB();
+    
                     
 }
 
