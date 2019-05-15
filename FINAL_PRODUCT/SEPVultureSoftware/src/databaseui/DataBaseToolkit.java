@@ -420,7 +420,7 @@ public class DataBaseToolkit
             PreparedStatement sqlUpdate = null;
             
             Connection conn = DriverManager.getConnection(connection.getURL()); 
-            sqlUpdate = conn.prepareStatement("UPDATE JOBS SET JOB_MOTORNAME = ?, JOB_DATECOLLECTED = ?, JOB_PARTS = ?, JOB_CLIENT = ?, ﻿JOB_MANUFACTURER = ?, JOB_RETURNDATE = ?, JOB_CHECKBY = ?, JOB_EXPECTED_TIME = ? WHERE JOB_NUMBER = ?");
+            sqlUpdate = conn.prepareStatement("UPDATE JOBS SET JOB_MOTORNAME = ?, JOB_DATECOLLECTED = ?, JOB_PARTS = ?, JOB_CLIENT = ?, JOB_MANUFACTURER = ?, JOB_RETURNDATE = ?, JOB_CHECKBY = ?, JOB_EXPECTED_TIME = ? WHERE JOB_NUMBER = ?");
             
             sqlUpdate.setString(1, jobMotorName);
             sqlUpdate.setString(2, jobDateCollected);
