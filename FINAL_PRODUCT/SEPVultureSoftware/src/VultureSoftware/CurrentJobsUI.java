@@ -344,51 +344,51 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
 
     /*
-    * initialises and refreshes job list
+    * initialises and refreshes job list, sorting by completed and non completed jobs
     */
-    
     public void setJobList()
     {  
-        try{
-        ArrayList<JobObject> allJobs = dbtk.getAllJobs();
-        
-        
-        
-        
-        
-        
-        
-        //for each if completed = true to put all completed jobs in array, non comp in another array to then use in for instead of allJobs variable
-        
-        
-        
-        
-        
-        
+        ArrayList<JobObject> allJobs = dbtk.getAllJobs();    
+
         jobList.setModel(jobListModel);
-                    
-        //to test no jobs in db:
-        //allJobs = null; 
-    
+        
+        ArrayList<JobObject> compJobs = new ArrayList<JobObject>();
+        ArrayList<JobObject> nonCompJobs = new ArrayList<JobObject>();
+        
+        //adds completed and non completed jobs to appropriate array
+        for(int i = 0; i < allJobs.size(); i++)
+            {               
+                if(allJobs.get(i).isJobCompleted()){                    
+                compJobs.add(allJobs.get(i));
+                }
+                else{
+                    nonCompJobs.add(allJobs.get(i));
+                }              
+            }
+        
         if(allJobs == null)
         {
             jobListModel.addElement( null);
         }
-        else
-        {
+        else{
             jobListModel.removeAllElements();
             
-            for(int i = 0; i < allJobs.size(); i++)
+            for(int i = 0; i < nonCompJobs.size(); i++)
             {               
-                jobListModel.addElement(allJobs.get(i).getJobNumber()+" "+allJobs.get(i).getJobMotorName());  
+                jobListModel.addElement(nonCompJobs.get(i).getJobNumber()+" "+nonCompJobs.get(i).getJobMotorName());  
             }
             
+            //title to say not completed
+            jobListModel.addElement(" ");
+            jobListModel.addElement("Completed jobs:");
+            
+            for(int i = 0; i < compJobs.size(); i++)
+            {               
+                jobListModel.addElement(compJobs.get(i).getJobNumber()+" "+compJobs.get(i).getJobMotorName());  
+            }
+            allJobs.clear();        
         }
-        allJobs.clear();
-        }
-        catch(NullPointerException e){
-            System.out.println("Error loading jobs");
-        }
+        
 }
     /*
     * Makes only specific users able to click certain buttons

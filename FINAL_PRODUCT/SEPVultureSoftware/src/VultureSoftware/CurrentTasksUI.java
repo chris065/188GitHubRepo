@@ -350,35 +350,33 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
-    /*
-    Populates the task list with allocated tasks.
-    */
-    public void populateList()
-    {
-        
-        
-        
-        
-        //TODO: only get tasks that are not completed and not delayed. add completed column to db
-        
-                
-        
-        
-        
-        taskList.setModel(taskListModel);
-        ArrayList tasks = dbtk.getAllTasks();
-        
-        for(int i = 0; i < tasks.size(); i++)
-        {
-            taskListModel.addElement(tasks.get(i).toString());}
-            
-    }
     
-        private void setTaskList(){
+    /*
+    * initialises and refreshes task list, sorting by delayed and non delayed tasks
+    */    
+    private void setTaskList(){
          
             
             ArrayList<TaskObject> tasks = dbtk.getTasksForJob(job.get(0).getJobNumber());
             taskList.setModel (taskListModel);
+            
+            
+            
+            
+            
+        ArrayList<TaskObject> delTasks = new ArrayList<TaskObject>();
+        ArrayList<TaskObject> nonDelTasks = new ArrayList<TaskObject>();
+        
+        for(int i = 0; i < tasks.size(); i++)
+            {               
+                if(tasks.get(i).getDelay()){                    
+                delTasks.add(tasks.get(i));
+                }
+                else{
+                    nonDelTasks.add(tasks.get(i));
+                }              
+            }    
+       
             
             if(tasks == null){
                 taskListModel.addElement(null);
@@ -386,12 +384,21 @@ public class CurrentTasksUI extends javax.swing.JFrame {
             else{
                 taskListModel.removeAllElements();
                 
-                for(int i = 0; i < tasks.size(); i++)
+                for(int i = 0; i < nonDelTasks.size(); i++)
                 {
-                    taskListModel.addElement(tasks.get(i).getTaskName());
+                    taskListModel.addElement(nonDelTasks.get(i).getID() + " " + nonDelTasks.get(i).getTaskName()); 
                 }
+
+            taskListModel.addElement(" ");
+            taskListModel.addElement("Delayed tasks:");
+            
+            for(int i = 0; i < delTasks.size(); i++)
+            {               
+                taskListModel.addElement(delTasks.get(i).getID() + " " + delTasks.get(i).getTaskName());   
             }
             tasks.clear();
+            }
+            
             
         }
 }
