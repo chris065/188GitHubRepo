@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package VultureSoftware;
+
 import databaseui.*;
 import java.text.SimpleDateFormat;
 import java.util.*;

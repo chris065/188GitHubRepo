@@ -13,7 +13,7 @@ import org.jfree.chart.plot.PlotOrientation;
 
 /**
  *
- * @author jamie
+ * @author Nathan
  */
 public class ViewChartUI extends javax.swing.JFrame {
 
@@ -24,6 +24,7 @@ public class ViewChartUI extends javax.swing.JFrame {
      */
     public ViewChartUI() {
         
+        //Connect to database and utilize database tools.
         dbtk = new DataBaseToolkit();
         initComponents();
     }
@@ -38,15 +39,16 @@ public class ViewChartUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
+        descLabel = new javax.swing.JLabel();
+        manButton = new javax.swing.JButton();
+        manDescLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        delayButton = new javax.swing.JButton();
+        delayDescLabel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
+        priorityButton = new javax.swing.JButton();
+        priorityDescLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(175, 0));
@@ -54,46 +56,50 @@ public class ViewChartUI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("View Charts and Stats");
+        titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleLabel.setText("View Charts and Stats");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("View different bar charts to compare statistics between different tasks.");
+        descLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        descLabel.setForeground(new java.awt.Color(255, 255, 255));
+        descLabel.setText("View different bar charts to compare statistics between different tasks.");
 
-        jButton1.setText("Estimated task duration");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        manButton.setText("Tasks for manufacturers");
+        manButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                manButtonActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Compare estimated task durations for different manufacturers");
+        manDescLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        manDescLabel.setForeground(new java.awt.Color(255, 255, 255));
+        manDescLabel.setText("Compare the number of tasks for different manufacturers");
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("Total number of delays");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        delayButton.setText("Total number of delays");
+        delayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                delayButtonActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("View the total number of delays");
+        delayDescLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        delayDescLabel.setForeground(new java.awt.Color(255, 255, 255));
+        delayDescLabel.setText("View the total number of delays");
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton3.setText("Placeholder");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        priorityButton.setText("Compare task priority");
+        priorityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                priorityButtonActionPerformed(evt);
             }
         });
+
+        priorityDescLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        priorityDescLabel.setForeground(new java.awt.Color(255, 255, 255));
+        priorityDescLabel.setText("Compare priority of all tasks");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,41 +110,46 @@ public class ViewChartUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(titleLabel)
+                    .addComponent(descLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(manButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3))
+                        .addComponent(manDescLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(delayButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4))
-                    .addComponent(jButton3))
+                        .addComponent(delayDescLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(priorityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(priorityDescLabel)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(descLabel)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(manButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manDescLabel))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(42, 42, 42)
+                    .addComponent(delayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delayDescLabel))
+                .addGap(32, 32, 32)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priorityDescLabel)
+                    .addComponent(priorityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,15 +166,16 @@ public class ViewChartUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /*
+    
+    */
+    private void manButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manButtonActionPerformed
         
         ArrayList<JobObject> jobs = dbtk.getAllJobs();
         
         ArrayList<String> manufacturers = new ArrayList();
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        
-        
         
         for(JobObject j : jobs)
         {
@@ -172,7 +184,6 @@ public class ViewChartUI extends javax.swing.JFrame {
                 manufacturers.add(j.getJobManufactrer());
             }
         }
-        
         for(String s : manufacturers)
         {
             int total = 0;
@@ -187,7 +198,6 @@ public class ViewChartUI extends javax.swing.JFrame {
                     
                 }
             }
-            
             dataset.addValue(total, "No. of tasks for " + s + " motors", s);
         }
         
@@ -199,9 +209,9 @@ public class ViewChartUI extends javax.swing.JFrame {
         
         jobs.clear();
         manufacturers.clear();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_manButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void delayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delayButtonActionPerformed
         
         ArrayList<String> tasks = dbtk.getAllTasks();
         
@@ -213,7 +223,7 @@ public class ViewChartUI extends javax.swing.JFrame {
         {
             ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i));
 
-            if (taskData.get(0).getDelay())
+            if(taskData.get(0).getDelay())
             {
                 delayed.add("1");
             }
@@ -226,7 +236,7 @@ public class ViewChartUI extends javax.swing.JFrame {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         
         dataset.addValue(delayed.size(), "No. of tasks that are delayed", "Delays");
-        dataset.addValue(notDelayed.size(), "Number of tasks that are not delayed", "Non-delays");
+        dataset.addValue(notDelayed.size(), "No. of tasks that are not delayed", "Non-delays");
         
         JFreeChart delayChart = ChartFactory.createBarChart("Chart showing the number of tasks that are delayed compared to the number of tasks that aren't", "Delayed/Not Delayed", "Frequency", dataset, PlotOrientation.VERTICAL, true, true, false);
         
@@ -238,11 +248,55 @@ public class ViewChartUI extends javax.swing.JFrame {
         notDelayed.clear();
         tasks.clear();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_delayButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void priorityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityButtonActionPerformed
+        ArrayList<String> tasks = dbtk.getAllTasks();
+        
+        ArrayList<String> low = new ArrayList();
+        ArrayList<String> medium = new ArrayList();
+        ArrayList<String> high = new ArrayList();
+        
+        for(int i = 0; i < tasks.size(); i++)
+        {
+            ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i));
+
+            if(taskData.get(0).getPriority() ==  null)
+            {
+                taskData = null;
+            }
+            else if(taskData.get(0).getPriority().equals("Low"))
+            {
+                low.add("1");
+            }
+            else if(taskData.get(0).getPriority().equals("Medium"))
+            {
+                medium.add("1");
+            }
+            else if(taskData.get(0).getPriority().equals("High"))
+            {
+                high.add("1");
+            }
+            
+        }
+        
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        
+        dataset.addValue(low.size(), "No. of tasks that are low priority", "Low");
+        dataset.addValue(medium.size(), "No. of tasks that are medium priority", "Medium");
+        dataset.addValue(high.size(), "No. of tasks that are high priority", "High");
+        
+        JFreeChart priorityChart = ChartFactory.createBarChart("Chart comparing the priorities of all tasks", "Priority", "Frequency", dataset, PlotOrientation.VERTICAL, true, true, false);
+        
+        ChartFrame delayFrame = new ChartFrame("Priority", priorityChart, true);
+        delayFrame.setVisible(true);
+        delayFrame.setSize(1000, 800);
+        
+        low.clear();
+        medium.clear();
+        high.clear();
+        tasks.clear();
+    }//GEN-LAST:event_priorityButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,15 +365,16 @@ public class ViewChartUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton delayButton;
+    private javax.swing.JLabel delayDescLabel;
+    private javax.swing.JLabel descLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton manButton;
+    private javax.swing.JLabel manDescLabel;
+    private javax.swing.JButton priorityButton;
+    private javax.swing.JLabel priorityDescLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
