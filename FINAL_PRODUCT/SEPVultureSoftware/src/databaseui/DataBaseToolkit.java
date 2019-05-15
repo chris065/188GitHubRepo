@@ -36,15 +36,19 @@ public class DataBaseToolkit
         allTechs = new ArrayList();
         allTasks = new ArrayList();
 
-        /*
+        
         try
         {
+            if(!addNewFinalInspection(4, "DD/MM/YY", "Test Check"))
+            {
+                System.out.println("ERROR");
+            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        */
+        
         
         
         
@@ -969,12 +973,12 @@ public class DataBaseToolkit
     }
     
     
-    /*
+    
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
-    */
+    
     
     
     
@@ -1008,7 +1012,7 @@ public class DataBaseToolkit
             
             Connection conn = DriverManager.getConnection(connection.getURL());
             
-            if(!setCompletedFlagOnJob(conn, jobNumber))
+            if(!setCompletedFlagOnJob(jobNumber))
             {
                 conn.close();
                 return false;
@@ -1046,12 +1050,13 @@ public class DataBaseToolkit
         }
     }
     
-    private boolean setCompletedFlagOnJob(Connection conn, int jobNumber)
+    private boolean setCompletedFlagOnJob(int jobNumber)
     {
         PreparedStatement sqlUpdate = null;
         
         try
         {
+            Connection conn = DriverManager.getConnection(connection.getURL());
             conn.setAutoCommit(false);
             sqlUpdate = conn.prepareStatement("UPDATE JOBS SET JOB_COMPLETED = ? WHERE JOB_NUMBER = ?");
             
@@ -1061,11 +1066,13 @@ public class DataBaseToolkit
             int rslt = sqlUpdate.executeUpdate();
             if(rslt == 0)
             {
+                conn.rollback();
                 conn.close();
                 return false;
             }
             else
             {
+                conn.commit();
                 conn.close();
                 return true;
             }
