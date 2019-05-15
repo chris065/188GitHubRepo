@@ -209,7 +209,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         try{
         int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for tasks"));
         new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
-        //this.dispose();
+        this.dispose();
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number");
         }
