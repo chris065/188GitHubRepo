@@ -333,15 +333,10 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //initialises and refreshes job list
     public void setJobList()
     {  
-        
-        //TODO ONLY GET JOBS NOT COMPLETED - COMPLETED ADDED TO JOB IN DB?
-        
-        
-        
-        
-        
         try{
         ArrayList<JobObject> allJobs = dbtk.getAllJobs();
+        //for each if completed = true to put all completed jobs in array, non comp in another array to then use in for instead of allJobs variable
+        
         jobList.setModel(jobListModel);
                     
         //to test no jobs in db:
