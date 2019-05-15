@@ -354,6 +354,7 @@ public class DataBaseToolkit
             
             if(!rs.next())
             {
+                conn.close();
                 return null;
             }
             else
@@ -417,11 +418,9 @@ public class DataBaseToolkit
     public boolean updateJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
     {
         PreparedStatement sqlUpdate = null;
-        
         try
         {   
             Connection conn = DriverManager.getConnection(connection.getURL()); 
-            //conn.setAutoCommit(false);
             sqlUpdate = conn.prepareStatement("UPDATE JOBS SET JOB_MOTORNAME = ?, JOB_DATECOLLECTED = ?, JOB_PARTS = ?, JOB_CLIENT = ?, JOB_MANUFACTURER = ?, JOB_RETURNDATE = ?, JOB_CHECKEDBY = ?, JOB_EXPECTED_TIME = ? WHERE JOB_NUMBER = ?");
             
             sqlUpdate.setString(1, jobMotorName);
@@ -548,10 +547,12 @@ public class DataBaseToolkit
                 ResultSet rs = stmt.executeQuery(sql);
                 if(!rs.next())
                 {
+                    conn.close();
                     return null;
                 }
                 else
                 {
+                    conn.close();
                     job.add(new JobObject(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
                 }
                 
