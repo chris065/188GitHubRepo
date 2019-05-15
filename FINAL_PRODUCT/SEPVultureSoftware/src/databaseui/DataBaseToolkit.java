@@ -36,18 +36,15 @@ public class DataBaseToolkit
         allTechs = new ArrayList();
         allTasks = new ArrayList();
 
-        
+        /*
         try
         {
-            if(!updateJob(2, "chris2", "Actiro", "12", "c", "p", "", "DD/MM/YY", "DD/MM/YY"))
-            {
-                System.out.println("ERROR");
-            }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
+        */
         
         
         
@@ -419,12 +416,12 @@ public class DataBaseToolkit
     
     public boolean updateJob(int jobNumber, String jobMotorName, String jobDateCollected, String jobParts, String jobClient, String jobMan, String jobReturnDate, String jobCheck, String expectedTime)
     {
+        PreparedStatement sqlUpdate = null;
+        
         try
-        {
-            PreparedStatement sqlUpdate = null;
-            
+        {   
             Connection conn = DriverManager.getConnection(connection.getURL()); 
-            conn.setAutoCommit(false);
+            //conn.setAutoCommit(false);
             sqlUpdate = conn.prepareStatement("UPDATE JOBS SET JOB_MOTORNAME = ?, JOB_DATECOLLECTED = ?, JOB_PARTS = ?, JOB_CLIENT = ?, JOB_MANUFACTURER = ?, JOB_RETURNDATE = ?, JOB_CHECKEDBY = ?, JOB_EXPECTED_TIME = ? WHERE JOB_NUMBER = ?");
             
             sqlUpdate.setString(1, jobMotorName);
@@ -446,7 +443,7 @@ public class DataBaseToolkit
             }
             else
             {
-                conn.commit();
+                //conn.commit();
                 conn.close();
                 return true;
             }
@@ -971,12 +968,12 @@ public class DataBaseToolkit
     }
     
     
-    
+    /*
     public static void main(String[] args)
     {
         new DataBaseToolkit();
     }
-    
+    */
     
     
     
