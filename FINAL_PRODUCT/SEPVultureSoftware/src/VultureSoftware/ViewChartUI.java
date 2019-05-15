@@ -167,7 +167,7 @@ public class ViewChartUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /*
-    
+    Displays a chart showing tasks for different manufacturers when the manButton is clicked.
     */
     private void manButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manButtonActionPerformed
         
@@ -177,6 +177,7 @@ public class ViewChartUI extends javax.swing.JFrame {
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         
+        //for loop to populate ArrayList of all manufacturers.
         for(JobObject j : jobs)
         {
             if(!manufacturers.contains(j.getJobManufactrer()))
@@ -184,6 +185,8 @@ public class ViewChartUI extends javax.swing.JFrame {
                 manufacturers.add(j.getJobManufactrer());
             }
         }
+        
+        //for loop sequence to get all tasks for each manufacturer.
         for(String s : manufacturers)
         {
             int total = 0;
@@ -198,15 +201,20 @@ public class ViewChartUI extends javax.swing.JFrame {
                     
                 }
             }
+            
+            //Create dataset for the total number of tasks for each manufacturer.
             dataset.addValue(total, "No. of tasks for " + s + " motors", s);
         }
         
+        //Create chart
         JFreeChart manTaskChart = ChartFactory.createBarChart("A chart showing the amount of tasks associated with different motor manufacturers", "Manufacturer", "Frequency", dataset, PlotOrientation.VERTICAL, true, true, false);
         
+        //Create chart fram and add the chart  to it.
         ChartFrame manTaskFrame = new ChartFrame("Manufacturer tasks", manTaskChart, true);
         manTaskFrame.setVisible(true);
         manTaskFrame.setSize(1000, 800);
         
+        //Clear ArrayLists to prevent bugs.
         jobs.clear();
         manufacturers.clear();
     }//GEN-LAST:event_manButtonActionPerformed
@@ -218,7 +226,7 @@ public class ViewChartUI extends javax.swing.JFrame {
         ArrayList<String> delayed = new ArrayList();
         ArrayList<String> notDelayed = new ArrayList();
         
-        
+        //for loop to populate ArrayLists for both delayed and non-delayed tasks.
         for(int i = 0; i < tasks.size(); i++)
         {
             ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i));
@@ -235,19 +243,22 @@ public class ViewChartUI extends javax.swing.JFrame {
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         
+        //sets the size of the populated ArrayLists to the frequency of the datasets.
         dataset.addValue(delayed.size(), "No. of tasks that are delayed", "Delays");
         dataset.addValue(notDelayed.size(), "No. of tasks that are not delayed", "Non-delays");
         
+        //Create chart.
         JFreeChart delayChart = ChartFactory.createBarChart("Chart showing the number of tasks that are delayed compared to the number of tasks that aren't", "Delayed/Not Delayed", "Frequency", dataset, PlotOrientation.VERTICAL, true, true, false);
         
+        //Create chart frame and add the chart to it.
         ChartFrame delayFrame = new ChartFrame("Delays", delayChart, true);
         delayFrame.setVisible(true);
         delayFrame.setSize(1000, 800);
         
+        //Clear ArrayLists to prevent bugs.
         delayed.clear();
         notDelayed.clear();
         tasks.clear();
-        
     }//GEN-LAST:event_delayButtonActionPerformed
 
     private void priorityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityButtonActionPerformed
@@ -257,6 +268,7 @@ public class ViewChartUI extends javax.swing.JFrame {
         ArrayList<String> medium = new ArrayList();
         ArrayList<String> high = new ArrayList();
         
+        //for loop to populate ArrayLists for all priority levels.
         for(int i = 0; i < tasks.size(); i++)
         {
             ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i));
@@ -282,16 +294,20 @@ public class ViewChartUI extends javax.swing.JFrame {
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         
+        //sets the size of the populated ArrayLists to the frequency of the datasets.
         dataset.addValue(low.size(), "No. of tasks that are low priority", "Low");
         dataset.addValue(medium.size(), "No. of tasks that are medium priority", "Medium");
         dataset.addValue(high.size(), "No. of tasks that are high priority", "High");
         
+        //Create chart.
         JFreeChart priorityChart = ChartFactory.createBarChart("Chart comparing the priorities of all tasks", "Priority", "Frequency", dataset, PlotOrientation.VERTICAL, true, true, false);
         
+        //Create chart frame and add chart to it.
         ChartFrame delayFrame = new ChartFrame("Priority", priorityChart, true);
         delayFrame.setVisible(true);
         delayFrame.setSize(1000, 800);
         
+        //Clear ArrayLists to prevent bugs.
         low.clear();
         medium.clear();
         high.clear();
