@@ -1010,6 +1010,7 @@ public class DataBaseToolkit
             sqlAdd = conn.prepareStatement("INSERT INTO FINAL_INSPECTION (FI_ID, FI_DATE, FI_CHECKBY, FI_JOB) VALUES (?, ?, ?, ?)");
             
             sqlAdd.setInt(1, fiID);
+            
             sqlAdd.setString(2, date);
             sqlAdd.setString(3, checkBy);
             sqlAdd.setInt(4, jobNumber);
