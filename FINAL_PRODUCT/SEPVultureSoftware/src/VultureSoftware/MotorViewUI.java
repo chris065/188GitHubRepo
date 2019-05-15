@@ -203,7 +203,12 @@ public class MotorViewUI extends javax.swing.JFrame {
         infoTextArea.append("Parts needed: " + job.get(0).getJobParts() + "\n\n");
         infoTextArea.append("Client name: " + job.get(0).getJobClient() + "\n\n");
         infoTextArea.append("Date motor was collected: " + job.get(0).getJobDateCollected() + "\n\n");
-        infoTextArea.append("Motor due to be returned on: " + job.get(0).getJobReturnDate() + "\n\n");
+        infoTextArea.append("Motor due to be returned on: " + job.get(0).getJobReturnDate() + ". \n\n");
+        
+        if(job.get(0).isJobCompleted()){
+            infoTextArea.append("This job is now completed.");
+            
+        }
 
 
     }
