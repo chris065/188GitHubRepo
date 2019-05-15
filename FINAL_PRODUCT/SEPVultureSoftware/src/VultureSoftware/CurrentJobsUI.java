@@ -212,9 +212,13 @@ public class CurrentJobsUI extends javax.swing.JFrame {
 
     //view tasks button
     private void viewTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTasksButtonActionPerformed
+        try{
         int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for tasks"));
         new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
         //this.dispose();
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Error: must enter a valid number");
+        }
     }//GEN-LAST:event_viewTasksButtonActionPerformed
 
     //add job button
@@ -234,14 +238,15 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         new MotorEditUI(dbtk.getJob(numberEdit)).setVisible(true);
         //this.dispose();
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Error: must enter a number");
+            JOptionPane.showMessageDialog(null, "Error: must enter a valid number");
         }
         
     }//GEN-LAST:event_editButtonActionPerformed
 
     //delete button
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
-               
+          
+        //try catch
         String numberDel = JOptionPane.showInputDialog(this, "Enter the job number of the motor to delete");
         try{
         if(!dbtk.deleteJob(Integer.parseInt(numberDel)))

@@ -309,11 +309,15 @@ public class MotorEditUI extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void JTFDateCollectedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFDateCollectedMousePressed
-        JTFDateCollected.setText("");
+        if(JTFDateCollected.getText().equals("DD/MM/YYYY")){
+            JTFDateCollected.setText("");
+        };
     }//GEN-LAST:event_JTFDateCollectedMousePressed
 
     private void JTFReturnDateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTFReturnDateMousePressed
-        JTFReturnDate.setText("");
+        if(JTFReturnDate.getText().equals("DD/MM/YYYY")){
+            JTFReturnDate.setText("");
+        }
     }//GEN-LAST:event_JTFReturnDateMousePressed
 
     /**
