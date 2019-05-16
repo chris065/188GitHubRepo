@@ -39,9 +39,9 @@ public class TaskAddUI extends javax.swing.JFrame {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
         JTFTaskName = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        typeLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         infoLabel = new javax.swing.JLabel();
@@ -55,11 +55,13 @@ public class TaskAddUI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Task Name");
+        nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        nameLabel.setText("Task Name");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Type of Task");
+        typeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        typeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        typeLabel.setText("Type of Task");
 
         saveButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         saveButton.setText("Save Task");
@@ -87,8 +89,8 @@ public class TaskAddUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6))
+                    .addComponent(nameLabel)
+                    .addComponent(typeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JTFTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,12 +116,12 @@ public class TaskAddUI extends javax.swing.JFrame {
                 .addComponent(infoLabel)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(nameLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(JTFTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
+                            .addComponent(typeLabel)
                             .addComponent(JCBType, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,11 +291,11 @@ public class TaskAddUI extends javax.swing.JFrame {
     private javax.swing.JTextField JTFTaskName;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JButton saveButton;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JLabel typeLabel;
     // End of variables declaration//GEN-END:variables
 
 

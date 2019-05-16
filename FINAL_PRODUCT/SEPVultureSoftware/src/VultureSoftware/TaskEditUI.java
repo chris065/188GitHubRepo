@@ -41,20 +41,20 @@ public class TaskEditUI extends javax.swing.JFrame {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
         JTFTaskName = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        typeLabel = new javax.swing.JLabel();
         updateButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         JCBType = new javax.swing.JComboBox<>();
         JTFTech = new javax.swing.JTextField();
-        timeLabel = new javax.swing.JLabel();
-        timeLabel1 = new javax.swing.JLabel();
+        assignedLabel = new javax.swing.JLabel();
+        dateLabel = new javax.swing.JLabel();
         JTFTime = new javax.swing.JTextField();
-        timeLabel2 = new javax.swing.JLabel();
+        prefLabel = new javax.swing.JLabel();
         JTFPref = new javax.swing.JTextField();
         JTFTals = new javax.swing.JTextField();
-        timeLabel3 = new javax.swing.JLabel();
+        talentsLabel = new javax.swing.JLabel();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
@@ -64,11 +64,13 @@ public class TaskEditUI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Task Name");
+        nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        nameLabel.setText("Task Name");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Type of Task");
+        typeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        typeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        typeLabel.setText("Type of Task");
 
         updateButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         updateButton.setText("Update Task");
@@ -85,17 +87,21 @@ public class TaskEditUI extends javax.swing.JFrame {
         JCBType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JCBType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a task type", "Cleaning", "Replacement", "Insulating", "Other" }));
 
-        timeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        timeLabel.setText("Assigned To");
+        assignedLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        assignedLabel.setForeground(new java.awt.Color(255, 255, 255));
+        assignedLabel.setText("Assigned To");
 
-        timeLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        timeLabel1.setText("Expected Date");
+        dateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        dateLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dateLabel.setText("Expected Date");
 
-        timeLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        timeLabel2.setText("Preferences");
+        prefLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        prefLabel.setForeground(new java.awt.Color(255, 255, 255));
+        prefLabel.setText("Preferences");
 
-        timeLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        timeLabel3.setText("Talents");
+        talentsLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        talentsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        talentsLabel.setText("Talents");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,8 +112,8 @@ public class TaskEditUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel6))
+                            .addComponent(nameLabel)
+                            .addComponent(typeLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JTFTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -116,19 +122,19 @@ public class TaskEditUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(timeLabel1)
+                                .addComponent(dateLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(JTFTime, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(timeLabel)
+                                .addComponent(assignedLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(JTFTech, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(timeLabel2)
+                                .addComponent(prefLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(JTFPref, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(timeLabel3)
+                                .addComponent(talentsLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(JTFTals, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(1, 1, 1)))
@@ -145,28 +151,28 @@ public class TaskEditUI extends javax.swing.JFrame {
                 .addComponent(titleLabel)
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(nameLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(JTFTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
+                            .addComponent(typeLabel)
                             .addComponent(JCBType, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeLabel)
+                    .addComponent(assignedLabel)
                     .addComponent(JTFTech, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeLabel1)
+                    .addComponent(dateLabel)
                     .addComponent(JTFTime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeLabel2)
+                    .addComponent(prefLabel)
                     .addComponent(JTFPref, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeLabel3)
+                    .addComponent(talentsLabel)
                     .addComponent(JTFTals, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,15 +448,15 @@ else{
     private javax.swing.JTextField JTFTaskName;
     private javax.swing.JTextField JTFTech;
     private javax.swing.JTextField JTFTime;
+    private javax.swing.JLabel assignedLabel;
+    private javax.swing.JLabel dateLabel;
     private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel timeLabel;
-    private javax.swing.JLabel timeLabel1;
-    private javax.swing.JLabel timeLabel2;
-    private javax.swing.JLabel timeLabel3;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel prefLabel;
+    private javax.swing.JLabel talentsLabel;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JLabel typeLabel;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 

@@ -42,22 +42,22 @@ public class MotorEditUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
         JTFMotorName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
         JTFDateCollected = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        collectedLabel = new javax.swing.JLabel();
         JTFClient = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        clientLabel = new javax.swing.JLabel();
         JTFEstimated = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        estimateLabel = new javax.swing.JLabel();
         JTFChecked = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        checkLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        manufacturerLabel = new javax.swing.JLabel();
+        returnLabel = new javax.swing.JLabel();
         JTFReturnDate = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        partsLabel = new javax.swing.JLabel();
         TAParts = new java.awt.TextArea();
         JCBMan = new javax.swing.JComboBox<>();
 
@@ -67,15 +67,15 @@ public class MotorEditUI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Motor Name");
+        nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        nameLabel.setText("Motor Name");
 
         JTFMotorName.setNextFocusableComponent(JTFDateCollected);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Edit Job");
+        titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleLabel.setText("Edit Job");
 
         JTFDateCollected.setNextFocusableComponent(JTFEstimated);
         JTFDateCollected.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,23 +84,23 @@ public class MotorEditUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Date Collected");
+        collectedLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        collectedLabel.setForeground(new java.awt.Color(255, 255, 255));
+        collectedLabel.setText("Date Collected");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Client");
+        clientLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        clientLabel.setForeground(new java.awt.Color(255, 255, 255));
+        clientLabel.setText("Client");
 
         JTFEstimated.setNextFocusableComponent(TAParts);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Estimated Hours");
+        estimateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        estimateLabel.setForeground(new java.awt.Color(255, 255, 255));
+        estimateLabel.setText("Estimated Hours");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Checked By");
+        checkLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        checkLabel.setForeground(new java.awt.Color(255, 255, 255));
+        checkLabel.setText("Checked By");
 
         saveButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         saveButton.setText("Update Job");
@@ -110,13 +110,13 @@ public class MotorEditUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Manufacturer");
+        manufacturerLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        manufacturerLabel.setForeground(new java.awt.Color(255, 255, 255));
+        manufacturerLabel.setText("Manufacturer");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Return Date");
+        returnLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        returnLabel.setForeground(new java.awt.Color(255, 255, 255));
+        returnLabel.setText("Return Date");
 
         JTFReturnDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -124,9 +124,9 @@ public class MotorEditUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Parts Needed");
+        partsLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        partsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        partsLabel.setText("Parts Needed");
 
         JCBMan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JCBMan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Actiro", "Buhler", "PG", "Other" }));
@@ -141,16 +141,16 @@ public class MotorEditUI extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
-                                .addComponent(jLabel11))
+                                .addComponent(partsLabel))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel6)))
-                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(estimateLabel)))
+                        .addComponent(manufacturerLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(checkLabel, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JTFEstimated, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,7 +164,7 @@ public class MotorEditUI extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(titleLabel)
                                 .addGap(432, 432, 432))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,13 +173,13 @@ public class MotorEditUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(clientLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(JTFClient, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel4))
+                                    .addComponent(returnLabel)
+                                    .addComponent(collectedLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(JTFDateCollected, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,38 +190,38 @@ public class MotorEditUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(193, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(JTFMotorName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
+                        .addComponent(nameLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JCBMan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
+                            .addComponent(manufacturerLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JTFEstimated, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                            .addComponent(estimateLabel))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JTFChecked, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)))
+                            .addComponent(checkLabel)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JTFClient, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(clientLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JTFDateCollected, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(collectedLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
+                            .addComponent(returnLabel)
                             .addComponent(JTFReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +229,7 @@ public class MotorEditUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11))
+                    .addComponent(partsLabel))
                 .addGap(9, 9, 9))
         );
 
@@ -395,17 +395,17 @@ public class MotorEditUI extends javax.swing.JFrame {
     private javax.swing.JTextField JTFMotorName;
     private javax.swing.JTextField JTFReturnDate;
     private java.awt.TextArea TAParts;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel checkLabel;
+    private javax.swing.JLabel clientLabel;
+    private javax.swing.JLabel collectedLabel;
+    private javax.swing.JLabel estimateLabel;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel manufacturerLabel;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel partsLabel;
+    private javax.swing.JLabel returnLabel;
     private javax.swing.JButton saveButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
 

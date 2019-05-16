@@ -256,7 +256,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             setJobList();
         }
         }
-        catch(NumberFormatException e){
+        catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: job number " + numberDel + " doesn't exist", "Error", JOptionPane.ERROR_MESSAGE);
                 }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
@@ -289,8 +289,8 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         try{
         int numberView = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to view"));
         new MotorViewUI(dbtk.getJob(numberView)).setVisible(true);
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Error: must enter a number", "Error", JOptionPane.ERROR_MESSAGE);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: please try again", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_viewInfoButtonActionPerformed
     /**
