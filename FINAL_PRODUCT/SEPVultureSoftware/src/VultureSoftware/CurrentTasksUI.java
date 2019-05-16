@@ -269,14 +269,20 @@ public class CurrentTasksUI extends javax.swing.JFrame {
 
     private void taskDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskDeleteButtonActionPerformed
 
-
-
-
-        
-        //NO DELETE TASK METHOD - probably just delete this button instead 
-        
-        
-        
+    String taskName = taskList.getSelectedValue(); 
+    try{
+        if(!dbtk.deleteTask(taskName)){
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Succussfully deleted task " + taskName);
+            setTaskList();
+        }
+    }
+    catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Error: failed to delete task", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+     
         
         
     }//GEN-LAST:event_taskDeleteButtonActionPerformed
