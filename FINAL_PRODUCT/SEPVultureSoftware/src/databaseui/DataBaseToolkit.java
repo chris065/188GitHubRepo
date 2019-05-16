@@ -790,6 +790,42 @@ public class DataBaseToolkit
         }
     }
     
+    public boolean deleteTask(String taskName)
+    {
+        PreparedStatement sqlDelete = null ;
+        try
+        {
+            if(!checkTask(taskName))
+            {
+                return false;
+            }
+            else
+            {
+                Connection conn = DriverManager.getConnection(connection.getURL());
+                sqlDelete = conn.prepareStatement("DELETE FROM TASKS WHERE TASK_NAME = ?");
+                sqlDelete.setString(1, taskName);
+            
+                int rslt = sqlDelete.executeUpdate();
+                if(rslt == 0)
+                {
+                    //conn.rollback();
+                    conn.close();
+                    return false;
+                }
+                else
+                {
+                    conn.close();
+                    return true;
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     
     public boolean updateTasks(int taskID, boolean delayed, String name, String type, String assigned, String expectedTime, String prefrences, String talents, String priority)
     {
