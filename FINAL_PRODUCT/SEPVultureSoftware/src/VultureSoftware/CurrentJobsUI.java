@@ -401,7 +401,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
-        Calendar cal2 = null;
+        Calendar cal2 = Calendar.getInstance();
         
         for(int i = 0; i < dates.size(); i++)
         {
@@ -409,7 +409,9 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             Date date = dateFormat.parse(dates.get(i));
             cal2.setTime(date);
             if(cal.after(cal2)){
-                JOptionPane.showMessageDialog(null, "Job " + i +" has taken longer than expected time", "", JOptionPane.INFORMATION_MESSAGE);
+                
+                i = i+1;
+                JOptionPane.showMessageDialog(null, "Job " + i +" in the current job list has taken longer than expected time", "Urgent Job", JOptionPane.WARNING_MESSAGE);
             }
             
         } catch (Exception e){

@@ -123,7 +123,7 @@ public class CurrentTasksUI extends javax.swing.JFrame {
             }
         });
 
-        taskDelayButton.setText("Delay Task");
+        taskDelayButton.setText("Delay/ Resume");
         taskDelayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taskDelayButtonActionPerformed(evt);
