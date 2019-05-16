@@ -74,8 +74,8 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="dateField" min="-2" pref="196" max="-2" attributes="0"/>
-                                      <Component id="checkedField" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                                      <Component id="JTFdateField" min="-2" pref="196" max="-2" attributes="0"/>
+                                      <Component id="JTFcheckedField" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -110,12 +110,12 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="JTFdateField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="checkedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkedField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="JTFcheckedField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   <Component id="infoLabel" min="-2" max="-2" attributes="0"/>
@@ -138,7 +138,7 @@
             <Property name="text" type="java.lang.String" value="Final Inspection"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="checkedField">
+        <Component class="javax.swing.JTextField" name="JTFcheckedField">
         </Component>
         <Component class="javax.swing.JLabel" name="checkedLabel">
           <Properties>
@@ -173,7 +173,7 @@
             <Property name="text" type="java.lang.String" value="Date"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dateField">
+        <Component class="javax.swing.JTextField" name="JTFdateField">
         </Component>
         <Component class="javax.swing.JLabel" name="infoLabel">
           <Properties>

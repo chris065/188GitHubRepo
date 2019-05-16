@@ -8,6 +8,8 @@ package VultureSoftware;
 import databaseui.DataBaseToolkit;
 import databaseui.JobObject;
 import static java.lang.Integer.parseInt;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -44,11 +46,11 @@ public class FinalInspectionUI extends javax.swing.JFrame {
 
         finalInspectionPanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        checkedField = new javax.swing.JTextField();
+        JTFcheckedField = new javax.swing.JTextField();
         checkedLabel = new javax.swing.JLabel();
         endJobButton = new javax.swing.JButton();
         dateLabel = new javax.swing.JLabel();
-        dateField = new javax.swing.JTextField();
+        JTFdateField = new javax.swing.JTextField();
         infoLabel = new javax.swing.JLabel();
         numberLabel = new javax.swing.JLabel();
         jobNumberField = new javax.swing.JTextField();
@@ -106,8 +108,8 @@ public class FinalInspectionUI extends javax.swing.JFrame {
                                     .addComponent(checkedLabel))
                                 .addGap(18, 18, 18)
                                 .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(checkedField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(JTFdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JTFcheckedField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(finalInspectionPanelLayout.createSequentialGroup()
                         .addGap(333, 333, 333)
                         .addComponent(titleLabel))
@@ -131,11 +133,11 @@ public class FinalInspectionUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateLabel)
-                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(finalInspectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkedLabel)
-                    .addComponent(checkedField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFcheckedField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addComponent(infoLabel)
                 .addGap(21, 21, 21)
@@ -168,11 +170,15 @@ public class FinalInspectionUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void endJobButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endJobButtonActionPerformed
-        //addNewFinalInspection(int jobNumber, String date, String checkBy)
-        
-        int jobNo = parseInt(jobNumberField.getText());
-        String date = dateField.getText();
-        String checkedBy = checkedField.getText();
+        trim();
+        if(checks()){
+            if(!checkDate(JTFdateField.getText() ) ){
+                JOptionPane.showMessageDialog(null, "Format for date field must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                int jobNo = parseInt(jobNumberField.getText());
+        String date = JTFdateField.getText();
+        String checkedBy = JTFcheckedField.getText();
         
         if(dbtk.addNewFinalInspection(jobNo, date, checkedBy)){
         JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -182,19 +188,11 @@ public class FinalInspectionUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.ERROR_MESSAGE);
             this.dispose();
         }
-        
-        /*
-        if (dbtk.addNewJob(motorName, dateCollected, partsNeeded, client, manufacturer, returnDate, checkedBy, estimatedHours)) {
-            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-            return true;
-            //CurrentJobsUI.setJobList(); to refresh on add. static context error
-        } else {
-            JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
-            this.dispose();
-            return false;
+            }
+            
         }
-        */
+        
+        
     }//GEN-LAST:event_endJobButtonActionPerformed
 
     /**
@@ -236,11 +234,41 @@ public class FinalInspectionUI extends javax.swing.JFrame {
     private void setField(){
         jobNumberField.setText(""+job.get(0).getJobNumber() ); 
     }
+    
+    private void trim(){
+        String textDA = JTFdateField.getText().trim();
+        JTFdateField.setText(textDA);
+        String textCF = JTFcheckedField.getText().trim();
+        JTFcheckedField.setText(textCF);
+    }
+    
+    private boolean checkDate(String date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            dateFormat.parse(date.trim());
+            
+        } catch (ParseException pe){
+            return false;
+        }
+ 
+        return true;
+    }
+    
+    private boolean checks(){
+    if(JTFcheckedField.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter who performed the inspection", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField checkedField;
+    private javax.swing.JTextField JTFcheckedField;
+    private javax.swing.JTextField JTFdateField;
     private javax.swing.JLabel checkedLabel;
-    private javax.swing.JTextField dateField;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JButton endJobButton;
     private javax.swing.JPanel finalInspectionPanel;
