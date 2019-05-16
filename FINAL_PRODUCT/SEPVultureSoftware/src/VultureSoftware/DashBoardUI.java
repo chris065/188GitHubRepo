@@ -52,13 +52,11 @@ public class DashBoardUI extends javax.swing.JFrame {
 
         dashboardPanel = new javax.swing.JPanel();
         underlineLabel = new javax.swing.JLabel();
-        finalInspectionButton = new javax.swing.JButton();
         currentJobsButton = new javax.swing.JButton();
-        jobDelayButton = new javax.swing.JButton();
         adminButton = new javax.swing.JButton();
         graphButton = new javax.swing.JButton();
         taskAllocatorButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        imageLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
         logoutButton = new javax.swing.JButton();
         usernameField = new javax.swing.JTextField();
@@ -70,23 +68,10 @@ public class DashBoardUI extends javax.swing.JFrame {
 
         underlineLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
-        finalInspectionButton.setBackground(new java.awt.Color(102, 153, 255));
-        finalInspectionButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        finalInspectionButton.setForeground(new java.awt.Color(255, 255, 255));
-        finalInspectionButton.setText("Final Inspection");
-        finalInspectionButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        finalInspectionButton.setFocusable(false);
-        finalInspectionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finalInspectionButtonfinaIinspectActionPerformed(evt);
-            }
-        });
-
         currentJobsButton.setBackground(new java.awt.Color(102, 153, 255));
         currentJobsButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         currentJobsButton.setForeground(new java.awt.Color(255, 255, 255));
         currentJobsButton.setText("Current jobs");
-        currentJobsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         currentJobsButton.setFocusable(false);
         currentJobsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,23 +79,10 @@ public class DashBoardUI extends javax.swing.JFrame {
             }
         });
 
-        jobDelayButton.setBackground(new java.awt.Color(102, 153, 255));
-        jobDelayButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jobDelayButton.setForeground(new java.awt.Color(255, 255, 255));
-        jobDelayButton.setText("Delay a job");
-        jobDelayButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
-        jobDelayButton.setFocusable(false);
-        jobDelayButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jobDelayButtonActionPerformed(evt);
-            }
-        });
-
         adminButton.setBackground(new java.awt.Color(102, 153, 255));
         adminButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         adminButton.setForeground(new java.awt.Color(255, 255, 255));
         adminButton.setText("Admin");
-        adminButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         adminButton.setFocusable(false);
         adminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +94,6 @@ public class DashBoardUI extends javax.swing.JFrame {
         graphButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         graphButton.setForeground(new java.awt.Color(255, 255, 255));
         graphButton.setText("Statistics graphs");
-        graphButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         graphButton.setFocusable(false);
         graphButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +105,6 @@ public class DashBoardUI extends javax.swing.JFrame {
         taskAllocatorButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         taskAllocatorButton.setForeground(new java.awt.Color(255, 255, 255));
         taskAllocatorButton.setText("Task Allocator");
-        taskAllocatorButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         taskAllocatorButton.setFocusable(false);
         taskAllocatorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +112,7 @@ public class DashBoardUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VultureSoftware/vlogo.png"))); // NOI18N
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VultureSoftware/vlogo.png"))); // NOI18N
 
         titleLabel.setBackground(new java.awt.Color(255, 255, 255));
         titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -153,7 +123,6 @@ public class DashBoardUI extends javax.swing.JFrame {
         logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("Logout");
-        logoutButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         logoutButton.setBorderPainted(false);
         logoutButton.setFocusable(false);
         logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,7 +145,6 @@ public class DashBoardUI extends javax.swing.JFrame {
         usernameField.setForeground(new java.awt.Color(255, 255, 255));
         usernameField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         usernameField.setText("Username");
-        usernameField.setBorder(null);
 
         javax.swing.GroupLayout dashboardPanelLayout = new javax.swing.GroupLayout(dashboardPanel);
         dashboardPanel.setLayout(dashboardPanelLayout);
@@ -187,34 +155,29 @@ public class DashBoardUI extends javax.swing.JFrame {
                 .addComponent(underlineLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(dashboardPanelLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dashboardPanelLayout.createSequentialGroup()
-                        .addComponent(taskAllocatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jobDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dashboardPanelLayout.createSequentialGroup()
-                        .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(finalInspectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(dashboardPanelLayout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(imageLabel)
                         .addGap(354, 354, 354))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dashboardPanelLayout.createSequentialGroup()
                         .addComponent(titleLabel)
                         .addGap(60, 60, 60)
                         .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70))))
+            .addGroup(dashboardPanelLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(taskAllocatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dashboardPanelLayout.createSequentialGroup()
+                        .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         dashboardPanelLayout.setVerticalGroup(
             dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +189,7 @@ public class DashBoardUI extends javax.swing.JFrame {
                             .addComponent(titleLabel)
                             .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
+                        .addComponent(imageLabel))
                     .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addComponent(underlineLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,14 +197,11 @@ public class DashBoardUI extends javax.swing.JFrame {
                 .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(taskAllocatorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jobDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(60, 60, 60)
-                .addGroup(dashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(finalInspectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                        .addComponent(graphButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(currentJobsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(58, 58, 58)
+                .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,20 +218,10 @@ public class DashBoardUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void finalInspectionButtonfinaIinspectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalInspectionButtonfinaIinspectActionPerformed
-        // TODO add your handling code here:
-        //new SearchFinalInspectionUI().setVisible(true);
-    }//GEN-LAST:event_finalInspectionButtonfinaIinspectActionPerformed
-
     private void currentJobsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentJobsButtonActionPerformed
         // TODO add your handling code here:
         new CurrentJobsUI(user).setVisible(true);
     }//GEN-LAST:event_currentJobsButtonActionPerformed
-
-    private void jobDelayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobDelayButtonActionPerformed
-        // TODO add your handling code here:
-        new JobDelayUI().setVisible(true);
-    }//GEN-LAST:event_jobDelayButtonActionPerformed
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
@@ -318,7 +268,6 @@ public class DashBoardUI extends javax.swing.JFrame {
         if(role.toLowerCase().equals("tech"))
         {
             adminButton.setEnabled(false);
-            jobDelayButton.setEnabled(false);
             graphButton.setEnabled(false);
             
             //needs current jobs
@@ -326,28 +275,22 @@ public class DashBoardUI extends javax.swing.JFrame {
         if(role.toLowerCase().equals("collection and delivery"))
         {
             adminButton.setEnabled(false);
-            jobDelayButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
             graphButton.setEnabled(false);
-            finalInspectionButton.setEnabled(false);
             
             //needs finished jobs
         }
         if(role.toLowerCase().equals("finance"))
         {
             adminButton.setEnabled(false);
-            jobDelayButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
             currentJobsButton.setEnabled(false);
-            finalInspectionButton.setEnabled(false);
             //needs stats graphs
         }
         if(role.toLowerCase().equals("customer support"))
         {
-            adminButton.setEnabled(false);
-            jobDelayButton.setEnabled(false);		
+            adminButton.setEnabled(false);		
             graphButton.setEnabled(false);
-            finalInspectionButton.setEnabled(false);
             
             //needs task allocator
         }
@@ -357,7 +300,6 @@ public class DashBoardUI extends javax.swing.JFrame {
             currentJobsButton.setEnabled(false);
             graphButton.setEnabled(false);
             taskAllocatorButton.setEnabled(false);
-            finalInspectionButton.setEnabled(false);
             
             //needs order new parts + delay job
         }
@@ -403,10 +345,8 @@ public class DashBoardUI extends javax.swing.JFrame {
     private javax.swing.JButton adminButton;
     private javax.swing.JButton currentJobsButton;
     private javax.swing.JPanel dashboardPanel;
-    private javax.swing.JButton finalInspectionButton;
     private javax.swing.JButton graphButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton jobDelayButton;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton taskAllocatorButton;
     private javax.swing.JLabel titleLabel;
