@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package VultureSoftware;
+
 import databaseui.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -44,7 +45,7 @@ public class AllocateATaskUI extends javax.swing.JFrame {
     private void initComponents() {
 
         priorityButtonGroup = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
+        allocateTaskPanel = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
         taskListScrollPane = new javax.swing.JScrollPane();
         taskList = new javax.swing.JList<>();
@@ -67,7 +68,7 @@ public class AllocateATaskUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        allocateTaskPanel.setBackground(new java.awt.Color(102, 153, 255));
 
         TitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         TitleLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,14 +172,14 @@ public class AllocateATaskUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout allocateTaskPanelLayout = new javax.swing.GroupLayout(allocateTaskPanel);
+        allocateTaskPanel.setLayout(allocateTaskPanelLayout);
+        allocateTaskPanelLayout.setHorizontalGroup(
+            allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(allocateTaskPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(allocateTaskPanelLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(priorityLabel)
                         .addGap(31, 31, 31)
@@ -189,67 +190,67 @@ public class AllocateATaskUI extends javax.swing.JFrame {
                         .addComponent(highRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(allocateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(allocateTaskPanelLayout.createSequentialGroup()
+                        .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(taskLabel)
                             .addComponent(prefsLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(talentsLabel)
                         .addGap(164, 164, 164))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(allocateTaskPanelLayout.createSequentialGroup()
+                        .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(taskListScrollPane)
                             .addComponent(TitleLabel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(prefsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(talentsScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, allocateTaskPanelLayout.createSequentialGroup()
                                 .addComponent(TechLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(techComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, allocateTaskPanelLayout.createSequentialGroup()
                                 .addComponent(timeLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        allocateTaskPanelLayout.setVerticalGroup(
+            allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(allocateTaskPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(TitleLabel)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(allocateTaskPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TechLabel)
                             .addComponent(techComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(timeLabel)
                             .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(allocateTaskPanelLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addComponent(taskLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prefsLabel)
                     .addComponent(talentsLabel))
                 .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(talentsScrollPane)
                     .addComponent(prefsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(allocateTaskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lowRadioButton)
                         .addComponent(mediumRadioButton)
                         .addComponent(highRadioButton)
                         .addComponent(priorityLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(allocateTaskPanelLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(allocateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(85, 85, 85))
@@ -259,11 +260,11 @@ public class AllocateATaskUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(allocateTaskPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(allocateTaskPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -359,8 +360,8 @@ public class AllocateATaskUI extends javax.swing.JFrame {
     private javax.swing.JLabel TechLabel;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JButton allocateButton;
+    private javax.swing.JPanel allocateTaskPanel;
     private javax.swing.JRadioButton highRadioButton;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton lowRadioButton;
     private javax.swing.JRadioButton mediumRadioButton;
     private javax.swing.JLabel prefsLabel;

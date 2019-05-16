@@ -145,33 +145,24 @@ public class TaskAddUI extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
     //delayed always starts as false 
     
-    int jobNo = job.get(0).getJobNumber();
     
-    //trim fields
-        String textTN = JTFTaskName.getText().trim();
-        JTFTaskName.setText(textTN);
-        
-        if(JTFTaskName.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter the name of the task", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(JCBType.getSelectedItem().equals("Select the type of task")){
-            JOptionPane.showMessageDialog(null, "Please select the type of task from the drop down menu", "", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
+        trim();
+        if(checks()){
+            int jobNo = job.get(0).getJobNumber();
             String name = JTFTaskName.getText();
             String type = (String)JCBType.getSelectedItem();
             
             if(dbtk.addTask(false, name, type, null, null, null, null, null, jobNo))
         {
-            JOptionPane.showMessageDialog(null, "Successfully added to database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Successfully added new task to database", "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();   
-            //call refresh ??
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Failed to add to database", "Error", JOptionPane.WARNING_MESSAGE);
             this.dispose();
         }
+        
         }                
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -273,6 +264,25 @@ public class TaskAddUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void trim(){
+        String textTN = JTFTaskName.getText().trim();
+        JTFTaskName.setText(textTN);
+    }
+    
+    private boolean checks(){
+        if(JTFTaskName.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter the name of the task", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        else if(JCBType.getSelectedItem().equals("Select a task type")){
+            JOptionPane.showMessageDialog(null, "Please select the type of task from the drop down menu", "", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JCBType;
@@ -290,5 +300,3 @@ public class TaskAddUI extends javax.swing.JFrame {
 //textArea1.setLineWrap(true);
 //textArea1.setWrapStyleWord(true);
 }
-
-// array of manufacturers -> method to populate drop down box

@@ -16,21 +16,26 @@ import javax.swing.JOptionPane;
  */
 public class CurrentTasksUI extends javax.swing.JFrame {
 
-    //Connect to database and utilize database tools.
     DataBaseToolkit dbtk;
-    //Create a new list model for the task list.
     DefaultListModel taskListModel = new DefaultListModel();
-    //Create a new list model for the task list for filtering items.
     DefaultListModel filteredItems = new DefaultListModel();
     static ArrayList<JobObject> job;
+    
+    private static String role;
+    private static ArrayList user;
+    
     /**
      * Creates new form TaskList
      */
-    public CurrentTasksUI(ArrayList job) {
+    public CurrentTasksUI(ArrayList job, ArrayList user) {
         dbtk = new DataBaseToolkit();
         initComponents();
         this.job = job;
         setTaskList();
+        
+        this.user = user;
+        this.role = this.user.get(5).toString();
+        setButtons(role);
     }
 
     /**
@@ -48,15 +53,12 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         detailsScrollPane = new javax.swing.JScrollPane();
         detailsTextArea = new javax.swing.JTextArea();
-        searchTextField = new javax.swing.JTextField();
-        searchLabel = new javax.swing.JLabel();
         taskEditButton = new javax.swing.JButton();
         taskDeleteButton = new javax.swing.JButton();
         taskAddButton = new javax.swing.JButton();
         taskRefreshButton = new javax.swing.JButton();
         taskDelayButton = new javax.swing.JButton();
         infoLabel = new javax.swing.JLabel();
-        completeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,24 +94,19 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         detailsTextArea.setRows(5);
         detailsScrollPane.setViewportView(detailsTextArea);
 
-        searchTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchTextFieldActionPerformed(evt);
-            }
-        });
-        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchTextFieldKeyReleased(evt);
-            }
-        });
-
-        searchLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        searchLabel.setForeground(new java.awt.Color(255, 255, 255));
-        searchLabel.setText("Search/Filter:");
-
         taskEditButton.setText("Edit Task");
+        taskEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskEditButtonActionPerformed(evt);
+            }
+        });
 
         taskDeleteButton.setText("Delete Task");
+        taskDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskDeleteButtonActionPerformed(evt);
+            }
+        });
 
         taskAddButton.setText("Add Task");
         taskAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -119,19 +116,22 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         });
 
         taskRefreshButton.setText("Refresh List");
+        taskRefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskRefreshButtonActionPerformed(evt);
+            }
+        });
 
-        taskDelayButton.setText("Delay Task");
+        taskDelayButton.setText("Delay/ Resume");
+        taskDelayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taskDelayButtonActionPerformed(evt);
+            }
+        });
 
         infoLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         infoLabel.setForeground(new java.awt.Color(255, 255, 255));
         infoLabel.setText("Click on a task to view information about it");
-
-        completeButton.setText("Complete Task");
-        completeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                completeButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout taskListPanelLayout = new javax.swing.GroupLayout(taskListPanel);
         taskListPanel.setLayout(taskListPanelLayout);
@@ -142,57 +142,44 @@ public class CurrentTasksUI extends javax.swing.JFrame {
                 .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titleLabel)
                     .addGroup(taskListPanelLayout.createSequentialGroup()
-                        .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(taskListPanelLayout.createSequentialGroup()
-                                .addComponent(searchLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(infoLabel)
-                            .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(taskDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(completeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(taskListPanelLayout.createSequentialGroup()
+                                .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(taskDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         taskListPanelLayout.setVerticalGroup(
             taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(taskListPanelLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
                 .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(taskListPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(taskListPanelLayout.createSequentialGroup()
-                                .addComponent(infoLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(taskListPanelLayout.createSequentialGroup()
-                                .addComponent(taskDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(taskEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(taskDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(taskAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
-                                .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(completeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(infoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detailsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(taskListPanelLayout.createSequentialGroup()
                         .addComponent(titleLabel)
-                        .addGap(13, 13, 13)
-                        .addGroup(taskListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchLabel))
+                        .addGap(27, 27, 27)
+                        .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(taskListPanelLayout.createSequentialGroup()
+                        .addComponent(taskDelayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(taskListScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(taskEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(taskDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(taskAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(taskRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -215,57 +202,124 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     old nathan method - does not get tasks for the job its linked to
     */
     private void taskListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_taskListValueChanged
+        
+        try{
         String taskName = taskList.getSelectedValue();
-        //Used to prevent errors with the filter function.
+
         if(taskName == null)
         {
             taskName = null;
         }
-        //Get task details and assign them to the text area.
-        else 
-        {
+        else{
+        
         ArrayList<TaskObject> taskData = dbtk.getTask(taskName);
         
         String tech = taskData.get(0).getAssignedTo();
-        //int expectedTime = taskData.get(0).getExpectedTime();
+        String expectedTime = taskData.get(0).getExpectedTime();
         String prefs = taskData.get(0).getPrefs();
         String talents = taskData.get(0).getTalents();
         String priority = taskData.get(0).getPriority();
+        String type = taskData.get(0).getType();
         
         detailsTextArea.setText(null);
         detailsTextArea.setText("Technician assigned to this task: " + tech + "\n\n");
-        //detailsTextArea.append("This task is expected to be completed in " + Integer.toString(expectedTime) + " days.\n\n");
+        detailsTextArea.setText("The type of task is: " + type + "\n\n");        
+        detailsTextArea.append("This task is expected to be completed on " + expectedTime + " \n\n");
         detailsTextArea.append("Task Preferences:\n" + prefs + "\n\n");
         detailsTextArea.append("Requiered Talents:\n" + talents + "\n\n");
-        detailsTextArea.append("This tasks priority is " + priority + ".\n\n");
+        detailsTextArea.append("This task's priority is " + priority + ".\n\n");
         
         if(taskData.get(0).getDelay())
         {
             detailsTextArea.append("This task is delayed.");
         }
         }
+        }
+        catch(Exception e){
+            //clicking in the box but not any text so null
+        }
+
+        
     }//GEN-LAST:event_taskListValueChanged
-    /*
-    When a key is released in the search field, call searchFilter().
-    */
-    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
-        searchFilter(searchTextField.getText());
-    }//GEN-LAST:event_searchTextFieldKeyReleased
 
     private void taskAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskAddButtonActionPerformed
-        int test2 = job.get(0).getJobNumber();
+
+        int taskNo = job.get(0).getJobNumber();
+        new TaskAddUI(dbtk.getJob(taskNo)).setVisible(true);
         
-        new TaskAddUI(dbtk.getJob(test2)).setVisible(true);
     }//GEN-LAST:event_taskAddButtonActionPerformed
 
-    private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldActionPerformed
+    private void taskEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskEditButtonActionPerformed
 
-    private void completeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeButtonActionPerformed
-        //new FinalInspectionUI().setVisible(true);
-        String numberComp = JOptionPane.showInputDialog(this, "Enter the job number of the completed task");
-    }//GEN-LAST:event_completeButtonActionPerformed
+        try{
+        String taskName = taskList.getSelectedValue();    
+        ArrayList<TaskObject> taskArray = dbtk.getTask(taskName);
+        new TaskEditUI(taskArray).setVisible(true);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: task not found", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+                
+        
+    }//GEN-LAST:event_taskEditButtonActionPerformed
+
+    private void taskRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskRefreshButtonActionPerformed
+        setTaskList();
+    }//GEN-LAST:event_taskRefreshButtonActionPerformed
+
+    private void taskDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskDeleteButtonActionPerformed
+
+
+
+
+        
+        //NO DELETE TASK METHOD - probably just delete this button instead 
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_taskDeleteButtonActionPerformed
+
+    private void taskDelayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taskDelayButtonActionPerformed
+
+        String selectedName = taskList.getSelectedValue();
+    
+        ArrayList<TaskObject> task = dbtk.getTask(selectedName);
+      
+        
+            int taskID = task.get(0).getID();
+
+            String taskType = task.get(0).getType();
+            String taskPri = task.get(0).getPriority();
+            String taskName = task.get(0).getTaskName();
+            String taskTech = task.get(0).getAssignedTo();
+            String taskTime = task.get(0).getExpectedTime();
+            String taskPref = task.get(0).getPrefs();
+            String taskTals = task.get(0).getTalents();
+
+            
+          if(task.get(0).getDelay()){
+              if(dbtk.updateTasks(taskID, false, taskName, taskType, taskTech, taskTime, taskPref, taskTals, taskPri)){
+    JOptionPane.showMessageDialog(null, "Successfully resumed task: " + taskName, "Success", JOptionPane.INFORMATION_MESSAGE);
+    setTaskList();
+}            
+else{
+    JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); 
+}
+          }
+          else{
+                            if(dbtk.updateTasks(taskID, true, taskName, taskType, taskTech, taskTime, taskPref, taskTals, taskPri)){
+    JOptionPane.showMessageDialog(null, "Successfully delayed task: " + taskName, "Success", JOptionPane.INFORMATION_MESSAGE);
+    setTaskList();
+}            
+else{
+    JOptionPane.showMessageDialog(null, "Failed to update database", "Error", JOptionPane.ERROR_MESSAGE); 
+}
+          }
+
+        
+    }//GEN-LAST:event_taskDelayButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,18 +366,15 @@ public class CurrentTasksUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CurrentTasksUI(job).setVisible(true);
+                new CurrentTasksUI(job, user).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton completeButton;
     private javax.swing.JScrollPane detailsScrollPane;
     private javax.swing.JTextArea detailsTextArea;
     private javax.swing.JLabel infoLabel;
-    private javax.swing.JLabel searchLabel;
-    private javax.swing.JTextField searchTextField;
     private javax.swing.JButton taskAddButton;
     private javax.swing.JButton taskDelayButton;
     private javax.swing.JButton taskDeleteButton;
@@ -335,146 +386,67 @@ public class CurrentTasksUI extends javax.swing.JFrame {
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 
-    /*
-    Populates the task list with allocated tasks.
-    */
-    public void populateList()
-    {
-        
-        
-        
-        
-        //TODO: only get tasks that are not completed and not delayed. add completed column to db
-        
-                
-        
-        
-        
-        taskList.setModel(taskListModel);
-        ArrayList tasks = dbtk.getAllTasks();
-        
-        for(int i = 0; i < tasks.size(); i++)
-        {
-            //ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
-            taskListModel.addElement(tasks.get(i).toString());}
-            /*
-//If a task is not assigned then it is not added to the list.
-            if (taskData.get(0).getAssignedTo() == null)
-            {
-                taskData = null;
-            }
-            else
-            {
-                taskListModel.addElement(tasks.get(i).toString());
-            }
-        }*/
-    }
     
     /*
-    Allows the user to search and filter through tasks.
-    */
-    public void searchFilter(String searchTerm)
-    {   
-        detailsTextArea.setText(null);
-        
-        taskList.setModel(filteredItems);
-        
-        ArrayList tasks = dbtk.getAllTasks();
-        
-        if(tasks == null)
-        {
-            JOptionPane.showMessageDialog(null, "No tasks could be found in the database. Please contact an administrator if this problem persists.", "Error", JOptionPane.WARNING_MESSAGE);
-            taskList.setEnabled(false);
-            searchTextField.setEnabled(false);
-            detailsTextArea.setEnabled(false);
-        }
-        else
-        {
-            //If the search field is not empty, find allocated tasks to match the search term.
-            if(!searchTextField.getText().equals(""))
-            {
-                filteredItems.removeAllElements();
-                
-                for(int i = 0; i < tasks.size(); i++)
-                {
-                    ArrayList<TaskObject> taskData = dbtk.getTask(tasks.get(i).toString());
-
-                    //If task is not assigned then exclude from search. Else add taks to filteredItems ans set filteredItems as the list model.
-                    if (taskData.get(0).getAssignedTo() == null)
-                    {
-                        taskData = null;
-                    }
-                    else
-                    {
-
-                    String taskName = tasks.get(i).toString();
-                    if(taskName.toLowerCase().contains(searchTerm.toLowerCase()))
-                        {
-                                filteredItems.addElement(taskName);
-                        }
-                    }
-                }
-                tasks.clear();
-            }
-            //Set the task list model to taskListModel.
-            else
-            {
-                taskList.setModel(taskListModel);
-            }  
-        }
-    }
-        /*public String test()
-        {
-             ArrayList tasks = dbtk.getAllTasks();
-             
-            for(int i = 0; i < tasks.size(); i++)
-            {
-                String taskName = tasks.get(i).toString();
-                System.out.println(taskName);
-            }
-            return null;
-        }
-        */
-        private void setTaskList(){
-            /*
-            try{
-        ArrayList<JobObject> allJobs = dbtk.getAllJobs();
-        jobList.setModel(jobListModel);
-                    
-        //to test no jobs in db:
-        //allJobs = null; 
-    
-        if(allJobs == null)
-        {
-            jobListModel.addElement( null);
-        }
-        else
-        {
-            jobListModel.removeAllElements();
-            
-            for(int i = 0; i < allJobs.size(); i++)
-            {               
-                jobListModel.addElement(allJobs.get(i).getJobNumber()+" "+allJobs.get(i).getJobMotorName());  
-            }
-        }
-        allJobs.clear();}
-        catch(NullPointerException e){
-            System.out.println("Error loading jobs");
-        }            */            
+    * initialises and refreshes task list, sorting by delayed and non delayed tasks
+    */    
+    private void setTaskList(){
+         
             
             ArrayList<TaskObject> tasks = dbtk.getTasksForJob(job.get(0).getJobNumber());
-            taskList.setModel (taskListModel);
+            taskList.setModel (taskListModel);         
             
+        ArrayList<TaskObject> delTasks = new ArrayList<TaskObject>();
+        ArrayList<TaskObject> nonDelTasks = new ArrayList<TaskObject>();
+        
+        for(int i = 0; i < tasks.size(); i++)
+            {               
+                if(tasks.get(i).getDelay()){                    
+                delTasks.add(tasks.get(i));
+                }
+                else{
+                    nonDelTasks.add(tasks.get(i));
+                }              
+            }    
+
             if(tasks == null){
                 taskListModel.addElement(null);
             }
             else{
-                for(int i = 0; i < tasks.size(); i++)
+                taskListModel.removeAllElements();
+                
+                for(int i = 0; i < nonDelTasks.size(); i++)
                 {
-                    taskListModel.addElement(tasks.get(i).getTaskName());
+                    taskListModel.addElement(nonDelTasks.get(i).getTaskName()); 
                 }
-            }
+
+            taskListModel.addElement(" ");
+            taskListModel.addElement("Delayed tasks:");
             
+            for(int i = 0; i < delTasks.size(); i++)
+            {               
+                taskListModel.addElement(delTasks.get(i).getTaskName());   
+            }
+            tasks.clear();
+            }
+        }
+    
+    private void checkDelayed(){
+        
+    }
+    
+    private void setButtons(String role){
+        if(role.toLowerCase().equals("tech")){
+            taskDeleteButton.setEnabled(false);
+            taskEditButton.setEnabled(false);  
+        }
+        if(role.toLowerCase().equals("collection and delivery")){
+            taskDeleteButton.setEnabled(false);
+            taskEditButton.setEnabled(false); 
+            taskAddButton.setEnabled(false);
+            taskDelayButton.setEnabled(false);
             
         }
+    }
+
 }

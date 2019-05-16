@@ -6,10 +6,13 @@
 package VultureSoftware;
 
 import databaseui.*;
+import java.text.ParseException;
 import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * @author Jordan 17012215
@@ -207,10 +210,11 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //view tasks button
     private void viewTasksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTasksButtonActionPerformed
         try{
-        int selectedItem = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number for tasks"));
-        new CurrentTasksUI(dbtk.getJob(selectedItem)).setVisible(true);
+        int numberTask = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number to view the tasks of"));
+        ArrayList<JobObject> jobArray = dbtk.getJob(numberTask);
+        new CurrentTasksUI(jobArray, user).setVisible(true);
         this.dispose();
-        }catch(NumberFormatException e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_viewTasksButtonActionPerformed
@@ -231,7 +235,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         int numberEdit = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number of the motor to edit"));
         ArrayList<JobObject> jobArray = dbtk.getJob(numberEdit);
         new MotorEditUI(jobArray, dbtk).setVisible(true);
-        }catch(NumberFormatException e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -240,7 +244,6 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     //delete button
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
           
-        //try catch
         String numberDel = JOptionPane.showInputDialog(this, "Enter the job number of the motor to delete");
         try{
         if(!dbtk.deleteJob(Integer.parseInt(numberDel)))
@@ -262,15 +265,20 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void finalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalButtonActionPerformed
-        //if final insp exists, view it. if not, make one
-        
-    
-        
         
         try{
         int numberFin = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number that has been inspected"));
         ArrayList<JobObject> jobArray = dbtk.getJob(numberFin);
-        new FinalInspectionUI(jobArray).setVisible(true); 
+        
+        //final inspection already confirmed
+        if( jobArray.get(0).isJobCompleted() ){
+            JOptionPane.showMessageDialog(null, "This job has already been inspected and saved", "", JOptionPane.WARNING_MESSAGE);
+            
+        }
+        //else open UI to add inspection
+        else{
+            new FinalInspectionUI(jobArray).setVisible(true); 
+        }
         
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: job not found", "Error", JOptionPane.ERROR_MESSAGE);
@@ -338,38 +346,86 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 
-    //initialises and refreshes job list
+    /*
+    * initialises and refreshes job list, sorting by completed and non completed jobs
+    */
     public void setJobList()
     {  
-        try{
-        ArrayList<JobObject> allJobs = dbtk.getAllJobs();
-        //for each if completed = true to put all completed jobs in array, non comp in another array to then use in for instead of allJobs variable
+
         
+        ArrayList<JobObject> allJobs = dbtk.getAllJobs();    
+
         jobList.setModel(jobListModel);
-                    
-        //to test no jobs in db:
-        //allJobs = null; 
-    
+        
+        ArrayList<JobObject> compJobs = new ArrayList<JobObject>();
+        ArrayList<JobObject> nonCompJobs = new ArrayList<JobObject>();
+        
+        ArrayList<String> dates = new ArrayList<String>();
+        
+        //adds completed and non completed jobs to appropriate array
+        for(int i = 0; i < allJobs.size(); i++)
+            {               
+                if(allJobs.get(i).isJobCompleted()){                    
+                compJobs.add(allJobs.get(i));
+                }
+                else{
+                    nonCompJobs.add(allJobs.get(i));
+                }              
+            }
+        
         if(allJobs == null)
         {
             jobListModel.addElement( null);
         }
-        else
-        {
+        else{
             jobListModel.removeAllElements();
             
-            for(int i = 0; i < allJobs.size(); i++)
+
+            
+            for(int i = 0; i < nonCompJobs.size(); i++)
             {               
-                jobListModel.addElement(allJobs.get(i).getJobNumber()+" "+allJobs.get(i).getJobMotorName());  
+                jobListModel.addElement(nonCompJobs.get(i).getJobNumber()+" "+nonCompJobs.get(i).getJobMotorName()); 
+                dates.add(nonCompJobs.get(i).getJobReturnDate());
             }
             
-            //
+            //title to say not completed
+            jobListModel.addElement(" ");
+            jobListModel.addElement("Completed jobs:");
+            
+            for(int i = 0; i < compJobs.size(); i++)
+            {               
+                jobListModel.addElement(compJobs.get(i).getJobNumber()+" "+compJobs.get(i).getJobMotorName());  
+            }
+            allJobs.clear();        
         }
-        allJobs.clear();}
-        catch(NullPointerException e){
-            System.out.println("Error loading jobs");
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        
+        for(int i = 0; i < dates.size(); i++)
+        {
+            try{
+            Date date = dateFormat.parse(dates.get(i));
+            cal2.setTime(date);
+            if(cal.after(cal2)){
+                
+                i = i+1;
+                JOptionPane.showMessageDialog(null, "Job " + i +" in the current job list has taken longer than expected time", "Urgent Job", JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } catch (Exception e){
+            System.err.println(e);
         }
+            
+        }
+
+ 
+        
 }
+    /*
+    * Makes only specific users able to click certain buttons
+    */
     private void setButtons(String role){
         if(role.toLowerCase().equals("tech")){
             deleteButton.setEnabled(false);
@@ -382,7 +438,6 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             addJobButton.setEnabled(false);
             finalButton.setEnabled(false);
             editButton.setEnabled(false);
-            finalButton.setEnabled(false);
         }
     }
 
