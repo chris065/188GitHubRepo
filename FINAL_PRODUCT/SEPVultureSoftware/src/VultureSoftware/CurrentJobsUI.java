@@ -212,7 +212,7 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         try{
         int numberTask = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the job number to view the tasks of"));
         ArrayList<JobObject> jobArray = dbtk.getJob(numberTask);
-        new CurrentTasksUI(jobArray).setVisible(true);
+        new CurrentTasksUI(jobArray, user).setVisible(true);
         this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: must enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
@@ -436,7 +436,6 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             addJobButton.setEnabled(false);
             finalButton.setEnabled(false);
             editButton.setEnabled(false);
-            finalButton.setEnabled(false);
         }
     }
 

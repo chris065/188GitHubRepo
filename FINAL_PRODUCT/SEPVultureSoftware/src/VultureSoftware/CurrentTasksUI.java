@@ -16,21 +16,26 @@ import javax.swing.JOptionPane;
  */
 public class CurrentTasksUI extends javax.swing.JFrame {
 
-    //Connect to database and utilize database tools.
     DataBaseToolkit dbtk;
-    //Create a new list model for the task list.
     DefaultListModel taskListModel = new DefaultListModel();
-    //Create a new list model for the task list for filtering items.
     DefaultListModel filteredItems = new DefaultListModel();
     static ArrayList<JobObject> job;
+    
+    private static String role;
+    private static ArrayList user;
+    
     /**
      * Creates new form TaskList
      */
-    public CurrentTasksUI(ArrayList job) {
+    public CurrentTasksUI(ArrayList job, ArrayList user) {
         dbtk = new DataBaseToolkit();
         initComponents();
         this.job = job;
         setTaskList();
+        
+        this.user = user;
+        this.role = this.user.get(5).toString();
+        setButtons(role);
     }
 
     /**
@@ -397,7 +402,7 @@ else{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CurrentTasksUI(job).setVisible(true);
+                new CurrentTasksUI(job, user).setVisible(true);
             }
         });
     }
@@ -465,6 +470,21 @@ else{
     
     private void checkDelayed(){
         
+    }
+    
+    private void setButtons(String role){
+        if(role.toLowerCase().equals("tech")){
+            taskDeleteButton.setEnabled(false);
+            taskEditButton.setEnabled(false);  
+        }
+        if(role.toLowerCase().equals("collection and delivery")){
+            taskDeleteButton.setEnabled(false);
+            taskEditButton.setEnabled(false); 
+            taskAddButton.setEnabled(false);
+            completeButton.setEnabled(false);
+            taskDelayButton.setEnabled(false);
+            
+        }
     }
 
 }
