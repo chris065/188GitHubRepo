@@ -4,10 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Jordan/Downloads/recentv2/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/CurrentJobsUI.java</file>
-            <file>file:/C:/Users/Jordan/Downloads/recentv2/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/CurrentTasksUI.java</file>
+            <file>file:/C:/Users/Jordan/Downloads/recentv2/FINAL_PRODUCT/SEPVultureSoftware/src/databaseui/JobObject.java</file>
+            <file>file:/C:/Users/Jordan/Downloads/recentv2/FINAL_PRODUCT/SEPVultureSoftware/src/databaseui/DataBaseToolkit.java</file>
             <file>file:/C:/Users/Jordan/Downloads/recentv2/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/MotorEditUI.java</file>
+            <file>file:/C:/Users/Jordan/Downloads/recentv2/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/MotorAddUI.java</file>
             <file>file:/C:/Users/Jordan/Downloads/recentv2/FINAL_PRODUCT/SEPVultureSoftware/src/databaseui/TaskObject.java</file>
-            <file>file:/C:/Users/Jordan/Downloads/recentv2/FINAL_PRODUCT/SEPVultureSoftware/src/VultureSoftware/TaskEditUI.java</file>
         </group>
     </open-files>
 </project-private>

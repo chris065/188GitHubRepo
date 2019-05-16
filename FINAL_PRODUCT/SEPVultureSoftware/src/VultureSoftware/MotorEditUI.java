@@ -263,7 +263,7 @@ public class MotorEditUI extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
                //dbtk.closeConnectionToDB();
         trim();
-        if (checks()) { 
+        if (checks() && checkHours(JTFEstimated.getText()) ) {
             
             //if both fields are edited
             if (!JTFDateCollected.getText().equals("DD/MM/YYYY") && !JTFReturnDate.getText().equals("DD/MM/YYYY")) 
@@ -274,7 +274,7 @@ public class MotorEditUI extends javax.swing.JFrame {
                 }
                 else
                     {
-                        System.out.println("update 1");
+                        //System.out.println("update 1");
                         update();
                         this.dispose();
                     }                
@@ -287,7 +287,7 @@ public class MotorEditUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Format is incorrect for date collected. Must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
-                    System.out.println("update 2");
+                    //System.out.println("update 2");
                         update();
                         this.dispose();
                 }
@@ -299,7 +299,7 @@ public class MotorEditUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Format is incorrect for return date. Must be DD/MM/YYYY", "", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
-                    System.out.println("update 3");
+                    //System.out.println("update 3");
                         update();
                         this.dispose();
                 }
@@ -307,7 +307,7 @@ public class MotorEditUI extends javax.swing.JFrame {
             //neither edited
             else
             {
-                System.out.println("update 4");
+                //System.out.println("update 4");
                         update();
                         this.dispose();
             }
@@ -469,7 +469,10 @@ private void trim(){
 }
 
 private boolean checks() {
-        if (JTFMotorName.getText().equals("")) {
+        
+    
+    
+    if (JTFMotorName.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Please enter the name of the motor", "", JOptionPane.INFORMATION_MESSAGE);
             return false;
         } else if (JCBMan.getSelectedItem().equals("Select a manufacturer")) {
@@ -484,7 +487,8 @@ private boolean checks() {
         } else if (TAParts.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Please enter the parts required", "", JOptionPane.INFORMATION_MESSAGE);
             return false;
-        } else {
+        } 
+        else {
             return true;
         }
     }
@@ -521,4 +525,23 @@ private boolean checkDate(String date) {
         }
         return true;
     }
+
+private boolean checkHours(String hours){
+         int result;
+         try{
+         result = Integer.parseInt(hours);	
+         }
+         catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Must enter a valid amount of hours", "Error", JOptionPane.ERROR_MESSAGE);
+             return false;
+         }
+         if(result < 100 ){
+             return true;
+         }
+         else{
+            JOptionPane.showMessageDialog(null, "Must enter a valid amount of hours", "Error", JOptionPane.ERROR_MESSAGE);
+             return false;
+         }
+         
+     }
 }

@@ -6,10 +6,13 @@
 package VultureSoftware;
 
 import databaseui.*;
+import java.text.ParseException;
 import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * @author Jordan 17012215
@@ -348,12 +351,16 @@ public class CurrentJobsUI extends javax.swing.JFrame {
     */
     public void setJobList()
     {  
+
+        
         ArrayList<JobObject> allJobs = dbtk.getAllJobs();    
 
         jobList.setModel(jobListModel);
         
         ArrayList<JobObject> compJobs = new ArrayList<JobObject>();
         ArrayList<JobObject> nonCompJobs = new ArrayList<JobObject>();
+        
+        ArrayList<String> dates = new ArrayList<String>();
         
         //adds completed and non completed jobs to appropriate array
         for(int i = 0; i < allJobs.size(); i++)
@@ -373,9 +380,12 @@ public class CurrentJobsUI extends javax.swing.JFrame {
         else{
             jobListModel.removeAllElements();
             
+
+            
             for(int i = 0; i < nonCompJobs.size(); i++)
             {               
-                jobListModel.addElement(nonCompJobs.get(i).getJobNumber()+" "+nonCompJobs.get(i).getJobMotorName());  
+                jobListModel.addElement(nonCompJobs.get(i).getJobNumber()+" "+nonCompJobs.get(i).getJobMotorName()); 
+                dates.add(nonCompJobs.get(i).getJobReturnDate());
             }
             
             //title to say not completed
@@ -388,6 +398,27 @@ public class CurrentJobsUI extends javax.swing.JFrame {
             }
             allJobs.clear();        
         }
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        Calendar cal2 = null;
+        
+        for(int i = 0; i < dates.size(); i++)
+        {
+            try{
+            Date date = dateFormat.parse(dates.get(i));
+            cal2.setTime(date);
+            if(cal.after(cal2)){
+                JOptionPane.showMessageDialog(null, "Job " + i +" has taken longer than expected time", "", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        } catch (Exception e){
+            System.err.println(e);
+        }
+            
+        }
+
+ 
         
 }
     /*
